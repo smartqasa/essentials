@@ -1,0 +1,13 @@
+- url: /local/community/smartqasa-dash/elements.js?v=2
+  type: module
+- url: /local/community/maxi-media-player/maxi-media-player.js
+  type: module
+- url: /local/community/kiosk-mode/kiosk-mode.js
+  type: module
+- url: /local/community/mini-graph-card/mini-graph-card-bundle.js
+  type: module
+- url: /local/community/restriction-card/restriction-card.js
+  type: module
+- url: /local/community/weather-radar-card/weather-radar-card.js
+  type: module
+  
