@@ -120,14 +120,14 @@ frontend:
 
                     sq-panel-color: rgb(0, 0, 0)
 
-                    sq-dialog-background-rgb: 25, 25, 25
+                    sq-dialog-background-rgb: 20, 20, 20
                     sq-dialog-background-opacity: 0.8
                     sq-dialog-border-width: 0px
                     sq-dialog-border-style: solid
                     sq-dialog-border-rgb: 0, 0, 0
                     sq-dialog-box-shadow: none
 
-                    sq-card-background-rgb: 35, 35, 35
+                    sq-card-background-rgb: 30, 30, 30
                     sq-card-background-opacity: 0.65
                     sq-card-border-width: 1px
                     sq-card-border-style: solid
