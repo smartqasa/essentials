@@ -1,0 +1,348 @@
+script:
+#  admin_pin_input:
+#    alias: System - Keypad Input
+#    fields:
+#      number:
+#        description: Number
+#    icon: mdi:dialpad
+#    sequence:
+#      - action: input_text.set_value
+#        data:
+#          value: >
+#            {% set current_value = states('input_text.admin_pin_input') %}
+#            {% if current_value != 'None' and current_value != 'unknown' %}
+#              {{ current_value ~ digit | string }}
+#            {% else %}
+#              {{ digit | string }}
+#            {% endif %}
+#        target:
+#          entity_id: input_text.admin_pin_input
+#    mode: queued
+#    max: 10
+#    max_exceeded: silent
+
+#  admin_mode_auth:
+#    alias: System - Authorize Admin Mode
+#    icon: mdi:dialpad
+#    sequence:
+#      - if:
+#          condition: template
+#          value_template: "{{ states('input_text.admin_pin_input') == states('input_text.admin_pin_code') }}"
+#        then:
+#          - action: input_boolean.turn_on
+#            data:
+#              entity_id: input_boolean.admin_mode
+#          - action: browser_mod.notification
+#            data:
+#              browser_id: "{{ browser_id }}"
+#              message: "Admin Mode is now enabled!"
+    #          - action: browser_mod.popup
+    #            data:
+    #              browser_id: "{{ browser_id }}"
+    #              title: Menu
+    #              timeout: 300000
+    #              content: !include /config/sq-essentials/menus/menu.yaml
+#    mode: single
+
+  system_tablet_reload:
+    alias: System - Refresh Tablets
+    icon: mdi:tablet-dashboard
+    sequence:
+      - action: browser_mod.refresh
+        data: {}
+#      - action: button.press
+#        data: {}
+#        target:
+#          entity_id: >-
+#            {{ states.button | selectattr("entity_id", "search",
+#            "tablet_load_start_url$") | map(attribute="entity_id") | list }}
+#      - action: input_button.press
+#        data: {}
+#        target:
+#          entity_id: input_button.tablet_brightness
+    mode: single
+
+  system_tablet_restart:
+    alias: System - Restart Tablets
+    icon: mdi:tablet-dashboard
+    sequence:
+      - action: button.press
+        data: {}
+        target:
+          entity_id: >-
+            {{ states.button|selectattr("entity_id", "search",
+            "tablet_restart_browser$")|map(attribute="entity_id")|list }}
+      - action: input_button.press
+        data: {}
+        target:
+          entity_id: input_button.tablet_brightness
+    mode: single
+
+#  system_locate_roku_remote:
+#    alias: System - Locate Roku Remote
+#    fields:
+#      entity:
+#        description: Roku Entity ID
+#    sequence:
+#      - action: remote.send_command
+#        data:
+#          command: find_remote
+#        target:
+#          entity_id: "{{ entity | replace('media_player.', 'remote.') }}"
+#    mode: single
+
+#  system_all_off_prefix:
+#    alias: System - All Off by Prefix
+#    sequence:
+#      - action: light.turn_off
+#        target:
+#          entity_id: >
+#            {{
+#              expand(states.light)
+#              | selectattr('entity_id', 'match', '^light\.' + prefix + '.*') 
+#              | selectattr('state', 'eq', 'on') 
+#              | map(attribute='entity_id') 
+#              | list
+#            }}
+#    mode: queued
+#    max: 10
+#    max_exceeded: silent
+
+#  system_toggle_lock:
+#    alias: System - Toggle Door Lock
+#    sequence:
+#      - if:
+#          - condition: template
+#            value_template: "{{ is_state(entity, 'locked') }}"
+#        then:
+#          - action: lock.unlock
+#            target:
+#              entity_id: "{{ entity }}"
+#        else:
+#          - action: lock.lock
+#            target:
+#              entity_id: "{{ entity }}"
+#    mode: queued
+#    max: 10
+#    max_exceeded: silent
+
+  system_toggle_shade:
+    alias: System - Toggle Window Shade
+    sequence:
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ is_state(entity, 'closed') }}"
+            sequence:
+              - if:
+                  - condition: template
+                    value_template: "{{ tilt > 0 and tilt < 100 }}"
+                then:
+                  - action: cover.set_cover_position
+                    data:
+                      position: "{{ tilt }}"
+                    target:
+                      entity_id: "{{ entity }}"
+                  - delay:
+                      seconds: "{{ tilt }}"
+                  - action: cover.stop_cover
+                    target:
+                      entity_id: "{{ entity }}"
+                else:
+                  - action: cover.open_cover
+                    target:
+                      entity_id: "{{ entity }}"
+          - conditions:
+              - condition: template
+                value_template: "{{ is_state(entity, 'opening') or is_state(entity, 'closing') }}"
+            sequence:
+              - action: cover.stop_cover
+                target:
+                  entity_id: "{{ entity }}"
+        default:
+          - action: cover.close_cover
+            target:
+              entity_id: "{{ entity }}"
+    mode: parallel
+    max: 10
+    max_exceeded: silent
+
+  system_toggle_volume_muted:
+    alias: System - Toggle Volume Muted
+    fields:
+      entity_id:
+        description: Media Player Entity ID
+      volume_prev:
+        description: Previous Volume
+    sequence:
+      - if:
+          - condition: template
+            value_template: "{{ is_state_attr(entity_id, 'is_volume_muted', false) }}"
+        then:
+          - action: media_player.volume_mute
+            data:
+              is_volume_muted: true
+            target:
+              entity_id: "{{ entity_id }}"
+        else:
+          - action: media_player.volume_mute
+            data:
+              is_volume_muted: false
+            target:
+              entity_id: "{{ entity_id }}"
+    mode: queued
+    max: 10
+    max_exceeded: silent
+
+  system_color_light_sequence_selector:
+    alias: System - Color Light Sequence Selector
+    icon: mdi:lightbulb
+    fields:
+      entity:
+        description: The entity id of the light to control
+      count:
+        description: Number of times to cycle the light
+    sequence:
+      - action: homeassistant.turn_on
+        data: {}
+        target:
+          entity_id: "{{ entity }}"
+      - delay:
+          hours: 0
+          minutes: 0
+          seconds: 1
+          milliseconds: 0
+      - action: homeassistant.turn_off
+        data: {}
+        target:
+          entity_id: "{{ entity }}"
+      - delay:
+          hours: 0
+          minutes: 0
+          seconds: 5
+          milliseconds: 0
+      - action: homeassistant.turn_on
+        data: {}
+        target:
+          entity_id: "{{ entity }}"
+      - repeat:
+          count: "{{ count }}"
+          sequence:
+            - delay:
+                hours: 0
+                minutes: 0
+                seconds: 1
+                milliseconds: 0
+            - action: homeassistant.turn_off
+              data: {}
+              target:
+                entity_id: "{{ entity }}"
+            - delay:
+                hours: 0
+                minutes: 0
+                seconds: 1
+                milliseconds: 0
+            - action: homeassistant.turn_on
+              data: {}
+              target:
+                entity_id: "{{ entity }}"
+    mode: queued
+    max: 10
+    max_exceeded: silent
+
+#  system_check_area_state_prefix:
+#    alias: "System - Check Area State by Prefix"
+#    fields:
+#      domains:
+#        description: "Comma separated list of domains"
+#        example: "light, fan"
+#      prefix:
+#        description: "Entity ID prefix"
+#        example: "billiard_room"
+#    sequence:
+#      - variables:
+#          domains_list: "{{ domains.split(', ') }}"
+#          full_prefix: "{{ prefix }}_"
+#          regex_pattern: "^({{ domains_list | join('|') }})\\.{{ full_prefix }}.*"
+#      - variables:
+#          entities_on: "{{ states | selectattr('entity_id', 'match', regex_pattern) | selectattr('state', 'eq', 'on') | list }}"
+#      - if:
+#          - condition: template
+#            value_template: "{{ 1 > 0 }}"
+#        then:
+#          - variables:
+#              result: '{{ ({"state": "on"}) }}'
+#          - stop:
+#            response_variable: result
+#        else:
+#          - variables:
+#              result: '{{ ({"state": "off"}) }}'
+#          - stop:
+#            response_variable: result
+#    mode: single
+
+#  system_launch_external_app:
+#    alias: System - Launch External App
+#    icon: mdi:launch
+#    sequence:
+#      - choose:
+#          - conditions: "{{ '://' in uri_scheme }}"
+#            sequence:
+#              - action: browser_mod.notification
+#                data:
+#                  message: "URI SCHEME  {{ uri_scheme }}"
+#                  browser_id: "{{ browser_id }}"
+#              - action: browser_mod.navigate
+#                data:
+#                  path: "{{ uri_scheme }}"
+#                  browser_id: "{{ browser_id }}"
+#          - conditions: "{{ android_id != '' }}"
+#            sequence:
+#              - action: browser_mod.notification
+#                data:
+#                  message: |
+#                    "ANDROID ID {{ android_id }}"
+#                  browser_id: "{{ browser_id }}"
+#              - action: browser_mod.javascript
+#                data:
+#                  code: |
+#                    fully.startApplication('{{ android_id }}');
+#                  browser_id: "{{ browser_id }}"
+#        default:
+#          - action: browser_mod.notification
+#            data:
+#              message: "The application has not been properly set up."
+#              browser_id: "{{ browser_id }}"
+#    mode: single
+
+  system_momentary_mute:
+    alias: System - Momentary Mute
+    icon: mdi:speaker-off
+    mode: restart
+    sequence:
+      - action: media_player.volume_set
+        data:
+          entity_id: "{{ entity }}"
+          volume_level: "{{ mute_level }}"
+      - delay:
+          seconds: 1
+      - wait_template: "{{ state_attr(entity, 'volume_level') != mute_level }}"
+        timeout:
+          seconds: "{{ duration }}"
+        continue_on_timeout: true
+      - action: media_player.volume_set
+        data:
+          entity_id: "{{ entity }}"
+          volume_level: "{{ play_level }}"
+    fields:
+      entity:
+        description: "Entity ID of the Media Player device"
+      mute_level:
+        description: "Volume level to set during the muted period"
+        example: "0.1"
+      duration:
+        description: "Number of seconds to keep the volume at the specified level"
+        example: "60"
+      play_level:
+        description: "Volume level to restore after the duration"
+        example: "0.5"

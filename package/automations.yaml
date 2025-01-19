@@ -1,0 +1,117 @@
+automation:
+  - alias: "System - Boot Services"
+    mode: single
+    trigger:
+      - platform: homeassistant
+        event: start
+    action:
+      # Turn Off Admin Mode
+      - action: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.admin_mode
+      # Set PIN
+      - action: input_text.set_value
+        data:
+          value: "{{ states('input_text.system_pin') + states('input_text.location_pin') }}"
+        target:
+          entity_id: input_text.admin_pin_code
+      # Set Theme to SmartQasa
+      - action: frontend.set_theme
+        data:
+          name: SmartQasa
+      # Dim & Reset Tablets
+      - action: button.press
+        target:
+          entity_id: >-
+            {{ states.button | selectattr("entity_id", "search",
+            "tablet_bring_to_foreground$") | map(attribute="entity_id")|list }}
+      - action: input_button.press
+        target:
+          entity_id: input_button.tablet_brightness
+      # Run Watchman
+      - delay:
+          minutes: 2
+      - action: watchman.report
+        data:
+          create_file: true
+          send_notification: false
+          parse_config: false
+          chunk_size: false
+
+  - alias: "System - Adjust Admin PIN when System or Location PINs change."
+    trigger:
+      - platform: state
+        entity_id:
+          - input_text.system_pin
+      - platform: state
+        entity_id:
+          - input_text.location_pin
+    condition: []
+    action: 
+      - action: input_text.set_value
+        data:
+          value: "{{ states('input_text.system_pin') + states('input_text.location_pin') }}"
+        target:
+          entity_id: input_text.admin_pin_code
+    mode: single
+
+
+  - alias: "System - Reset Admin Mode"
+    mode: single
+    trigger:
+      - platform: state
+        entity_id:
+          - input_boolean.admin_mode
+        to: "on"
+        for:
+          hours: 1
+    action:
+      - action: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.admin_mode
+
+  - alias: "System - Refresh Tablets on Dashboard Modification"
+    mode: single
+    trigger:
+      - platform: event
+        event_type: lovelace_updated
+    action:
+      - action: script.system_tablet_reload
+
+#  - alias: "System - Internet Speed Test"
+#    trigger:
+#      - platform: state
+#        entity_id: sensor.speedtest_ping
+#        for:
+#          minutes: 15
+#    action:
+#      - action: homeassistant.update_entity
+#        target:
+#          entity_id:
+#            - sensor.speedtest_download
+#            - sensor.speedtest_upload
+#            - sensor.speedtest_ping
+
+  - alias: "System - Toggle Tablet Screens for Light/Dark Mode"
+    trigger:
+      - platform: sun
+        event: sunrise
+        offset: "00:10:00"
+      - platform: sun
+        event: sunset
+        offset: "00:10:00"
+    action:
+      - action: switch.turn_off
+        data: {}
+        target:
+          entity_id: >-
+            {{ states.switch|selectattr("entity_id", "search",
+            "tablet_screen$")|map(attribute="entity_id")|list }}
+      - delay:
+          seconds: 1
+      - action: switch.turn_on
+        data: {}
+        target:
+          entity_id: >-
+            {{ states.switch|selectattr("entity_id", "search",
+            "tablet_screen$")|map(attribute="entity_id")|list }}

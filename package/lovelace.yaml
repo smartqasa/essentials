@@ -1,0 +1,5 @@
+lovelace:
+  mode: yaml
+  resources: !include /config/sq-essentials/resources.yaml
+
+browser_mod:
