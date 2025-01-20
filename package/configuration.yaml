@@ -1,8 +1,5 @@
 default_config:
 
-automation: !include automations.yaml
-http:
-    server_port: 10075
 recorder:
     auto_purge: true
     auto_repack: true
@@ -20,8 +17,6 @@ recorder:
             - select
             - sun
             - update
-scene: !include scenes.yaml
-script: !include scripts.yaml
 tts:
     - platform: google_translate
 wake_on_lan:
