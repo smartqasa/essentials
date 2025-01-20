@@ -9,12 +9,12 @@ input_boolean:
         initial: false
 
 input_button:
-    fully_kiosk_app_restart:
-        name: Fully Kiosk App Restart
+    fully_kiosk_restart_app:
+        name: Fully Kiosk Restart App
         icon: mdi:restart
 
-    fully_kiosk_cache_clear:
-        name: Fully Kiosk Cache Clear
+    fully_kiosk_clear_cache:
+        name: Fully Kiosk Clear Cache
         icon: mdi:delete
 
     location_mode:
