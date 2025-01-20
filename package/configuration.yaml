@@ -1,3 +1,4 @@
+automation: !include automations.yaml
 recorder:
     auto_purge: true
     auto_repack: true
@@ -15,6 +16,8 @@ recorder:
             - select
             - sun
             - update
+scene: !include scenes.yaml
+script: !include scripts.yaml
 tts:
     - platform: google_translate
 wake_on_lan:
