@@ -127,11 +127,11 @@ frontend:
                     sq-dialog-border-rgb: 0, 0, 0
                     sq-dialog-box-shadow: none
 
-                    sq-card-background-rgb: 50, 50, 50
+                    sq-card-background-rgb: 55, 55, 55
                     sq-card-background-opacity: 0.65
                     sq-card-border-width: 1px
                     sq-card-border-style: solid
-                    sq-card-border-rgb: 35, 35, 35
+                    sq-card-border-rgb: 40, 40, 40
                     sq-card-box-shadow: none
                     sq-card-ripple-color: rgb(210, 210, 210)
 
