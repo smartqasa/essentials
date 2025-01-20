@@ -1,6 +1,8 @@
 default_config:
 
 automation: !include automations.yaml
+http:
+    server_port: 10075
 recorder:
     auto_purge: true
     auto_repack: true
