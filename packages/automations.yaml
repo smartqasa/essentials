@@ -19,15 +19,22 @@ automation:
           - action: frontend.set_theme
             data:
                 name: SmartQasa
+          # Restart Fully Kiosk
+          - actions:
+                - action: input_button.press
+                  target:
+                      entity_id: input_button.fully_kiosk_restart_app
+                  data: {}
+
           # Dim & Reset Tablets
-          - action: button.press
-            target:
-                entity_id: >-
-                    {{ states.button | selectattr("entity_id", "search",
-                    "tablet_bring_to_foreground$") | map(attribute="entity_id")|list }}
-          - action: input_button.press
-            target:
-                entity_id: input_button.tablet_brightness
+          #- action: button.press
+          #  target:
+          #      entity_id: >-
+          #          {{ states.button | selectattr("entity_id", "search",
+          #          "tablet_bring_to_foreground$") | map(attribute="entity_id")|list }}
+          #- action: input_button.press
+          #  target:
+          #      entity_id: input_button.tablet_brightness
           # Run Watchman
           - delay:
                 minutes: 2
@@ -77,20 +84,6 @@ automation:
       action:
           - action: script.system_tablet_reload
 
-    #  - alias: "System - Internet Speed Test"
-    #    trigger:
-    #      - trigger: state
-    #        entity_id: sensor.speedtest_ping
-    #        for:
-    #          minutes: 15
-    #    action:
-    #      - action: homeassistant.update_entity
-    #        target:
-    #          entity_id:
-    #            - sensor.speedtest_download
-    #            - sensor.speedtest_upload
-    #            - sensor.speedtest_ping
-
     - alias: "System - Toggle Tablet Screens for Light/Dark Mode"
       trigger:
           - trigger: sun
@@ -114,3 +107,15 @@ automation:
                 entity_id: >-
                     {{ states.switch|selectattr("entity_id", "search",
                     "tablet_screen$")|map(attribute="entity_id")|list }}
+
+    - alias: "System - Fully Kiosk Restart App"
+      mode: single
+      triggers:
+          - trigger: time
+            at: "04:00:00"
+      conditions: []
+      actions:
+          - action: input_button.press
+            target:
+                entity_id: input_button.fully_kiosk_restart_app
+            data: {}
