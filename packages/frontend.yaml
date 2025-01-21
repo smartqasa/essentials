@@ -1,356 +1,356 @@
 frontend:
-    extra_module_url:
-        - /local/community/lovelace-card-mod/card-mod.js
-        - /local/community/custom-brand-icons/custom-brand-icons.js
+  extra_module_url:
+    - /local/community/lovelace-card-mod/card-mod.js
+    - /local/community/custom-brand-icons/custom-brand-icons.js
 
-    themes:
-        SmartQasa:
-            # Panel
-            sq-panel-grid-gap: 0.7rem
+  themes:
+    SmartQasa:
+      # Panel
+      sq-panel-grid-gap: 0.7rem
 
-            # Dialogs
-            sq-dialog-border: var(--sq-dialog-border-width) var(--sq-dialog-border-style) rgb(var(--sq-dialog-border-rgb))
-            sq-dialog-border-radius: 1.5rem
-            sq-dialog-background-color: rgba(var(--sq-dialog-background-rgb), var(--sq-dialog-background-opacity))
-            sq-dialog-padding: 1.0rem
-            sq-dialog-grid-gap: 0.7rem
+      # Dialogs
+      sq-dialog-border: var(--sq-dialog-border-width) var(--sq-dialog-border-style) rgb(var(--sq-dialog-border-rgb))
+      sq-dialog-border-radius: 1.5rem
+      sq-dialog-background-color: rgba(var(--sq-dialog-background-rgb), var(--sq-dialog-background-opacity))
+      sq-dialog-padding: 1.0rem
+      sq-dialog-grid-gap: 0.7rem
 
-            # Cards
-            sq-card-height: 7rem
-            # sq-name-height: 3.5rem
-            sq-card-padding: 1rem
-            sq-card-spacing: 0.8rem
-            sq-card-border: var(--sq-card-border-width) var(--sq-card-border-style) rgb(var(--sq-card-border-rgb))
-            sq-card-border-radius: 1.5rem
-            sq-card-background-color: rgba(var(--sq-card-background-rgb), var(--sq-card-background-opacity))
+      # Cards
+      sq-card-height: 7rem
+      # sq-name-height: 3.5rem
+      sq-card-padding: 1rem
+      sq-card-spacing: 0.8rem
+      sq-card-border: var(--sq-card-border-width) var(--sq-card-border-style) rgb(var(--sq-card-border-rgb))
+      sq-card-border-radius: 1.5rem
+      sq-card-background-color: rgba(var(--sq-card-background-rgb), var(--sq-card-background-opacity))
 
-            # Tiles
-            sq-tile-height: 7rem
-            sq-tile-width: min(21vw, 19.5rem)
-            sq-tile-padding: 1rem
-            sq-tile-spacing: 0.8rem
-            sq-tile-border: var(--sq-card-border-width) var(--sq-card-border-style) rgb(var(--sq-card-border-rgb))
-            sq-tile-border-radius: 1.5rem
-            sq-tile-background-color: rgba(var(--sq-card-background-rgb), var(--sq-card-background-opacity))
+      # Tiles
+      sq-tile-height: 7rem
+      sq-tile-width: min(21vw, 19.5rem)
+      sq-tile-padding: 1rem
+      sq-tile-spacing: 0.8rem
+      sq-tile-border: var(--sq-card-border-width) var(--sq-card-border-style) rgb(var(--sq-card-border-rgb))
+      sq-tile-border-radius: 1.5rem
+      sq-tile-background-color: rgba(var(--sq-card-background-rgb), var(--sq-card-background-opacity))
 
-            # Chips
-            sq-chip-spacing: calc(var(--sq-tile-spacing) / 2)
-            sq-chip-padding: var(--sq-tile-padding)
-            sq-chip-border: var(--sq-card-border-width) var(--sq-card-border-style) rgb(var(--sq-card-border-rgb))
-            sq-chip-border-radius: calc((var(--sq-icon-size) + (var(--sq-icon-padding) * 2) + 5px) / 2)
+      # Chips
+      sq-chip-spacing: calc(var(--sq-tile-spacing) / 2)
+      sq-chip-padding: var(--sq-tile-padding)
+      sq-chip-border: var(--sq-card-border-width) var(--sq-card-border-style) rgb(var(--sq-card-border-rgb))
+      sq-chip-border-radius: calc((var(--sq-icon-size) + (var(--sq-icon-padding) * 2) + 5px) / 2)
 
-            # Fonts
-            sq-dialog-header-font-size: 25px
+      # Fonts
+      sq-dialog-header-font-size: 25px
 
-            sq-title-font-size: 3.2rem
-            sq-primary-font-size: 1.4rem
-            sq-secondary-font-size: 1.1rem
+      sq-title-font-size: 3.2rem
+      sq-primary-font-size: 1.4rem
+      sq-secondary-font-size: 1.1rem
 
-            # Icons
-            sq-icon-size: 1.8rem
-            sq-icon-padding: 1rem
-            sq-icon-image: calc(var(--sq-icon-size) + (var(--sq-icon-padding) * 2))
-            sq-icon-border-radius: 50%
-            sq-icon-opacity: 0.2
-            sq-icon-transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out
+      # Icons
+      sq-icon-size: 1.8rem
+      sq-icon-padding: 1rem
+      sq-icon-image: calc(var(--sq-icon-size) + (var(--sq-icon-padding) * 2))
+      sq-icon-border-radius: 50%
+      sq-icon-opacity: 0.2
+      sq-icon-transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out
 
-            # Colors
-            sq-accent-rgb: 0, 120, 230
-            sq-text-accent-rgb: 255, 255, 255
+      # Colors
+      sq-accent-rgb: 0, 120, 230
+      sq-text-accent-rgb: 255, 255, 255
 
-            restriction-lock-margin-left: 90%
-            restriction-lock-icon-size: 22px
+      restriction-lock-margin-left: 90%
+      restriction-lock-icon-size: 22px
 
-            mdc-ripple-color: transparent
+      mdc-ripple-color: transparent
 
-            modes:
-                light:
-                    sq-primary-rgb: 70, 70, 60
-                    sq-secondary-rgb: 60, 60, 70
-                    sq-primary-background-rgb: 180, 180, 180
-                    sq-secondary-background-rgb: 205, 200, 200
-                    sq-app-header-background-rgb: 175, 170, 170
-                    app-header-background-color: "#afaaaa"
-                    sq-divider-rgb: 160, 160, 160
+      modes:
+        light:
+          sq-primary-rgb: 70, 70, 60
+          sq-secondary-rgb: 60, 60, 70
+          sq-primary-background-rgb: 180, 180, 180
+          sq-secondary-background-rgb: 205, 200, 200
+          sq-app-header-background-rgb: 175, 170, 170
+          app-header-background-color: "#afaaaa"
+          sq-divider-rgb: 160, 160, 160
 
-                    sq-panel-color: rgb(255, 255, 255)
+          sq-panel-color: rgb(255, 255, 255)
 
-                    sq-dialog-background-rgb: 240, 240, 240
-                    sq-dialog-background-opacity: 0.6
-                    sq-dialog-border-width: 0px
-                    sq-dialog-border-style: none
-                    sq-dialog-border-rgb: 170, 170, 170
-                    sq-dialog-box-shadow: none
+          sq-dialog-background-rgb: 240, 240, 240
+          sq-dialog-background-opacity: 0.6
+          sq-dialog-border-width: 0px
+          sq-dialog-border-style: none
+          sq-dialog-border-rgb: 170, 170, 170
+          sq-dialog-box-shadow: none
 
-                    sq-font-weight-dialog-header: 300
+          sq-font-weight-dialog-header: 300
 
-                    sq-card-background-rgb: 250, 250, 250
-                    sq-card-background-opacity: 0.55
-                    sq-card-border-width: 1px
-                    sq-card-border-style: solid
-                    sq-card-border-rgb: 220, 220, 220
-                    sq-card-box-shadow: none
-                    sq-card-ripple-color: rgb(50, 50, 50)
+          sq-card-background-rgb: 250, 250, 250
+          sq-card-background-opacity: 0.55
+          sq-card-border-width: 1px
+          sq-card-border-style: solid
+          sq-card-border-rgb: 220, 220, 220
+          sq-card-box-shadow: none
+          sq-card-ripple-color: rgb(50, 50, 50)
 
-                    sq-idle-rgb: 10, 10, 10
-                    sq-inactive-rgb: 90, 90, 90
+          sq-idle-rgb: 10, 10, 10
+          sq-inactive-rgb: 90, 90, 90
 
-                    sq-dialog-font-rgb: 30, 30, 30
-                    sq-dialog-header-font-weight: 400
+          sq-dialog-font-rgb: 30, 30, 30
+          sq-dialog-header-font-weight: 400
 
-                    sq-title-font-rgb: 30, 30, 30
-                    sq-title-font-weight: 300
+          sq-title-font-rgb: 30, 30, 30
+          sq-title-font-weight: 300
 
-                    sq-primary-font-rgb: 10, 10, 10
-                    sq-primary-font-weight: 400
+          sq-primary-font-rgb: 10, 10, 10
+          sq-primary-font-weight: 400
 
-                    sq-secondary-font-rgb: 60, 60, 60
-                    sq-secondary-font-weight: 300
+          sq-secondary-font-rgb: 60, 60, 60
+          sq-secondary-font-weight: 300
 
-                    sq-ripple-color: rgb(var(--sq-card-background-rgb))
+          sq-ripple-color: rgb(var(--sq-card-background-rgb))
 
-                dark:
-                    sq-primary-rgb: 160, 160, 160
-                    sq-secondary-rgb: 140, 140, 140
-                    sq-primary-background-rgb: 25, 25, 25
-                    sq-secondary-background-rgb: 55, 55, 55
-                    sq-app-header-background-rgb: 60, 55, 55
-                    app-header-background-color: "#3c3737"
-                    sq-divider-rgb: 50, 50, 50
+        dark:
+          sq-primary-rgb: 160, 160, 160
+          sq-secondary-rgb: 140, 140, 140
+          sq-primary-background-rgb: 25, 25, 25
+          sq-secondary-background-rgb: 55, 55, 55
+          sq-app-header-background-rgb: 60, 55, 55
+          app-header-background-color: "#3c3737"
+          sq-divider-rgb: 50, 50, 50
 
-                    sq-panel-color: rgb(0, 0, 0)
+          sq-panel-color: rgb(0, 0, 0)
 
-                    sq-dialog-background-rgb: 25, 25, 25
-                    sq-dialog-background-opacity: 0.8
-                    sq-dialog-border-width: 0px
-                    sq-dialog-border-style: solid
-                    sq-dialog-border-rgb: 0, 0, 0
-                    sq-dialog-box-shadow: none
+          sq-dialog-background-rgb: 25, 25, 25
+          sq-dialog-background-opacity: 0.8
+          sq-dialog-border-width: 0px
+          sq-dialog-border-style: solid
+          sq-dialog-border-rgb: 0, 0, 0
+          sq-dialog-box-shadow: none
 
-                    sq-card-background-rgb: 50, 50, 50
-                    sq-card-background-opacity: 0.7
-                    sq-card-border-width: 1px
-                    sq-card-border-style: solid
-                    sq-card-border-rgb: 40, 40, 40
-                    sq-card-box-shadow: none
-                    sq-card-ripple-color: rgb(210, 210, 210)
+          sq-card-background-rgb: 50, 50, 50
+          sq-card-background-opacity: 0.7
+          sq-card-border-width: 1px
+          sq-card-border-style: solid
+          sq-card-border-rgb: 40, 40, 40
+          sq-card-box-shadow: none
+          sq-card-ripple-color: rgb(210, 210, 210)
 
-                    sq-idle-rgb: 200, 200, 200
-                    sq-inactive-rgb: 140, 140, 140
+          sq-idle-rgb: 200, 200, 200
+          sq-inactive-rgb: 140, 140, 140
 
-                    sq-dialog-font-rgb: 180, 180, 180
-                    sq-dialog-header-font-weight: 400
+          sq-dialog-font-rgb: 180, 180, 180
+          sq-dialog-header-font-weight: 400
 
-                    sq-title-font-rgb: 180, 180, 180
-                    sq-title-font-weight: 300
+          sq-title-font-rgb: 180, 180, 180
+          sq-title-font-weight: 300
 
-                    sq-primary-font-rgb: 200, 200, 200
-                    sq-primary-font-weight: 300
+          sq-primary-font-rgb: 200, 200, 200
+          sq-primary-font-weight: 300
 
-                    sq-secondary-font-rgb: 150, 150, 150
-                    sq-secondary-font-weight: 300
+          sq-secondary-font-rgb: 150, 150, 150
+          sq-secondary-font-weight: 300
 
-                    sq-ripple-color: rgb(var(--sq-card-background-rgb))
+          sq-ripple-color: rgb(var(--sq-card-background-rgb))
 
-            # RGB Colors
-            sq-black-rgb: 0, 0, 0
-            sq-blue-rgb: 25, 125, 255
-            sq-blue-green-rgb: 0, 150, 136
-            sq-blue-grey-rgb: 96, 125, 139
-            sq-brown-rgb: 121, 85, 72
-            sq-cyan-rgb: 0, 188, 212
-            sq-dark-beige-rgb: 32, 178, 170
-            sq-deep-orange-rgb: 146, 107, 199
-            sq-deep-purple-rgb: 110, 65, 171
-            sq-deep-yellow-rgb: 255, 152, 0
-            sq-green-rgb: 76, 175, 80
-            sq-grey-rgb: 158, 158, 158
-            sq-indigo-rgb: 63, 81, 181
-            sq-light-blue-rgb: 3, 169, 244
-            sq-light-green-rgb: 139, 195, 74
-            sq-lime-rgb: 205, 220, 57
-            sq-magenta-rgb: 255, 0, 255
-            sq-orange-rgb: 255, 120, 0
-            sq-pink-rgb: 233, 30, 99
-            sq-purple-rgb: 146, 107, 199
-            sq-red-rgb: 244, 67, 54
-            sq-teal-rgb: 0, 188, 212
-            sq-warm-rgb: 235, 196, 137
-            sq-white-rgb: 255, 255, 255
-            sq-yellow-rgb: 255, 153, 0
+      # RGB Colors
+      sq-black-rgb: 0, 0, 0
+      sq-blue-rgb: 25, 125, 255
+      sq-blue-green-rgb: 0, 150, 136
+      sq-blue-grey-rgb: 96, 125, 139
+      sq-brown-rgb: 121, 85, 72
+      sq-cyan-rgb: 0, 188, 212
+      sq-dark-beige-rgb: 32, 178, 170
+      sq-deep-orange-rgb: 146, 107, 199
+      sq-deep-purple-rgb: 110, 65, 171
+      sq-deep-yellow-rgb: 255, 152, 0
+      sq-green-rgb: 76, 175, 80
+      sq-grey-rgb: 158, 158, 158
+      sq-indigo-rgb: 63, 81, 181
+      sq-light-blue-rgb: 3, 169, 244
+      sq-light-green-rgb: 139, 195, 74
+      sq-lime-rgb: 205, 220, 57
+      sq-magenta-rgb: 255, 0, 255
+      sq-orange-rgb: 255, 120, 0
+      sq-pink-rgb: 233, 30, 99
+      sq-purple-rgb: 146, 107, 199
+      sq-red-rgb: 244, 67, 54
+      sq-teal-rgb: 0, 188, 212
+      sq-warm-rgb: 235, 196, 137
+      sq-white-rgb: 255, 255, 255
+      sq-yellow-rgb: 255, 153, 0
 
-            # Icon State Colors
-            sq-binary_sensor-on-rgb: var(--sq-orange-rgb)
-            sq-climate-cool-rgb: var(--sq-light-blue-rgb)
-            sq-climate-fan_only-rgb: var(--sq-blue-green-rgb)
-            sq-climate-heat-rgb: var(--sq-red-rgb)
-            sq-climate-heat_cool-rgb: var(--sq-purple-rgb)
-            sq-cover-shade-open-rgb: var(--sq-purple-rgb)
-            sq-cover-shade-opening-rgb: var(--sq-purple-rgb)
-            sq-cover-shade-closing-rgb: var(--sq-purple-rgb)
-            sq-cover-garage-open-rgb: var(--sq-orange-rgb)
-            sq-cover-garage-opening-rgb: var(--sq-orange-rgb)
-            sq-cover-garage-closing-rgb: var(--sq-orange-rgb)
-            sq-fan-on-rgb: var(--sq-light-blue-rgb)
-            sq-lock-locking-rgb: var(--sq-orange-rgb)
-            sq-lock-unlocked-rgb: var(--sq-orange-rgb)
-            sq-lock-unlocking-rgb: var(--sq-orange-rgb)
-            sq-light-on-rgb: var(--sq-deep-yellow-rgb)
-            sq-light-fireplace-on-rgb: var(--sq-red-rgb)
-            sq-media_player-idle-rgb: var(--sq-inactive-rgb)
-            sq-media_player-on-rgb: var(--sq-inactive-rgb)
-            sq-media_player-playing-rgb: var(--sq-light-blue-rgb)
-            sq-media_player-paused-rgb: var(--sq-primary-font-rgb)
-            sq-media_player-standby-rgb: var(--sq-inactive-rgb)
-            sq-switch-on-rgb: var(--sq-deep-yellow-rgb)
-            sq-switch-appliance-on-rgb: var(--sq-blue-grey-rgb)
-            sq-switch-decorations-on-rgb: var(--sq-red-rgb)
-            sq-switch-fireplace-on-rgb: var(--sq-red-rgb)
-            sq-switch-heater-on-rgb: var(--sq-red-rgb)
-            sq-switch-pump-on-rgb: var(--sq-blue-rgb)
-            sq-switch-valve-on-rgb: var(--sq-blue-rgb)
-            sq-switch-train-on-rgb: var(--sq-green-rgb)
-            sq-vacuum-cleaning-rgb: var(--sq-blue-green-rgb)
-            sq-vacuum-idle-rgb: var(--sq-blue-green-rgb)
-            sq-vacuum-paused-rgb: var(--sq-blue-green-rgb)
-            sq-vacuum-returning-rgb: var(--sq-blue-green-rgb)
-            sq-water_heater-electric-rgb: var(--sq-red-rgb)
-            sq-unavailable-rgb: var(--sq-magenta-rgb)
+      # Icon State Colors
+      sq-binary_sensor-on-rgb: var(--sq-orange-rgb)
+      sq-climate-cool-rgb: var(--sq-light-blue-rgb)
+      sq-climate-fan_only-rgb: var(--sq-blue-green-rgb)
+      sq-climate-heat-rgb: var(--sq-red-rgb)
+      sq-climate-heat_cool-rgb: var(--sq-purple-rgb)
+      sq-cover-shade-open-rgb: var(--sq-purple-rgb)
+      sq-cover-shade-opening-rgb: var(--sq-purple-rgb)
+      sq-cover-shade-closing-rgb: var(--sq-purple-rgb)
+      sq-cover-garage-open-rgb: var(--sq-orange-rgb)
+      sq-cover-garage-opening-rgb: var(--sq-orange-rgb)
+      sq-cover-garage-closing-rgb: var(--sq-orange-rgb)
+      sq-fan-on-rgb: var(--sq-light-blue-rgb)
+      sq-lock-locking-rgb: var(--sq-orange-rgb)
+      sq-lock-unlocked-rgb: var(--sq-orange-rgb)
+      sq-lock-unlocking-rgb: var(--sq-orange-rgb)
+      sq-light-on-rgb: var(--sq-deep-yellow-rgb)
+      sq-light-fireplace-on-rgb: var(--sq-red-rgb)
+      sq-media_player-idle-rgb: var(--sq-inactive-rgb)
+      sq-media_player-on-rgb: var(--sq-inactive-rgb)
+      sq-media_player-playing-rgb: var(--sq-light-blue-rgb)
+      sq-media_player-paused-rgb: var(--sq-primary-font-rgb)
+      sq-media_player-standby-rgb: var(--sq-inactive-rgb)
+      sq-switch-on-rgb: var(--sq-deep-yellow-rgb)
+      sq-switch-appliance-on-rgb: var(--sq-blue-grey-rgb)
+      sq-switch-decorations-on-rgb: var(--sq-red-rgb)
+      sq-switch-fireplace-on-rgb: var(--sq-red-rgb)
+      sq-switch-heater-on-rgb: var(--sq-red-rgb)
+      sq-switch-pump-on-rgb: var(--sq-blue-rgb)
+      sq-switch-valve-on-rgb: var(--sq-blue-rgb)
+      sq-switch-train-on-rgb: var(--sq-green-rgb)
+      sq-vacuum-cleaning-rgb: var(--sq-blue-green-rgb)
+      sq-vacuum-idle-rgb: var(--sq-blue-green-rgb)
+      sq-vacuum-paused-rgb: var(--sq-blue-green-rgb)
+      sq-vacuum-returning-rgb: var(--sq-blue-green-rgb)
+      sq-water_heater-electric-rgb: var(--sq-red-rgb)
+      sq-unavailable-rgb: var(--sq-magenta-rgb)
 
-            # HA Cards
-            ha-dialog-border-radius: var(--sq-dialog-border-radius)
-            ha-card-background: var(--sq-card-background-color)
-            ha-card-border-width: var(--sq-card-border-width)
-            ha-card-border-style: var(--sq-card-border-style)
-            ha-card-border-color: rgb(var(--sq-card-border-rgb))
-            ha-card-border-radius: 2rem
-            ha-card-box-shadow: var(--sq-card-box-shadow)
-            ha-card-header-font-size: var(--sq-primary-font-size)
+      # HA Cards
+      ha-dialog-border-radius: var(--sq-dialog-border-radius)
+      ha-card-background: var(--sq-card-background-color)
+      ha-card-border-width: var(--sq-card-border-width)
+      ha-card-border-style: var(--sq-card-border-style)
+      ha-card-border-color: rgb(var(--sq-card-border-rgb))
+      ha-card-border-radius: 2rem
+      ha-card-box-shadow: var(--sq-card-box-shadow)
+      ha-card-header-font-size: var(--sq-primary-font-size)
 
-            # HA Text
-            primary-text-color: rgb(var(--sq-primary-font-rgb))
-            secondary-text-color: rgb(var(--sq-secondary-font-rgb))
-            disabled-text-color: rgb(var(--sq-inactive-rgb))
+      # HA Text
+      primary-text-color: rgb(var(--sq-primary-font-rgb))
+      secondary-text-color: rgb(var(--sq-secondary-font-rgb))
+      disabled-text-color: rgb(var(--sq-inactive-rgb))
 
-            # HA Main Interface
-            primary-color: rgb(var(--sq-primary-rgb))
-            accent-color: rgb(var(--sq-accent-rgb))
-            divider-color: rgb(var(--sq-divider-rgb))
-            secondary-background-color: rgb(var(--sq-secondary-background-rgb))
+      # HA Main Interface
+      primary-color: rgb(var(--sq-primary-rgb))
+      accent-color: rgb(var(--sq-accent-rgb))
+      divider-color: rgb(var(--sq-divider-rgb))
+      secondary-background-color: rgb(var(--sq-secondary-background-rgb))
 
-            # HA App Header
-            #app-header-background-color: rgb(var(--sq-app-header-background-rgb))
+      # HA App Header
+      #app-header-background-color: rgb(var(--sq-app-header-background-rgb))
 
-            #      app-header-edit-text-color: rgb(var(--sq-secondary-font-rgb))
-            #      app-header-selection-bar-color: rgb(var(--sq-primary-rgb))
-            #      app-header-edit-background-color: rgb(var(--sq-primary-background-rgb))
+      #      app-header-edit-text-color: rgb(var(--sq-secondary-font-rgb))
+      #      app-header-selection-bar-color: rgb(var(--sq-primary-rgb))
+      #      app-header-edit-background-color: rgb(var(--sq-primary-background-rgb))
 
-            # Browser Mod Popup
-            popup-min-width: 36rem
-            popup-max-width: 95vw
-            popup-border-width: var(--sq-dialog-border-width)
-            popup-border-style: var(--sq-dialog-border-style)
-            popup-border-color: rgb(var(--sq-dialog-border-rgb))
-            popup-border-radius: var(--sq-dialog-border-radius)
-            popup-background-color: var(--sq-dialog-background-color)
-            popup-padding-x: 1rem
-            popup-padding-y: 1rem
+      # Browser Mod Popup
+      popup-min-width: 36rem
+      popup-max-width: 95vw
+      popup-border-width: var(--sq-dialog-border-width)
+      popup-border-style: var(--sq-dialog-border-style)
+      popup-border-color: rgb(var(--sq-dialog-border-rgb))
+      popup-border-radius: var(--sq-dialog-border-radius)
+      popup-background-color: var(--sq-dialog-background-color)
+      popup-padding-x: 1rem
+      popup-padding-y: 1rem
 
-            # Dialog
-            dialog-border-width: var(--sq-dialog-border-width)
-            dialog-border-style: var(--sq-dialog-border-style)
-            dialog-border-color: rgb(var(--sq-dialog-border-rgb))
-            dialog-box-shadow: var(--sq-dialog-box-shadow)
-            dialog-backdrop-filter: blur(10px)
-            iron-overlay-backdrop-opacity: 1
-            iron-overlay-backdrop-background-color: rgba(0, 0, 0, 0.2)
+      # Dialog
+      dialog-border-width: var(--sq-dialog-border-width)
+      dialog-border-style: var(--sq-dialog-border-style)
+      dialog-border-color: rgb(var(--sq-dialog-border-rgb))
+      dialog-box-shadow: var(--sq-dialog-box-shadow)
+      dialog-backdrop-filter: blur(10px)
+      iron-overlay-backdrop-opacity: 1
+      iron-overlay-backdrop-background-color: rgba(0, 0, 0, 0.2)
 
-            # Paper
-            # paper-dialog-background-color: var(--sq-dialog-background-color)
-            # paper-listbox-background-color: rgb(var(--sq-primary-background-rgb))
-            # paper-card-background-color: var(--sq-card-background-color)
-            # paper-card-header-color: rgb(var(--sq-secondary-background-rgb))
+      # Paper
+      # paper-dialog-background-color: var(--sq-dialog-background-color)
+      # paper-listbox-background-color: rgb(var(--sq-primary-background-rgb))
+      # paper-card-background-color: var(--sq-card-background-color)
+      # paper-card-header-color: rgb(var(--sq-secondary-background-rgb))
 
-            # Sidebar Menu
-            sidebar-icon-color: rgb(var(--sq-primary-font-rgb))
-            sidebar-text-color: rgb(var(--sq-primary-font-rgb))
-            sidebar-background-color: rgb(var(--sq-app-header-background-rgb))
-            sidebar-selected-icon-color: rgb(var(--sq-accent-rgb))
-            sidebar-selected-text-color: rgb(var(--sq-accent-rgb))
+      # Sidebar Menu
+      sidebar-icon-color: rgb(var(--sq-primary-font-rgb))
+      sidebar-text-color: rgb(var(--sq-primary-font-rgb))
+      sidebar-background-color: rgb(var(--sq-app-header-background-rgb))
+      sidebar-selected-icon-color: rgb(var(--sq-accent-rgb))
+      sidebar-selected-text-color: rgb(var(--sq-accent-rgb))
 
-            # Buttons
-            paper-item-icon-color: rgb(var(--sq-inactive-rgb))
-            paper-item-icon-active-color: rgb(var(--sq-accent-rgb))
+      # Buttons
+      paper-item-icon-color: rgb(var(--sq-inactive-rgb))
+      paper-item-icon-active-color: rgb(var(--sq-accent-rgb))
 
-            # Icons
-            state-icon-color: rgb(var(--sq-primary-font-rgb))
-            state-icon-active-color: rgb(var(--sq-accent-rgb))
-            state-icon-unavailable-color: rgba(var(--sq-inactive-rgb), 0.5)
+      # Icons
+      state-icon-color: rgb(var(--sq-primary-font-rgb))
+      state-icon-active-color: rgb(var(--sq-accent-rgb))
+      state-icon-unavailable-color: rgba(var(--sq-inactive-rgb), 0.5)
 
-            # State Colors
-            state-binary_sensor-on-color: rgb(var(--sq-orange-rgb))
-            state-climate-cool-color: rgb(var(--sq-light-blue-rgb))
-            state-climate-heat-color: rgb(var(--sq-red-rgb))
-            state-climate-heat_cool-color: rgb(var(--sq-purple-rgb))
-            state-cover-shade-open-color: rgb(var(--sq-purple-rgb))
-            state-cover-shade-opening-color: rgb(var(--sq-purple-rgb))
-            state-cover-shade-closing-color: rgb(var(--sq-purple-rgb))
-            state-cover-garage-open-color: rgb(var(--sq-orange-rgb))
-            state-cover-garage-opening-color: rgb(var(--sq-orange-rgb))
-            state-cover-garage-closing-color: rgb(var(--sq-orange-rgb))
-            state-fan-on-color: rgb(var(--sq-light-blue-rgb))
-            state-lock-locked-color: rgb(var(--sq-inactive-rgb))
-            state-lock-unlocked-color: rgb(var(--sq-orange-rgb))
-            state-light-on-color: rgb(var(--sq-yellow-rgb))
-            state-light-fireplace-on-color: rgb(var(--sq-red-rgb))
-            state-scene-on-color: rgb(var(--sq-inactive-rgb))
-            state-switch-on-color: rgb(var(--sq-yellow-rgb))
-            state-switch-fireplace-on-color: rgb(var(--sq-red-rgb))
-            state-switch-heater-on-color: rgb(var(--sq-red-rgb))
-            state-switch-pump-on-color: rgb(var(--sq-blue-rgb))
-            state-switch-decorations-on-color: rgb(var(--sq-red-rgb))
-            state-switch-train-on-color: rgb(var(--sq-green-rgb))
-            state-water_heater-electric-color: rgb(var(--sq-red-rgb))
+      # State Colors
+      state-binary_sensor-on-color: rgb(var(--sq-orange-rgb))
+      state-climate-cool-color: rgb(var(--sq-light-blue-rgb))
+      state-climate-heat-color: rgb(var(--sq-red-rgb))
+      state-climate-heat_cool-color: rgb(var(--sq-purple-rgb))
+      state-cover-shade-open-color: rgb(var(--sq-purple-rgb))
+      state-cover-shade-opening-color: rgb(var(--sq-purple-rgb))
+      state-cover-shade-closing-color: rgb(var(--sq-purple-rgb))
+      state-cover-garage-open-color: rgb(var(--sq-orange-rgb))
+      state-cover-garage-opening-color: rgb(var(--sq-orange-rgb))
+      state-cover-garage-closing-color: rgb(var(--sq-orange-rgb))
+      state-fan-on-color: rgb(var(--sq-light-blue-rgb))
+      state-lock-locked-color: rgb(var(--sq-inactive-rgb))
+      state-lock-unlocked-color: rgb(var(--sq-orange-rgb))
+      state-light-on-color: rgb(var(--sq-yellow-rgb))
+      state-light-fireplace-on-color: rgb(var(--sq-red-rgb))
+      state-scene-on-color: rgb(var(--sq-inactive-rgb))
+      state-switch-on-color: rgb(var(--sq-yellow-rgb))
+      state-switch-fireplace-on-color: rgb(var(--sq-red-rgb))
+      state-switch-heater-on-color: rgb(var(--sq-red-rgb))
+      state-switch-pump-on-color: rgb(var(--sq-blue-rgb))
+      state-switch-decorations-on-color: rgb(var(--sq-red-rgb))
+      state-switch-train-on-color: rgb(var(--sq-green-rgb))
+      state-water_heater-electric-color: rgb(var(--sq-red-rgb))
 
-            # Tables
-            table-row-background-color: rgb(var(--sq-primary-background-rgb))
-            table-row-alternative-background-color: rgb(var(--sq-secondary-background-rgb))
-            data-table-background-color: rgb(var(--sq-primary-background-rgb))
+      # Tables
+      table-row-background-color: rgb(var(--sq-primary-background-rgb))
+      table-row-alternative-background-color: rgb(var(--sq-secondary-background-rgb))
+      data-table-background-color: rgb(var(--sq-primary-background-rgb))
 
-            # Dropdowns
-            material-background-color: rgb(var(--sq-primary-background-rgb))
-            material-secondary-background-color: rgb(var(--sq-secondary-background-rgb))
+      # Dropdowns
+      material-background-color: rgb(var(--sq-primary-background-rgb))
+      material-secondary-background-color: rgb(var(--sq-secondary-background-rgb))
 
-            # Pre/Code
-            markdown-code-background-color: rgb(var(--sq-primary-background-rgb))
-            code-editor-background-color: rgb(var(--sq-primary-background-rgb))
+      # Pre/Code
+      markdown-code-background-color: rgb(var(--sq-primary-background-rgb))
+      code-editor-background-color: rgb(var(--sq-primary-background-rgb))
 
-            # Switches
-            switch-checked-button-color: rgb(var(--sq-accent-rgb))
-            switch-checked-track-color: rgb(var(--sq-accent-rgb))
-            switch-unchecked-button-color: rgb(var(--sq-inactive-rgb))
-            switch-unchecked-track-color: rgb(var(--sq-inactive-rgb))
+      # Switches
+      switch-checked-button-color: rgb(var(--sq-accent-rgb))
+      switch-checked-track-color: rgb(var(--sq-accent-rgb))
+      switch-unchecked-button-color: rgb(var(--sq-inactive-rgb))
+      switch-unchecked-track-color: rgb(var(--sq-inactive-rgb))
 
-            # MDC
-            mdc-radio-unchecked-color: rgb(var(--sq-inactive-rgb))
-            mdc-theme-text-primary-on-background: rgb(var(--sq-primary-font-rgb))
+      # MDC
+      mdc-radio-unchecked-color: rgb(var(--sq-inactive-rgb))
+      mdc-theme-text-primary-on-background: rgb(var(--sq-primary-font-rgb))
 
-            mdc-dialog-box-shadow: var(--sq-dialog-box-shadow)
-            mdc-theme-surface: var(--sq-dialog-background-color)
-            mdc-theme-on-surface: rgb(var(--sq-primary-font-rgb))
-            mdc-theme-background: rgb(var(--sq-primary-background-rgb))
-            mdc-icon-size: var(--sq-icon-size)
-            mdc-button-outline-color: rgb(--sq-card-border-rgb)
-            mdc-checkbox-unchecked-color: rgb(var(--sq-secondary-font-rgb))
-            mdc-checkbox-disable-color: rgba(var(--sq-inactive-rgb), 0.5)
-            mdc-select-fill-color: rgb(var(--sq-secondary-background-rgb))
-            mdc-select-ink-color: rgb(var(--sq-primary-font-rgb))
-            mdc-select-label-ink-color: rgb(var(--sq-secondary-font-rgb))
-            mdc-select-idle-line-color: rgb(var(--sq-primary-font-rgb))
-            mdc-select-dropdown-icon-color: rgb(var(--sq-secondary-font-rgb))
-            mdc-select-hover-line-color: rgb(var(--sq-accent-rgb))
-            mdc-text-field-fill-color: rgb(var(--sq-secondary-background-rgb))
-            mdc-tab-text-label-color-default: rgb(var(--sq-secondary-font-rgb))
+      mdc-dialog-box-shadow: var(--sq-dialog-box-shadow)
+      mdc-theme-surface: var(--sq-dialog-background-color)
+      mdc-theme-on-surface: rgb(var(--sq-primary-font-rgb))
+      mdc-theme-background: rgb(var(--sq-primary-background-rgb))
+      mdc-icon-size: var(--sq-icon-size)
+      mdc-button-outline-color: rgb(--sq-card-border-rgb)
+      mdc-checkbox-unchecked-color: rgb(var(--sq-secondary-font-rgb))
+      mdc-checkbox-disable-color: rgba(var(--sq-inactive-rgb), 0.5)
+      mdc-select-fill-color: rgb(var(--sq-secondary-background-rgb))
+      mdc-select-ink-color: rgb(var(--sq-primary-font-rgb))
+      mdc-select-label-ink-color: rgb(var(--sq-secondary-font-rgb))
+      mdc-select-idle-line-color: rgb(var(--sq-primary-font-rgb))
+      mdc-select-dropdown-icon-color: rgb(var(--sq-secondary-font-rgb))
+      mdc-select-hover-line-color: rgb(var(--sq-accent-rgb))
+      mdc-text-field-fill-color: rgb(var(--sq-secondary-background-rgb))
+      mdc-tab-text-label-color-default: rgb(var(--sq-secondary-font-rgb))
 
-            #Swiper
-            swiper-navigation-color: rgb(var(--sq-inactive-rgb))
+      #Swiper
+      swiper-navigation-color: rgb(var(--sq-inactive-rgb))

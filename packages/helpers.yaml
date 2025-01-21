@@ -1,59 +1,55 @@
 input_boolean:
-    admin_mode:
-        name: Admin Mode
-        icon: mdi:tools
-        initial: false
+  admin_mode:
+    name: Admin Mode
+    icon: mdi:tools
+    initial: false
 
-    condition_false:
-        name: Boolean False
-        initial: false
+  condition_false:
+    name: Boolean False
+    initial: false
 
 input_button:
-    fully_kiosk_restart_app:
-        name: Fully Kiosk Restart App
-        icon: mdi:restart
+  refresh_dashboards:
+    name: Refresh Dashboards Trigger
+    icon: mdi:restart
 
-    fully_kiosk_clear_cache:
-        name: Fully Kiosk Clear Cache
-        icon: mdi:delete
+  location_mode:
+    name: Location Mode Trigger
+    icon: mdi:home-circle
 
-    location_mode:
-        name: Location Mode Trigger
-        icon: mdi:home-circle
-
-    location_phase:
-        name: Location Phase Trigger
-        icon: mdi:theme-light-dark
+  location_phase:
+    name: Location Phase Trigger
+    icon: mdi:theme-light-dark
 
 input_select:
-    location_phase:
-        name: Location Phase
-        icon: mdi:theme-light-dark
-        options:
-            - Morning
-            - Day
-            - Evening
-            - Night
+  location_phase:
+    name: Location Phase
+    icon: mdi:theme-light-dark
+    options:
+      - Morning
+      - Day
+      - Evening
+      - Night
 
-    location_mode:
-        name: Location Mode
-        icon: mdi:home-circle
-        options:
-            - Home
-            - Away
-            - Guest
-            - Entertain
-            - Vacation
+  location_mode:
+    name: Location Mode
+    icon: mdi:home-circle
+    options:
+      - Home
+      - Away
+      - Guest
+      - Entertain
+      - Vacation
 
 input_text:
-    system_pin:
-        name: System PIN
-        icon: mdi:dialpad
-        mode: password
-        initial: "7575"
+  system_pin:
+    name: System PIN
+    icon: mdi:dialpad
+    mode: password
+    initial: "7575"
 
-    admin_pin_code:
-        name: Admin PIN Code
-        icon: mdi:dialpad
-        mode: password
-        initial: "########"
+  admin_pin_code:
+    name: Admin PIN Code
+    icon: mdi:dialpad
+    mode: password
+    initial: "########"
