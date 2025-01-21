@@ -1,5 +1,5 @@
 automation:
-  - alias: "System - Boot Services"
+  - alias: "System - Startup Services"
     mode: single
     trigger:
       - trigger: homeassistant
@@ -20,6 +20,7 @@ automation:
           chunk_size: false
 
   - alias: "System - Adjust Admin PIN when on Startup or PINs change."
+    mode: single
     trigger:
       - trigger: homeassistant
         event: start
@@ -36,7 +37,6 @@ automation:
           value: "{{ states('input_text.system_pin') + states('input_text.location_pin') }}"
         target:
           entity_id: input_text.admin_pin_code
-    mode: single
 
   - alias: "System - Reset Admin Mode on Startup or Timeout"
     mode: single
@@ -55,6 +55,7 @@ automation:
           entity_id: input_boolean.admin_mode
 
   - alias: "System - Toggle Tablet Screens for Light/Dark Mode"
+    mode: single
     trigger:
       - trigger: sun
         event: sunrise
