@@ -3,7 +3,7 @@
 cd /config
 
 # Update the submodules
-git submodule update --remote --recursive
+git submodule update --remote --recursive --force
 
 # Call the Home Assistant "Refresh All YAML" service  TEST 2
 curl -X POST \
