@@ -20,11 +20,10 @@ automation:
             data:
                 name: SmartQasa
           # Restart Fully Kiosk
-          - actions:
-                - action: input_button.press
-                  target:
-                      entity_id: input_button.fully_kiosk_restart_app
-                  data: {}
+          - action: input_button.press
+            target:
+                entity_id: input_button.fully_kiosk_restart_app
+            data: {}
 
           # Dim & Reset Tablets
           #- action: button.press
