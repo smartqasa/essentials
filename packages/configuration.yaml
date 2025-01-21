@@ -17,6 +17,10 @@ recorder:
       - select
       - sun
       - update
+
+shell_command:
+  update: "/bin/bash /config/shell_scripts/update.sh"
+
 tts:
   - platform: google_translate
 wake_on_lan:
