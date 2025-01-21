@@ -4,10 +4,6 @@ input_boolean:
     icon: mdi:tools
     initial: false
 
-  condition_false:
-    name: Boolean False
-    initial: false
-
 input_button:
   refresh_dashboards:
     name: Refresh Dashboards Trigger

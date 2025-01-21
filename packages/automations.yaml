@@ -5,35 +5,10 @@ automation:
       - trigger: homeassistant
         event: start
     action:
-      # Turn Off Admin Mode
-      - action: input_boolean.turn_off
-        target:
-          entity_id: input_boolean.admin_mode
-      # Set PIN
-      - action: input_text.set_value
-        data:
-          value: "{{ states('input_text.system_pin') + states('input_text.location_pin') }}"
-        target:
-          entity_id: input_text.admin_pin_code
       # Set Theme to SmartQasa
       - action: frontend.set_theme
         data:
           name: SmartQasa
-      # Restart Fully Kiosk
-      - action: input_button.press
-        target:
-          entity_id: input_button.refresh_dashboards
-        data: {}
-
-      # Dim & Reset Tablets
-      #- action: button.press
-      #  target:
-      #      entity_id: >-
-      #          {{ states.button | selectattr("entity_id", "search",
-      #          "tablet_bring_to_foreground$") | map(attribute="entity_id")|list }}
-      #- action: input_button.press
-      #  target:
-      #      entity_id: input_button.tablet_brightness
       # Run Watchman
       - delay:
           minutes: 2
@@ -44,8 +19,10 @@ automation:
           parse_config: false
           chunk_size: false
 
-  - alias: "System - Adjust Admin PIN when System or Location PINs change."
+  - alias: "System - Adjust Admin PIN when on Startup or PINs change."
     trigger:
+      - trigger: homeassistant
+        event: start
       - trigger: state
         entity_id:
           - input_text.system_pin
@@ -61,9 +38,11 @@ automation:
           entity_id: input_text.admin_pin_code
     mode: single
 
-  - alias: "System - Reset Admin Mode"
+  - alias: "System - Reset Admin Mode on Startup or Timeout"
     mode: single
     trigger:
+      - trigger: homeassistant
+        event: start
       - trigger: state
         entity_id:
           - input_boolean.admin_mode
@@ -75,22 +54,14 @@ automation:
         target:
           entity_id: input_boolean.admin_mode
 
-  - alias: "System - Refresh Tablets on Dashboard Modification"
-    mode: single
-    trigger:
-      - trigger: event
-        event_type: lovelace_updated
-    action:
-      - action: script.system_tablet_reload
-
   - alias: "System - Toggle Tablet Screens for Light/Dark Mode"
     trigger:
       - trigger: sun
         event: sunrise
-        offset: "00:10:00"
+        offset: "00:1:00"
       - trigger: sun
         event: sunset
-        offset: "00:10:00"
+        offset: "00:1:00"
     action:
       - action: switch.turn_off
         data: {}
@@ -107,11 +78,15 @@ automation:
             {{ states.switch|selectattr("entity_id", "search",
             "tablet_screen$")|map(attribute="entity_id")|list }}
 
-  - alias: "System - Fully Kiosk Restart App"
+  - alias: "System - Refresh Dashboards on boot, daily, and Lovelace update"
     mode: single
     triggers:
+      - trigger: homeassistant
+        event: start
       - trigger: time
         at: "04:00:00"
+      - trigger: event
+        event_type: lovelace_updated
     conditions: []
     actions:
       - action: input_button.press
