@@ -19,7 +19,7 @@ recorder:
       - update
 
 shell_command:
-  update: "/bin/bash /config/essentials/shell_scripts/update.sh"
+  update_repos: "/bin/bash /config/essentials/shell_scripts/update_repos.sh"
 
 tts:
   - platform: google_translate
