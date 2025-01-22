@@ -9,6 +9,10 @@ automation:
       - action: frontend.set_theme
         data:
           name: SmartQasa
+      - action: input_button.press
+        target:
+          entity_id: input_button.refresh_dashboards
+        data: {}
       # Run Watchman
       - delay:
           minutes: 2
@@ -82,8 +86,6 @@ automation:
   - alias: "System - Refresh Dashboards on boot, daily, and Lovelace update"
     mode: single
     triggers:
-      - trigger: homeassistant
-        event: start
       - trigger: event
         event_type: lovelace_updated
     conditions: []
@@ -92,17 +94,18 @@ automation:
         target:
           entity_id: input_button.refresh_dashboards
         data: {}
-  - alias: "System - Sync Essentials Repository"
+
+  - alias: "System - Sync Essentials Repository and Restart Home Assistant"
     mode: single
     triggers:
       - trigger: time
         at: "04:00:00"
     conditions: []
     actions:
-      - action: input_button.press
-        target:
-          entity_id: input_button.refresh_dashboards
+      - action: shell_command.update_repos
         data: {}
+      - delay:
+          seconds: 10
       - action: homeassistant.restart
         metadata: {}
         data: {}
