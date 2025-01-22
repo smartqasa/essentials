@@ -95,7 +95,7 @@ automation:
           entity_id: input_button.refresh_dashboards
         data: {}
 
-  - alias: "System - Sync Essentials Repository and Restart Home Assistant"
+  - alias: "System - Sync Repositories and Restart Home Assistant"
     mode: single
     triggers:
       - trigger: time
