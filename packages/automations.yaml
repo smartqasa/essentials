@@ -84,8 +84,6 @@ automation:
     triggers:
       - trigger: homeassistant
         event: start
-      - trigger: time
-        at: "04:00:00"
       - trigger: event
         event_type: lovelace_updated
     conditions: []
@@ -94,5 +92,17 @@ automation:
         target:
           entity_id: input_button.refresh_dashboards
         data: {}
-      - action: shell_command.update_repos
+  - alias: "System - Sync Essentials Repository"
+    mode: single
+    triggers:
+      - trigger: time
+        at: "04:00:00"
+    conditions: []
+    actions:
+      - action: input_button.press
+        target:
+          entity_id: input_button.refresh_dashboards
+        data: {}
+      - action: homeassistant.restart
+        metadata: {}
         data: {}
