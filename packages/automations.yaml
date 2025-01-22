@@ -59,10 +59,10 @@ automation:
     trigger:
       - trigger: sun
         event: sunrise
-        offset: "00:1:00"
+        offset: "00:10:00"
       - trigger: sun
         event: sunset
-        offset: "00:1:00"
+        offset: "00:10:00"
     action:
       - action: switch.turn_off
         data: {}
@@ -93,4 +93,6 @@ automation:
       - action: input_button.press
         target:
           entity_id: input_button.refresh_dashboards
+        data: {}
+      - action: shell_command.update_repos
         data: {}
