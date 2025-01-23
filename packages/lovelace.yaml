@@ -1,7 +1,7 @@
 lovelace:
   mode: yaml
   resources:
-    - url: /local/community/smartqasa/dashboard/elements.js
+    - url: /local/community/dashboard/elements.js
       type: module
 
 browser_mod:
