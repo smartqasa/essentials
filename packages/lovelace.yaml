@@ -2,23 +2,23 @@ lovelace:
   mode: yaml
   resources:
     # SmartQasa Dashboard
-    - url: /local/community/dashboard/elements.js
+    - url: /hacsfile/dashboard/elements.js
       type: module
 
     # Kiosk Mode
-    - url: /local/community/kiosk-mode/kiosk-mode.js
+    - url: /hacsfile/kiosk-mode/kiosk-mode.js
       type: module
 
     # Mini-Graph Card
-    - url: /local/community/mini-graph-card/mini-graph-card-bundle.js
+    - url: /hacsfile/mini-graph-card/mini-graph-card-bundle.js
       type: module
 
     # Media Player Card
-    - url: /local/community/maxi-media-player/maxi-media-player.js
-      type: module
+    #- url: /hacsfile/maxi-media-player/maxi-media-player.js
+    #  type: module
 
     # Weather Radar Card
-    - url: /local/community/weather-radar-card/weather-radar-card.js
+    - url: /hacsfile/weather-radar-card/weather-radar-card.js
       type: module
 
 browser_mod:
