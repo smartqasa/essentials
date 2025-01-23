@@ -1,6 +1,7 @@
 default_config:
 
 browser_mod:
+
 recorder:
   auto_purge: true
   auto_repack: true
@@ -24,7 +25,9 @@ shell_command:
 
 tts:
   - platform: google_translate
+
 wake_on_lan:
+
 zha:
   enable_quirks: true
   zigpy_config:
