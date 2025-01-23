@@ -1,7 +1,7 @@
 lovelace:
   mode: yaml
   resources:
-    - url: /local/community/dashboard/elements.js
+    - url: /local/community/dashboard/elements.js.gz
       type: module
 
 browser_mod:
