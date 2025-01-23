@@ -1,7 +1,7 @@
 frontend:
   extra_module_url:
     - /hacsfiles/dashboard/elements.js?v=2025.01.23
-    - /hacsfiles/browser_mod/browser_mod.js?v=2025.01.23
+    - /custom_components/browser_mod/browser_mod.js?v=2025.01.23
     - /hacsfiles/lovelace-card-mod/card-mod.js?v=2025.01.23
     - /hacsfiles/custom-brand-icons/custom-brand-icons.js?v=2025.01.23
     - /hacsfiles/kiosk-mode/kiosk-mode.js?v=2025.01.23
