@@ -1,8 +1,12 @@
 frontend:
   extra_module_url:
-    - /hacsfiles/lovelace-card-mod/card-mod.js
-    - /hacsfiles/custom-brand-icons/custom-brand-icons.js
-    - /hacsfiles/kiosk-mode/kiosk-mode.js
+    - /hacsfiles/dashboard/elements.js?v=2025.01.23
+    - /hacsfiles/browser_mod/browser_mod.js?v=2025.01.23
+    - /hacsfiles/lovelace-card-mod/card-mod.js?v=2025.01.23
+    - /hacsfiles/custom-brand-icons/custom-brand-icons.js?v=2025.01.23
+    - /hacsfiles/kiosk-mode/kiosk-mode.js?v=2025.01.23
+    - /hacsfiles/maxi-media-player/maxi-media-player.js?v=2025.01.23
+    - /hacsfiles/weather-radar-card/weather-radar-card.js?v=2025.01.23
 
   themes:
     SmartQasa:

@@ -48,7 +48,7 @@ automation:
     mode: single
     trigger:
       - trigger: homeassistant
-        event: stop
+        event: shutdown
     conditions: []
     actions:
       # Update Repositories
