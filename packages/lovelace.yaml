@@ -1,0 +1,9 @@
+lovelace:
+  mode: yaml
+  resources:
+    - url: /hacsfiles/dashboard/elements.js?v=2025.01.23
+      type: module
+    - url: /hacsfiles/maxi-media-player/maxi-media-player.js?v=2025.01.23
+      type: module
+    - url: /hacsfiles/weather-radar-card/weather-radar-card.js?v=2025.01.23
+      type: module
