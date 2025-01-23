@@ -5,6 +5,16 @@ automation:
       - trigger: homeassistant
         event: start
     action:
+      # Reset Admin Mode
+      - action: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.admin_mode
+      # Set Admin PIN
+      - action: input_text.set_value
+        data:
+          value: "{{ states('input_text.system_pin') + states('input_text.location_pin') }}"
+        target:
+          entity_id: input_text.admin_pin_code
       # Set Theme to SmartQasa
       - action: frontend.set_theme
         data:
@@ -23,7 +33,29 @@ automation:
           parse_config: false
           chunk_size: false
 
-  - alias: "System - Adjust Admin PIN when on Startup or PINs change."
+  - alias: "System - Nightly Restart"
+    mode: single
+    triggers:
+      - trigger: time
+        at: "04:00:00"
+    conditions: []
+    actions:
+      - action: homeassistant.restart
+        metadata: {}
+        data: {}
+
+  - alias: "System - Shutdown Services"
+    mode: single
+    trigger:
+      - trigger: homeassistant
+        event: stop
+    conditions: []
+    actions:
+      # Update Repositories
+      - action: shell_command.update_repos
+        data: {}
+
+  - alias: "System - Set Admin PIN when PINs change."
     mode: single
     trigger:
       - trigger: homeassistant
@@ -42,11 +74,9 @@ automation:
         target:
           entity_id: input_text.admin_pin_code
 
-  - alias: "System - Reset Admin Mode on Startup or Timeout"
+  - alias: "System - Reset Admin Mode on Timeout"
     mode: single
     trigger:
-      - trigger: homeassistant
-        event: start
       - trigger: state
         entity_id:
           - input_boolean.admin_mode
@@ -83,7 +113,7 @@ automation:
             {{ states.switch|selectattr("entity_id", "search",
             "tablet_screen$")|map(attribute="entity_id")|list }}
 
-  - alias: "System - Refresh Dashboards on boot, daily, and Lovelace update"
+  - alias: "System - Refresh Dashboards on Lovelace update"
     mode: single
     triggers:
       - trigger: event
@@ -93,19 +123,4 @@ automation:
       - action: input_button.press
         target:
           entity_id: input_button.refresh_dashboards
-        data: {}
-
-  - alias: "System - Sync Repositories and Restart Home Assistant"
-    mode: single
-    triggers:
-      - trigger: time
-        at: "04:00:00"
-    conditions: []
-    actions:
-      - action: shell_command.update_repos
-        data: {}
-      - delay:
-          seconds: 10
-      - action: homeassistant.restart
-        metadata: {}
         data: {}
