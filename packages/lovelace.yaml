@@ -6,16 +6,16 @@ lovelace:
       type: module
 
     # Kiosk Mode
-    - url: /hacsfiles/kiosk-mode/kiosk-mode.js
-      type: module
+    #- url: /hacsfiles/kiosk-mode/kiosk-mode.js
+    #  type: module
 
     # Mini-Graph Card
     - url: /hacsfiles/mini-graph-card/mini-graph-card-bundle.js
       type: module
 
     # Media Player Card
-    #- url: /hacsfiles/maxi-media-player/maxi-media-player.js
-    #  type: module
+    - url: /hacsfiles/maxi-media-player/maxi-media-player.js
+      type: module
 
     # Weather Radar Card
     - url: /hacsfiles/weather-radar-card/weather-radar-card.js
