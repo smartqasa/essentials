@@ -1,8 +1,8 @@
 frontend:
   extra_module_url:
-    - /local/community/lovelace-card-mod/card-mod.js
-    - /local/community/custom-brand-icons/custom-brand-icons.js
-    - local/community/kiosk-mode/kiosk-mode.js
+    - /hacsfiles/lovelace-card-mod/card-mod.js
+    - /hacsfiles/custom-brand-icons/custom-brand-icons.js
+    - /hacsfiles/kiosk-mode/kiosk-mode.js
 
   themes:
     SmartQasa:
