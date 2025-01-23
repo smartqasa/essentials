@@ -18,7 +18,6 @@ frontend:
 
       # Cards
       sq-card-height: 7rem
-      # sq-name-height: 3.5rem
       sq-card-padding: 1rem
       sq-card-spacing: 0.8rem
       sq-card-border: var(--sq-card-border-width) var(--sq-card-border-style) rgb(var(--sq-card-border-rgb))
@@ -224,7 +223,7 @@ frontend:
       ha-card-border-width: var(--sq-card-border-width)
       ha-card-border-style: var(--sq-card-border-style)
       ha-card-border-color: rgb(var(--sq-card-border-rgb))
-      ha-card-border-radius: 2rem
+      ha-card-border-radius: var(--sq-card-border-radius)
       ha-card-box-shadow: var(--sq-card-box-shadow)
       ha-card-header-font-size: var(--sq-primary-font-size)
 
@@ -238,13 +237,6 @@ frontend:
       accent-color: rgb(var(--sq-accent-rgb))
       divider-color: rgb(var(--sq-divider-rgb))
       secondary-background-color: rgb(var(--sq-secondary-background-rgb))
-
-      # HA App Header
-      #app-header-background-color: rgb(var(--sq-app-header-background-rgb))
-
-      #      app-header-edit-text-color: rgb(var(--sq-secondary-font-rgb))
-      #      app-header-selection-bar-color: rgb(var(--sq-primary-rgb))
-      #      app-header-edit-background-color: rgb(var(--sq-primary-background-rgb))
 
       # Browser Mod Popup
       popup-min-width: 36rem
@@ -265,12 +257,6 @@ frontend:
       dialog-backdrop-filter: blur(10px)
       iron-overlay-backdrop-opacity: 1
       iron-overlay-backdrop-background-color: rgba(0, 0, 0, 0.2)
-
-      # Paper
-      # paper-dialog-background-color: var(--sq-dialog-background-color)
-      # paper-listbox-background-color: rgb(var(--sq-primary-background-rgb))
-      # paper-card-background-color: var(--sq-card-background-color)
-      # paper-card-header-color: rgb(var(--sq-secondary-background-rgb))
 
       # Sidebar Menu
       sidebar-icon-color: rgb(var(--sq-primary-font-rgb))
