@@ -74,6 +74,7 @@ frontend:
           sq-divider-rgb: 160, 160, 160
 
           sq-panel-color: rgb(255, 255, 255)
+          sq-panel-image: url('/config/essentials/backgrounds/light.jpg')
 
           sq-dialog-background-rgb: 240, 240, 240
           sq-dialog-background-opacity: 0.6
@@ -119,6 +120,7 @@ frontend:
           sq-divider-rgb: 50, 50, 50
 
           sq-panel-color: rgb(0, 0, 0)
+          sq-panel-image: url('/config/essentials/backgrounds/dark.jpg')
 
           sq-dialog-background-rgb: 25, 25, 25
           sq-dialog-background-opacity: 0.8
