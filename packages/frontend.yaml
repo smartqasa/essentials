@@ -74,7 +74,7 @@ frontend:
           sq-divider-rgb: 160, 160, 160
 
           sq-panel-color: rgb(245, 235, 245)
-          sq-panel-image: url('/local/smartqasa/backgrounds/light.jpg')
+          sq-panel-image: url('http:/192.168.75.10:10075/local/smartqasa/backgrounds/light.jpg')
 
           sq-dialog-background-rgb: 240, 240, 240
           sq-dialog-background-opacity: 0.6
@@ -120,7 +120,7 @@ frontend:
           sq-divider-rgb: 50, 50, 50
 
           sq-panel-color: rgb(10, 0, 10)
-          sq-panel-image: url('/local/smartqasa/backgrounds/dark.jpg')
+          sq-panel-image: url('http:/192.168.75.10:10075/local/smartqasa/backgrounds/dark.jpg')
 
           sq-dialog-background-rgb: 25, 25, 25
           sq-dialog-background-opacity: 0.8
