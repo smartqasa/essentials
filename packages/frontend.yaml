@@ -120,7 +120,7 @@ frontend:
           sq-divider-rgb: 50, 50, 50
 
           sq-panel-color: rgb(10, 0, 10)
-          sq-panel-image: url('/config/essentials/backgrounds/dark.jpg'), url('/config/www/smartqasa/backgrounds/dark.jpg')
+          sq-panel-image: url('/config/essentials/backgrounds/dark.jpg')
 
           sq-dialog-background-rgb: 25, 25, 25
           sq-dialog-background-opacity: 0.8
