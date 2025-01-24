@@ -118,7 +118,7 @@ frontend:
           sq-app-header-background-rgb: 60, 55, 55
           app-header-background-color: "#3c3737"
           sq-divider-rgb: 50, 50, 50
-          #test
+
           sq-panel-color: rgb(10, 0, 10)
           sq-panel-image: url('/config/www/backgrounds/backgrounds/dark.jpg')
 
