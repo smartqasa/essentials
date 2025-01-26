@@ -27,15 +27,6 @@ input_select:
       - Evening
       - Night
 
-  location_phase:
-    name: Location Phase
-    icon: mdi:theme-light-dark
-    options:
-      - Morning
-      - Day
-      - Evening
-      - Night
-
   location_mode:
     name: Location Mode
     icon: mdi:home-circle
@@ -45,6 +36,23 @@ input_select:
       - Guest
       - Entertain
       - Vacation
+
+  location_phase:
+    name: Location Phase
+    icon: mdi:theme-light-dark
+    options:
+      - Morning
+      - Day
+      - Evening
+      - Night
+
+  location_type:
+    name: Location Type
+    icon: mdi:home-circle
+    options:
+      - Residential
+      - Commercial
+      - Other
 
 input_text:
   system_pin:
