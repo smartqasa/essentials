@@ -21,8 +21,8 @@ recorder:
       - select
       - sun
       - update
-scene: !include scenes.yaml
-script: !include scripts.yaml
+scene: !include /config/scenes.yaml
+script: !include /config/scripts.yaml
 shell_command:
   update_repos: "/bin/bash /config/essentials/shell_scripts/update_repos.sh"
 #tts:
