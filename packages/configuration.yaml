@@ -1,12 +1,9 @@
 default_config:
 
 automation: !include /config/automations.yaml
-
 browser_mod:
-
 http:
   server_port: 10075
-
 recorder:
   auto_purge: true
   auto_repack: true
@@ -24,15 +21,13 @@ recorder:
       - select
       - sun
       - update
-
+scene: !include scenes.yaml
+script: !include scripts.yaml
 shell_command:
   update_repos: "/bin/bash /config/essentials/shell_scripts/update_repos.sh"
-
-tts:
-  - platform: google_translate
-
+#tts:
+#  - platform: google_translate
 wake_on_lan:
-
 zha:
   enable_quirks: true
   zigpy_config:
