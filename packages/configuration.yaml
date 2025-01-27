@@ -2,6 +2,9 @@ default_config:
 
 browser_mod:
 
+http:
+  server_port: 10075
+
 recorder:
   auto_purge: true
   auto_repack: true
