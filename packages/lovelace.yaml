@@ -3,7 +3,9 @@ lovelace:
   resources:
     - url: /hacsfiles/dashboard/elements.js
       type: module
-    - url: /hacsfiles/maxi-media-player/maxi-media-player.js?v=2025.01.23
+    - url: /hacsfiles/maxi-media-player/maxi-media-player.js?v=2025.01.27
       type: module
-    - url: /hacsfiles/weather-radar-card/weather-radar-card.js?v=2025.01.23
+    - url: /hacsfiles/mini-graph-card/mini-graph-card-bundle.js?v=2025.01.27
+      type: module
+    - url: /hacsfiles/weather-radar-card/weather-radar-card.js?v=2025.01.27
       type: module
