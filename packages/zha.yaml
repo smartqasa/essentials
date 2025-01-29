@@ -1,0 +1,7 @@
+zha:
+  enable_quirks: true
+  zigpy_config:
+    ota:
+      enabled: true
+      extra_providers:
+        - type: z2m
