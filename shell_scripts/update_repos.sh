@@ -3,8 +3,6 @@
 # Set the working directory to /config
 cd /config || { echo "❌ Failed to change directory to /config"; exit 1; }
 
-echo "🔄 Checking and ensuring submodules (blueprints, essentials, backgrounds) are in place..."
-
 # Declare submodules with their repository and expected destination directory
 declare -A SUBMODULES=(
     ["https://github.com/smartqasa/blueprints.git"]="blueprints/automations/smartqasa"
@@ -16,21 +14,19 @@ declare -A SUBMODULES=(
 for REPO in "${!SUBMODULES[@]}"; do
     DEST="${SUBMODULES[$REPO]}"
 
-    # Check if the directory exists but is not a Git repository
-    if [ -d "$DEST" ] && [ ! -d "$DEST/.git" ]; then
-        echo "⚠️  Warning: Directory $DEST already exists but is not a Git repo. Removing it..."
-        
-        # Fully remove the submodule from Git's tracking system
+    # Check if the submodule is correctly registered in .gitmodules
+    if ! git config --file .gitmodules --get-regexp path | grep -q "$DEST"; then
+        echo "⚠️  Warning: Submodule $DEST is not registered in .gitmodules. Fixing it..."
+
+        # Fully remove submodule traces before re-adding
         git submodule deinit -f "$DEST" 2>/dev/null || true
         git rm -f "$DEST" 2>/dev/null || true
         rm -rf ".git/modules/$DEST" 2>/dev/null || true
         rm -rf "$DEST"
 
         echo "✅ Cleaned up submodule: $DEST"
-    fi
 
-    # Add the submodule if it's missing
-    if [ ! -d "$DEST/.git" ]; then
+        # Re-add the submodule
         echo "➕ Adding submodule: $REPO -> $DEST"
         git submodule add --force "$REPO" "$DEST"
     fi
