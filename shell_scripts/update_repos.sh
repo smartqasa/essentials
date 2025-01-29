@@ -7,9 +7,9 @@ git submodule update --remote --recursive --force
 
 # Declare submodules with their repository and expected destination directory
 declare -A SUBMODULES=(
-    ["https://github.com/smartqasa/blueprints.git"]="/config/blueprints/automations/smartqasa"
-    ["https://github.com/smartqasa/essentials.git"]="/config/essentials"
-    ["https://github.com/smartqasa/backgrounds.git"]="/config/www/smartqasa/backgrounds"
+    ["https://github.com/smartqasa/blueprints.git"]="blueprints/automations/smartqasa"
+    ["https://github.com/smartqasa/essentials.git"]="essentials"
+    ["https://github.com/smartqasa/backgrounds.git"]="www/smartqasa/backgrounds"
 )
 
 # Ensure each submodule is present
