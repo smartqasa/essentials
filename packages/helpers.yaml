@@ -23,6 +23,7 @@ input_select:
     icon: mdi:tablet
     options:
       - Default
+      - Custom
       - Stone
       - Wood
 
