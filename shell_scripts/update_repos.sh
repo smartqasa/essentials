@@ -1,9 +1,9 @@
+#!/bin/bash
+
 # Set the working directory to /config
-cd /config || { echo "Failed to change directory to /config"; exit 1; }
+cd /config || { echo "❌ Failed to change directory to /config"; exit 1; }
 
-# Update the submodules
-git submodule update --remote --recursive --force
-
+echo "🔄 Checking and ensuring submodules (blueprints, essentials, backgrounds) are in place..."
 
 # Declare submodules with their repository and expected destination directory
 declare -A SUBMODULES=(
@@ -16,12 +16,21 @@ declare -A SUBMODULES=(
 for REPO in "${!SUBMODULES[@]}"; do
     DEST="${SUBMODULES[$REPO]}"
     
+    # Check if the directory exists but is not a Git repository
+    if [ -d "$DEST" ] && [ ! -d "$DEST/.git" ]; then
+        echo "⚠️  Warning: Directory $DEST already exists but is not a Git repo. Removing it..."
+        rm -rf "$DEST"
+    fi
+
+    # Add the submodule if it's missing
     if [ ! -d "$DEST/.git" ]; then
-        echo "Submodule at $DEST is missing. Adding it..."
-        git submodule add --force "$REPO" "$DEST"
+        echo "➕ Adding submodule: $REPO -> $DEST"
+        git submodule add "$REPO" "$DEST"
     fi
 done
 
-# Initialize and update all submodules
-git submodule init
+# Run update ONCE after adding missing submodules
+echo "🔄 Updating submodules..."
 git submodule update --remote --recursive --force
+
+echo "✅ Submodules successfully updated."
