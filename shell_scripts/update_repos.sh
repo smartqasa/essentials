@@ -15,17 +15,24 @@ declare -A SUBMODULES=(
 # Ensure each submodule is present
 for REPO in "${!SUBMODULES[@]}"; do
     DEST="${SUBMODULES[$REPO]}"
-    
+
     # Check if the directory exists but is not a Git repository
     if [ -d "$DEST" ] && [ ! -d "$DEST/.git" ]; then
         echo "⚠️  Warning: Directory $DEST already exists but is not a Git repo. Removing it..."
+        
+        # Fully remove the submodule from Git's tracking system
+        git submodule deinit -f "$DEST" 2>/dev/null || true
+        git rm -f "$DEST" 2>/dev/null || true
+        rm -rf ".git/modules/$DEST" 2>/dev/null || true
         rm -rf "$DEST"
+
+        echo "✅ Cleaned up submodule: $DEST"
     fi
 
     # Add the submodule if it's missing
     if [ ! -d "$DEST/.git" ]; then
         echo "➕ Adding submodule: $REPO -> $DEST"
-        git submodule add "$REPO" "$DEST"
+        git submodule add --force "$REPO" "$DEST"
     fi
 done
 
