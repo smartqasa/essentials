@@ -1,7 +1,0 @@
-kiosk: true
-admin_settings:
-  kiosk: false
-entity_settings:
-  - entity:
-      input_boolean.admin_mode: "on"
-    kiosk: false
