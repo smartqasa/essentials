@@ -18,14 +18,13 @@ input_button:
     icon: mdi:theme-light-dark
 
 input_select:
-  backgrounds_light:
-    name: Dashboard Backgrounds - Light
+  dashboard_backgrounds:
+    name: Dashboard Backgrounds
     icon: mdi:tablet
     options:
-      - None
-      - Blurred Lights
-      - Evening
-      - Night
+      - Default
+      - Stone
+      - Wood
 
   location_mode:
     name: Location Mode
