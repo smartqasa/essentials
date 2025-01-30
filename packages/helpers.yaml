@@ -18,7 +18,7 @@ input_button:
     icon: mdi:theme-light-dark
 
 input_select:
-  dashboard_backgrounds:
+  dashboard_background:
     name: Dashboard Backgrounds
     icon: mdi:tablet
     options:
