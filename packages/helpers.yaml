@@ -24,6 +24,7 @@ input_select:
     options:
       - Default
       - Custom
+      - Nature
       - Stone
       - Wood
 
