@@ -12,6 +12,6 @@ scene: !include /config/scenes.yaml
 script: !include /config/scripts.yaml
 
 shell_command:
-  update_repos: "/bin/bash /config/essentials/shell_scripts/update_repos.sh"
+  update_repos: "/bin/bash /config/smartqasa/shell_scripts/update_repos.sh"
 
 wake_on_lan:
