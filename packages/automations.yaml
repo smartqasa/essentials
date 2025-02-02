@@ -38,7 +38,7 @@ automation:
     mode: single
     trigger:
       - platform: time
-        at: "14:30:00"
+        at: "14:34:00"
     action:
       - choose:
           - conditions:
@@ -51,7 +51,7 @@ automation:
                   entity_id: input_button.reboot_devices
               - delay:
                   seconds: 2
-              - action: homeassistant.reboot
+              - action: hassio.host_reboot
         default:
           - action: homeassistant.restart
 
