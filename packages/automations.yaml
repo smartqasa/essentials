@@ -49,6 +49,8 @@ automation:
               - action: input_button.press
                 target:
                   entity_id: input_button.reboot_devices
+              - delay:
+                  seconds: 2
                 data: {}
               - action: homeassistant.reboot
         default:
