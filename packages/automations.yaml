@@ -19,6 +19,11 @@ automation:
       - action: frontend.set_theme
         data:
           name: SmartQasa
+      # Refresh Dashboards
+      - action: input_button.press
+        target:
+          entity_id: input_button.refresh_dashboards
+        data: {}
       # Run Watchman
       - delay:
           minutes: 2
@@ -36,10 +41,6 @@ automation:
         at: "04:00:00"
     conditions: []
     actions:
-      - action: input_button.press
-        target:
-          entity_id: input_button.refresh_dashboards
-        data: {}
       - action: homeassistant.restart
         metadata: {}
         data: {}
