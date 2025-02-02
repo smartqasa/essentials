@@ -36,14 +36,23 @@ automation:
 
   - alias: "System - Nightly Restart"
     mode: single
-    triggers:
-      - trigger: time
-        at: "04:00:00"
-    conditions: []
-    actions:
-      - action: homeassistant.restart
-        metadata: {}
-        data: {}
+    trigger:
+      - platform: time
+        at: "14:20:00"
+    action:
+      - choose:
+          - conditions:
+              - condition: time
+                weekday:
+                  - sat
+            sequence:
+              - action: input_button.press
+                target:
+                  entity_id: input_button.refresh_dashboards
+                data: {}
+              - action: homeassistant.reboot
+        default:
+          - action: homeassistant.restart
 
   - alias: "System - Shutdown Services"
     mode: single
