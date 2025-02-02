@@ -7,11 +7,11 @@ input_boolean:
 input_button:
   reboot_devices:
     name: Reboot Devices
-    icon: mdi:power-cycle
+    icon: mdi:restart
 
   refresh_dashboards:
     name: Refresh Dashboards
-    icon: mdi:restart
+    icon: mdi:refresh
 
   location_mode:
     name: Location Mode Trigger
