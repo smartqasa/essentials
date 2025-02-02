@@ -38,7 +38,7 @@ automation:
     mode: single
     trigger:
       - platform: time
-        at: "14:20:00"
+        at: "14:23:00"
     action:
       - choose:
           - conditions:
@@ -48,7 +48,7 @@ automation:
             sequence:
               - action: input_button.press
                 target:
-                  entity_id: input_button.refresh_dashboards
+                  entity_id: input_button.reboot_devices
                 data: {}
               - action: homeassistant.reboot
         default:
