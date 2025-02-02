@@ -38,7 +38,7 @@ automation:
     mode: single
     trigger:
       - platform: time
-        at: "14:41:00"
+        at: "14:56:00"
     action:
       - choose:
           - conditions:
