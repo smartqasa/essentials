@@ -5,8 +5,12 @@ input_boolean:
     initial: false
 
 input_button:
+  reboot_tablets:
+    name: Reboot Tablets
+    icon: mdi:power-cycle
+
   refresh_dashboards:
-    name: Refresh Dashboards Trigger
+    name: Refresh Dashboards
     icon: mdi:restart
 
   location_mode:
