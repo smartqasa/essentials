@@ -44,7 +44,7 @@ automation:
           - conditions:
               - condition: time
                 weekday:
-                  - sun
+                  - sat
             sequence:
               - action: input_button.press
                 target:
