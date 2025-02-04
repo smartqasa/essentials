@@ -99,30 +99,30 @@ automation:
         target:
           entity_id: input_boolean.admin_mode
 
-    - alias: "System - Toggle Tablet Screens for Light/Dark Mode"
-      mode: single
-      trigger:
-        - trigger: sun
-          event: sunrise
-          offset: "00:05:00"
-        - trigger: sun
-          event: sunset
-          offset: "00:05:00"
-      action:
-        - action: switch.turn_off
-          data: {}
-          target:
-            entity_id: >-
-              {{ states.switch|selectattr("entity_id", "search",
-              "tablet_screen$")|map(attribute="entity_id")|list }}
-        - delay:
-            seconds: 1
-        - action: switch.turn_on
-          data: {}
-          target:
-            entity_id: >-
-              {{ states.switch|selectattr("entity_id", "search",
-              "tablet_screen$")|map(attribute="entity_id")|list }}
+  - alias: "System - Toggle Tablet Screens for Light/Dark Mode"
+    mode: single
+    trigger:
+      - trigger: sun
+        event: sunrise
+        offset: "00:05:00"
+      - trigger: sun
+        event: sunset
+        offset: "00:05:00"
+    action:
+      - action: switch.turn_off
+        data: {}
+        target:
+          entity_id: >-
+            {{ states.switch|selectattr("entity_id", "search",
+            "tablet_screen$")|map(attribute="entity_id")|list }}
+      - delay:
+          seconds: 1
+      - action: switch.turn_on
+        data: {}
+        target:
+          entity_id: >-
+            {{ states.switch|selectattr("entity_id", "search",
+            "tablet_screen$")|map(attribute="entity_id")|list }}
 
   - alias: "System - Refresh Dashboards on Lovelace update"
     mode: single
