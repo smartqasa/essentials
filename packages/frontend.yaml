@@ -17,7 +17,7 @@ frontend:
       sq-dialog-grid-gap: 0.7rem
 
       # Cards
-      sq-card-height: 7rem
+      sq-card-height: 7.5rem
       sq-card-padding: 1rem
       sq-card-spacing: 0.8rem
       sq-card-border: var(--sq-card-border-width) var(--sq-card-border-style) rgb(var(--sq-card-border-rgb))
