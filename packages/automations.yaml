@@ -134,3 +134,16 @@ automation:
       - action: input_button.press
         target:
           entity_id: input_button.refresh_dashboards
+#
+#  - alias: System - Activate Phase Trigger
+#    description: ""
+#    triggers:
+#      - trigger: state
+#        entity_id: input_select.location_phase
+#    conditions: []
+#    actions:
+#      - action: input_button.press
+#        target:
+#          entity_id: input_button.location_phase
+#        data: {}
+#    mode: single
