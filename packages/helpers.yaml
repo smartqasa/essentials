@@ -9,8 +9,8 @@ input_button:
     name: Reboot Devices
     icon: mdi:restart
 
-  refresh_dashboards:
-    name: Refresh Dashboards
+  refresh_devices:
+    name: Refresh Devices
     icon: mdi:refresh
 
   location_mode:
