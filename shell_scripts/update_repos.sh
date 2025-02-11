@@ -5,7 +5,7 @@ cd /config || { echo "❌ Failed to change directory to /config"; exit 1; }
 
 # Declare submodules with their repository and expected destination directory
 declare -A SUBMODULES=(
-    ["https://github.com/smartqasa/blueprints.git"]="blueprints/automations/smartqasa"
+    ["https://github.com/smartqasa/blueprints.git"]="blueprints/automation/smartqasa"
     ["https://github.com/smartqasa/essentials.git"]="smartqasa"
     ["https://github.com/smartqasa/media.git"]="www/smartqasa/media"
 )
