@@ -131,9 +131,7 @@ automation:
         event_type: lovelace_updated
     conditions: []
     actions:
-      - action: input_button.press
-        target:
-          entity_id: input_button.refresh_devices
+      - action: browser_mod.refresh
 #
 #  - alias: System - Activate Phase Trigger
 #    description: ""
