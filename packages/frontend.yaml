@@ -24,7 +24,7 @@ frontend:
       sq-card-background-color: rgba(var(--sq-card-background-rgb), var(--sq-card-background-opacity))
 
       # Tiles
-      sq-tile-height: 7.5rem
+      sq-tile-height: 7rem
       sq-tile-width: min(21vw, 19.5rem)
       sq-tile-padding: 1rem
       sq-tile-spacing: 0.8rem
