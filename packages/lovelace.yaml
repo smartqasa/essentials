@@ -1,6 +1,8 @@
 lovelace:
   mode: yaml
   resources:
+    - url: /hacsfiles/dashboard/panel.js
+      type: module
     - url: /hacsfiles/dashboard/elements.js
       type: module
     - url: /hacsfiles/maxi-media-player/maxi-media-player.js?v=2025.01.27
