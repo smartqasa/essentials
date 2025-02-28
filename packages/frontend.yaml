@@ -95,16 +95,16 @@ frontend:
           sq-idle-rgb: 10, 10, 10
           sq-inactive-rgb: 90, 90, 90
 
-          sq-dialog-font-rgb: 30, 30, 30
+          sq-dialog-text-rgb: 30, 30, 30
           sq-dialog-header-font-weight: 400
 
-          sq-title-font-rgb: 30, 30, 30
+          sq-title-text-rgb: 30, 30, 30
           sq-title-font-weight: 300
 
-          sq-primary-font-rgb: 10, 10, 10
+          sq-primary-text-rgb: 10, 10, 10
           sq-primary-font-weight: 400
 
-          sq-secondary-font-rgb: 60, 60, 60
+          sq-secondary-text-rgb: 60, 60, 60
           sq-secondary-font-weight: 300
 
           sq-ripple-color: rgb(var(--sq-card-background-rgb))
@@ -138,16 +138,16 @@ frontend:
           sq-idle-rgb: 200, 200, 200
           sq-inactive-rgb: 140, 140, 140
 
-          sq-dialog-font-rgb: 180, 180, 180
+          sq-dialog-text-rgb: 180, 180, 180
           sq-dialog-header-font-weight: 400
 
-          sq-title-font-rgb: 180, 180, 180
+          sq-title-text-rgb: 180, 180, 180
           sq-title-font-weight: 300
 
-          sq-primary-font-rgb: 200, 200, 200
+          sq-primary-text-rgb: 200, 200, 200
           sq-primary-font-weight: 300
 
-          sq-secondary-font-rgb: 150, 150, 150
+          sq-secondary-text-rgb: 150, 150, 150
           sq-secondary-font-weight: 300
 
           sq-ripple-color: rgb(var(--sq-card-background-rgb))
@@ -200,7 +200,7 @@ frontend:
       sq-media_player-idle-rgb: var(--sq-inactive-rgb)
       sq-media_player-on-rgb: var(--sq-inactive-rgb)
       sq-media_player-playing-rgb: var(--sq-light-blue-rgb)
-      sq-media_player-paused-rgb: var(--sq-primary-font-rgb)
+      sq-media_player-paused-rgb: var(--sq-primary-text-rgb)
       sq-media_player-standby-rgb: var(--sq-inactive-rgb)
       sq-switch-on-rgb: var(--sq-deep-yellow-rgb)
       sq-switch-appliance-on-rgb: var(--sq-blue-grey-rgb)
@@ -228,8 +228,8 @@ frontend:
       ha-card-header-font-size: var(--sq-primary-font-size)
 
       # HA Text
-      primary-text-color: rgb(var(--sq-primary-font-rgb))
-      secondary-text-color: rgb(var(--sq-secondary-font-rgb))
+      primary-text-color: rgb(var(--sq-primary-text-rgb))
+      secondary-text-color: rgb(var(--sq-secondary-text-rgb))
       disabled-text-color: rgb(var(--sq-inactive-rgb))
 
       # HA Main Interface
@@ -259,8 +259,8 @@ frontend:
       iron-overlay-backdrop-background-color: rgba(0, 0, 0, 0.2)
 
       # Sidebar Menu
-      sidebar-icon-color: rgb(var(--sq-primary-font-rgb))
-      sidebar-text-color: rgb(var(--sq-primary-font-rgb))
+      sidebar-icon-color: rgb(var(--sq-primary-text-rgb))
+      sidebar-text-color: rgb(var(--sq-primary-text-rgb))
       sidebar-background-color: rgb(var(--sq-app-header-background-rgb))
       sidebar-selected-icon-color: rgb(var(--sq-accent-rgb))
       sidebar-selected-text-color: rgb(var(--sq-accent-rgb))
@@ -270,7 +270,7 @@ frontend:
       paper-item-icon-active-color: rgb(var(--sq-accent-rgb))
 
       # Icons
-      state-icon-color: rgb(var(--sq-primary-font-rgb))
+      state-icon-color: rgb(var(--sq-primary-text-rgb))
       state-icon-active-color: rgb(var(--sq-accent-rgb))
       state-icon-unavailable-color: rgba(var(--sq-inactive-rgb), 0.5)
 
@@ -320,24 +320,24 @@ frontend:
 
       # MDC
       mdc-radio-unchecked-color: rgb(var(--sq-inactive-rgb))
-      mdc-theme-text-primary-on-background: rgb(var(--sq-primary-font-rgb))
+      mdc-theme-text-primary-on-background: rgb(var(--sq-primary-text-rgb))
 
       mdc-dialog-box-shadow: var(--sq-dialog-box-shadow)
       mdc-theme-surface: var(--sq-dialog-background-color)
-      mdc-theme-on-surface: rgb(var(--sq-primary-font-rgb))
+      mdc-theme-on-surface: rgb(var(--sq-primary-text-rgb))
       mdc-theme-background: rgb(var(--sq-primary-background-rgb))
       mdc-icon-size: var(--sq-icon-size)
       mdc-button-outline-color: rgb(--sq-card-border-rgb)
-      mdc-checkbox-unchecked-color: rgb(var(--sq-secondary-font-rgb))
+      mdc-checkbox-unchecked-color: rgb(var(--sq-secondary-text-rgb))
       mdc-checkbox-disable-color: rgba(var(--sq-inactive-rgb), 0.5)
       mdc-select-fill-color: rgb(var(--sq-secondary-background-rgb))
-      mdc-select-ink-color: rgb(var(--sq-primary-font-rgb))
-      mdc-select-label-ink-color: rgb(var(--sq-secondary-font-rgb))
-      mdc-select-idle-line-color: rgb(var(--sq-primary-font-rgb))
-      mdc-select-dropdown-icon-color: rgb(var(--sq-secondary-font-rgb))
+      mdc-select-ink-color: rgb(var(--sq-primary-text-rgb))
+      mdc-select-label-ink-color: rgb(var(--sq-secondary-text-rgb))
+      mdc-select-idle-line-color: rgb(var(--sq-primary-text-rgb))
+      mdc-select-dropdown-icon-color: rgb(var(--sq-secondary-text-rgb))
       mdc-select-hover-line-color: rgb(var(--sq-accent-rgb))
       mdc-text-field-fill-color: rgb(var(--sq-secondary-background-rgb))
-      mdc-tab-text-label-color-default: rgb(var(--sq-secondary-font-rgb))
+      mdc-tab-text-label-color-default: rgb(var(--sq-secondary-text-rgb))
 
       #Swiper
       swiper-navigation-color: rgb(var(--sq-inactive-rgb))
