@@ -1,7 +1,7 @@
 lovelace:
   mode: yaml
   resources:
-    - url: /hacsfiles/dash-loader/panel.js
+    - url: /hacsfiles/dash-loader/loader.js
       type: module
     - url: /hacsfiles/dash-elements/elements.js
       type: module
