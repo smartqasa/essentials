@@ -7,7 +7,7 @@ browser_mod:
 http:
   server_port: 10075
 
-python_script:
+#python_script:
 
 scene: !include /config/scenes.yaml
 
