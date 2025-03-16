@@ -1,19 +1,12 @@
 default_config:
 
 automation: !include /config/automations.yaml
-
 browser_mod:
-
 http:
   server_port: 10075
-
-#python_script:
-
 scene: !include /config/scenes.yaml
-
 script: !include /config/scripts.yaml
-
 shell_command:
   update_repos: "/bin/bash /config/smartqasa/shell_scripts/update_repos.sh"
-
+smartqasa:
 wake_on_lan:
