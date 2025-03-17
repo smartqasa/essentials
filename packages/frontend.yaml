@@ -75,7 +75,7 @@ frontend:
 
           sq-panel-color: rgb(240, 245, 240)
 
-          sq-dialog-background-rgb: 240, 240, 240
+          sq-dialog-background-rgb: 220, 220, 220
           sq-dialog-background-opacity: 0.9
           sq-dialog-border-width: 0px
           sq-dialog-border-style: none
