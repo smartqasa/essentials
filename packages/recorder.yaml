@@ -6,12 +6,9 @@ recorder:
   exclude:
     domains:
       - calendar
-      - camera
-      - input_select
       - media_player
       - number
       - persistent_notification
-      - remote
       - select
       - sun
       - update
