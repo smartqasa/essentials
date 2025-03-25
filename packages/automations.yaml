@@ -132,16 +132,44 @@ automation:
     conditions: []
     actions:
       - action: browser_mod.refresh
-#
-#  - alias: System - Activate Phase Trigger
-#    description: ""
-#    triggers:
-#      - trigger: state
-#        entity_id: input_select.location_phase
-#    conditions: []
-#    actions:
-#      - action: input_button.press
-#        target:
-#          entity_id: input_button.location_phase
-#        data: {}
-#    mode: single
+  #
+  #  - alias: System - Activate Phase Trigger
+  #    description: ""
+  #    triggers:
+  #      - trigger: state
+  #        entity_id: input_select.location_phase
+  #    conditions: []
+  #    actions:
+  #      - action: input_button.press
+  #        target:
+  #          entity_id: input_button.location_phase
+  #        data: {}
+  #    mode: single
+
+  - alias: System - Stop Window Shades
+    description: ""
+    triggers:
+      - trigger: state
+        entity_id:
+          - cover.all_window_shades
+        to: opening
+        for:
+          hours: 0
+          minutes: 1
+          seconds: 0
+      - trigger: state
+        entity_id:
+          - cover.all_window_shades
+        to: closing
+        for:
+          hours: 0
+          minutes: 1
+          seconds: 0
+    conditions: []
+    actions:
+      - action: cover.stop_cover
+        metadata: {}
+        data: {}
+        target:
+          entity_id: cover.all_window_shades
+    mode: single
