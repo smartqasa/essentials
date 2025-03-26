@@ -40,19 +40,21 @@ automation:
       - platform: time
         at: "04:00:00"
     action:
-      - choose:
-          - conditions:
-              - condition: time
-                weekday:
-                  - sun
-            sequence:
-              - action: input_button.press
-                target:
-                  entity_id: input_button.reboot_devices
-              - delay:
-                  seconds: 2
-              - action: hassio.host_reboot
-        default:
+      - if:
+          - condition: time
+            weekday:
+              - sun
+        then:
+          - action: input_button.press
+            target:
+              entity_id: input_button.reboot_devices
+          - delay:
+              seconds: 60
+          - action: input_button.press
+            target:
+              entity_id: input_button.refresh_devices
+          - action: hassio.host_reboot
+        else:
           - action: homeassistant.restart
 
   - alias: "System - Shutdown Services"
