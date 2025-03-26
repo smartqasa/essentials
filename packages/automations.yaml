@@ -49,10 +49,7 @@ automation:
             target:
               entity_id: input_button.reboot_devices
           - delay:
-              seconds: 60
-          - action: input_button.press
-            target:
-              entity_id: input_button.refresh_devices
+              seconds: 2
           - action: hassio.host_reboot
         else:
           - action: homeassistant.restart
