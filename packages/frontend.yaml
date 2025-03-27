@@ -321,10 +321,7 @@ frontend:
       # MDC
       mdc-radio-unchecked-color: rgb(var(--sq-inactive-rgb))
       mdc-theme-text-primary-on-background: rgb(var(--sq-primary-text-rgb))
-
       mdc-dialog-box-shadow: var(--sq-dialog-box-shadow)
-      mdc-typography-button-font-size: var(--sq-primary-font-size)
-      mdc-typography-button-font-weight: var(--sq-primary-font-weight)
       mdc-theme-surface: var(--sq-dialog-background-color)
       mdc-theme-on-surface: rgb(var(--sq-primary-text-rgb))
       mdc-theme-background: rgb(var(--sq-primary-background-rgb))
