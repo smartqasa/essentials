@@ -19,14 +19,15 @@ automation:
       - action: frontend.set_theme
         data:
           name: SmartQasa
+      # Wait for 2 minutes
+      - delay:
+          minutes: 2
       # Refresh Devices
       - action: input_button.press
         target:
           entity_id: input_button.refresh_devices
         data: {}
       # Run Watchman
-      - delay:
-          minutes: 2
       - action: watchman.report
         data:
           create_file: true
