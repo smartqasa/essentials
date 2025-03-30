@@ -44,6 +44,7 @@ frontend:
       sq-title-font-size: 3.2rem
       sq-primary-font-size: 1.4rem
       sq-secondary-font-size: 1.1rem
+      sq-button-font-size: 1rem
 
       # Icons
       sq-icon-size: 1.8rem
@@ -95,16 +96,16 @@ frontend:
           sq-idle-rgb: 10, 10, 10
           sq-inactive-rgb: 80, 80, 80
 
-          sq-dialog-text-rgb: 50, 50, 50
+          sq-dialog-text-rgb: 60, 60, 60
           sq-dialog-header-font-weight: 400
 
-          sq-title-text-rgb: 50, 50, 50
+          sq-title-text-rgb: 60, 60, 60
           sq-title-font-weight: 300
 
           sq-primary-text-rgb: 10, 10, 10
           sq-primary-font-weight: 400
 
-          sq-secondary-text-rgb: 50, 50, 50
+          sq-secondary-text-rgb: 60, 60, 60
           sq-secondary-font-weight: 300
 
           sq-ripple-color: rgb(var(--sq-card-background-rgb))
@@ -138,16 +139,16 @@ frontend:
           sq-idle-rgb: 220, 220, 220
           sq-inactive-rgb: 150, 150, 150
 
-          sq-dialog-text-rgb: 180, 180, 180
+          sq-dialog-text-rgb: 170, 170, 170
           sq-dialog-header-font-weight: 400
 
-          sq-title-text-rgb: 180, 180, 180
+          sq-title-text-rgb: 170, 170, 170
           sq-title-font-weight: 300
 
           sq-primary-text-rgb: 220, 220, 220
           sq-primary-font-weight: 300
 
-          sq-secondary-text-rgb: 180, 180, 180
+          sq-secondary-text-rgb: 170, 170, 170
           sq-secondary-font-weight: 300
 
           sq-ripple-color: rgb(var(--sq-card-background-rgb))
