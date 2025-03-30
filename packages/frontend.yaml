@@ -93,18 +93,18 @@ frontend:
           sq-card-ripple-color: rgb(50, 50, 50)
 
           sq-idle-rgb: 10, 10, 10
-          sq-inactive-rgb: 90, 90, 90
+          sq-inactive-rgb: 80, 80, 80
 
-          sq-dialog-text-rgb: 30, 30, 30
+          sq-dialog-text-rgb: 50, 50, 50
           sq-dialog-header-font-weight: 400
 
-          sq-title-text-rgb: 30, 30, 30
+          sq-title-text-rgb: 50, 50, 50
           sq-title-font-weight: 300
 
           sq-primary-text-rgb: 10, 10, 10
           sq-primary-font-weight: 400
 
-          sq-secondary-text-rgb: 60, 60, 60
+          sq-secondary-text-rgb: 50, 50, 50
           sq-secondary-font-weight: 300
 
           sq-ripple-color: rgb(var(--sq-card-background-rgb))
