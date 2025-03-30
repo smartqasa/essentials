@@ -135,8 +135,8 @@ frontend:
           sq-card-box-shadow: none
           sq-card-ripple-color: rgb(210, 210, 210)
 
-          sq-idle-rgb: 200, 200, 200
-          sq-inactive-rgb: 140, 140, 140
+          sq-idle-rgb: 220, 220, 220
+          sq-inactive-rgb: 150, 150, 150
 
           sq-dialog-text-rgb: 180, 180, 180
           sq-dialog-header-font-weight: 400
@@ -144,10 +144,10 @@ frontend:
           sq-title-text-rgb: 180, 180, 180
           sq-title-font-weight: 300
 
-          sq-primary-text-rgb: 200, 200, 200
+          sq-primary-text-rgb: 220, 220, 220
           sq-primary-font-weight: 300
 
-          sq-secondary-text-rgb: 150, 150, 150
+          sq-secondary-text-rgb: 180, 180, 180
           sq-secondary-font-weight: 300
 
           sq-ripple-color: rgb(var(--sq-card-background-rgb))
