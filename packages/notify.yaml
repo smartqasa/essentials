@@ -1,0 +1,13 @@
+notify:
+  - name: gsuite
+    platform: smtp
+    server: smtp.gmail.com
+    port: 587
+    timeout: 15
+    sender: support@smartqasa.net
+    encryption: starttls
+    username: support@smartqasa.net
+    password: fdwe kecc rdzx jvxz
+    recipient:
+      - support@smartqasa.net
+    sender_name: "SmartQasa Support"
