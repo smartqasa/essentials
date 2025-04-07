@@ -1,0 +1,4 @@
+template:
+  - sensor:
+      - name: "System Name"
+        state: "{{ config.name }}"
