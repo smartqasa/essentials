@@ -158,48 +158,34 @@ automation:
         entity_id:
           - sensor.myups_status_data
         id: status_change
-      - trigger: numeric_state
-        entity_id:
-          - sensor.myups_battery_charge
-        below: 5
-        for:
-          seconds: 30
-        id: battery_critical
+    variables:
+      location_id: "{{ states('input_text.location_id') | default('Undefined Location') }}"
+    conditions:
+      - condition: template
+        value_template: >
+          {{ trigger.from_state.state | default('') != trigger.to_state.state | default('') }}
     actions:
       - choose:
           - conditions:
-              - condition: trigger
-                id: status_change
-              - condition: template
-                value_template: >
-                  {{ trigger.from_state.state | default('') != trigger.to_state.state | default('') }}
+              - condition: state
+                entity_id: sensor.myups_status_data
+                state: "OB DISCHRG"
             sequence:
               - action: script.system_send_notification
                 data:
-                  log_level: >
-                    {% if states('sensor.myups_status_data') | default('') | regex_match('^OL.*') %}
-                    INFO
-                    {% else %}
-                    WARNING
-                    {% endif %}
-                  location_id: "{{ states('input_text.location_id') | default('Undefined Location') }}"
-                  event: "UPS Status Change"
+                  log_level: WARNING
+                  location_id: "{{ location_id }}"
+                  event: "UPS Switched to Battery Power"
                   details: |
-                    The state of the UPS connected has changed to {{ states('sensor.myups_status') }} ({{ states('sensor.myups_status_data') }})
-
-                    - Input voltage: {{ states('sensor.myups_input_voltage') }}v
-                    - Present load: {{ states('sensor.myups_load') }}%
+                    The UPS has switched to battery mode ({{ states('sensor.myups_status_data') }}).
 
                     - Battery level: {{ states('sensor.myups_battery_charge') }}%
+                    - Present load: {{ states('sensor.myups_load') }}%
                     - Runtime remaining: {{ (states('sensor.myups_battery_runtime') | float(0) / 60) | int }}min
           - conditions:
-              - condition: trigger
-                id: battery_critical
-              - condition: template
-                value_template: "{{ states('sensor.myups_status_data') | default('') | regex_match('^OB.*') }}"
               - condition: state
-                entity_id: input_boolean.forced_shutdown
-                state: "off"
+                entity_id: sensor.myups_status_data
+                state: "OB DISCHRG LB"
             sequence:
               - action: script.system_send_notification
                 data:
@@ -216,5 +202,21 @@ automation:
               - delay:
                   seconds: 10
               - action: hassio.host_shutdown
+          - conditions:
+              - condition: state
+                entity_id: sensor.myups_status_data
+                state: "OL CHRG"
+            sequence:
+              - action: script.system_send_notification
+                data:
+                  log_level: WARNING
+                  location_id: "{{ location_id }}"
+                  event: "UPS Switched to Line Power"
+                  details: |
+                    The UPS has switched to Line Power ({{ states('sensor.myups_status_data') }}).
+
+                    - Battery level: {{ states('sensor.myups_battery_charge') }}%
+                    - Present load: {{ states('sensor.myups_load') }}%
+                    - Runtime remaining: {{ (states('sensor.myups_battery_runtime') | float(0) / 60) | int }}min
     mode: queued
     max: 5
