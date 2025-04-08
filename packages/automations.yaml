@@ -152,37 +152,32 @@ automation:
     mode: single
 
   - alias: System - Monitor UPS
-    description: "Sends notifications when the status of the UPS changes."
+    description: "Sends notification when the status of the UPS changes. Shuts down the server if the battery level is critically low."
     triggers:
-      - entity_id:
+      - trigger: state
+        entity_id:
           - sensor.myups_status_data
-        trigger: state
-        to: null
         id: status_change
       - trigger: numeric_state
         entity_id:
           - sensor.myups_battery_charge
-        from: 5
         below: 5
+        for:
+          seconds: 30
         id: battery_critical
-    conditions:
-      - condition: and
-        conditions:
-          - condition: trigger
-            id: status_change
-          - condition: template
-            value_template: >
-              {{ trigger.from_state.state | default('') != trigger.to_state.state | default('') }}
     actions:
       - choose:
           - conditions:
               - condition: trigger
                 id: status_change
+              - condition: template
+                value_template: >
+                  {{ trigger.from_state.state | default('') != trigger.to_state.state | default('') }}
             sequence:
               - action: script.send_notification
                 data:
                   log_level: >
-                    {% if states('sensor.myups_status_data') | default('') | string | trim | regex_match('^OL.*') %}
+                    {% if states('sensor.myups_status_data') | default('') | regex_match('^OL.*') %}
                     INFO
                     {% else %}
                     WARNING
@@ -200,6 +195,11 @@ automation:
           - conditions:
               - condition: trigger
                 id: battery_critical
+              - condition: template
+                value_template: "{{ states('sensor.myups_status_data') | default('') | regex_match('^OB.*') }}"
+              - condition: state
+                entity_id: input_boolean.forced_shutdown
+                state: "off"
             sequence:
               - action: script.send_notification
                 data:
@@ -210,12 +210,11 @@ automation:
                     The UPS battery level is critically low ({{ states('sensor.myups_battery_charge') }}%).
 
                     A shutdown command has been sent to the HA server.
-              - delay:
-                  seconds: 5
               - action: input_boolean.turn_on
                 target:
                   entity_id: input_boolean.forced_shutdown
               - delay:
-                  seconds: 5
+                  seconds: 10
               - action: hassio.host_shutdown
-    mode: single
+    mode: queued
+    max: 5
