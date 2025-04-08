@@ -202,8 +202,8 @@ script:
         description: "Volume level to restore after the duration"
         example: "0.5"
 
-  send_notification:
-    alias: Send Notification
+  system_send_notification:
+    alias: System Send Notification
     description: Sends a notification with the specified title and message
     fields:
       log_level:
@@ -221,5 +221,5 @@ script:
     sequence:
       - action: notify.smartqasa_support
         data:
-          title: "{{ log_level }}: {{ location_id }} - {{ details }}"
+          title: "{{ log_level }}: {{ location_id }} - {{ event }}"
           message: "{{ details }}"
