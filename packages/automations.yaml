@@ -212,8 +212,10 @@ automation:
                     A shutdown command has been sent to the HA server.
               - delay:
                   seconds: 5
-              - actions: input_boolean.turn_off
+              - actions: input_boolean.turn_on
                 target:
                   entity_id: input_boolean.forced_shutdown
+              - delay:
+                  seconds: 5
               - action: hassio.host_shutdown
     mode: single
