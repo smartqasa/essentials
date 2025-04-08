@@ -174,28 +174,29 @@ automation:
     mode: single
 
   - alias: Monitor - UPS Battery Switch Notification
-    description: ""
+    description: "Notifies when the UPS status changes (e.g., OL CHRGNG, OB)"
     triggers:
       - entity_id:
           - sensor.myups_status
         trigger: state
         to: null
     actions:
-      - action: notify.smartqasa_support
+      - action: script.send_notification
         data:
-          title: >
-            {% if states('sensor.myups_status_data') | default('') | string |
-            regex_match('^OL.*') %} INFO: {{ states('input_text.location_id') }} -
-            UPS Status Change {% else %} WARNING: {{
-            states('input_text.location_id') }} - UPS Status Change {% endif %}
+          severity: >
+            {% if states('sensor.myups_status_data') | default('') | string | trim | upper | regex_match('^OL.*') %}
+            INFO
+            {% else %}
+            WARNING
+            {% endif %}
+          location_id: "{{ states('input_text.location_id') | default('Undefined Location') }}"
+          title: "UPS Status Change"
           message: |
-            The state of the UPS connected has changed to {{
-            states('sensor.myups_status') }} ({{ states('sensor.myups_status_data')
-            }})
+            The state of the UPS connected has changed to {{ states('sensor.myups_status') }} ({{ states('sensor.myups_status_data') }})
 
-            - Input voltage: {{ states('sensor.myups_input_voltage') }}v 
+            - Input voltage: {{ states('sensor.myups_input_voltage') }}v
             - Present load: {{ states('sensor.myups_load') }}%
 
-            - Battery level: {{ states('sensor.myups_battery_charge') }}% 
+            - Battery level: {{ states('sensor.myups_battery_charge') }}%
             - Runtime remaining: {{ (states('sensor.myups_battery_runtime') | float(0) / 60) | int }}min
     mode: single
