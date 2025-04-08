@@ -152,14 +152,20 @@ automation:
     mode: single
 
   - alias: System - Monitor UPS
-    description: "Sends notification when the status of the UPS changes. Shuts down the server if the battery level is critically low."
+    description: >
+      Sends notification when the status of the UPS changes.
+      Shuts down the server if the battery level is critically low.
     triggers:
-      - trigger: state
-        entity_id:
-          - sensor.myups_status_data
+      - platform: state
+        entity_id: sensor.myups_status_data
         id: status_change
     variables:
+      ups_status: "{{ trigger.to_state.state | default('') }}"
+      status_list: "{{ ups_status.split(' ') }}"
       location_id: "{{ states('input_text.location_id') | default('Undefined Location') }}"
+      battery_level: "{{ states('sensor.myups_battery_charge') }}"
+      present_load: "{{ states('sensor.myups_load') }}"
+      runtime_min: "{{ (states('sensor.myups_battery_runtime') | float(0) / 60) | int }}"
     conditions:
       - condition: template
         value_template: >
@@ -167,33 +173,17 @@ automation:
     actions:
       - choose:
           - conditions:
-              - condition: state
-                entity_id: sensor.myups_status_data
-                state: "OB DISCHRG"
-            sequence:
-              - action: script.system_send_notification
-                data:
-                  log_level: WARNING
-                  location_id: "{{ location_id }}"
-                  event: "UPS Switched to Battery Power"
-                  details: |
-                    The UPS has switched to battery mode ({{ states('sensor.myups_status_data') }}).
-
-                    - Battery level: {{ states('sensor.myups_battery_charge') }}%
-                    - Present load: {{ states('sensor.myups_load') }}%
-                    - Runtime remaining: {{ (states('sensor.myups_battery_runtime') | float(0) / 60) | int }}min
-          - conditions:
-              - condition: state
-                entity_id: sensor.myups_status_data
-                state: "OB DISCHRG LB"
+              - condition: template
+                value_template: >
+                  {{ 'OB' in status_list and ('LB' in status_list or 'FSD' in status_list) }}
             sequence:
               - action: script.system_send_notification
                 data:
                   log_level: CRITICAL
-                  location_id: "{{ states('input_text.location_id') | default('Undefined Location') }}"
+                  location_id: "{{ location_id }}"
                   event: "UPS Battery Level Critical"
                   details: |
-                    The UPS battery level is critically low ({{ states('sensor.myups_battery_charge') }}%).
+                    The UPS battery level is critically low ({{ battery_level }}%).
 
                     A shutdown command has been sent to the HA server.
               - action: input_boolean.turn_on
@@ -203,9 +193,23 @@ automation:
                   seconds: 10
               - action: hassio.host_shutdown
           - conditions:
-              - condition: state
-                entity_id: sensor.myups_status_data
-                state: "OL CHRG"
+              - condition: template
+                value_template: "{{ 'OB' in status_list }}"
+            sequence:
+              - action: script.system_send_notification
+                data:
+                  log_level: WARNING
+                  location_id: "{{ location_id }}"
+                  event: "UPS Switched to Battery Power"
+                  details: |
+                    The UPS has switched to battery power and is discharging ({{ ups_status }}).
+
+                    - Battery level: {{ battery_level }}%
+                    - Present load: {{ present_load }}%
+                    - Runtime remaining: {{ runtime_min }}min
+          - conditions:
+              - condition: template
+                value_template: "{{ 'OL' in status_list and 'CHRG' in status_list }}"
             sequence:
               - action: script.system_send_notification
                 data:
@@ -213,10 +217,33 @@ automation:
                   location_id: "{{ location_id }}"
                   event: "UPS Switched to Line Power"
                   details: |
-                    The UPS has switched to Line Power ({{ states('sensor.myups_status_data') }}).
+                    The UPS has switched to line power and is charging ({{ ups_status }}).
 
-                    - Battery level: {{ states('sensor.myups_battery_charge') }}%
-                    - Present load: {{ states('sensor.myups_load') }}%
-                    - Runtime remaining: {{ (states('sensor.myups_battery_runtime') | float(0) / 60) | int }}min
+                    - Battery level: {{ battery_level }}%
+                    - Present load: {{ present_load }}%
+                    - Runtime remaining: {{ runtime_min }}min
+          - conditions:
+              - condition: template
+                value_template: "{{ ups_status == 'unavailable' }}"
+            sequence:
+              - action: script.system_send_notification
+                data:
+                  log_level: WARNING
+                  location_id: "{{ location_id }}"
+                  event: "UPS Status is Unavailable"
+                  details: |
+                    The status of the UPS has become unavailable.
+        default:
+          - action: script.system_send_notification
+            data:
+              log_level: INFO
+              location_id: "{{ location_id }}"
+              event: "UPS Status Update"
+              details: |
+                The UPS reported a new status: {{ ups_status }}
+
+                - Battery level: {{ battery_level }}%
+                - Present load: {{ present_load }}%
+                - Runtime remaining: {{ runtime_min }}min
     mode: queued
     max: 5
