@@ -172,3 +172,30 @@ automation:
         target:
           entity_id: cover.all_window_shades
     mode: single
+
+  - alias: Monitor - UPS Battery Switch Notification
+    description: ""
+    triggers:
+      - entity_id:
+          - sensor.myups_status
+        trigger: state
+        to: null
+    actions:
+      - action: notify.smartqasa_support
+        data:
+          title: >
+            {% if states('sensor.myups_status_data') | default('') | string |
+            regex_match('^OL.*') %} INFO: {{ states('input_text.location_id') }} -
+            UPS Status Change {% else %} WARNING: {{
+            states('input_text.location_id') }} - UPS Status Change {% endif %}
+          message: |
+            The state of the UPS connected has changed to {{
+            states('sensor.myups_status') }} ({{ states('sensor.myups_status_data')
+            }})
+
+            - Input voltage: {{ states('sensor.myups_input_voltage') }}v 
+            - Present load: {{ states('sensor.myups_load') }}%
+
+            - Battery level: {{ states('sensor.myups_battery_charge') }}% 
+            - Runtime remaining: {{ (states('sensor.myups_battery_runtime') | float(0) / 60) | int }}min
+    mode: single
