@@ -1,5 +1,5 @@
 notify:
-  - name: gsuite
+  - name: smartqasa_support
     platform: smtp
     server: smtp.gmail.com
     port: 587
