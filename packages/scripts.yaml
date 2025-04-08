@@ -203,7 +203,7 @@ script:
         example: "0.5"
 
   system_send_notification:
-    alias: System Send Notification
+    alias: System - Send Notification
     description: Sends a notification with the specified title and message
     fields:
       log_level:
