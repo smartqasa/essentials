@@ -213,7 +213,7 @@ automation:
             sequence:
               - action: script.system_send_notification
                 data:
-                  log_level: WARNING
+                  log_level: INFO
                   location_id: "{{ location_id }}"
                   event: "UPS Switched to Line Power"
                   details: |
