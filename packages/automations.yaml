@@ -201,7 +201,7 @@ automation:
                 entity_id: input_boolean.forced_shutdown
                 state: "off"
             sequence:
-              - action: script.send_notification
+              - action: script.system_send_notification
                 data:
                   log_level: CRITICAL
                   location_id: "{{ states('input_text.location_id') | default('Undefined Location') }}"
