@@ -206,20 +206,20 @@ script:
     alias: Send Notification
     description: Sends a notification with the specified title and message
     fields:
-      severity:
-        description: The severity level of the notification
+      log_level:
+        description: The log level of the notification (e.g., INFO, WARNING, ERROR)
         example: "INFO"
       location_id:
         description: The location ID for the notification
-        example: "cust.st.001"
-      title:
-        description: The title of the notification
+        example: "cust.st.001.01"
+      event:
+        description: The description of the event
         example: "UPS Status Change"
-      message:
-        description: The body of the notification message
+      details:
+        description: The details of the event
         example: "The state of the UPS has changed to OL (OL CHRGNG)"
     sequence:
       - action: notify.smartqasa_support
         data:
-          title: "{{ severity }}: {{ location_id }} - {{ title }}"
-          message: "{{ message }}"
+          title: "{{ log_level }}: {{ location_id }} - {{ details }}"
+          message: "{{ details }}"

@@ -173,30 +173,67 @@ automation:
           entity_id: cover.all_window_shades
     mode: single
 
-  - alias: Monitor - UPS Battery Switch Notification
-    description: "Notifies when the UPS status changes (e.g., OL CHRGNG, OB)"
+  - alias: Monitor - UPS Status Change
+    description: "Sends notifications when the status of the UPS changes."
     triggers:
       - entity_id:
-          - sensor.myups_status
+          - sensor.myups_status_data
         trigger: state
         to: null
+        id: status_change
+      - trigger: numeric_state
+        entity_id:
+          - sensor.myups_battery_charge
+        from: 5
+        below: 5
+        id: battery_critical
+    conditions:
+      - condition: and
+        conditions:
+          - condition: trigger
+            id: status_change
+          - condition: template
+            value_template: >
+              {{ trigger.from_state.state | default('') != trigger.to_state.state | default('') }}
     actions:
-      - action: script.send_notification
-        data:
-          severity: >
-            {% if states('sensor.myups_status_data') | default('') | string | trim | upper | regex_match('^OL.*') %}
-            INFO
-            {% else %}
-            WARNING
-            {% endif %}
-          location_id: "{{ states('input_text.location_id') | default('Undefined Location') }}"
-          title: "UPS Status Change"
-          message: |
-            The state of the UPS connected has changed to {{ states('sensor.myups_status') }} ({{ states('sensor.myups_status_data') }})
+      - choose:
+          - conditions:
+              - condition: trigger
+                id: status_change
+            sequence:
+              - action: script.send_notification
+                data:
+                  log_level: >
+                    {% if states('sensor.myups_status_data') | default('') | string | trim | regex_match('^OL.*') %}
+                    INFO
+                    {% else %}
+                    WARNING
+                    {% endif %}
+                  location_id: "{{ states('input_text.location_id') | default('Undefined Location') }}"
+                  event: "UPS Status Change"
+                  details: |
+                    The state of the UPS connected has changed to {{ states('sensor.myups_status') }} ({{ states('sensor.myups_status_data') }})
 
-            - Input voltage: {{ states('sensor.myups_input_voltage') }}v
-            - Present load: {{ states('sensor.myups_load') }}%
+                    - Input voltage: {{ states('sensor.myups_input_voltage') }}v
+                    - Present load: {{ states('sensor.myups_load') }}%
 
-            - Battery level: {{ states('sensor.myups_battery_charge') }}%
-            - Runtime remaining: {{ (states('sensor.myups_battery_runtime') | float(0) / 60) | int }}min
+                    - Battery level: {{ states('sensor.myups_battery_charge') }}%
+                    - Runtime remaining: {{ (states('sensor.myups_battery_runtime') | float(0) / 60) | int }}min
+          - conditions:
+              - condition: trigger
+                id: battery_critical
+            sequence:
+              - action: script.send_notification
+                data:
+                  log_level: CRITICAL
+                  location_id: "{{ states('input_text.location_id') | default('Undefined Location') }}"
+                  event: "UPS Battery Level Critical"
+                  details: |
+                    The UPS battery level is critically low ({{ states('sensor.myups_battery_charge') }}%).
+
+                    A shutdown command has been sent to the HA server.
+              - delay:
+                  seconds: 5
+              - action: hassio.host_shutdown
+                data: {}
     mode: single
