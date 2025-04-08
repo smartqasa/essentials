@@ -174,7 +174,7 @@ automation:
                 value_template: >
                   {{ trigger.from_state.state | default('') != trigger.to_state.state | default('') }}
             sequence:
-              - action: script.send_notification
+              - action: script.system_send_notification
                 data:
                   log_level: >
                     {% if states('sensor.myups_status_data') | default('') | regex_match('^OL.*') %}
