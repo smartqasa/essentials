@@ -3,6 +3,9 @@ input_boolean:
     name: Admin Mode
     icon: mdi:tools
     initial: false
+  forced_shutdown:
+    name: Forced Shutdown
+    icon: mdi:power
 
 input_button:
   reboot_devices:
