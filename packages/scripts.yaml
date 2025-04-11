@@ -222,4 +222,4 @@ script:
       - action: notify.smartqasa_support
         data:
           title: "{{ log_level }}: {{ location_id }} - {{ event }}"
-          message: "{{ details | replace('\n\n', '\n') }}"
+          message: "{{ details }}"
