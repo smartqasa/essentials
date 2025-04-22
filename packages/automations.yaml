@@ -19,9 +19,9 @@ automation:
       - action: frontend.set_theme
         data:
           name: SmartQasa
-      # Wait for 2 minutes
+      # Wait for 5 minutes
       - delay:
-          minutes: 3
+          minutes: 5
       # Refresh Devices
       - action: input_button.press
         target:
