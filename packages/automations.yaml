@@ -97,6 +97,10 @@ automation:
 
   - alias: "System - Toggle Tablet Screens for Light/Dark Mode"
     mode: single
+    variables:
+      tablet_screens: >-
+        {{ states.switch | selectattr("entity_id", "search",
+        "tablet_screen$") | map(attribute="entity_id") | list }}
     trigger:
       - trigger: sun
         event: sunrise
@@ -107,16 +111,12 @@ automation:
     action:
       - action: switch.turn_off
         target:
-          entity_id: >-
-            {{ states.switch|selectattr("entity_id", "search",
-            "tablet_screen$")|map(attribute="entity_id")|list }}
+          entity_id: "{{ tablet_screens }}"
       - delay:
           seconds: 1
       - action: switch.turn_on
         target:
-          entity_id: >-
-            {{ states.switch|selectattr("entity_id", "search",
-            "tablet_screen$")|map(attribute="entity_id")|list }}
+          entity_id: "{{ tablet_screens }}"
 
   - alias: "System - Refresh Devices on Lovelace update"
     mode: single
