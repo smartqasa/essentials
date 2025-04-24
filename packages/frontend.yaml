@@ -10,6 +10,9 @@ frontend:
       sq-panel-grid-gap: 0.7rem
 
       # Dialogs
+      sq-dialog-min-width: 36rem
+      sq-dialog-backdrop-color: rgba(0, 0, 0, 0.2)
+      sq-dialog-backdrop-filter: blur(10px)
       sq-dialog-border: var(--sq-dialog-border-width) var(--sq-dialog-border-style) rgb(var(--sq-dialog-border-rgb))
       sq-dialog-border-radius: 1.5rem
       sq-dialog-background-color: rgba(var(--sq-dialog-background-rgb), var(--sq-dialog-background-opacity))
@@ -255,7 +258,7 @@ frontend:
       dialog-border-style: var(--sq-dialog-border-style)
       dialog-border-color: rgb(var(--sq-dialog-border-rgb))
       dialog-box-shadow: var(--sq-dialog-box-shadow)
-      dialog-backdrop-filter: blur(10px)
+      dialog-backdrop-filter: var(--sq-dialog-backdrop-filter)
       iron-overlay-backdrop-opacity: 1
       iron-overlay-backdrop-background-color: rgba(0, 0, 0, 0.2)
 
