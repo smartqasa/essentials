@@ -140,12 +140,12 @@ frontend:
           sq-card-box-shadow: none
           sq-card-ripple-color: rgb(210, 210, 210)
 
-          sq-idle-rgb: 210, 210, 210
+          sq-idle-rgb: 220, 220, 220
           sq-inactive-rgb: 150, 150, 150
 
           sq-dialog-text-rgb: 170, 170, 170
           sq-title-text-rgb: 170, 170, 170
-          sq-primary-text-rgb: 210, 210, 210
+          sq-primary-text-rgb: 220, 220, 220
           sq-secondary-text-rgb: 170, 170, 170
 
           sq-primary-font-weight: 300
