@@ -16,7 +16,7 @@ frontend:
       sq-dialog-border: var(--sq-dialog-border-width) var(--sq-dialog-border-style) rgb(var(--sq-dialog-border-rgb))
       sq-dialog-border-radius: 1.5rem
       sq-dialog-background-color: rgba(var(--sq-dialog-background-rgb), var(--sq-dialog-background-opacity))
-      sq-dialog-padding: 1.0rem
+      sq-dialog-padding: 1.5rem
       sq-dialog-grid-gap: 0.7rem
 
       # Cards
