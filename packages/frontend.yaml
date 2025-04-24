@@ -140,12 +140,12 @@ frontend:
           sq-card-box-shadow: none
           sq-card-ripple-color: rgb(210, 210, 210)
 
-          sq-idle-rgb: 220, 220, 220
+          sq-idle-rgb: 200, 200, 200
           sq-inactive-rgb: 150, 150, 150
 
           sq-dialog-text-rgb: 170, 170, 170
           sq-title-text-rgb: 170, 170, 170
-          sq-primary-text-rgb: 220, 220, 220
+          sq-primary-text-rgb: 200, 200, 200
           sq-secondary-text-rgb: 170, 170, 170
 
           sq-ripple-color: rgb(var(--sq-card-background-rgb))
