@@ -10,14 +10,14 @@ frontend:
       sq-panel-grid-gap: 0.7rem
 
       # Dialogs
-      sq-dialog-min-width: 36rem
-      sq-dialog-backdrop-color: rgba(0, 0, 0, 0.2)
-      sq-dialog-backdrop-filter: blur(10px)
-      sq-dialog-border: var(--sq-dialog-border-width) var(--sq-dialog-border-style) rgb(var(--sq-dialog-border-rgb))
-      sq-dialog-border-radius: 1.5rem
-      sq-dialog-background-color: rgba(var(--sq-dialog-background-rgb), var(--sq-dialog-background-opacity))
-      sq-dialog-padding: 1.5rem
-      sq-dialog-grid-gap: 0.7rem
+      sq-popup-min-width: 36rem
+      sq-popup-backdrop-color: rgba(0, 0, 0, 0.2)
+      sq-popup-backdrop-filter: blur(10px)
+      sq-popup-border: var(--sq-popup-border-width) var(--sq-popup-border-style) rgb(var(--sq-popup-border-rgb))
+      sq-popup-border-radius: 1.5rem
+      sq-popup-background-color: rgba(var(--sq-popup-background-rgb), var(--sq-popup-background-opacity))
+      sq-popup-padding: 1.5rem
+      sq-popup-grid-gap: 0.7rem
 
       # Cards
       sq-card-padding: 1rem
@@ -42,17 +42,17 @@ frontend:
       sq-chip-border-radius: calc((var(--sq-icon-size) + (var(--sq-icon-padding) * 2) + 5px) / 2)
 
       # Fonts
-      sq-dialog-header-font-size: 25px
-      sq-dialog-header-font-weight: 400
+      sq-popup-header-font-size: 25px
+      sq-popup-header-font-weight: 400
 
       sq-title-font-size: 3.2rem
-      sq-dialog-font-size: 1.6rem
+      sq-popup-font-size: 1.6rem
       sq-primary-font-size: 1.4rem
       sq-secondary-font-size: 1.1rem
       sq-button-font-size: 1rem
 
       sq-title-font-weight: 300
-      sq-dialog-font-weight: 400
+      sq-popup-font-weight: 400
       sq-primary-font-weight: 400
       sq-secondary-font-weight: 300
       sq-button-font-weight: 300
@@ -87,12 +87,12 @@ frontend:
 
           sq-panel-color: rgb(240, 245, 240)
 
-          sq-dialog-background-rgb: 220, 220, 220
-          sq-dialog-background-opacity: 0.9
-          sq-dialog-border-width: 0px
-          sq-dialog-border-style: none
-          sq-dialog-border-rgb: 170, 170, 170
-          sq-dialog-box-shadow: none
+          sq-popup-background-rgb: 220, 220, 220
+          sq-popup-background-opacity: 0.9
+          sq-popup-border-width: 0px
+          sq-popup-border-style: none
+          sq-popup-border-rgb: 170, 170, 170
+          sq-popup-box-shadow: none
 
           sq-font-weight-dialog-header: 300
 
@@ -107,7 +107,7 @@ frontend:
           sq-idle-rgb: 10, 10, 10
           sq-inactive-rgb: 80, 80, 80
 
-          sq-dialog-text-rgb: 60, 60, 60
+          sq-popup-text-rgb: 60, 60, 60
           sq-title-text-rgb: 60, 60, 60
           sq-primary-text-rgb: 10, 10, 10
           sq-secondary-text-rgb: 60, 60, 60
@@ -125,12 +125,12 @@ frontend:
 
           sq-panel-color: rgb(20, 25, 20)
 
-          sq-dialog-background-rgb: 25, 25, 25
-          sq-dialog-background-opacity: 0.9
-          sq-dialog-border-width: 0px
-          sq-dialog-border-style: solid
-          sq-dialog-border-rgb: 0, 0, 0
-          sq-dialog-box-shadow: none
+          sq-popup-background-rgb: 25, 25, 25
+          sq-popup-background-opacity: 0.9
+          sq-popup-border-width: 0px
+          sq-popup-border-style: solid
+          sq-popup-border-rgb: 0, 0, 0
+          sq-popup-box-shadow: none
 
           sq-card-background-rgb: 55, 55, 55
           sq-card-background-opacity: 0.75
@@ -143,7 +143,7 @@ frontend:
           sq-idle-rgb: 220, 220, 220
           sq-inactive-rgb: 150, 150, 150
 
-          sq-dialog-text-rgb: 170, 170, 170
+          sq-popup-text-rgb: 170, 170, 170
           sq-title-text-rgb: 170, 170, 170
           sq-primary-text-rgb: 220, 220, 220
           sq-secondary-text-rgb: 170, 170, 170
@@ -218,7 +218,7 @@ frontend:
       sq-unavailable-rgb: var(--sq-magenta-rgb)
 
       # HA Cards
-      ha-dialog-border-radius: var(--sq-dialog-border-radius)
+      ha-dialog-border-radius: var(--sq-popup-border-radius)
       ha-card-background: var(--sq-card-background-color)
       ha-card-border-width: var(--sq-card-border-width)
       ha-card-border-style: var(--sq-card-border-style)
@@ -241,20 +241,20 @@ frontend:
       # Browser Mod Popup
       popup-min-width: 36rem
       popup-max-width: 95vw
-      popup-border-width: var(--sq-dialog-border-width)
-      popup-border-style: var(--sq-dialog-border-style)
-      popup-border-color: rgb(var(--sq-dialog-border-rgb))
-      popup-border-radius: var(--sq-dialog-border-radius)
-      popup-background-color: var(--sq-dialog-background-color)
+      popup-border-width: var(--sq-popup-border-width)
+      popup-border-style: var(--sq-popup-border-style)
+      popup-border-color: rgb(var(--sq-popup-border-rgb))
+      popup-border-radius: var(--sq-popup-border-radius)
+      popup-background-color: var(--sq-popup-background-color)
       popup-padding-x: 1rem
       popup-padding-y: 1rem
 
       # Dialog
-      dialog-border-width: var(--sq-dialog-border-width)
-      dialog-border-style: var(--sq-dialog-border-style)
-      dialog-border-color: rgb(var(--sq-dialog-border-rgb))
-      dialog-box-shadow: var(--sq-dialog-box-shadow)
-      dialog-backdrop-filter: var(--sq-dialog-backdrop-filter)
+      dialog-border-width: var(--sq-popup-border-width)
+      dialog-border-style: var(--sq-popup-border-style)
+      dialog-border-color: rgb(var(--sq-popup-border-rgb))
+      dialog-box-shadow: var(--sq-popup-box-shadow)
+      dialog-backdrop-filter: var(--sq-popup-backdrop-filter)
       iron-overlay-backdrop-opacity: 1
       iron-overlay-backdrop-background-color: rgba(0, 0, 0, 0.2)
 
@@ -321,9 +321,9 @@ frontend:
       # MDC
       mdc-radio-unchecked-color: rgb(var(--sq-inactive-rgb))
       mdc-theme-text-primary-on-background: rgb(var(--sq-primary-text-rgb))
-      mdc-dialog-box-shadow: var(--sq-dialog-box-shadow)
+      mdc-dialog-box-shadow: var(--sq-popup-box-shadow)
       mdc-typography-button-font-size: var(--sq-button-font-size)
-      mdc-theme-surface: var(--sq-dialog-background-color)
+      mdc-theme-surface: var(--sq-popup-background-color)
       mdc-theme-on-surface: rgb(var(--sq-primary-text-rgb))
       mdc-theme-background: rgb(var(--sq-primary-background-rgb))
       mdc-icon-size: var(--sq-icon-size)
