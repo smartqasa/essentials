@@ -29,7 +29,7 @@ frontend:
       # Tiles
       sq-tile-height: 7rem
       sq-tile-width: min(21vw, 19.5rem)
-      sq-tile-padding: 1rem
+      sq-tile-padding: 1.2rem
       sq-tile-spacing: 0.8rem
       sq-tile-border: var(--sq-card-border-width) var(--sq-card-border-style) rgb(var(--sq-card-border-rgb))
       sq-tile-border-radius: 1.5rem
