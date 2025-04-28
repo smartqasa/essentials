@@ -10,7 +10,8 @@ frontend:
       sq-panel-grid-gap: 0.7rem
 
       # Dialogs
-      sq-popup-min-width: 37rem
+      sq-min-width: 36rem
+      sq-max-width: 90vw
       sq-popup-backdrop-color: rgba(0, 0, 0, 0.2)
       sq-popup-backdrop-filter: blur(10px)
       sq-popup-border: var(--sq-popup-border-width) var(--sq-popup-border-style) rgb(var(--sq-popup-border-rgb))
