@@ -41,6 +41,12 @@ frontend:
       sq-chip-border: var(--sq-card-border-width) var(--sq-card-border-style) rgb(var(--sq-card-border-rgb))
       sq-chip-border-radius: calc((var(--sq-icon-size) + (var(--sq-icon-padding) * 2) + 5px) / 2)
 
+      # Buttons
+      sq-button-spacing: calc(var(--sq-tile-spacing) / 2)
+      sq-button-padding: var(--sq-tile-padding)
+      sq-button-border: var(--sq-card-border-width) var(--sq-card-border-style) rgb(var(--sq-card-border-rgb))
+      sq-button-border-radius: calc((var(--sq-icon-size) + (var(--sq-icon-padding) * 2) + 5px) / 2)
+
       # Fonts
       sq-popup-header-font-size: 25px
       sq-popup-header-font-weight: 400
@@ -49,7 +55,7 @@ frontend:
       sq-popup-font-size: 1.8rem
       sq-primary-font-size: 1.4rem
       sq-secondary-font-size: 1.1rem
-      sq-button-font-size: 1rem
+      sq-button-font-size: 1.2rem
 
       sq-title-font-weight: 300
       sq-popup-font-weight: 400
