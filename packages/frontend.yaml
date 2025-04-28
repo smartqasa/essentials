@@ -15,7 +15,7 @@ frontend:
       sq-popup-backdrop-filter: blur(10px)
       sq-popup-border: var(--sq-popup-border-width) var(--sq-popup-border-style) rgb(var(--sq-popup-border-rgb))
       sq-popup-border-radius: 1.5rem
-      sq-popup-background-color: rgba(var(--sq-popup-background-rgb), var(--sq-popup-background-opacity))
+      sq-popup-background-color: rgba(var(--sq-popup-background-rgb), var(--sq-popup-background-alpha))
       sq-popup-padding: 1.5rem
       sq-popup-grid-gap: 0.7rem
 
@@ -24,7 +24,7 @@ frontend:
       sq-card-spacing: 0.8rem
       sq-card-border: var(--sq-card-border-width) var(--sq-card-border-style) rgb(var(--sq-card-border-rgb))
       sq-card-border-radius: 1.5rem
-      sq-card-background-color: rgba(var(--sq-card-background-rgb), var(--sq-card-background-opacity))
+      sq-card-background-color: rgba(var(--sq-card-background-rgb), var(--sq-card-background-alpha))
 
       # Tiles
       sq-tile-height: 7rem
@@ -33,7 +33,7 @@ frontend:
       sq-tile-spacing: 0.8rem
       sq-tile-border: var(--sq-card-border-width) var(--sq-card-border-style) rgb(var(--sq-card-border-rgb))
       sq-tile-border-radius: 1.5rem
-      sq-tile-background-color: rgba(var(--sq-card-background-rgb), var(--sq-card-background-opacity))
+      sq-tile-background-color: rgba(var(--sq-card-background-rgb), var(--sq-card-background-alpha))
 
       # Chips
       sq-chip-spacing: calc(var(--sq-tile-spacing) / 2)
@@ -94,6 +94,7 @@ frontend:
           sq-panel-color: rgb(240, 245, 240)
 
           sq-popup-background-rgb: 220, 220, 220
+          sq-popup-background-alpha: 0.9
           sq-popup-background-opacity: 0.9
           sq-popup-border-width: 0px
           sq-popup-border-style: none
@@ -103,6 +104,7 @@ frontend:
           sq-font-weight-dialog-header: 300
 
           sq-card-background-rgb: 250, 250, 250
+          sq-card-background-alpha: 0.60
           sq-card-background-opacity: 0.60
           sq-card-border-width: 1px
           sq-card-border-style: solid
@@ -133,6 +135,7 @@ frontend:
 
           sq-popup-background-rgb: 25, 25, 25
           sq-popup-progress-rgb: 40, 40, 40
+          sq-popup-background-alpha: 0.9
           sq-popup-background-opacity: 0.9
           sq-popup-border-width: 0px
           sq-popup-border-style: solid
@@ -140,12 +143,17 @@ frontend:
           sq-popup-box-shadow: none
 
           sq-card-background-rgb: 55, 55, 55
+          sq-card-background-alpha: 0.75
           sq-card-background-opacity: 0.75
           sq-card-border-width: 1px
           sq-card-border-style: solid
           sq-card-border-rgb: 60, 60, 60
           sq-card-box-shadow: none
           sq-card-ripple-color: rgb(210, 210, 210)
+
+          sq-button-background-rgb: var(--sq-card-background-rgb)
+          sq-button-background-alpha: 0.5
+          sq-button-background-opacity: 0.5
 
           sq-idle-rgb: 220, 220, 220
           sq-inactive-rgb: 150, 150, 150
