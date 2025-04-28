@@ -69,7 +69,6 @@ frontend:
       sq-icon-image: calc(var(--sq-icon-size) + (var(--sq-icon-padding) * 2))
       sq-icon-border-radius: 50%
       sq-icon-alpha: 0.2
-      sq-icon-opacity: 0.2
       sq-icon-transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out
 
       # Colors
@@ -95,7 +94,6 @@ frontend:
 
           sq-popup-background-rgb: 220, 220, 220
           sq-popup-background-alpha: 0.9
-          sq-popup-background-opacity: 0.9
           sq-popup-border-width: 0px
           sq-popup-border-style: none
           sq-popup-border-rgb: 170, 170, 170
