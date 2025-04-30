@@ -1,11 +1,11 @@
 lovelace:
   mode: yaml
   resources:
-    - url: /hacsfiles/dash-loader/loader.js?v=2025.03.26
+    - url: /hacsfiles/dash-loader/loader.js
       type: module
-    - url: /hacsfiles/dash-elements/elements.js?v=2025.03.25
+    - url: /hacsfiles/dash-elements/elements.js
       type: module
-    - url: /hacsfiles/maxi-media-player/maxi-media-player.js?v=2025.03.18
+    - url: /hacsfiles/maxi-media-player/maxi-media-player.js
       type: module
-    - url: /hacsfiles/weather-radar-card/weather-radar-card.js?v=2025.03.18
+    - url: /hacsfiles/weather-radar-card/weather-radar-card.js
       type: module
