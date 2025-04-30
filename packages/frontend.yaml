@@ -115,8 +115,6 @@ frontend:
           sq-button-background-rgb: var(--sq-card-background-rgb)
           sq-button-background-alpha: 0.4
 
-          ha-assist-chip-filled-container-color: rgba(195, 195, 195, 0.5)
-
           sq-idle-rgb: 10, 10, 10
           sq-inactive-rgb: 90, 90, 90
 
@@ -131,7 +129,7 @@ frontend:
           sq-primary-rgb: 160, 160, 160
           sq-secondary-rgb: 140, 140, 140
           sq-primary-background-rgb: 25, 25, 25
-          sq-secondary-background-rgb: 55, 55, 55
+          sq-secondary-background-rgb: 60, 65, 65
           sq-app-header-background-rgb: 60, 55, 55
           app-header-background-color: "#3c3737"
           sq-divider-rgb: 50, 50, 50
@@ -158,8 +156,6 @@ frontend:
 
           sq-button-background-rgb: var(--sq-card-background-rgb)
           sq-button-background-alpha: 0.4
-
-          ha-assist-chip-filled-container-color: rgba(80, 80, 80, 0.5)
 
           sq-idle-rgb: 220, 220, 220
           sq-inactive-rgb: 140, 140, 140
@@ -258,6 +254,9 @@ frontend:
       accent-color: rgb(var(--sq-accent-rgb))
       divider-color: rgb(var(--sq-divider-rgb))
       secondary-background-color: rgb(var(--sq-secondary-background-rgb))
+
+      # HA Misc
+      ha-assist-chip-filled-container-color: rgba(var(--sq-inactive-rgb), var(sq-card-background-alpha))
 
       # Browser Mod Popup
       popup-min-width: 36rem
