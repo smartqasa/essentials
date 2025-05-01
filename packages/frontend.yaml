@@ -38,7 +38,7 @@ frontend:
 
       # Chips
       sq-chip-spacing: calc(var(--sq-tile-spacing) / 2)
-      sq-chip-padding: var(--sq-tile-padding)
+      sq-chip-padding: 1.1rem
       sq-chip-border: var(--sq-card-border-width) var(--sq-card-border-style) rgb(var(--sq-card-border-rgb))
       sq-chip-border-radius: calc((var(--sq-icon-size) + (var(--sq-icon-padding) * 2) + 5px) / 2)
       sq-chip-background-color: rgba(var(--sq-card-background-rgb), var(--sq-card-background-alpha))
