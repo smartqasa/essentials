@@ -360,4 +360,4 @@ frontend:
       mdc-tab-text-label-color-default: rgb(var(--sq-secondary-text-rgb))
 
       #Swiper
-      swiper-navigation-color: rgb(var(--sq-inactive-rgb))
+      swiper-navigation-color: rgb(var(--sq-card-background-rgb))
