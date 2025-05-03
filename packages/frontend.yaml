@@ -22,7 +22,7 @@ frontend:
 
       # Cards
       sq-card-padding: 1rem
-      sq-card-spacing: 0.8rem
+      sq-card-spacing: 0.7rem
       sq-card-border: var(--sq-card-border-width) var(--sq-card-border-style) rgb(var(--sq-card-border-rgb))
       sq-card-border-radius: 1.5rem
       sq-card-background-color: rgba(var(--sq-card-background-rgb), var(--sq-card-background-alpha))
@@ -31,13 +31,13 @@ frontend:
       sq-tile-height: 7rem
       sq-tile-width: min(21vw, 19.5rem)
       sq-tile-padding: 1.2rem
-      sq-tile-spacing: 0.8rem
+      sq-tile-spacing: 0.7rem
       sq-tile-border: var(--sq-card-border-width) var(--sq-card-border-style) rgb(var(--sq-card-border-rgb))
       sq-tile-border-radius: 1.5rem
       sq-tile-background-color: rgba(var(--sq-card-background-rgb), var(--sq-card-background-alpha))
 
       # Chips
-      sq-chip-spacing: calc(var(--sq-tile-spacing) / 2)
+      sq-chip-spacing: 0.4rem
       sq-chip-padding: 1.1rem
       sq-chip-border: var(--sq-card-border-width) var(--sq-card-border-style) rgb(var(--sq-card-border-rgb))
       sq-chip-border-radius: calc((var(--sq-icon-size) + (var(--sq-icon-padding) * 2) + 5px) / 2)
