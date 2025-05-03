@@ -243,6 +243,7 @@ frontend:
       ha-card-border-radius: var(--sq-card-border-radius)
       ha-card-box-shadow: var(--sq-card-box-shadow)
       ha-card-header-font-size: var(--sq-primary-font-size)
+      grid-card-gap: var(--sq-card-spacing)
 
       # HA Text
       primary-text-color: rgb(var(--sq-primary-text-rgb))
