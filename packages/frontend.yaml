@@ -145,7 +145,7 @@ frontend:
           sq-popup-border-rgb: 0, 0, 0
           sq-popup-box-shadow: none
 
-          sq-card-background-rgb: 55, 55, 55
+          sq-card-background-rgb: 55, 55, 60
           sq-card-background-alpha: 0.75
           sq-card-background-opacity: 0.75
           sq-card-border-width: 1px
