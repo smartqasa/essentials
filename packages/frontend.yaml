@@ -44,7 +44,7 @@ frontend:
       sq-chip-background-color: rgba(var(--sq-card-background-rgb), var(--sq-card-background-alpha))
 
       # Buttons
-      sq-button-spacing: 0.4rem
+      sq-button-spacing: 0.3rem
       sq-button-padding: var(--sq-tile-padding)
       sq-button-border: var(--sq-card-border-width) var(--sq-card-border-style) rgb(var(--sq-card-border-rgb))
       sq-button-border-radius: calc((var(--sq-icon-size) + (var(--sq-icon-padding) * 2) + 5px) / 2)
