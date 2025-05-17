@@ -86,6 +86,7 @@ frontend:
       modes:
         light:
           sq-primary-rgb: 70, 70, 60
+          primary-color: "#46463C"
           sq-secondary-rgb: 60, 60, 70
           sq-primary-background-rgb: 180, 180, 180
           sq-secondary-background-rgb: 205, 200, 200
@@ -127,6 +128,7 @@ frontend:
 
         dark:
           sq-primary-rgb: 160, 160, 160
+          primary-color: "#a0a0a0"
           sq-secondary-rgb: 140, 140, 140
           sq-primary-background-rgb: 25, 25, 25
           sq-secondary-background-rgb: 60, 65, 65
@@ -251,7 +253,6 @@ frontend:
       disabled-text-color: rgb(var(--sq-inactive-rgb))
 
       # HA Main Interface
-      primary-color: rgb(var(--sq-primary-rgb))
       accent-color: rgb(var(--sq-accent-rgb))
       divider-color: rgb(var(--sq-divider-rgb))
       secondary-background-color: rgb(var(--sq-secondary-background-rgb))
