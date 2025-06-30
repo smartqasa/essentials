@@ -19,9 +19,9 @@ automation:
       - action: frontend.set_theme
         data:
           name: SmartQasa
-      # Wait for 5 minutes
+      # Wait for 2 minute
       - delay:
-          minutes: 5
+          minutes: 2
       # Refresh Devices
       - action: input_button.press
         target:
@@ -49,7 +49,7 @@ automation:
             target:
               entity_id: input_button.reboot_devices
           - delay:
-              minutes: 10
+              minutes: 2
           - action: hassio.host_reboot
         else:
           - action: homeassistant.restart
