@@ -54,11 +54,11 @@ frontend:
       sq-popup-header-font-size: 25px
       sq-popup-header-font-weight: 400
 
-      sq-title-font-size: 3.2rem
-      sq-popup-font-size: 1.8rem
-      sq-primary-font-size: 1.4rem
-      sq-secondary-font-size: 1.1rem
-      sq-button-font-size: 1.4rem
+      sq-title-font-size: min(3.2rem, 50px)
+      sq-popup-font-size: min(1.8rem, 28px)
+      sq-primary-font-size: min(1.4rem, 22px)
+      sq-secondary-font-size: min(1.1rem, 18px)
+      sq-button-font-size: min(1.4rem, 22px)
 
       sq-title-font-weight: 300
       sq-popup-font-weight: 400
@@ -261,8 +261,6 @@ frontend:
       ha-assist-chip-filled-container-color: rgba(var(--sq-inactive-rgb), var(sq-card-background-alpha))
 
       # Browser Mod Popup
-      popup-min-width: 10rem
-      popup-max-width: 95vw
       popup-border-width: var(--sq-popup-border-width)
       popup-border-style: var(--sq-popup-border-style)
       popup-border-color: rgb(var(--sq-popup-border-rgb))
