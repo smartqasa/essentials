@@ -136,7 +136,7 @@ frontend:
           app-header-background-color: "#3c3737"
           sq-divider-rgb: 50, 50, 50
 
-          sq-panel-color: rgb(20, 25, 20)
+          sq-panel-color: rgb(25, 25, 25)
 
           sq-popup-background-rgb: 25, 25, 25
           sq-popup-progress-rgb: 40, 40, 40
