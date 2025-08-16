@@ -72,7 +72,7 @@ frontend:
       sq-icon-image: calc(var(--sq-icon-size) + (var(--sq-icon-padding) * 2))
       sq-icon-border-radius: 50%
       sq-icon-alpha: 0.2
-      sq-icon-transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out
+      sq-icon-transition: background-color 0.5s, color 0.5s, ease-in-out 0.5s
 
       # Colors
       sq-accent-rgb: 0, 120, 230
