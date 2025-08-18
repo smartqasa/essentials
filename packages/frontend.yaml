@@ -96,7 +96,7 @@ frontend:
 
           sq-panel-color: rgb(223, 218, 206)
 
-          sq-popup-background-rgb: 220, 220, 220
+          sq-popup-background-rgb: 223, 218, 206
           sq-popup-background-alpha: 0.9
           sq-popup-border-width: 0px
           sq-popup-border-style: none
@@ -136,9 +136,9 @@ frontend:
           app-header-background-color: "#3c3737"
           sq-divider-rgb: 50, 50, 50
 
-          sq-panel-color: rgb(25, 25, 25)
+          sq-panel-color: rgb(28, 28, 28)
 
-          sq-popup-background-rgb: 25, 25, 25
+          sq-popup-background-rgb: 28, 28, 28
           sq-popup-progress-rgb: 40, 40, 40
           sq-popup-background-alpha: 0.9
           sq-popup-background-opacity: 0.9
