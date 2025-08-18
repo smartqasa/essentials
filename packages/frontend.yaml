@@ -68,7 +68,7 @@ frontend:
 
       # Icons
       sq-icon-size: 24px
-      sq-icon-padding: 16px
+      sq-icon-padding: 14px
       sq-icon-image-size: calc(var(--sq-icon-size) + var(--sq-icon-padding) * 2)
       sq-icon-border-radius: 50%
       sq-icon-alpha: 0.2
