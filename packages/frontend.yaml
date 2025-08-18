@@ -15,37 +15,37 @@ frontend:
       sq-popup-backdrop-color: rgba(0, 0, 0, 0.2)
       sq-popup-backdrop-filter: blur(10px)
       sq-popup-border: var(--sq-popup-border-width) var(--sq-popup-border-style) rgb(var(--sq-popup-border-rgb))
-      sq-popup-border-radius: 1.5rem
+      sq-popup-border-radius: 20px
       sq-popup-background-color: rgba(var(--sq-popup-background-rgb), var(--sq-popup-background-alpha))
-      sq-popup-padding: 1.5rem
-      sq-popup-grid-gap: 0.7rem
+      sq-popup-padding: 20px
+      sq-popup-grid-gap: 10px
 
       # Cards
-      sq-card-padding: 1rem
-      sq-card-spacing: 0.8rem
+      sq-card-padding: 16px
+      sq-card-spacing: 12px
       sq-card-border: var(--sq-card-border-width) var(--sq-card-border-style) rgb(var(--sq-card-border-rgb))
       sq-card-border-radius: 1.5rem
       sq-card-background-color: rgba(var(--sq-card-background-rgb), var(--sq-card-background-alpha))
 
       # Tiles
-      sq-tile-height: 100px
+      sq-tile-height: 104px
       sq-tile-width: min(21vw, 19.5rem)
-      sq-tile-padding: 1.2rem
-      sq-tile-spacing: 0.8rem
+      sq-tile-padding: 16px
+      sq-tile-spacing: 12px
       sq-tile-border: var(--sq-card-border-width) var(--sq-card-border-style) rgb(var(--sq-card-border-rgb))
       sq-tile-border-radius: 1.5rem
       sq-tile-background-color: rgba(var(--sq-card-background-rgb), var(--sq-card-background-alpha))
 
       # Chips
-      sq-chip-spacing: 0.4rem
-      sq-chip-padding: 1.1rem
+      sq-chip-padding: 16px
+      sq-chip-spacing: 4px
       sq-chip-border: var(--sq-card-border-width) var(--sq-card-border-style) rgb(var(--sq-card-border-rgb))
       sq-chip-border-radius: calc((var(--sq-icon-size) + (var(--sq-icon-padding) * 2) + 5px) / 2)
       sq-chip-background-color: rgba(var(--sq-card-background-rgb), var(--sq-card-background-alpha))
 
       # Buttons
-      sq-button-spacing: 0.3rem
       sq-button-padding: var(--sq-tile-padding)
+      sq-button-spacing: 4px
       sq-button-border: var(--sq-card-border-width) var(--sq-card-border-style) rgb(var(--sq-card-border-rgb))
       sq-button-border-radius: calc((var(--sq-icon-size) + (var(--sq-icon-padding) * 2) + 5px) / 2)
       sq-button-background-color: rgba(var(--sq-button-background-rgb), var(--sq-button-background-alpha))
