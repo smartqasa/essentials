@@ -94,7 +94,7 @@ frontend:
           app-header-background-color: "#afaaaa"
           sq-divider-rgb: 160, 160, 160
 
-          sq-panel-color: rgb(225, 225, 220)
+          sq-panel-color: rgb(223, 218, 206)
 
           sq-popup-background-rgb: 220, 220, 220
           sq-popup-background-alpha: 0.9
