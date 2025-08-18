@@ -7,7 +7,7 @@ frontend:
   themes:
     SmartQasa:
       # Panel
-      sq-panel-grid-gap: 0.7rem
+      sq-panel-grid-gap: 10px
 
       # Dialogs
       sq-popup-min-width: 36vw
