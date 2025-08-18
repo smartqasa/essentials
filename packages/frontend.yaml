@@ -54,11 +54,11 @@ frontend:
       sq-popup-header-font-size: 25px
       sq-popup-header-font-weight: 400
 
-      sq-title-font-size: 50px
-      sq-popup-font-size: 28px
-      sq-primary-font-size: 24px
+      sq-title-font-size: 42px
+      sq-popup-font-size: 25px
+      sq-primary-font-size: 22px
       sq-secondary-font-size: 18px
-      sq-button-font-size: 22px
+      sq-button-font-size: 20px
 
       sq-title-font-weight: 300
       sq-popup-font-weight: 400
