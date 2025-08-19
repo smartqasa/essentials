@@ -133,7 +133,6 @@ frontend:
           sq-ripple-color: rgb(var(--sq-card-background-rgb))
 
         dark:
-          sq-primary-rgb: 160, 160, 160
           primary-color: "#a0a0a0"
           sq-secondary-rgb: 140, 140, 140
           sq-primary-background-rgb: 25, 25, 25
@@ -211,6 +210,33 @@ frontend:
       sq-white-rgb: 255, 255, 255
       sq-yellow-rgb: 255, 153, 0
 
+      # Colors
+      sq-black-color: rgb(0, 0, 0)
+      sq-blue-color: rgb(25, 125, 255)
+      sq-blue-green-color: rgb(0, 150, 136)
+      sq-blue-grey-color: rgb(96, 125, 139)
+      sq-brown-color: rgb(121, 85, 72)
+      sq-cyan-color: rgb(0, 188, 212)
+      sq-dark-beige-color: rgb(32, 178, 170)
+      sq-deep-orange-color: rgb(146, 107, 199)
+      sq-deep-purple-color: rgb(110, 65, 171)
+      sq-deep-yellow-color: rgb(255, 152, 0)
+      sq-green-color: rgb(76, 175, 80)
+      sq-grey-color: rgb(158, 158, 158)
+      sq-indigo-color: rgb(63, 81, 181)
+      sq-light-blue-color: rgb(3, 169, 244)
+      sq-light-green-color: rgb(139, 195, 74)
+      sq-lime-color: rgb(205, 220, 57)
+      sq-magenta-color: rgb(255, 0, 255)
+      sq-orange-color: rgb(255, 120, 0)
+      sq-pink-color: rgb(233, 30, 99)
+      sq-purple-color: rgb(146, 107, 199)
+      sq-red-color: rgb(244, 67, 54)
+      sq-teal-color: rgb(0, 188, 212)
+      sq-warm-color: rgb(235, 196, 137)
+      sq-white-color: rgb(255, 255, 255)
+      sq-yellow-color: rgb(255, 153, 0)
+
       # Icon State Colors
       sq-binary_sensor-on-rgb: var(--sq-orange-rgb)
       sq-climate-cool-rgb: var(--sq-light-blue-rgb)
@@ -268,6 +294,7 @@ frontend:
       # HA Main Interface
       accent-color: rgb(var(--sq-accent-rgb))
       divider-color: rgb(var(--sq-divider-rgb))
+      inactive-color: rgb(var(--sq-inactive-rgb))
       secondary-background-color: rgb(var(--sq-secondary-background-rgb))
 
       # HA Misc
@@ -303,7 +330,7 @@ frontend:
       paper-item-icon-active-color: rgb(var(--sq-accent-rgb))
 
       # Icons
-      state-icon-color: rgb(var(--sq-primary-text-rgb))
+      state-icon-color: var(--sq-primary-text-color)
       state-icon-active-color: rgb(var(--sq-accent-rgb))
       state-icon-unavailable-color: rgba(var(--sq-inactive-rgb), 0.5)
 
@@ -330,8 +357,8 @@ frontend:
       state-light-on-color: rgb(var(--sq-yellow-rgb))
       state-light-fireplace-on-color: rgb(var(--sq-red-rgb))
 
-      state-media_player-paused-color: var(--sq-primary-text-color)
-      state-media_player-playing-color: rgb(var(--sq-light-blue-rgb))
+      state-media_player-speaker-paused-color: rgb(var(--sq-blue-grey-rgb))
+      state-media_player-speaker-playing-color: rgb(var(--sq-light-blue-rgb))
 
       state-scene-on-color: rgb(var(--sq-inactive-rgb))
 
@@ -357,10 +384,10 @@ frontend:
       code-editor-background-color: rgb(var(--sq-primary-background-rgb))
 
       # Switches
-      switch-checked-button-color: rgb(var(--sq-accent-rgb))
-      switch-checked-track-color: rgb(var(--sq-accent-rgb))
-      switch-unchecked-button-color: rgb(var(--sq-inactive-rgb))
-      switch-unchecked-track-color: rgb(var(--sq-inactive-rgb))
+      switch-checked-button-color: var(--accent-color)
+      switch-checked-track-color: var(--accent-color)
+      switch-unchecked-button-color: var(--sq-inactive-color)
+      switch-unchecked-track-color: var(--sq-inactive-color)
 
       # MDC
       mdc-radio-unchecked-color: rgb(var(--sq-inactive-rgb))
