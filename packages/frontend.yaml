@@ -116,14 +116,20 @@ frontend:
           sq-button-background-rgb: var(--sq-card-background-rgb)
           sq-button-background-alpha: 0.4
 
-          sq-idle-rgb: 10, 10, 10
-          sq-inactive-rgb: 90, 90, 90
-
           sq-popup-text-rgb: 60, 60, 60
           sq-title-text-rgb: 60, 60, 60
           sq-primary-text-rgb: 20, 20, 20
           sq-secondary-text-rgb: 70, 70, 70
+          sq-idle-rgb: 10, 10, 10
+          sq-inactive-rgb: 90, 90, 90
 
+          sq-title-text-color: rgb(60, 60, 60)
+          sq-primary-text-color: rgb(20, 20, 20)
+          sq-secondary-text-color: rgb(70, 70, 70)
+          sq-popup-text-color: rgb(60, 60, 60)
+          sq-idle-color: rgb(10, 10, 10)
+          sq-inactive-color: rgb(90, 90, 90)
+          sq-unavailable-color: rgb(150, 150, 150)
           sq-ripple-color: rgb(var(--sq-card-background-rgb))
 
         dark:
@@ -159,13 +165,20 @@ frontend:
           sq-button-background-rgb: var(--sq-card-background-rgb)
           sq-button-background-alpha: 0.4
 
-          sq-idle-rgb: 220, 220, 220
-          sq-inactive-rgb: 140, 140, 140
-
           sq-popup-text-rgb: 170, 170, 170
           sq-title-text-rgb: 170, 170, 170
           sq-primary-text-rgb: 220, 220, 220
           sq-secondary-text-rgb: 160, 160, 160
+          sq-idle-rgb: 220, 220, 220
+          sq-inactive-rgb: 140, 140, 140
+
+          sq-title-text-color: rgb(170, 170, 170)
+          sq-primary-text-color: rgb(220, 220, 220)
+          sq-secondary-text-color: rgb(160, 160, 160)
+          sq-popup-text-color: rgb(170, 170, 170)
+          sq-idle-color: rgb(220, 220, 220)
+          sq-inactive-color: rgb(140, 140, 140)
+          sq-unavailable-color: rgb(150, 150, 150)
 
           sq-primary-font-weight: 300
 
