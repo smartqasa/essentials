@@ -122,7 +122,7 @@ frontend:
           sq-popup-text-rgb: 60, 60, 60
           sq-title-text-rgb: 60, 60, 60
           sq-primary-text-rgb: 20, 20, 20
-          sq-secondary-text-rgb: 70, 70, 70
+          sq-secondary-text-rgb: 60, 60, 60
 
           sq-ripple-color: rgb(var(--sq-card-background-rgb))
 
