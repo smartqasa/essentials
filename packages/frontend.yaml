@@ -307,7 +307,7 @@ frontend:
       state-cover-garage-closing-color: rgb(var(--sq-orange-rgb))
       state-fan-on-color: rgb(var(--sq-light-blue-rgb))
       state-lock-locked-color: rgb(var(--sq-inactive-rgb))
-      #state-lock-unlocked-color: rgb(var(--sq-orange-rgb))
+      state-lock-unlocked-color: rgb(var(--sq-orange-rgb))
       state-light-on-color: rgb(var(--sq-yellow-rgb))
       state-light-fireplace-on-color: rgb(var(--sq-red-rgb))
       state-scene-on-color: rgb(var(--sq-inactive-rgb))
