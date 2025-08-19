@@ -309,25 +309,32 @@ frontend:
 
       # State Colors
       state-binary_sensor-on-color: rgb(var(--sq-orange-rgb))
+
       state-climate-cool-color: rgb(var(--sq-light-blue-rgb))
       state-climate-heat-color: rgb(var(--sq-red-rgb))
       state-climate-heat_cool-color: rgb(var(--sq-purple-rgb))
+
       state-cover-shade-open-color: rgb(var(--sq-purple-rgb))
       state-cover-shade-opening-color: rgb(var(--sq-purple-rgb))
       state-cover-shade-closing-color: rgb(var(--sq-purple-rgb))
       state-cover-garage-open-color: rgb(var(--sq-orange-rgb))
       state-cover-garage-opening-color: rgb(var(--sq-orange-rgb))
       state-cover-garage-closing-color: rgb(var(--sq-orange-rgb))
+
       state-fan-on-color: rgb(var(--sq-light-blue-rgb))
 
-      state-lock-locked-color: var(--sq-inactive-rgb)
+      state-lock-locking-color: rgb(var(--sq-orange-rgb))
       state-lock-unlocked-color: rgb(var(--sq-orange-rgb))
+      state-lock-unlocking-color: rgb(var(--sq-orange-rgb))
 
-      state-light-off-color: var(--sq-inactive-color)
       state-light-on-color: rgb(var(--sq-yellow-rgb))
-
       state-light-fireplace-on-color: rgb(var(--sq-red-rgb))
+
+      state-media_player-paused-color: var(--sq-primary-text-color)
+      state-media_player-playing-color: rgb(var(--sq-light-blue-rgb))
+
       state-scene-on-color: rgb(var(--sq-inactive-rgb))
+
       state-switch-on-color: rgb(var(--sq-yellow-rgb))
       state-switch-fireplace-on-color: rgb(var(--sq-red-rgb))
       state-switch-heater-on-color: rgb(var(--sq-red-rgb))
