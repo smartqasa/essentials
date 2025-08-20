@@ -327,9 +327,9 @@ frontend:
       grid-card-gap: var(--sq-card-spacing)
 
       # HA Text
-      primary-text-color: rgb(var(--sq-primary-text-color))
-      secondary-text-color: rgb(var(--sq-secondary-text-color))
-      disabled-text-color: rgb(var(--sq-inactive-text-color))
+      primary-text-color: var(--sq-primary-text-color)
+      secondary-text-color: var(--sq-secondary-text-color)
+      disabled-text-color: var(--sq-inactive-text-color)
 
       # HA Main Interface
       accent-color: var(--sq-accent-color)
