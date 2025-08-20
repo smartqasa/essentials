@@ -10,13 +10,11 @@ frontend:
       sq-panel-grid-gap: 10px
 
       # Dialogs
-      sq-popup-min-width: 36vw
+      sq-popup-min-width: 35vw
       sq-popup-max-width: 95vw
-      sq-popup-backdrop-color: rgba(0, 0, 0, 0.2)
-      sq-popup-backdrop-filter: blur(10px)
-      sq-popup-border: var(--sq-popup-border-width) var(--sq-popup-border-style) rgb(var(--sq-popup-border-rgb))
+
+      sq-popup-border: 0 none var(--sq-popup-border-color)
       sq-popup-border-radius: 20px
-      sq-popup-background-color: rgba(var(--sq-popup-background-rgb), var(--sq-popup-background-alpha))
       sq-popup-padding: 20px
       sq-popup-grid-gap: 10px
 
@@ -98,11 +96,11 @@ frontend:
 
           sq-panel-color: rgb(223, 218, 206)
 
-          sq-popup-background-rgb: 223, 218, 206
-          sq-popup-background-alpha: 0.9
-          sq-popup-border-width: 0px
-          sq-popup-border-style: none
-          sq-popup-border-rgb: 170, 170, 170
+          sq-popup-backdrop-color: rgba(0, 0, 0, 0.2)
+          sq-popup-backdrop-filter: blur(10px)
+          sq-popup-background-color: rgba(223, 218, 206, 0.9)
+          sq-popup-progress-color: rgb(200, 200, 200)
+          sq-popup-border-color: rgb(170, 170, 170)
           sq-popup-box-shadow: none
 
           sq-font-weight-dialog-header: 300
@@ -148,13 +146,11 @@ frontend:
 
           sq-panel-color: rgb(28, 28, 28)
 
-          sq-popup-background-rgb: 28, 28, 28
-          sq-popup-progress-rgb: 40, 40, 40
-          sq-popup-background-alpha: 0.9
-          sq-popup-background-opacity: 0.9
-          sq-popup-border-width: 0px
-          sq-popup-border-style: solid
-          sq-popup-border-rgb: 0, 0, 0
+          sq-popup-backdrop-color: rgba(0, 0, 0, 0.2)
+          sq-popup-backdrop-filter: blur(10px)
+          sq-popup-background-color: rgba(25, 25, 25, 0.9)
+          sq-popup-progress-color: rgb(50, 50, 50)
+          sq-popup-border-color: rgb(0, 0, 0)
           sq-popup-box-shadow: none
 
           sq-card-background-rgb: 55, 55, 60
@@ -331,14 +327,14 @@ frontend:
       grid-card-gap: var(--sq-card-spacing)
 
       # HA Text
-      primary-text-color: rgb(var(--sq-primary-text-rgb))
-      secondary-text-color: rgb(var(--sq-secondary-text-rgb))
-      disabled-text-color: rgb(var(--sq-inactive-rgb))
+      primary-text-color: rgb(var(--sq-primary-text-color))
+      secondary-text-color: rgb(var(--sq-secondary-text-color))
+      disabled-text-color: rgb(var(--sq-inactive-text-color))
 
       # HA Main Interface
-      accent-color: rgb(var(--sq-accent-rgb))
-      divider-color: rgb(var(--sq-divider-rgb))
-      inactive-color: rgb(var(--sq-inactive-rgb))
+      accent-color: var(--sq-accent-color)
+      divider-color: var(--sq-divider-color)
+      inactive-color: var(--sq-inactive-color)
       secondary-background-color: var(--sq-secondary-background-color)
 
       # HA Misc
@@ -347,7 +343,6 @@ frontend:
       # Browser Mod Popup
       popup-border-width: var(--sq-popup-border-width)
       popup-border-style: var(--sq-popup-border-style)
-      popup-border-color: rgb(var(--sq-popup-border-rgb))
       popup-border-radius: var(--sq-popup-border-radius)
       popup-background-color: var(--sq-popup-background-color)
       popup-padding-x: 1rem
@@ -373,13 +368,12 @@ frontend:
       paper-item-icon-color: rgb(var(--sq-inactive-rgb))
       paper-item-icon-active-color: rgb(var(--sq-accent-rgb))
 
-      # Icons
+      # State Colors
       state-icon-color: var(--sq-primary-text-color)
       state-icon-active-color: var(--sq-accent-color)
       state-icon-inactive-color: var(--sq-inactive-color)
       state-icon-unavailable-color: var(--sq-unavailable-color)
 
-      # State Colors
       state-binary_sensor-on-color: rgb(var(--sq-orange-rgb))
 
       state-climate-cool-color: rgb(var(--sq-light-blue-rgb))
