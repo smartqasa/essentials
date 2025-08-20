@@ -120,14 +120,14 @@ frontend:
           sq-title-text-rgb: 60, 60, 60
           sq-primary-text-rgb: 20, 20, 20
           sq-secondary-text-rgb: 70, 70, 70
-          sq-idle-rgb: 10, 10, 10
+          sq-idle-rgb: 50, 50, 50
           sq-inactive-rgb: 90, 90, 90
 
           sq-title-text-color: rgb(60, 60, 60)
           sq-primary-text-color: rgb(20, 20, 20)
           sq-secondary-text-color: rgb(70, 70, 70)
           sq-popup-text-color: rgb(60, 60, 60)
-          sq-idle-color: rgb(10, 10, 10)
+          sq-idle-color: rgb(50, 50, 50)
           sq-inactive-color: rgb(90, 90, 90)
           sq-unavailable-color: rgb(150, 150, 150)
           sq-ripple-color: rgb(var(--sq-card-background-rgb))
@@ -357,6 +357,11 @@ frontend:
       state-light-on-color: rgb(var(--sq-yellow-rgb))
       state-light-fireplace-on-color: rgb(var(--sq-red-rgb))
 
+      state-media_player-idle-color: rgb(var(--sq-blue-grey-rgb))
+      state-media_player-paused-color: rgb(var(--sq-blue-grey-rgb))
+      state-media_player-playing-color: rgb(var(--sq-light-blue-rgb))
+
+      state-media_player-speaker-idle-color: rgb(var(--sq-blue-grey-rgb))
       state-media_player-speaker-paused-color: rgb(var(--sq-blue-grey-rgb))
       state-media_player-speaker-playing-color: rgb(var(--sq-light-blue-rgb))
 
