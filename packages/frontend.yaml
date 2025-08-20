@@ -89,6 +89,7 @@ frontend:
           primary-color: "#46463C"
           sq-secondary-rgb: 60, 60, 70
           sq-primary-background-rgb: 180, 180, 180
+          sq-primary-background-color: rgb(180, 180, 180)
           sq-secondary-background-rgb: 205, 200, 200
           sq-secondary-background-color: rgb(200, 200, 200)
           sq-app-header-background-rgb: 175, 170, 170
@@ -138,6 +139,7 @@ frontend:
           primary-color: "#a0a0a0"
           sq-secondary-rgb: 140, 140, 140
           sq-primary-background-rgb: 25, 25, 25
+          sq-primary-background-color: rgb(25, 25, 25)
           sq-secondary-background-rgb: 60, 65, 65
           sq-secondary-background-color: rgb(60, 65, 65)
           sq-app-header-background-rgb: 60, 55, 55
