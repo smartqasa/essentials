@@ -23,7 +23,7 @@ frontend:
       # Cards
       sq-card-padding: 16px
       sq-card-spacing: 12px
-      sq-card-border: var(--sq-card-border-width) var(--sq-card-border-style) rgb(var(--sq-card-border-rgb))
+      sq-card-border: var(--sq-card-border-width) var(--sq-card-border-style) var(--sq-card-border-color))
       sq-card-border-radius: 1.5rem
       sq-card-background-color: rgba(var(--sq-card-background-rgb), var(--sq-card-background-alpha))
 
@@ -32,21 +32,21 @@ frontend:
       sq-tile-width: min(21vw, 19.5rem)
       sq-tile-padding: 16px
       sq-tile-spacing: 12px
-      sq-tile-border: var(--sq-card-border-width) var(--sq-card-border-style) rgb(var(--sq-card-border-rgb))
+      sq-tile-border: var(--sq-card-border-width) var(--sq-card-border-style) var(--sq-card-border-color))
       sq-tile-border-radius: 1.5rem
       sq-tile-background-color: rgba(var(--sq-card-background-rgb), var(--sq-card-background-alpha))
 
       # Chips
       sq-chip-padding: 16px
       sq-chip-spacing: 4px
-      sq-chip-border: var(--sq-card-border-width) var(--sq-card-border-style) rgb(var(--sq-card-border-rgb))
+      sq-chip-border: var(--sq-card-border-width) var(--sq-card-border-style) var(--sq-card-border-color))
       sq-chip-border-radius: calc((var(--sq-icon-size) + (var(--sq-icon-padding) * 2) + 5px) / 2)
       sq-chip-background-color: rgba(var(--sq-card-background-rgb), var(--sq-card-background-alpha))
 
       # Buttons
       sq-button-padding: var(--sq-tile-padding)
       sq-button-spacing: 4px
-      sq-button-border: var(--sq-card-border-width) var(--sq-card-border-style) rgb(var(--sq-card-border-rgb))
+      sq-button-border: var(--sq-card-border-width) var(--sq-card-border-style) var(--sq-card-border-color))
       sq-button-border-radius: calc((var(--sq-icon-size) + (var(--sq-icon-padding) * 2) + 5px) / 2)
       sq-button-background-color: rgba(var(--sq-button-background-rgb), var(--sq-button-background-alpha))
 
@@ -90,6 +90,7 @@ frontend:
           sq-secondary-rgb: 60, 60, 70
           sq-primary-background-rgb: 180, 180, 180
           sq-secondary-background-rgb: 205, 200, 200
+          sq-secondary-background-color: rgb(200, 200, 200)
           sq-app-header-background-rgb: 175, 170, 170
           app-header-background-color: "#afaaaa"
           sq-divider-rgb: 160, 160, 160
@@ -110,6 +111,7 @@ frontend:
           sq-card-border-width: 1px
           sq-card-border-style: solid
           sq-card-border-rgb: 220, 220, 220
+          sq-card-border-color: rgb(220, 220, 220)
           sq-card-box-shadow: none
           sq-card-ripple-color: rgb(50, 50, 50)
 
@@ -137,6 +139,7 @@ frontend:
           sq-secondary-rgb: 140, 140, 140
           sq-primary-background-rgb: 25, 25, 25
           sq-secondary-background-rgb: 60, 65, 65
+          sq-secondary-background-color: rgb(60, 65, 65)
           sq-app-header-background-rgb: 60, 55, 55
           app-header-background-color: "#3c3737"
           sq-divider-rgb: 50, 50, 50
@@ -158,6 +161,7 @@ frontend:
           sq-card-border-width: 1px
           sq-card-border-style: solid
           sq-card-border-rgb: 60, 60, 60
+          sq-card-border-color: rgb(60, 60, 60)
           sq-card-box-shadow: none
           sq-card-ripple-color: rgb(210, 210, 210)
 
@@ -318,7 +322,7 @@ frontend:
       ha-card-background: var(--sq-card-background-color)
       ha-card-border-width: var(--sq-card-border-width)
       ha-card-border-style: var(--sq-card-border-style)
-      ha-card-border-color: rgb(var(--sq-card-border-rgb))
+      ha-card-border-color: var(--sq-card-border-color))
       ha-card-border-radius: var(--sq-card-border-radius)
       ha-card-box-shadow: var(--sq-card-box-shadow)
       ha-card-header-font-size: var(--sq-primary-font-size)
@@ -333,7 +337,7 @@ frontend:
       accent-color: rgb(var(--sq-accent-rgb))
       divider-color: rgb(var(--sq-divider-rgb))
       inactive-color: rgb(var(--sq-inactive-rgb))
-      secondary-background-color: rgb(var(--sq-secondary-background-rgb))
+      secondary-background-color: var(--sq-secondary-background-color)
 
       # HA Misc
       ha-assist-chip-filled-container-color: rgba(var(--sq-inactive-rgb), var(sq-card-background-alpha))
@@ -415,12 +419,12 @@ frontend:
 
       # Tables
       table-row-background-color: rgb(var(--sq-primary-background-rgb))
-      table-row-alternative-background-color: rgb(var(--sq-secondary-background-rgb))
+      table-row-alternative-background-color: var(--sq-secondary-background-color))
       data-table-background-color: rgb(var(--sq-primary-background-rgb))
 
       # Dropdowns
       material-background-color: rgb(var(--sq-primary-background-rgb))
-      material-secondary-background-color: rgb(var(--sq-secondary-background-rgb))
+      material-secondary-background-color: var(--sq-secondary-background-color)
 
       # Pre/Code
       markdown-code-background-color: rgb(var(--sq-primary-background-rgb))
@@ -444,13 +448,13 @@ frontend:
       mdc-button-outline-color: rgb(--sq-card-border-rgb)
       mdc-checkbox-unchecked-color: rgb(var(--sq-secondary-text-rgb))
       mdc-checkbox-disable-color: rgba(var(--sq-inactive-rgb), 0.5)
-      mdc-select-fill-color: rgb(var(--sq-secondary-background-rgb))
+      mdc-select-fill-color: var(--sq-secondary-background-color)
       mdc-select-ink-color: rgb(var(--sq-primary-text-rgb))
       mdc-select-label-ink-color: rgb(var(--sq-secondary-text-rgb))
       mdc-select-idle-line-color: rgb(var(--sq-primary-text-rgb))
       mdc-select-dropdown-icon-color: rgb(var(--sq-secondary-text-rgb))
       mdc-select-hover-line-color: rgb(var(--sq-accent-rgb))
-      mdc-text-field-fill-color: rgb(var(--sq-secondary-background-rgb))
+      mdc-text-field-fill-color: var(--sq-secondary-background-color)
       mdc-tab-text-label-color-default: rgb(var(--sq-secondary-text-rgb))
 
       #Swiper
