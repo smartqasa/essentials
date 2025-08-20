@@ -375,8 +375,9 @@ frontend:
 
       # Icons
       state-icon-color: var(--sq-primary-text-color)
-      state-icon-active-color: rgb(var(--sq-accent-rgb))
-      state-icon-unavailable-color: rgba(var(--sq-inactive-rgb), 0.5)
+      state-icon-active-color: var(--sq-accent-color)
+      state-icon-inactive-color: var(--sq-inactive-color)
+      state-icon-unavailable-color: var(--sq-unavailable-color)
 
       # State Colors
       state-binary_sensor-on-color: rgb(var(--sq-orange-rgb))
