@@ -78,7 +78,7 @@ frontend:
           sq-accent-color: rgb(0, 120, 230)
           sq-divider-color: rgb(160, 160, 160)
           sq-inactive-color: rgb(90, 90, 90)
-          sq-unavailable-color: rgb(150, 150, 150)
+          sq-unavailable-color: rgb(255, 0, 255)
 
           sq-primary-background-color: rgb(180, 180, 180)
           sq-secondary-background-color: rgb(200, 200, 200)
@@ -110,7 +110,7 @@ frontend:
           sq-accent-color: rgb(0, 120, 230)
           sq-divider-color: rgb(50, 50, 50)
           sq-inactive-color: rgb(140, 140, 140)
-          sq-unavailable-color: rgb(150, 150, 150)
+          sq-unavailable-color: rgb(255, 0, 255)
 
           sq-primary-background-color: rgb(25, 25, 25)
           sq-secondary-background-color: rgb(60, 65, 65)
@@ -198,7 +198,6 @@ frontend:
       sq-vacuum-paused-color: var(--sq-blue-green-color)
       sq-vacuum-returning-color: var(--sq-blue-green-color)
       sq-water_heater-electric-color: var(--sq-red-color)
-      sq-unavailable-color: var(--sq-magenta-color)
 
       # HA Cards
       ha-dialog-border-radius: var(--sq-popup-border-radius)
