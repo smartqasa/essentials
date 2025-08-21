@@ -58,7 +58,7 @@ frontend:
 
       sq-title-font-weight: 300
       sq-popup-font-weight: 400
-      sq-primary-font-weight: 400
+      sq-primary-font-weight: 300
       sq-secondary-font-weight: 300
       sq-button-font-weight: 300
 
