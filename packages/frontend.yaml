@@ -86,7 +86,7 @@ frontend:
 
           sq-popup-backdrop-color: rgba(0, 0, 0, 0.2)
           sq-popup-backdrop-filter: blur(10px)
-          sq-popup-background-color: rgba(223, 218, 206, 0.9)
+          sq-popup-background-color: rgba(223, 218, 206, 0.8)
           sq-popup-progress-color: rgb(200, 200, 200)
           sq-popup-border-color: rgb(170, 170, 170)
           sq-popup-box-shadow: none
