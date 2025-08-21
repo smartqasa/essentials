@@ -74,7 +74,6 @@ frontend:
         light:
           sq-panel-color: rgb(223, 218, 206)
 
-          sq-primary-color: rgb(70, 70, 60)
           sq-accent-color: rgb(0, 120, 230)
           sq-divider-color: rgb(160, 160, 160)
           sq-inactive-color: rgb(90, 90, 90)
@@ -82,7 +81,10 @@ frontend:
 
           sq-primary-background-color: rgb(180, 180, 180)
           sq-secondary-background-color: rgb(200, 200, 200)
-          --app-header-background-color: "#afaaaa"
+
+          primary-color: rgb(70, 70, 60)
+          accent-color: rgb(0, 120, 230)
+          app-header-background-color: rgb(175, 170, 170)
 
           sq-popup-backdrop-color: rgba(0, 0, 0, 0.2)
           sq-popup-backdrop-filter: blur(10px)
@@ -106,7 +108,6 @@ frontend:
         dark:
           sq-panel-color: rgb(28, 28, 28)
 
-          sq-primary-color: rgb(160, 160, 160)
           sq-accent-color: rgb(0, 120, 230)
           sq-divider-color: rgb(50, 50, 50)
           sq-inactive-color: rgb(140, 140, 140)
@@ -114,7 +115,10 @@ frontend:
 
           sq-primary-background-color: rgb(25, 25, 25)
           sq-secondary-background-color: rgb(60, 65, 65)
-          --app-header-background-color: "#3c3737"
+
+          primary-color: rgb(160, 160, 160)
+          accent-color: rgb(0, 120, 230)
+          app-header-background-color: rgb(60, 55, 55)
 
           sq-popup-backdrop-color: rgba(0, 0, 0, 0.2)
           sq-popup-backdrop-filter: blur(10px)
@@ -216,10 +220,9 @@ frontend:
       disabled-text-color: var(--sq-inactive-text-color)
 
       # HA Main Interface
-      primary-color: var(--sq-primary-color)
-      accent-color: var(--sq-accent-color)
       divider-color: var(--sq-divider-color)
       inactive-color: var(--sq-inactive-color)
+      app-header-background-color: var(--sq-app-header-background-color)
 
       # HA Misc
       ha-assist-chip-filled-container-color: color-mix(in srgb, var(--sq-inactive-color) 20%, transparent)
