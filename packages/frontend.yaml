@@ -222,7 +222,6 @@ frontend:
       # HA Main Interface
       divider-color: var(--sq-divider-color)
       inactive-color: var(--sq-inactive-color)
-      app-header-background-color: var(--sq-app-header-background-color)
 
       # HA Misc
       ha-assist-chip-filled-container-color: color-mix(in srgb, var(--sq-inactive-color) 20%, transparent)
@@ -238,7 +237,7 @@ frontend:
       # Sidebar Menu
       sidebar-icon-color: var(--sq-primary-text-color)
       sidebar-text-color: var(--sq-primary-text-color)
-      sidebar-background-color: var(--sq-app-header-background-color)
+      sidebar-background-color: var(--app-header-background-color)
       sidebar-selected-icon-color: var(--sq-accent-color)
       sidebar-selected-text-color: var(--sq-accent-color)
 
