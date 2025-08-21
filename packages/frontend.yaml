@@ -82,9 +82,9 @@ frontend:
           sq-primary-background-color: rgb(180, 180, 180)
           sq-secondary-background-color: rgb(200, 200, 200)
 
-          primary-color: rgb(70, 70, 60)
-          accent-color: rgb(0, 120, 230)
-          app-header-background-color: rgb(175, 170, 170)
+          primary-color: "#46463C"
+          accent-color: "#0078E6"
+          app-header-background-color: "#AFAAAA"
 
           sq-popup-backdrop-color: rgba(0, 0, 0, 0.2)
           sq-popup-backdrop-filter: blur(10px)
@@ -116,9 +116,9 @@ frontend:
           sq-primary-background-color: rgb(25, 25, 25)
           sq-secondary-background-color: rgb(60, 65, 65)
 
-          primary-color: rgb(160, 160, 160)
-          accent-color: rgb(0, 120, 230)
-          app-header-background-color: rgb(60, 55, 55)
+          primary-color: "#A0A0A0"
+          accent-color: "#0078E6"
+          app-header-background-color: "#3C3737"
 
           sq-popup-backdrop-color: rgba(0, 0, 0, 0.2)
           sq-popup-backdrop-filter: blur(10px)
