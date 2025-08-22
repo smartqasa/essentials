@@ -274,10 +274,12 @@ frontend:
       state-light-fireplace-on-color: var(--sq-red-color)
 
       state-media_player-idle-color: var(--sq-blue-grey-color)
+      state-media_player-on-color: var(--sq-light-blue-color)
       state-media_player-paused-color: var(--sq-blue-grey-color)
       state-media_player-playing-color: var(--sq-light-blue-color)
 
       state-media_player-receiver-idle-color: var(--sq-blue-grey-color)
+      state-media_player-receiver-on-color: var(--sq-light-blue-color)
       state-media_player-receiver-paused-color: var(--sq-blue-grey-color)
       state-media_player-receiver-playing-color: var(--sq-light-blue-color)
 
