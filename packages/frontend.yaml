@@ -277,8 +277,11 @@ frontend:
       state-media_player-paused-color: var(--sq-blue-grey-color)
       state-media_player-playing-color: var(--sq-light-blue-color)
 
+      state-media_player-receiver-idle-color: var(--sq-blue-grey-color)
+      state-media_player-receiver-paused-color: var(--sq-blue-grey-color)
+      state-media_player-receiver-playing-color: var(--sq-light-blue-color)
+
       state-media_player-speaker-idle-color: var(--sq-blue-grey-color)
-      state-media_player-speaker-off-color: var(--sq-blue-grey-color)
       state-media_player-speaker-paused-color: var(--sq-blue-grey-color)
       state-media_player-speaker-playing-color: var(--sq-light-blue-color)
 
