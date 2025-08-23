@@ -140,14 +140,15 @@ frontend:
           sq-popup-text-color: rgb(170, 170, 170)
 
       # Colors
+      sq-amber-color: rgb(255, 193, 7)
       sq-black-color: rgb(0, 0, 0)
-      sq-blue-color: rgb(25, 125, 255)
+      sq-blue-color: rgb(33, 150, 243)
       sq-blue-green-color: rgb(0, 150, 136)
       sq-blue-grey-color: rgb(96, 125, 139)
       sq-brown-color: rgb(121, 85, 72)
       sq-cyan-color: rgb(0, 188, 212)
       sq-dark-beige-color: rgb(32, 178, 170)
-      sq-deep-orange-color: rgb(146, 107, 199)
+      sq-deep-orange-color: rgb(255, 111, 34)
       sq-deep-purple-color: rgb(110, 65, 171)
       sq-deep-yellow-color: rgb(255, 152, 0)
       sq-green-color: rgb(76, 175, 80)
@@ -157,14 +158,14 @@ frontend:
       sq-light-green-color: rgb(139, 195, 74)
       sq-lime-color: rgb(205, 220, 57)
       sq-magenta-color: rgb(255, 0, 255)
-      sq-orange-color: rgb(255, 120, 0)
+      sq-orange-color: rgb(255, 152, 0)
       sq-pink-color: rgb(233, 30, 99)
       sq-purple-color: rgb(146, 107, 199)
       sq-red-color: rgb(244, 67, 54)
-      sq-teal-color: rgb(0, 188, 212)
+      sq-teal-color: rgb(0, 150, 136)
       sq-warm-color: rgb(235, 196, 137)
       sq-white-color: rgb(255, 255, 255)
-      sq-yellow-color: rgb(255, 153, 0)
+      sq-yellow-color: rgb(255, 235, 59)
 
       # HA Cards
       ha-dialog-border-radius: var(--sq-popup-border-radius)
@@ -218,24 +219,27 @@ frontend:
 
       state-binary_sensor-on-color: var(--sq-orange-color)
 
+      state-climate-auto-color: var(--sq-green-color)
       state-climate-cool-color: var(--sq-light-blue-color)
+      state-climate-dry-color: var(--sq-orange-color)
+      state-climate-fan_only-color: var(--sq-cyan-color)
       state-climate-heat-color: var(--sq-red-color)
       state-climate-heat_cool-color: var(--sq-purple-color)
 
-      state-cover-shade-open-color: var(--sq-purple-color)
-      state-cover-shade-opening-color: var(--sq-purple-color)
+      state-cover-closing-color: var(--sq-deep-orange-color)
+      state-cover-opening-color: var(--sq-deep-orange-color)
+      state-cover-open-color: var(--sq-orange-color)
+
       state-cover-shade-closing-color: var(--sq-purple-color)
+      state-cover-shade-opening-color: var(--sq-purple-color)
+      state-cover-shade-open-color: var(--sq-purple-color)
 
-      state-cover-garage-open-color: var(--sq-orange-color)
-      state-cover-garage-opening-color: var(--sq-orange-color)
-      state-cover-garage-closing-color: var(--sq-orange-color)
-
-      state-fan-on-color: var(--sq-light-blue-color)
+      state-fan-on-color: var(--sq-cyan-color)
 
       state-lock-locked-color: var(--sq-inactive-color)
-      state-lock-locking-color: var(--sq-orange-color)
-      state-lock-unlocked-color: var(--sq-orange-color)
-      state-lock-unlocking-color: var(--sq-orange-color)
+      state-lock-locking-color: var(--sq-deep-orange-color)
+      state-lock-unlocked-color: var(--sq-deep-orange-color)
+      state-lock-unlocking-color: var(--sq-deep-orange-color)
 
       state-light-on-color: var(--sq-yellow-color)
       state-light-fireplace-on-color: var(--sq-red-color)
