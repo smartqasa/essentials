@@ -78,6 +78,8 @@ frontend:
           secondary-text-color: rgb(70, 70, 70)
           popup-text-color: rgb(60, 60, 60)
 
+          icon-opacity: 30%
+
           accent-color: rgb(0, 120, 230)
           divider-color: rgb(160, 160, 160)
           inactive-color: rgb(80, 80, 80)
@@ -99,6 +101,7 @@ frontend:
           card-background-color: rgba(250, 250, 250, 0.6)
           card-border: 1px solid rgb(250, 250, 250)
           card-box-shadow: none
+
           ripple-color: rgb(250, 250, 250)
 
           button-background-color: rgba(250, 250, 250, 0.4)
@@ -110,6 +113,8 @@ frontend:
           primary-text-color: rgb(220, 220, 220)
           secondary-text-color: rgb(160, 160, 160)
           popup-text-color: rgb(170, 170, 170)
+
+          icon-opacity: 30%
 
           accent-color: rgb(0, 120, 230)
           divider-color: rgb(50, 50, 50)
@@ -132,6 +137,7 @@ frontend:
           card-background-color: rgba(55, 55, 60, 0.65)
           card-border: 1px solid rgb(55, 55, 60)
           card-box-shadow: none
+
           ripple-color: rgb(55, 55, 60)
 
           button-background-color: rgba(25, 25, 25, 0.4)
