@@ -73,9 +73,14 @@ frontend:
         light:
           panel-color: rgb(223, 218, 206)
 
+          title-text-color: rgb(60, 60, 60)
+          primary-text-color: rgb(20, 20, 20)
+          secondary-text-color: rgb(70, 70, 70)
+          popup-text-color: rgb(60, 60, 60)
+
           accent-color: rgb(0, 120, 230)
           divider-color: rgb(160, 160, 160)
-          inactive-color: rgb(90, 90, 90)
+          inactive-color: rgb(80, 80, 80)
           unavailable-color: rgb(255, 0, 255)
 
           primary-background-color: rgb(180, 180, 180)
@@ -98,17 +103,17 @@ frontend:
 
           button-background-color: rgba(250, 250, 250, 0.4)
 
-          title-text-color: rgb(60, 60, 60)
-          primary-text-color: rgb(20, 20, 20)
-          secondary-text-color: rgb(70, 70, 70)
-          popup-text-color: rgb(60, 60, 60)
-
         dark:
           panel-color: rgb(28, 28, 28)
 
+          title-text-color: rgb(170, 170, 170)
+          primary-text-color: rgb(220, 220, 220)
+          secondary-text-color: rgb(160, 160, 160)
+          popup-text-color: rgb(170, 170, 170)
+
           accent-color: rgb(0, 120, 230)
           divider-color: rgb(50, 50, 50)
-          inactive-color: rgb(140, 140, 140)
+          inactive-color: rgb(150, 150, 150)
           unavailable-color: rgb(255, 0, 255)
 
           primary-background-color: rgb(25, 25, 25)
@@ -130,11 +135,6 @@ frontend:
           ripple-color: rgb(55, 55, 60)
 
           button-background-color: rgba(25, 25, 25, 0.4)
-
-          title-text-color: rgb(170, 170, 170)
-          primary-text-color: rgb(220, 220, 220)
-          secondary-text-color: rgb(160, 160, 160)
-          popup-text-color: rgb(170, 170, 170)
 
       # Colors
       amber-color: rgb(255, 193, 7)
