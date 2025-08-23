@@ -110,8 +110,8 @@ frontend:
           panel-color: rgb(28, 28, 28)
 
           title-text-color: rgb(170, 170, 170)
-          primary-text-color: rgb(220, 220, 220)
-          secondary-text-color: rgb(160, 160, 160)
+          primary-text-color: rgb(225, 225, 225)
+          secondary-text-color: rgb(165, 165, 165)
           popup-text-color: rgb(170, 170, 170)
 
           icon-opacity: 30%
