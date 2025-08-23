@@ -180,7 +180,6 @@ frontend:
       # HA Text
       primary-text-color: var(--sq-primary-text-color)
       secondary-text-color: var(--sq-secondary-text-color)
-      disabled-text-color: var(--sq-inactive-text-color)
 
       # HA Main Interface
       divider-color: var(--sq-divider-color)
@@ -209,6 +208,9 @@ frontend:
       paper-item-icon-active-color: var(--sq-accent-color)
 
       # State Colors
+      state-inactive-color: var(--sq-inactive-color)
+      state-unavailable-color: var(--sq-unavailable-color)
+
       state-icon-color: var(--sq-primary-text-color)
       state-icon-active-color: var(--sq-accent-color)
       state-icon-inactive-color: var(--sq-inactive-color)
