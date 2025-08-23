@@ -94,7 +94,7 @@ frontend:
           sq-popup-box-shadow: none
 
           sq-card-background-color: rgba(250, 250, 250, 0.6)
-          sq-card-border: 1px solid rgb(220, 220, 220)
+          sq-card-border: 1px solid rgb(250, 250, 250)
           sq-card-box-shadow: none
           sq-ripple-color: rgb(250, 250, 250)
 
@@ -127,8 +127,8 @@ frontend:
           sq-popup-border-color: rgb(0, 0, 0)
           sq-popup-box-shadow: none
 
-          sq-card-background-color: rgba(55, 55, 60, 0.75)
-          sq-card-border: 1px solid rgb(60, 60, 60)
+          sq-card-background-color: rgba(55, 55, 60, 0.65)
+          sq-card-border: 1px solid rgb(55, 55, 60)
           sq-card-box-shadow: none
           sq-ripple-color: rgb(55, 55, 60)
 
