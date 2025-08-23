@@ -24,7 +24,7 @@ frontend:
       card-border-radius: 20px
 
       # Tiles
-      tile-height: 103px
+      tile-height: 102px
       tile-width: min(21vw, 19.5rem)
       tile-padding: 16px
       tile-spacing: 12px
