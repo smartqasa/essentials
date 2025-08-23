@@ -107,7 +107,7 @@ frontend:
           button-background-color: rgba(250, 250, 250, 0.4)
 
         dark:
-          panel-color: rgb(28, 28, 28)
+          panel-color: rgb(25, 25, 25)
 
           title-text-color: rgb(170, 170, 170)
           primary-text-color: rgb(225, 225, 225)
