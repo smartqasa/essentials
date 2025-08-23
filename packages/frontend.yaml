@@ -22,8 +22,6 @@ frontend:
       card-padding: 16px
       card-spacing: 12px
 
-      card-border-radius: 20px
-
       # Tiles
       tile-height: 104px
       tile-width: min(21vw, 19.5rem)
@@ -237,7 +235,7 @@ frontend:
       state-lock-unlocked-color: var(--deep-orange-color)
       state-lock-unlocking-color: var(--deep-orange-color)
 
-      state-light-on-color: var(--yellow-color)
+      state-light-on-color: var(--deep-yellow-color)
       state-light-fireplace-on-color: var(--red-color)
 
       state-media_player-idle-color: var(--blue-grey-color)
