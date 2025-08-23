@@ -112,7 +112,7 @@ frontend:
           title-text-color: rgb(170, 170, 170)
           primary-text-color: rgb(225, 225, 225)
           primary-font-weight: 300
-          secondary-text-color: rgb(165, 165, 165)
+          secondary-text-color: rgb(170, 170, 170)
           secondary-font-weight: 300
           popup-text-color: rgb(170, 170, 170)
 
@@ -120,7 +120,7 @@ frontend:
 
           accent-color: rgb(0, 120, 230)
           divider-color: rgb(50, 50, 50)
-          inactive-color: rgb(150, 150, 150)
+          inactive-color: rgb(160, 160, 160)
           unavailable-color: rgb(255, 0, 255)
 
           primary-background-color: rgb(25, 25, 25)
