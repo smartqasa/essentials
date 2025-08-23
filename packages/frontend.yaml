@@ -7,298 +7,296 @@ frontend:
   themes:
     SmartQasa:
       # Panel
-      sq-panel-grid-gap: 10px
+      panel-grid-gap: 10px
 
       # Dialogs
-      sq-popup-min-width: 35vw
-      sq-popup-max-width: 95vw
+      popup-min-width: 35vw
+      popup-max-width: 95vw
 
-      sq-popup-border: 0 none var(--sq-popup-border-color)
-      sq-popup-border-radius: 20px
-      sq-popup-padding: 20px
-      sq-popup-grid-gap: 10px
+      popup-border: 0 none var(--popup-border-color)
+      popup-border-radius: 20px
+      popup-padding: 20px
+      popup-grid-gap: 10px
 
       # Cards
-      sq-card-padding: 16px
-      sq-card-spacing: 12px
+      card-padding: 16px
+      card-spacing: 12px
 
-      sq-card-border-radius: 20px
+      card-border-radius: 20px
 
       # Tiles
-      sq-tile-height: 104px
-      sq-tile-width: min(21vw, 19.5rem)
-      sq-tile-padding: 16px
-      sq-tile-spacing: 12px
-      sq-tile-border: var(--sq-card-border)
-      sq-tile-border-radius: var(--sq-card-border-radius)
-      sq-tile-background-color: var(--sq-card-background-color)
+      tile-height: 104px
+      tile-width: min(21vw, 19.5rem)
+      tile-padding: 16px
+      tile-spacing: 12px
+      tile-border: var(--card-border)
+      tile-border-radius: var(--card-border-radius)
+      tile-background-color: var(--card-background-color)
 
       # Chips
-      sq-chip-padding: 16px
-      sq-chip-spacing: 4px
-      sq-chip-border: var(--sq-card-border)
-      sq-chip-border-radius: 999px
-      sq-chip-background-color: var(--sq-card-background-color)
+      chip-padding: 16px
+      chip-spacing: 4px
+      chip-border: var(--card-border)
+      chip-border-radius: 999px
+      chip-background-color: var(--card-background-color)
 
       # Buttons
-      sq-button-padding: var(--sq-tile-padding)
-      sq-button-spacing: 4px
-      sq-button-border: var(--sq-card-border)
-      sq-button-border-radius: 999px
+      button-padding: var(--tile-padding)
+      button-spacing: 4px
+      button-border: var(--card-border)
+      button-border-radius: 999px
 
       # Fonts
-      sq-popup-header-font-size: 25px
-      sq-popup-header-font-weight: 400
+      popup-header-font-size: 25px
+      popup-header-font-weight: 400
 
-      sq-title-font-size: 42px
-      sq-popup-font-size: 25px
-      sq-primary-font-size: 20px
-      sq-secondary-font-size: 17px
-      sq-button-font-size: 20px
+      title-font-size: 42px
+      popup-font-size: 25px
+      primary-font-size: 20px
+      secondary-font-size: 17px
+      button-font-size: 20px
 
-      sq-title-font-weight: 300
-      sq-popup-font-weight: 400
-      sq-primary-font-weight: 300
-      sq-secondary-font-weight: 300
-      sq-button-font-weight: 300
+      title-font-weight: 300
+      popup-font-weight: 400
+      primary-font-weight: 300
+      secondary-font-weight: 300
+      button-font-weight: 300
 
       # Icons
-      sq-icon-size: 24px
-      sq-icon-padding: 14px
-      sq-icon-image-size: calc(var(--sq-icon-size) + var(--sq-icon-padding) * 2)
-      sq-icon-border-radius: 999px
-      sq-icon-transition: ease-in-out 0.5s
+      icon-size: 24px
+      icon-padding: 14px
+      icon-image-size: calc(var(--icon-size) + var(--icon-padding) * 2)
+      icon-border-radius: 999px
+      icon-transition: ease-in-out 0.5s
 
       # Colors
       modes:
         light:
-          sq-panel-color: rgb(223, 218, 206)
+          panel-color: rgb(223, 218, 206)
 
-          sq-accent-color: rgb(0, 120, 230)
-          sq-divider-color: rgb(160, 160, 160)
-          sq-inactive-color: rgb(90, 90, 90)
-          sq-unavailable-color: rgb(255, 0, 255)
+          accent-color: rgb(0, 120, 230)
+          divider-color: rgb(160, 160, 160)
+          inactive-color: rgb(90, 90, 90)
+          unavailable-color: rgb(255, 0, 255)
 
-          sq-primary-background-color: rgb(180, 180, 180)
-          sq-secondary-background-color: rgb(200, 200, 200)
+          primary-background-color: rgb(180, 180, 180)
+          secondary-background-color: rgb(200, 200, 200)
 
           primary-color: "#46463C"
-          accent-color: "#0078E6"
           app-header-background-color: "#AFAAAA"
 
-          sq-popup-backdrop-color: rgba(0, 0, 0, 0.2)
-          sq-popup-backdrop-filter: blur(10px)
-          sq-popup-background-color: rgba(223, 218, 206, 0.8)
-          sq-popup-progress-color: rgb(200, 200, 200)
-          sq-popup-border-color: rgb(170, 170, 170)
-          sq-popup-box-shadow: none
+          popup-backdrop-color: rgba(0, 0, 0, 0.2)
+          popup-backdrop-filter: blur(10px)
+          popup-background-color: rgba(223, 218, 206, 0.8)
+          popup-progress-color: rgb(200, 200, 200)
+          popup-border-color: rgb(170, 170, 170)
+          popup-box-shadow: none
 
-          sq-card-background-color: rgba(250, 250, 250, 0.6)
-          sq-card-border: 1px solid rgb(250, 250, 250)
-          sq-card-box-shadow: none
-          sq-ripple-color: rgb(250, 250, 250)
+          card-background-color: rgba(250, 250, 250, 0.6)
+          card-border: 1px solid rgb(250, 250, 250)
+          card-box-shadow: none
+          ripple-color: rgb(250, 250, 250)
 
-          sq-button-background-color: rgba(250, 250, 250, 0.4)
+          button-background-color: rgba(250, 250, 250, 0.4)
 
-          sq-title-text-color: rgb(60, 60, 60)
-          sq-primary-text-color: rgb(20, 20, 20)
-          sq-secondary-text-color: rgb(70, 70, 70)
-          sq-popup-text-color: rgb(60, 60, 60)
+          title-text-color: rgb(60, 60, 60)
+          primary-text-color: rgb(20, 20, 20)
+          secondary-text-color: rgb(70, 70, 70)
+          popup-text-color: rgb(60, 60, 60)
 
         dark:
-          sq-panel-color: rgb(28, 28, 28)
+          panel-color: rgb(28, 28, 28)
 
-          sq-accent-color: rgb(0, 120, 230)
-          sq-divider-color: rgb(50, 50, 50)
-          sq-inactive-color: rgb(140, 140, 140)
-          sq-unavailable-color: rgb(255, 0, 255)
+          accent-color: rgb(0, 120, 230)
+          divider-color: rgb(50, 50, 50)
+          inactive-color: rgb(140, 140, 140)
+          unavailable-color: rgb(255, 0, 255)
 
-          sq-primary-background-color: rgb(25, 25, 25)
-          sq-secondary-background-color: rgb(60, 65, 65)
+          primary-background-color: rgb(25, 25, 25)
+          secondary-background-color: rgb(60, 65, 65)
 
           primary-color: "#A0A0A0"
-          accent-color: "#0078E6"
           app-header-background-color: "#3C3737"
 
-          sq-popup-backdrop-color: rgba(0, 0, 0, 0.2)
-          sq-popup-backdrop-filter: blur(10px)
-          sq-popup-background-color: rgba(25, 25, 25, 0.9)
-          sq-popup-progress-color: rgb(50, 50, 50)
-          sq-popup-border-color: rgb(0, 0, 0)
-          sq-popup-box-shadow: none
+          popup-backdrop-color: rgba(0, 0, 0, 0.2)
+          popup-backdrop-filter: blur(10px)
+          popup-background-color: rgba(25, 25, 25, 0.9)
+          popup-progress-color: rgb(50, 50, 50)
+          popup-border-color: rgb(0, 0, 0)
+          popup-box-shadow: none
 
-          sq-card-background-color: rgba(55, 55, 60, 0.65)
-          sq-card-border: 1px solid rgb(55, 55, 60)
-          sq-card-box-shadow: none
-          sq-ripple-color: rgb(55, 55, 60)
+          card-background-color: rgba(55, 55, 60, 0.65)
+          card-border: 1px solid rgb(55, 55, 60)
+          card-box-shadow: none
+          ripple-color: rgb(55, 55, 60)
 
-          sq-button-background-color: rgba(25, 25, 25, 0.4)
+          button-background-color: rgba(25, 25, 25, 0.4)
 
-          sq-title-text-color: rgb(170, 170, 170)
-          sq-primary-text-color: rgb(220, 220, 220)
-          sq-secondary-text-color: rgb(160, 160, 160)
-          sq-popup-text-color: rgb(170, 170, 170)
+          title-text-color: rgb(170, 170, 170)
+          primary-text-color: rgb(220, 220, 220)
+          secondary-text-color: rgb(160, 160, 160)
+          popup-text-color: rgb(170, 170, 170)
 
       # Colors
-      sq-amber-color: rgb(255, 193, 7)
-      sq-black-color: rgb(0, 0, 0)
-      sq-blue-color: rgb(33, 150, 243)
-      sq-blue-green-color: rgb(0, 150, 136)
-      sq-blue-grey-color: rgb(96, 125, 139)
-      sq-brown-color: rgb(121, 85, 72)
-      sq-cyan-color: rgb(0, 188, 212)
-      sq-dark-beige-color: rgb(32, 178, 170)
-      sq-deep-orange-color: rgb(255, 111, 34)
-      sq-deep-purple-color: rgb(110, 65, 171)
-      sq-deep-yellow-color: rgb(255, 152, 0)
-      sq-green-color: rgb(76, 175, 80)
-      sq-grey-color: rgb(158, 158, 158)
-      sq-indigo-color: rgb(63, 81, 181)
-      sq-light-blue-color: rgb(3, 169, 244)
-      sq-light-green-color: rgb(139, 195, 74)
-      sq-lime-color: rgb(205, 220, 57)
-      sq-magenta-color: rgb(255, 0, 255)
-      sq-orange-color: rgb(255, 152, 0)
-      sq-pink-color: rgb(233, 30, 99)
-      sq-purple-color: rgb(146, 107, 199)
-      sq-red-color: rgb(244, 67, 54)
-      sq-teal-color: rgb(0, 150, 136)
-      sq-warm-color: rgb(235, 196, 137)
-      sq-white-color: rgb(255, 255, 255)
-      sq-yellow-color: rgb(255, 235, 59)
+      amber-color: rgb(255, 193, 7)
+      black-color: rgb(0, 0, 0)
+      blue-color: rgb(33, 150, 243)
+      blue-green-color: rgb(0, 150, 136)
+      blue-grey-color: rgb(96, 125, 139)
+      brown-color: rgb(121, 85, 72)
+      cyan-color: rgb(0, 188, 212)
+      dark-beige-color: rgb(32, 178, 170)
+      deep-orange-color: rgb(255, 111, 34)
+      deep-purple-color: rgb(110, 65, 171)
+      deep-yellow-color: rgb(255, 152, 0)
+      green-color: rgb(76, 175, 80)
+      grey-color: rgb(158, 158, 158)
+      indigo-color: rgb(63, 81, 181)
+      light-blue-color: rgb(3, 169, 244)
+      light-green-color: rgb(139, 195, 74)
+      lime-color: rgb(205, 220, 57)
+      magenta-color: rgb(255, 0, 255)
+      orange-color: rgb(255, 152, 0)
+      pink-color: rgb(233, 30, 99)
+      purple-color: rgb(146, 107, 199)
+      red-color: rgb(244, 67, 54)
+      teal-color: rgb(0, 150, 136)
+      warm-color: rgb(235, 196, 137)
+      white-color: rgb(255, 255, 255)
+      yellow-color: rgb(255, 235, 59)
 
       # HA Cards
-      ha-dialog-border-radius: var(--sq-popup-border-radius)
-      ha-card-background: var(--sq-card-background-color)
-      ha-card-border-width: var(--sq-card-border-width)
-      ha-card-border-style: var(--sq-card-border-style)
-      ha-card-border-color: var(--sq-card-border-color))
-      ha-card-border-radius: var(--sq-card-border-radius)
-      ha-card-box-shadow: var(--sq-card-box-shadow)
-      ha-card-header-font-size: var(--sq-primary-font-size)
-      grid-card-gap: var(--sq-card-spacing)
-
-      # HA Text
-      primary-text-color: var(--sq-primary-text-color)
-      secondary-text-color: var(--sq-secondary-text-color)
-
-      # HA Main Interface
-      divider-color: var(--sq-divider-color)
-      inactive-color: var(--sq-inactive-color)
+      ha-dialog-border-radius: var(--popup-border-radius)
+      ha-card-background: var(--card-background-color)
+      ha-card-border-width: var(--card-border-width)
+      ha-card-border-style: var(--card-border-style)
+      ha-card-border-color: var(--card-border-color))
+      ha-card-border-radius: var(--card-border-radius)
+      ha-card-box-shadow: var(--card-box-shadow)
+      ha-card-header-font-size: var(--primary-font-size)
+      grid-card-gap: var(--card-spacing)
 
       # HA Misc
-      ha-assist-chip-filled-container-color: color-mix(in srgb, var(--sq-inactive-color) 20%, transparent)
+      ha-assist-chip-filled-container-color: color-mix(in srgb, var(--inactive-color) 20%, transparent)
 
       # Browser Mod Popup
-      popup-border-width: var(--sq-popup-border-width)
-      popup-border-style: var(--sq-popup-border-style)
-      popup-border-radius: var(--sq-popup-border-radius)
-      popup-background-color: var(--sq-popup-background-color)
       popup-padding-x: 1rem
       popup-padding-y: 1rem
 
       # Sidebar Menu
-      sidebar-icon-color: var(--sq-primary-text-color)
-      sidebar-text-color: var(--sq-primary-text-color)
+      sidebar-icon-color: var(--primary-text-color)
+      sidebar-text-color: var(--primary-text-color)
       sidebar-background-color: var(--app-header-background-color)
-      sidebar-selected-icon-color: var(--sq-accent-color)
-      sidebar-selected-text-color: var(--sq-accent-color)
+      sidebar-selected-icon-color: var(--accent-color)
+      sidebar-selected-text-color: var(--accent-color)
 
       # Buttons
-      paper-item-icon-color: var(--sq-inactive-color)
-      paper-item-icon-active-color: var(--sq-accent-color)
+      paper-item-icon-color: var(--inactive-color)
+      paper-item-icon-active-color: var(--accent-color)
 
       # State Colors
-      state-inactive-color: var(--sq-inactive-color)
-      state-unavailable-color: var(--sq-unavailable-color)
+      state-inactive-color: var(--inactive-color)
+      state-unavailable-color: var(--unavailable-color)
 
-      state-icon-color: var(--sq-primary-text-color)
-      state-icon-active-color: var(--sq-accent-color)
-      state-icon-inactive-color: var(--sq-inactive-color)
-      state-icon-unavailable-color: var(--sq-unavailable-color)
+      state-icon-color: var(--primary-text-color)
+      state-icon-active-color: var(--accent-color)
+      state-icon-inactive-color: var(--inactive-color)
+      state-icon-unavailable-color: var(--unavailable-color)
 
-      state-binary_sensor-on-color: var(--sq-orange-color)
+      state-binary_sensor-on-color: var(--amber-color)
+      state-binary_sensor-battery-on-color: var(--red-color);
+      state-binary_sensor-carbon_monoxide-on-color: var(--red-color);
+      state-binary_sensor-gas-on-color: var(--red-color);
+      state-binary_sensor-heat-on-color: var(--red-color);
+      state-binary_sensor-lock-on-color: var(--red-color);
+      state-binary_sensor-moisture-on-color: var(--red-color);
+      state-binary_sensor-problem-on-color: var(--red-color);
+      state-binary_sensor-safety-on-color: var(--red-color);
+      state-binary_sensor-smoke-on-color: var(--red-color);
+      state-binary_sensor-sound-on-color: var(--red-color);
+      state-binary_sensor-tamper-on-color: var(--red-color);
 
-      state-climate-auto-color: var(--sq-green-color)
-      state-climate-cool-color: var(--sq-light-blue-color)
-      state-climate-dry-color: var(--sq-orange-color)
-      state-climate-fan_only-color: var(--sq-cyan-color)
-      state-climate-heat-color: var(--sq-red-color)
-      state-climate-heat_cool-color: var(--sq-purple-color)
+      state-climate-auto-color: var(--green-color)
+      state-climate-cool-color: var(--blue-color)
+      state-climate-dry-color: var(--orange-color)
+      state-climate-fan_only-color: var(--cyan-color)
+      state-climate-heat-color: var(--red-color)
+      state-climate-heat_cool-color: var(--purple-color)
 
-      state-cover-closing-color: var(--sq-deep-orange-color)
-      state-cover-opening-color: var(--sq-deep-orange-color)
-      state-cover-open-color: var(--sq-orange-color)
+      state-cover-closing-color: var(--deep-orange-color)
+      state-cover-opening-color: var(--deep-orange-color)
+      state-cover-open-color: var(--deep-orange-color)
 
-      state-cover-shade-closing-color: var(--sq-purple-color)
-      state-cover-shade-opening-color: var(--sq-purple-color)
-      state-cover-shade-open-color: var(--sq-purple-color)
+      state-cover-shade-closing-color: var(--purple-color)
+      state-cover-shade-opening-color: var(--purple-color)
+      state-cover-shade-open-color: var(--purple-color)
 
-      state-fan-on-color: var(--sq-cyan-color)
+      state-fan-on-color: var(--cyan-color)
 
-      state-lock-locked-color: var(--sq-inactive-color)
-      state-lock-locking-color: var(--sq-deep-orange-color)
-      state-lock-unlocked-color: var(--sq-deep-orange-color)
-      state-lock-unlocking-color: var(--sq-deep-orange-color)
+      state-lock-locking-color: var(--deep-orange-color)
+      state-lock-unlocked-color: var(--deep-orange-color)
+      state-lock-unlocking-color: var(--deep-orange-color)
 
-      state-light-on-color: var(--sq-yellow-color)
-      state-light-fireplace-on-color: var(--sq-red-color)
+      state-light-on-color: var(--yellow-color)
+      state-light-fireplace-on-color: var(--red-color)
 
-      state-media_player-idle-color: var(--sq-blue-grey-color)
-      state-media_player-on-color: var(--sq-light-blue-color)
-      state-media_player-paused-color: var(--sq-blue-grey-color)
-      state-media_player-playing-color: var(--sq-light-blue-color)
-      state-media_player-standby-color: var(--sq-blue-grey-color)
-      state-scene-on-color: var(--sq-inactive-color)
+      state-media_player-idle-color: var(--blue-grey-color)
+      state-media_player-on-color: var(--light-blue-color)
+      state-media_player-paused-color: var(--blue-grey-color)
+      state-media_player-playing-color: var(--light-blue-color)
+      state-media_player-standby-color: var(--blue-grey-color)
 
-      state-switch-on-color: var(--sq-yellow-color)
-      state-switch-fireplace-on-color: var(--sq-red-color)
-      state-switch-heater-on-color: var(--sq-red-color)
-      state-switch-pump-on-color: var(--sq-blue-color)
-      state-switch-decorations-on-color: var(--sq-red-color)
-      state-switch-train-on-color: var(--sq-green-color)
-      state-water_heater-electric-color: var(--sq-red-color)
+      state-scene-on-color: var(--inactive-color)
+
+      state-switch-on-color: var(--yellow-color)
+      state-switch-fireplace-on-color: var(--red-color)
+      state-switch-heater-on-color: var(--red-color)
+      state-switch-pump-on-color: var(--blue-color)
+      state-switch-decorations-on-color: var(--red-color)
+      state-switch-train-on-color: var(--green-color)
+
+      state-water_heater-electric-color: var(--red-color)
 
       # Tables
-      table-row-background-color: var(--sq-primary-background-color)
-      table-row-alternative-background-color: var(--sq-secondary-background-color)
-      data-table-background-color: var(--sq-primary-background-color)
+      table-row-background-color: var(--primary-background-color)
+      table-row-alternative-background-color: var(--secondary-background-color)
+      data-table-background-color: var(--primary-background-color)
 
       # Dropdowns
-      material-background-color: var(--sq-primary-background-color)
-      material-secondary-background-color: var(--sq-secondary-background-color)
+      material-background-color: var(--primary-background-color)
+      material-secondary-background-color: var(--secondary-background-color)
 
       # Pre/Code
-      markdown-code-background-color: var(--sq-primary-background-color)
-      code-editor-background-color: var(--sq-primary-background-color)
+      markdown-code-background-color: var(--primary-background-color)
+      code-editor-background-color: var(--primary-background-color)
 
       # Switches
       switch-checked-button-color: var(--accent-color)
       switch-checked-track-color: var(--accent-color)
-      switch-unchecked-button-color: var(--sq-inactive-color)
-      switch-unchecked-track-color: var(--sq-inactive-color)
+      switch-unchecked-button-color: var(--inactive-color)
+      switch-unchecked-track-color: var(--inactive-color)
 
       # MDC
       mdc-ripple-color: transparent
-      mdc-radio-unchecked-color: var(--sq-inactive-color)
-      mdc-theme-text-primary-on-background: var(--sq-primary-text-color)
-      mdc-dialog-box-shadow: var(--sq-popup-box-shadow)
-      mdc-typography-button-font-size: var(--sq-secondary-font-size)
-      mdc-theme-surface: var(--sq-popup-background-color)
-      mdc-theme-on-surface: var(--sq-primary-text-color)
-      mdc-theme-background: var(--sq-primary-background-color)
-      mdc-icon-size: var(--sq-icon-size)
-      mdc-button-outline-color: var(--sq-card-border-color)
-      mdc-checkbox-unchecked-color: var(--sq-secondary-text-color)
-      mdc-checkbox-disable-color: color-mix(in srgb, var(--sq-inactive-color) 50%, transparent)
-      mdc-select-fill-color: var(--sq-secondary-background-color)
-      mdc-select-ink-color: var(--sq-primary-text-color)
-      mdc-select-label-ink-color: var(--sq-secondary-text-color)
-      mdc-select-idle-line-color: var(--sq-primary-text-color)
-      mdc-select-dropdown-icon-color: var(--sq-secondary-text-color)
-      mdc-select-hover-line-color: var(--sq-accent-color)
-      mdc-text-field-fill-color: var(--sq-secondary-background-color)
-      mdc-tab-text-label-color-default: var(--sq-secondary-text-color)
+      mdc-radio-unchecked-color: var(--inactive-color)
+      mdc-theme-text-primary-on-background: var(--primary-text-color)
+      mdc-dialog-box-shadow: var(--popup-box-shadow)
+      mdc-typography-button-font-size: var(--secondary-font-size)
+      mdc-theme-surface: var(--popup-background-color)
+      mdc-theme-on-surface: var(--primary-text-color)
+      mdc-theme-background: var(--primary-background-color)
+      mdc-icon-size: var(--icon-size)
+      mdc-button-outline-color: var(--card-border-color)
+      mdc-checkbox-unchecked-color: var(--secondary-text-color)
+      mdc-checkbox-disable-color: color-mix(in srgb, var(--inactive-color) 50%, transparent)
+      mdc-select-fill-color: var(--secondary-background-color)
+      mdc-select-ink-color: var(--primary-text-color)
+      mdc-select-label-ink-color: var(--secondary-text-color)
+      mdc-select-idle-line-color: var(--primary-text-color)
+      mdc-select-dropdown-icon-color: var(--secondary-text-color)
+      mdc-select-hover-line-color: var(--accent-color)
+      mdc-text-field-fill-color: var(--secondary-background-color)
+      mdc-tab-text-label-color-default: var(--secondary-text-color)
 
       #Swiper
-      swiper-navigation-color: var(--sq-card-background-color)
+      swiper-navigation-color: var(--card-background-color)
