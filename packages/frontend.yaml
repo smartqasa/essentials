@@ -57,8 +57,6 @@ frontend:
 
       title-font-weight: 300
       popup-font-weight: 400
-      primary-font-weight: 300
-      secondary-font-weight: 300
       button-font-weight: 300
 
       # Icons
@@ -75,7 +73,9 @@ frontend:
 
           title-text-color: rgb(60, 60, 60)
           primary-text-color: rgb(20, 20, 20)
+          primary-font-weight: 400
           secondary-text-color: rgb(70, 70, 70)
+          secondary-font-weight: 300
           popup-text-color: rgb(60, 60, 60)
 
           icon-opacity: 30%
@@ -111,7 +111,9 @@ frontend:
 
           title-text-color: rgb(170, 170, 170)
           primary-text-color: rgb(225, 225, 225)
+          primary-font-weight: 300
           secondary-text-color: rgb(165, 165, 165)
+          secondary-font-weight: 300
           popup-text-color: rgb(170, 170, 170)
 
           icon-opacity: 30%
