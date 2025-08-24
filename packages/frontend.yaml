@@ -78,7 +78,7 @@ frontend:
           secondary-font-weight: 300
           popup-text-color: rgb(60, 60, 60)
 
-          icon-color: rgb(60, 60, 60)
+          icon-color: rgb(20, 20, 20)
           icon-opacity: 50%
 
           accent-color: rgb(0, 120, 230)
@@ -117,7 +117,7 @@ frontend:
           secondary-font-weight: 300
           popup-text-color: rgb(170, 170, 170)
 
-          icon-color: rgb(170, 170, 170)
+          icon-color: rgb(225, 225, 225)
           icon-opacity: 50%
 
           accent-color: rgb(0, 120, 230)
