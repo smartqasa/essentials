@@ -83,7 +83,7 @@ frontend:
 
           accent-color: rgb(0, 120, 230)
           divider-color: rgb(160, 160, 160)
-          inactive-color: rgb(80, 80, 80)
+          inactive-color: rgb(100, 100, 100)
           unavailable-color: rgb(255, 0, 255)
 
           primary-background-color: rgb(180, 180, 180)
