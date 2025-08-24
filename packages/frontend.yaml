@@ -205,11 +205,6 @@ frontend:
       state-inactive-color: var(--inactive-color)
       state-unavailable-color: var(--unavailable-color)
 
-      state-icon-color: var(--primary-text-color)
-      state-icon-active-color: var(--accent-color)
-      state-icon-inactive-color: var(--inactive-color)
-      state-icon-unavailable-color: var(--unavailable-color)
-
       state-binary_sensor-on-color: var(--amber-color)
       state-binary_sensor-battery-on-color: var(--red-color);
       state-binary_sensor-carbon_monoxide-on-color: var(--red-color);
@@ -225,7 +220,7 @@ frontend:
 
       state-climate-auto-color: var(--green-color)
       state-climate-cool-color: var(--blue-color)
-      state-climate-dry-color: var(--orange-color)
+      state-climate-dry-color: var(--deep-beige-color)
       state-climate-fan_only-color: var(--cyan-color)
       state-climate-heat-color: var(--red-color)
       state-climate-heat_cool-color: var(--purple-color)
@@ -263,6 +258,10 @@ frontend:
       state-switch-train-on-color: var(--green-color)
 
       state-water_heater-electric-color: var(--red-color)
+      state-water_heater-on-color: var(--red-color)
+
+      state-icon-color: var(--primary-text-color)
+      state-icon-unavailable-color: var(--magenta-color)
 
       # Tables
       table-row-background-color: var(--primary-background-color)
