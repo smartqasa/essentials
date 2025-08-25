@@ -212,18 +212,18 @@ frontend:
       state-unavailable-color: var(--unavailable-color)
 
       state-binary_sensor-on-color: var(--amber-color)
-      state-binary_sensor-battery-on-color: var(--red-color);
-      state-binary_sensor-carbon_monoxide-on-color: var(--red-color);
-      state-binary_sensor-gas-on-color: var(--red-color);
-      state-binary_sensor-heat-on-color: var(--red-color);
-      state-binary_sensor-lock-on-color: var(--red-color);
-      state-binary_sensor-moisture-on-color: var(--blue-color);
-      state-binary_sensor-motion-on-color: var(--blue-color);
-      state-binary_sensor-problem-on-color: var(--red-color);
-      state-binary_sensor-safety-on-color: var(--red-color);
-      state-binary_sensor-smoke-on-color: var(--red-color);
-      state-binary_sensor-sound-on-color: var(--red-color);
-      state-binary_sensor-tamper-on-color: var(--red-color);
+      state-binary_sensor-battery-on-color: var(--red-color)
+      state-binary_sensor-carbon_monoxide-on-color: var(--red-color)
+      state-binary_sensor-gas-on-color: var(--red-color)
+      state-binary_sensor-heat-on-color: var(--red-color)
+      state-binary_sensor-lock-on-color: var(--red-color)
+      state-binary_sensor-moisture-on-color: var(--red-color)
+      state-binary_sensor-motion-on-color: var(--blue-color)
+      state-binary_sensor-problem-on-color: var(--red-color)
+      state-binary_sensor-safety-on-color: var(--red-color)
+      state-binary_sensor-smoke-on-color: var(--red-color)
+      state-binary_sensor-sound-on-color: var(--red-color)
+      state-binary_sensor-tamper-on-color: var(--red-color)
 
       state-climate-auto-color: var(--green-color)
       state-climate-cool-color: var(--blue-color)
