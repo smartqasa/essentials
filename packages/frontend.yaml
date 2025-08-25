@@ -81,6 +81,8 @@ frontend:
           icon-color: rgb(20, 20, 20)
           icon-opacity: 100%
 
+          track-opacity: 20%
+
           accent-color: rgb(0, 120, 230)
           divider-color: rgb(160, 160, 160)
           inactive-color: rgb(150, 150, 150)
@@ -119,6 +121,8 @@ frontend:
 
           icon-color: rgb(225, 225, 225)
           icon-opacity: 100%
+
+          --track-opacity: 20%
 
           accent-color: rgb(0, 120, 230)
           divider-color: rgb(50, 50, 50)
