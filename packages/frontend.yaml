@@ -218,7 +218,6 @@ frontend:
       state-binary_sensor-heat-on-color: var(--red-color);
       state-binary_sensor-lock-on-color: var(--red-color);
       state-binary_sensor-moisture-on-color: var(--red-color);
-      state-binary_sensor-motion-on-color: var(--blue-color); # New setting
       state-binary_sensor-problem-on-color: var(--red-color);
       state-binary_sensor-safety-on-color: var(--red-color);
       state-binary_sensor-smoke-on-color: var(--red-color);
