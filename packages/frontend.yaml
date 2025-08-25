@@ -79,7 +79,7 @@ frontend:
           popup-text-color: rgb(60, 60, 60)
 
           icon-color: rgb(20, 20, 20)
-          icon-opacity: 50%
+          icon-opacity: 100%
 
           accent-color: rgb(0, 120, 230)
           divider-color: rgb(160, 160, 160)
@@ -118,11 +118,11 @@ frontend:
           popup-text-color: rgb(170, 170, 170)
 
           icon-color: rgb(225, 225, 225)
-          icon-opacity: 50%
+          icon-opacity: 100%
 
           accent-color: rgb(0, 120, 230)
           divider-color: rgb(50, 50, 50)
-          inactive-color: rgb(150, 150, 150)
+          inactive-color: rgb(120, 120, 120)
           unavailable-color: rgb(255, 0, 255)
 
           primary-background-color: rgb(25, 25, 25)
