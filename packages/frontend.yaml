@@ -79,7 +79,7 @@ frontend:
           popup-text-color: rgb(60, 60, 60)
 
           icon-color: rgb(20, 20, 20)
-          icon-opacity: 60%
+          icon-opacity: 50%
 
           track-opacity: 35%
 
@@ -120,7 +120,7 @@ frontend:
           popup-text-color: rgb(170, 170, 170)
 
           icon-color: rgb(225, 225, 225)
-          icon-opacity: 60%
+          icon-opacity: 50%
 
           track-opacity: 35%
 
