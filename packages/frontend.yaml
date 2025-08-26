@@ -32,8 +32,15 @@ frontend:
       tile-border-radius: var(--card-border-radius)
       tile-background-color: var(--card-background-color)
 
+      # Icons
+      icon-size: 24px
+      icon-padding: 14px
+      icon-image-size: calc(var(--icon-size) + var(--icon-padding) * 2)
+      icon-border-radius: 999px
+      icon-transition: ease-in-out 0.5s
+
       # Chips
-      chip-padding: 16px
+      chip-padding: 14px
       chip-spacing: 4px
       chip-border: var(--card-border)
       chip-border-radius: 999px
@@ -58,13 +65,6 @@ frontend:
       title-font-weight: 300
       popup-font-weight: 400
       button-font-weight: 300
-
-      # Icons
-      icon-size: 24px
-      icon-padding: 14px
-      icon-image-size: calc(var(--icon-size) + var(--icon-padding) * 2)
-      icon-border-radius: 999px
-      icon-transition: ease-in-out 0.5s
 
       # Colors
       modes:
@@ -208,6 +208,7 @@ frontend:
       paper-item-icon-active-color: var(--accent-color)
 
       # State Colors
+      state-active-color: var(--icon-color)
       state-inactive-color: var(--inactive-color)
       state-unavailable-color: var(--unavailable-color)
 
