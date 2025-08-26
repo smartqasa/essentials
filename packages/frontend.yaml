@@ -41,7 +41,7 @@ frontend:
 
       # Chips
       chip-padding: 14px
-      chip-spacing: 4px
+      chip-spacing: 5px
       chip-border: var(--card-border)
       chip-border-radius: 999px
       chip-background-color: var(--card-background-color)
