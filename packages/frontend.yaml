@@ -232,7 +232,7 @@ frontend:
       state-climate-fan_only-color: var(--cyan-color)
       state-climate-heat-color: var(--red-color)
       state-climate-heat_cool-color: var(--purple-color)
-      state-climate-idle-color: var(--icon-color)
+      state-climate-idle-color: var(--inactive-color)
 
       state-cover-closing-color: var(--deep-orange-color)
       state-cover-opening-color: var(--deep-orange-color)
