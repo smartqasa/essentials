@@ -7,6 +7,8 @@ frontend:
   themes:
     SmartQasa:
       # Panel
+      panel-padding: 10px
+      panel-gap: 10px
       panel-grid-gap: 10px
 
       # Dialogs
