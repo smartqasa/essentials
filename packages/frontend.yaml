@@ -215,6 +215,7 @@ frontend:
       state-binary_sensor-on-color: var(--amber-color)
       state-binary_sensor-battery-on-color: var(--red-color)
       state-binary_sensor-carbon_monoxide-on-color: var(--red-color)
+      state-binary_sensor-contact-on-color: var(--deep-orange-color)
       state-binary_sensor-gas-on-color: var(--red-color)
       state-binary_sensor-heat-on-color: var(--red-color)
       state-binary_sensor-lock-on-color: var(--red-color)
