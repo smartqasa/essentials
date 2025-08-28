@@ -94,7 +94,7 @@ frontend:
           secondary-background-color: rgb(200, 200, 200)
 
           primary-color: "#46463C"
-          app-header-background-color: "#AFAAAA"
+          app-header-background-color: var(--panel-color)
 
           popup-backdrop-color: rgba(0, 0, 0, 0.2)
           popup-backdrop-filter: blur(10px)
@@ -135,7 +135,7 @@ frontend:
           secondary-background-color: rgb(60, 65, 65)
 
           primary-color: "#A0A0A0"
-          app-header-background-color: "#3C3737"
+          app-header-background-color: var(--panel-color)
 
           popup-backdrop-color: rgba(0, 0, 0, 0.2)
           popup-backdrop-filter: blur(10px)
