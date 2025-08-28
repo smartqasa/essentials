@@ -49,7 +49,7 @@ frontend:
       chip-background-color: var(--card-background-color)
 
       # Buttons
-      button-padding: var(--tile-padding)
+      button-padding: 12px
       button-spacing: 4px
       button-border: var(--card-border)
       button-border-radius: 999px
