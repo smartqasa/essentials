@@ -10,6 +10,7 @@ frontend:
       panel-padding: 14px
       panel-spacing: 20px
       panel-grid-gap: 10px
+      banner-height: 32vh
 
       # Dialogs
       popup-min-width: 35vw
