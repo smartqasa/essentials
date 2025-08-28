@@ -60,9 +60,9 @@ frontend:
 
       title-font-size: 35px
       popup-font-size: 25px
-      primary-font-size: 18px
+      primary-font-size: 19px
       secondary-font-size: 16px
-      button-font-size: 18px
+      button-font-size: 19px
 
       title-font-weight: 300
       popup-font-weight: 400
