@@ -113,7 +113,7 @@ frontend:
         dark:
           panel-color: rgb(25, 25, 25)
 
-          title-text-color: rgb(190, 190, 190)
+          title-text-color: rgb(200, 200, 200)
           primary-text-color: rgb(225, 225, 225)
           primary-font-weight: 300
           secondary-text-color: rgb(170, 170, 170)
