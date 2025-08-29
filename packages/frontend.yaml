@@ -8,7 +8,7 @@ frontend:
     SmartQasa:
       # Panel
       panel-padding: 14px
-      panel-spacing: 35px
+      panel-spacing: 30px
       panel-grid-gap: 10px
       banner-height: 32vh
 
