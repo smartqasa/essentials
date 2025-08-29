@@ -144,11 +144,11 @@ frontend:
           popup-border-color: rgb(0, 0, 0)
           popup-box-shadow: none
 
-          card-background-color: rgba(55, 55, 60, 0.7)
-          card-border: 1px solid rgb(55, 55, 60)
+          card-background-color: rgba(50, 50, 55, 0.75)
+          card-border: 1px solid rgb(50, 50, 55)
           card-box-shadow: none
 
-          ripple-color: rgb(55, 55, 60)
+          ripple-color: rgb(50, 50, 55)
 
           button-background-color: rgba(25, 25, 25, 0.4)
 
