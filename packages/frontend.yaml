@@ -80,7 +80,7 @@ frontend:
           secondary-text-color: rgb(50, 50, 50)
           secondary-font-weight: 300
           button-text-color: rgb(40, 40, 40)
-          button-font-weight: 300
+          button-font-weight: 400
           popup-text-color: rgb(60, 60, 60)
 
           icon-color: rgb(20, 20, 20)
