@@ -79,6 +79,8 @@ frontend:
           primary-font-weight: 400
           secondary-text-color: rgb(50, 50, 50)
           secondary-font-weight: 300
+          button-text-color: rgb(20, 20, 20)
+          button-font-weight: 300
           popup-text-color: rgb(60, 60, 60)
 
           icon-color: rgb(20, 20, 20)
@@ -117,6 +119,8 @@ frontend:
           primary-text-color: rgb(225, 225, 225)
           primary-font-weight: 300
           secondary-text-color: rgb(170, 170, 170)
+          secondary-font-weight: 300
+          secondary-text-color: rgb(225, 225, 225)
           secondary-font-weight: 300
           popup-text-color: rgb(170, 170, 170)
 
