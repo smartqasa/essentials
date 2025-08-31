@@ -63,7 +63,7 @@ frontend:
       popup-font-size: 25px
       primary-font-size: 19px
       secondary-font-size: 16px
-      button-font-size: 19px
+      button-font-size: 18px
 
       title-font-weight: 300
       popup-font-weight: 400
