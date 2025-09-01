@@ -110,7 +110,7 @@ frontend:
           card-border: 1px solid rgb(250, 250, 250)
           card-box-shadow: none
 
-          ripple-color: rgb(250, 250, 250)
+          ripple-color: rgb(220, 220, 220)
 
         dark:
           panel-color: rgb(25, 25, 25)
