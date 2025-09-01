@@ -151,7 +151,7 @@ frontend:
           card-border: 1px solid rgb(50, 50, 55)
           card-box-shadow: none
 
-          ripple-color: rgb(50, 50, 55)
+          ripple-color: rgb(80, 80, 85)
 
       # Colors
       amber-color: rgb(255, 193, 7)
