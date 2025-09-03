@@ -5,7 +5,3 @@ lovelace:
       type: module
     - url: /hacsfiles/dash-elements/elements.js
       type: module
-    - url: /hacsfiles/maxi-media-player/maxi-media-player.js
-      type: module
-    - url: /hacsfiles/weather-radar-card/weather-radar-card.js
-      type: module
