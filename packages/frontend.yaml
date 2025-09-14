@@ -12,7 +12,7 @@ frontend:
       banner-height: 32vh
 
       # Dialogs
-      popup-min-width: 35vw
+      popup-min-width: 25vw
       popup-max-width: 95vw
       popup-border: 0 none var(--popup-border-color)
       popup-border-radius: 20px
