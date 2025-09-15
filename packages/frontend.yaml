@@ -1,7 +1,6 @@
 frontend:
   extra_module_url:
     - /hacsfiles/kiosk-mode/kiosk-mode.js
-    - /hacsfiles/lovelace-card-mod/card-mod.js
 
   themes:
     SmartQasa:
