@@ -72,7 +72,7 @@ frontend:
       # Colors
       modes:
         light:
-          panel-color: rgb(223, 218, 206)
+          panel-color: rgb(213, 208, 196)
 
           title-text-color: rgb(40, 40, 40)
           primary-text-color: rgb(20, 20, 20)
