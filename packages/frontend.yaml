@@ -101,7 +101,7 @@ frontend:
 
           popup-backdrop-color: rgba(0, 0, 0, 0.2)
           popup-backdrop-filter: blur(10px)
-          popup-background-color: rgba(223, 218, 206, 0.8)
+          popup-background-color: rgba(213, 208, 196, 0.8)
           popup-progress-color: rgb(200, 200, 200)
           popup-border-color: rgb(170, 170, 170)
           popup-box-shadow: none
