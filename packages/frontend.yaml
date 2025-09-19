@@ -23,7 +23,7 @@ frontend:
       card-spacing: 12px
       card-border: 1px solid var(--card-color);
       card-border-radius: 20px
-      card-background-color: color-mix(in srgb, var(--card-color) 75%, transparent);
+      card-background-color: color-mix(in srgb, transparent, var(--card-color) 75%);
 
       # Tiles
       tile-min-width: 500px
