@@ -49,8 +49,8 @@ frontend:
       chip-background-color: var(--card-background-color)
 
       # Buttons
-      button-padding: 12px
-      button-spacing: 4px
+      button-padding: 10px 14px
+      button-spacing: 5px
       button-border: var(--card-border)
       button-border-radius: 999px
       button-background-color: var(--card-background-color)
