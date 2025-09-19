@@ -15,7 +15,7 @@ frontend:
       popup-max-width: 95vw
       popup-border: 0 none var(--popup-border-color)
       popup-border-radius: 20px
-      popup-padding: 20px
+      popup-padding: 25px
       popup-grid-gap: 10px
 
       # Cards
