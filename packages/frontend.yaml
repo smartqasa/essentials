@@ -106,8 +106,9 @@ frontend:
           popup-border-color: rgb(170, 170, 170)
           popup-box-shadow: none
 
-          card-background-color: rgba(235, 230, 230, 0.75)
-          card-border: 1px solid rgb(235, 230, 230)
+          card-rgb: 235, 230, 230
+          card-background-color: rgba(var(--card-rgb), 0.75)
+          card-border: 1px solid rgb(var(--card-rgb))
           card-box-shadow: none
 
           ripple-color: rgb(220, 220, 220)
@@ -147,8 +148,9 @@ frontend:
           popup-border-color: rgb(0, 0, 0)
           popup-box-shadow: none
 
-          card-background-color: rgba(45, 45, 50, 0.8)
-          card-border: 1px solid rgb(45, 45, 50)
+          card-rgb: 45, 45, 50
+          card-background-color: rgba(var(--card-rgb), 0.8)
+          card-border: 1px solid rgb(var(--card-rgb))
           card-box-shadow: none
 
           ripple-color: rgb(80, 80, 85)
