@@ -21,9 +21,9 @@ frontend:
       # Cards
       card-padding: 16px
       card-spacing: 12px
-      card-border: 1px solid var(--card-color);
+      card-border: 1px solid rgb(var(--card-rgb));
       card-border-radius: 20px
-      card-background-color: color-mix(in srgb, transparent, var(--card-color) 75%);
+      card-background-color: rgba(var(--card-rgb), 0.75);
 
       # Tiles
       tile-min-width: 500px
@@ -108,7 +108,7 @@ frontend:
           popup-border-color: rgb(170, 170, 170)
           popup-box-shadow: none
 
-          card-color: rgb(235, 230, 230)
+          card-rgb: 235, 230, 230
           card-box-shadow: none
 
           ripple-color: rgb(220, 220, 220)
@@ -148,7 +148,7 @@ frontend:
           popup-border-color: rgb(0, 0, 0)
           popup-box-shadow: none
 
-          card-color: rgb(45, 45, 50)
+          card-rgb: 45, 45, 50
           card-box-shadow: none
 
           ripple-color: rgb(80, 80, 85)
