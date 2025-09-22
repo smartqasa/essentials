@@ -15,17 +15,23 @@ automation:
           value: "{{ states('input_text.system_pin') + states('input_text.location_pin') }}"
         target:
           entity_id: input_text.admin_pin_code
-      # Set Theme to SmartQasa
-      - action: frontend.set_theme
-        data:
-          name: SmartQasa
-      # Wait for 3 minutes
-      - delay:
-          minutes: 3
       # Refresh Devices
+      - delay:
+          minutes: 5
       - action: input_button.press
         target:
           entity_id: input_button.refresh_devices
+      # Set Theme to SmartQasa
+      - delay:
+          seconds: 30
+      - action: frontend.set_theme
+        data:
+          name: SmartQasa
+      # Reload Themes
+      - delay:
+          seconds: 5
+      - action: frontend.reload_themes
+        data: {}
       # Run Watchman
       - action: watchman.report
         data:
