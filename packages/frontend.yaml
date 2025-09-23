@@ -113,7 +113,7 @@ frontend:
           button-background-color: rgba(245, 240, 240, 0.75)
           button-border: 1px solid rgb(245, 240, 240)
 
-          ripple-color: rgb(220, 220, 220)
+          ripple-color: rgb(205, 200, 200)
 
         dark:
           panel-color: rgb(25, 25, 25)
