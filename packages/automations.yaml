@@ -60,6 +60,44 @@ automation:
         else:
           - action: homeassistant.restart
 
+  - alias: "System - Reload Themes after Tablet Refresh/Reboot"
+    mode: single
+    triggers:
+      - trigger: state
+        entity_id:
+          - input_button.refresh_devices
+        id: refresh
+      - trigger: state
+        entity_id:
+          - input_button.reboot_devices
+        id: reboot
+    conditions: []
+    actions:
+      - choose:
+          - conditions:
+              - condition: trigger
+                id:
+                  - refresh
+            sequence:
+              - delay:
+                  hours: 0
+                  minutes: 0
+                  seconds: 15
+                  milliseconds: 0
+
+          - conditions:
+              - condition: trigger
+                id:
+                  - reboot
+            sequence:
+              - delay:
+                  hours: 0
+                  minutes: 1
+                  seconds: 0
+                  milliseconds: 0
+      - action: frontend.reload_themes
+        data: {}
+
   - alias: "System - Shutdown Services"
     mode: single
     trigger:
