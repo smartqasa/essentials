@@ -84,7 +84,6 @@ automation:
                   minutes: 0
                   seconds: 15
                   milliseconds: 0
-
           - conditions:
               - condition: trigger
                 id:
@@ -97,6 +96,13 @@ automation:
                   milliseconds: 0
       - action: frontend.reload_themes
         data: {}
+      - action: automation.trigger
+        data:
+          skip_condition: true
+        target:
+          entity_id:
+            - automation.time_tablet_brightness_bedroom
+            - automation.time_tablet_brightness_common
 
   - alias: "System - Shutdown Services"
     mode: single
