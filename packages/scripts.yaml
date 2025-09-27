@@ -48,16 +48,11 @@ script:
 
   system_toggle_shade:
     alias: System - Toggle Window Shade
-    fields:
-      entity:
-        description: The entity id of the cover to control
-      tilt:
-        description: The tilt position to set (0-100) or 0 to fully open
     sequence:
       - choose:
           - conditions:
               - condition: template
-                value_template: "{{ is_state(entity, 'closed') }}"
+                value_template: "{{ is_state(entity[0], 'closed') }}"
             sequence:
               - if:
                   - condition: template
@@ -79,7 +74,7 @@ script:
                       entity_id: "{{ entity }}"
           - conditions:
               - condition: template
-                value_template: "{{ is_state(entity, 'opening') or is_state(entity, 'closing') }}"
+                value_template: "{{ is_state(entity[0], 'opening') or is_state(entity, 'closing') }}"
             sequence:
               - action: cover.stop_cover
                 target:
