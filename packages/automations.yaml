@@ -147,10 +147,10 @@ automation:
 
   - alias: "System - Toggle Tablet Screens for Light/Dark Mode"
     mode: single
-    variables:
-      tablet_screens: >-
-        {{ states.switch | selectattr("entity_id", "search",
-        "tablet_screen$") | map(attribute="entity_id") | list }}
+    #    variables:
+    #      tablet_screens: >-
+    #        {{ states.switch | selectattr("entity_id", "search",
+    #        "tablet_screen$") | map(attribute="entity_id") | list }}
     trigger:
       - trigger: sun
         event: sunrise
