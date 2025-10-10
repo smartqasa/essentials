@@ -5,6 +5,14 @@ input_boolean:
     initial: false
 
 input_button:
+  flash_devices:
+    name: Flash Devices
+    icon: mdi:theme-light-dark
+
+  location_phase:
+    name: Location Phase Trigger
+    icon: mdi:theme-light-dark
+
   reboot_devices:
     name: Reboot Devices
     icon: mdi:restart
@@ -12,14 +20,6 @@ input_button:
   refresh_devices:
     name: Refresh Devices
     icon: mdi:refresh
-
-  location_mode:
-    name: Location Mode Trigger
-    icon: mdi:home-circle
-
-  location_phase:
-    name: Location Phase Trigger
-    icon: mdi:theme-light-dark
 
 input_select:
   dashboard_background:
