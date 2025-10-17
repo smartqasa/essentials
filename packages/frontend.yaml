@@ -256,6 +256,7 @@ frontend:
 
       state-fan-on-color: var(--cyan-color)
 
+      state-lock-locked-color: var(--inactive-color)
       state-lock-locking-color: var(--deep-orange-color)
       state-lock-unlocked-color: var(--deep-orange-color)
       state-lock-unlocking-color: var(--deep-orange-color)
