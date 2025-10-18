@@ -7,6 +7,7 @@ automation:
     action:
       # Reset Admin Mode
       - action: input_boolean.turn_off
+        data: {}
         target:
           entity_id: input_boolean.admin_mode
       # Set Admin PIN
@@ -18,7 +19,12 @@ automation:
       # Refresh Devices
       - delay:
           minutes: 5
+      - action: browser_mod.refresh
+        data: {}
+      - delay:
+          seconds: 10
       - action: input_button.press
+        data: {}
         target:
           entity_id: input_button.refresh_devices
       # Set Theme to SmartQasa
@@ -32,6 +38,7 @@ automation:
           seconds: 5
       - action: frontend.reload_themes
         data: {}
+
       # Run Watchman
       - action: watchman.report
         data:
@@ -52,6 +59,7 @@ automation:
               - sun
         then:
           - action: input_button.press
+            data: {}
             target:
               entity_id: input_button.reboot_devices
           - delay:
@@ -112,6 +120,7 @@ automation:
     actions:
       # Update Repositories
       - action: shell_command.update_repos
+        data: {}
 
   - alias: "System - Set Admin PIN on PIN change."
     mode: single
@@ -142,6 +151,7 @@ automation:
           hours: 1
     action:
       - action: input_boolean.turn_off
+        data: {}
         target:
           entity_id: input_boolean.admin_mode
 
@@ -178,6 +188,7 @@ automation:
         event_type: lovelace_updated
     actions:
       - action: browser_mod.refresh
+        data: {}
 
   - alias: System - Stop Window Shades on Timeout
     description: ""
@@ -200,6 +211,7 @@ automation:
           seconds: 0
     actions:
       - action: cover.stop_cover
+        data: {}
         target:
           entity_id: cover.all_window_shades
     mode: single
