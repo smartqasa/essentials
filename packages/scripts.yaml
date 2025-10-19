@@ -1,24 +1,39 @@
 script:
-  system_tablet_reload:
-    alias: System - Refresh Tablets
+  system_tablet_retart:
+    alias: System - Clear Cache and Retart Fully App on Tablets
     icon: mdi:tablet-dashboard
     sequence:
-      - action: browser_mod.refresh
+      - variables:
+          clear_cache: >-
+            {{ states.button
+              | selectattr('entity_id', 'match', '_clear_browser_cache(_\d+)?$')
+              | map(attribute='entity_id')
+              | list }}
+          restart_app: >-
+            {{ states.button
+              | selectattr('entity_id', 'match', '_tablet_restart_browser(_\d+)?$')
+              | map(attribute='entity_id')
+              | list }}
+      - action: button.press
         data: {}
-    #      - action: button.press
-    #        data: {}
-    #        target:
-    #          entity_id: >-
-    #            {{ states.button | selectattr("entity_id", "search",
-    #            "tablet_load_start_url$") | map(attribute="entity_id") | list }}
-    #      - action: input_button.press
-    #        data: {}
-    #        target:
-    #          entity_id: input_button.tablet_brightness
+        target:
+          entity_id: "{{ clear_cache }}"
+      - delay:
+          seconds: 10
+      - action: button.press
+        data: {}
+        target:
+          entity_id: "{{ restart_app }}"
+      - delay:
+          seconds: 20
+      - action: input_button.press
+        data: {}
+        target:
+          entity_id: input_button.tablet_brightness
     mode: single
 
-  system_tablet_restart:
-    alias: System - Restart Tablets
+  system_tablet_reboot:
+    alias: System - Reboot Tablets
     icon: mdi:tablet-dashboard
     sequence:
       - action: button.press
