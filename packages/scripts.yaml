@@ -123,7 +123,7 @@ script:
     sequence:
       - action: browser_mod.refresh
       - delay:
-          seconds: 5
+          seconds: 2
       - variables:
           clear_cache: >-
             {{ states.button
