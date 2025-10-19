@@ -87,7 +87,7 @@ script:
           volume_level: "{{ play_level }}"
     mode: restart
 
-  system_tablet_reboot:
+  system_reboot_tablets:
     alias: System - Clear Cache and Reboot Tablets
     icon: mdi:tablet-dashboard
     sequence:
@@ -103,24 +103,21 @@ script:
               | map(attribute='entity_id')
               | list }}
       - action: button.press
-        data: {}
         target:
           entity_id: "{{ clear_cache }}"
       - delay:
           seconds: 5
       - action: button.press
-        data: {}
         target:
           entity_id: "{{ restart_device }}"
       - delay:
           seconds: 30
       - action: input_button.press
-        data: {}
         target:
           entity_id: input_button.tablet_brightness
     mode: single
 
-  system_tablet_restart:
+  system_refresh_tablets:
     alias: System - Clear Cache and Restart Fully App on Tablets
     icon: mdi:tablet-dashboard
     sequence:
@@ -136,19 +133,16 @@ script:
               | map(attribute='entity_id')
               | list }}
       - action: button.press
-        data: {}
         target:
           entity_id: "{{ clear_cache }}"
       - delay:
           seconds: 2
       - action: button.press
-        data: {}
         target:
           entity_id: "{{ restart_app }}"
       - delay:
-          seconds: 5
+          seconds: 10
       - action: input_button.press
-        data: {}
         target:
           entity_id: input_button.tablet_brightness
     mode: single
