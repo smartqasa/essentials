@@ -112,9 +112,11 @@ script:
           entity_id: "{{ restart_device }}"
       - delay:
           seconds: 30
+      - action: frontend.reload_themes
       - action: input_button.press
         target:
           entity_id: input_button.tablet_brightness
+
     mode: single
 
   system_refresh_tablets:
@@ -145,6 +147,7 @@ script:
           entity_id: "{{ restart_app }}"
       - delay:
           seconds: 10
+      - action: frontend.reload_themes
       - action: input_button.press
         target:
           entity_id: input_button.tablet_brightness

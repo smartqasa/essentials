@@ -19,8 +19,6 @@ automation:
       - action: frontend.set_theme
         data:
           name: SmartQasa
-      # Reload Themes
-      - action: frontend.reload_themes
       # Refresh Devices
       - action: script.system_refresh_tablets
       # Run Watchman
