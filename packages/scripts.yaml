@@ -19,13 +19,13 @@ script:
         target:
           entity_id: "{{ clear_cache }}"
       - delay:
-          seconds: 10
+          seconds: 2
       - action: button.press
         data: {}
         target:
           entity_id: "{{ restart_app }}"
       - delay:
-          seconds: 20
+          seconds: 5
       - action: input_button.press
         data: {}
         target:
