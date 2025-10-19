@@ -7,7 +7,7 @@ input_boolean:
 input_button:
   flash_devices:
     name: Flash Devices
-    icon: mdi:theme-light-dark
+    icon: mdi:flash
 
   location_phase:
     name: Location Phase Trigger
@@ -21,17 +21,11 @@ input_button:
     name: Refresh Devices
     icon: mdi:refresh
 
-input_select:
-  dashboard_background:
-    name: Dashboard Backgrounds
-    icon: mdi:tablet
-    options:
-      - Default
-      - Custom
-      - Nature
-      - Stone
-      - Wood
+  tablet_brightness:
+    name: Tablet Brightness
+    icon: mdi:brightness-6
 
+input_select:
   location_mode:
     name: Location Mode
     icon: mdi:home-circle
