@@ -5,13 +5,13 @@ script:
     sequence:
       - variables:
           clear_cache: >-
-            {{ states
-              | selectattr('entity_id', 'match', '_clear_browser_cache')
+            {{ states.button
+              | selectattr('entity_id', 'search', '_clear_browser_cache')
               | map(attribute='entity_id')
               | list }}
           restart_app: >-
-            {{ states
-              | selectattr('entity_id', 'match', '_tablet_restart_browser')
+            {{ states.button
+              | selectattr('entity_id', 'search', '_tablet_restart_browser')
               | map(attribute='entity_id')
               | list }}
       - action: button.press
