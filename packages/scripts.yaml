@@ -121,6 +121,9 @@ script:
     alias: System - Clear Cache and Restart Fully App on Tablets
     icon: mdi:tablet-dashboard
     sequence:
+      - action: browser_mod.refresh
+      - delay:
+          seconds: 5
       - variables:
           clear_cache: >-
             {{ states.button

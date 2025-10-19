@@ -33,30 +33,6 @@ automation:
           parse_config: false
           chunk_size: false
 
-  - alias: "System - Periodic Restart"
-    mode: single
-    trigger:
-      - platform: time
-        at: "04:00:00"
-    action:
-      - action: browser_mod.refresh
-        data: {}
-      - delay:
-          seconds: 10
-      - if:
-          - condition: time
-            weekday:
-              - sun
-        then:
-          - action: script.system_reboot_tablets
-            data: {}
-          - delay:
-              minutes: 2
-          - action: hassio.host_reboot
-            data: {}
-        else:
-          - action: homeassistant.restart
-
   - alias: "System - Shutdown Services"
     mode: single
     trigger:
@@ -65,7 +41,24 @@ automation:
     actions:
       # Update Repositories
       - action: shell_command.update_repos
-        data: {}
+
+  - alias: "System - Periodic Restart"
+    mode: single
+    trigger:
+      - platform: time
+        at: "04:00:00"
+    action:
+      - if:
+          - condition: time
+            weekday:
+              - sun
+        then:
+          - action: script.system_reboot_tablets
+          - delay:
+              minutes: 2
+          - action: hassio.host_reboot
+        else:
+          - action: homeassistant.restart
 
   - alias: "System - Set Admin PIN on PIN change."
     mode: single
