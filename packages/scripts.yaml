@@ -111,6 +111,7 @@ script:
         target:
           entity_id: "{{ restart_device }}"
       - delay:
+          minutes: 1
           seconds: 30
       - action: frontend.reload_themes
       - action: input_button.press
@@ -146,7 +147,7 @@ script:
         target:
           entity_id: "{{ restart_app }}"
       - delay:
-          seconds: 15
+          seconds: 30
       - action: frontend.reload_themes
       - action: input_button.press
         target:
