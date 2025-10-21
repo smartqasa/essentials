@@ -146,7 +146,7 @@ script:
         target:
           entity_id: "{{ restart_app }}"
       - delay:
-          seconds: 10
+          seconds: 15
       - action: frontend.reload_themes
       - action: input_button.press
         target:

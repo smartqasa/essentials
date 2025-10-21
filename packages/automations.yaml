@@ -5,16 +5,6 @@ automation:
       - trigger: homeassistant
         event: start
     action:
-      # Reset Admin Mode
-      - action: input_boolean.turn_off
-        target:
-          entity_id: input_boolean.admin_mode
-      # Set Admin PIN
-      - action: input_text.set_value
-        data:
-          value: "{{ states('input_text.system_pin') + states('input_text.location_pin') }}"
-        target:
-          entity_id: input_text.admin_pin_code
       # Set Theme to SmartQasa
       - action: frontend.set_theme
         data:
@@ -79,6 +69,8 @@ automation:
   - alias: "System - Reset Admin Mode on Timeout"
     mode: single
     trigger:
+      - trigger: homeassistant
+        event: start
       - trigger: state
         entity_id:
           - input_boolean.admin_mode
