@@ -114,9 +114,6 @@ script:
           minutes: 1
           seconds: 30
       - action: frontend.reload_themes
-      - action: input_button.press
-        target:
-          entity_id: input_button.tablet_brightness
 
     mode: single
 
@@ -149,9 +146,7 @@ script:
       - delay:
           seconds: 30
       - action: frontend.reload_themes
-      - action: input_button.press
-        target:
-          entity_id: input_button.tablet_brightness
+
     mode: single
 
   #  system_locate_roku_remote:
