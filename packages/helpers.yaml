@@ -9,6 +9,10 @@ input_button:
     name: Flash Devices
     icon: mdi:flash
 
+  location_mode:
+    name: Location Mode Trigger
+    icon: mdi:home-circle
+
   location_phase:
     name: Location Phase Trigger
     icon: mdi:theme-light-dark
