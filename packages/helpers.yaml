@@ -25,10 +25,6 @@ input_button:
     name: Refresh Devices
     icon: mdi:refresh
 
-  tablet_brightness:
-    name: Tablet Brightness
-    icon: mdi:brightness-6
-
 input_select:
   location_mode:
     name: Location Mode
