@@ -3,5 +3,5 @@ lovelace:
   resources:
     - url: /hacsfiles/dash-loader/loader.js
       type: module
-    - url: /hacsfiles/dash-elements/elements.js
+    - url: /hacsfiles/dash-elements/elements.js?v=6.1.56
       type: module
