@@ -2,7 +2,7 @@
 
 set -e
 
-# Absolute paths for safety
+# Absolute binaries (fixes PATH issues)
 CURL="/usr/bin/curl"
 JQ="/usr/bin/jq"
 MKDIR="/bin/mkdir"
@@ -18,15 +18,15 @@ cd /config || { echo "❌ Failed to change directory to /config"; exit 1; }
 
 echo ""
 echo "====================================="
-echo "  🔧 SmartQasa Submodule + Dist Sync  "
+echo "  🔧 SmartQasa Sync Script"
 echo "====================================="
 echo ""
 
 ########################################
-# Ensure smartqasa is a NORMAL folder, not a submodule
+# Ensure smartqasa is a NORMAL folder
 ########################################
 if [ -d ".git/modules/smartqasa" ]; then
-    echo "🧹 Cleaning old smartqasa submodule..."
+    echo "🧹 Removing old smartqasa submodule..."
     $GIT submodule deinit -f smartqasa || true
     $GIT rm -f smartqasa || true
     $RM -rf .git/modules/smartqasa || true
@@ -42,7 +42,7 @@ $MKDIR -p www/smartqasa/dash-elements
 ########################################
 declare -A SUBMODULES=(
     ["https://github.com/smartqasa/blueprints.git"]="blueprints/automation/smartqasa"
-    ["https://github.com/smartqasa/essentials.git"]="smartqasa"
+    ["https://github.com/smartqasa/essentials.git"]="smartqasa"             # <-- updated
     ["https://github.com/smartqasa/media.git"]="www/smartqasa/media"
 )
 
@@ -50,6 +50,7 @@ echo "📌 Checking submodules..."
 for REPO in "${!SUBMODULES[@]}"; do
     DEST="${SUBMODULES[$REPO]}"
 
+    # If missing in .gitmodules → add it
     if ! $GIT config --file .gitmodules --get-regexp path | grep -q "^$DEST$"; then
         echo "⚠️  Submodule missing: $DEST — adding..."
 
@@ -69,12 +70,12 @@ echo "✅ Submodules updated."
 
 
 ########################################
-# HACS-STYLE DIST DOWNLOADER
+# HACS-STYLE DIST DOWNLOADER FOR loader/elements
 ########################################
 download_folder() {
-    REPO="$1"
-    SRC_FOLDER="$2"
-    DEST_FOLDER="$3"
+    REPO="$1"        # e.g. smartqasa/dash-loader
+    SRC_FOLDER="$2"  # "dist"
+    DEST_FOLDER="$3" # e.g. www/smartqasa/dash-loader
 
     API="https://api.github.com/repos/$REPO/contents/$SRC_FOLDER"
 
