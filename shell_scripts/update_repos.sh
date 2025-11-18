@@ -42,7 +42,7 @@ $MKDIR -p www/smartqasa/dash-elements
 ########################################
 declare -A SUBMODULES=(
     ["https://github.com/smartqasa/blueprints.git"]="blueprints/automation/smartqasa"
-    ["https://github.com/smartqasa/essentials.git"]="smartqasa/essentials"
+    ["https://github.com/smartqasa/essentials.git"]="smartqasa"
     ["https://github.com/smartqasa/media.git"]="www/smartqasa/media"
 )
 
