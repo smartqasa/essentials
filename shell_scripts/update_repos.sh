@@ -1,5 +1,16 @@
 #!/bin/bash
 
+set -e
+
+# Absolute paths for safety
+CURL="/usr/bin/curl"
+JQ="/usr/bin/jq"
+MKDIR="/bin/mkdir"
+RM="/bin/rm"
+CP="/bin/cp"
+MV="/bin/mv"
+GIT="/usr/bin/git"
+
 ########################################
 # Move to /config
 ########################################
@@ -12,14 +23,22 @@ echo "====================================="
 echo ""
 
 ########################################
-# Make sure smartqasa/ exists (normal folder)
+# Ensure smartqasa is a NORMAL folder, not a submodule
 ########################################
-mkdir -p smartqasa
-mkdir -p www/smartqasa/dash-loader
-mkdir -p www/smartqasa/dash-elements
+if [ -d ".git/modules/smartqasa" ]; then
+    echo "🧹 Cleaning old smartqasa submodule..."
+    $GIT submodule deinit -f smartqasa || true
+    $GIT rm -f smartqasa || true
+    $RM -rf .git/modules/smartqasa || true
+    $RM -rf smartqasa || true
+fi
+
+$MKDIR -p smartqasa
+$MKDIR -p www/smartqasa/dash-loader
+$MKDIR -p www/smartqasa/dash-elements
 
 ########################################
-# REAL SUBMODULES (Git-managed)
+# REAL SUBMODULES
 ########################################
 declare -A SUBMODULES=(
     ["https://github.com/smartqasa/blueprints.git"]="blueprints/automation/smartqasa"
@@ -31,74 +50,61 @@ echo "📌 Checking submodules..."
 for REPO in "${!SUBMODULES[@]}"; do
     DEST="${SUBMODULES[$REPO]}"
 
-    if ! git config --file .gitmodules --get-regexp path | grep -q "^$DEST$"; then
-        echo "⚠️  Submodule missing: $DEST — fixing..."
+    if ! $GIT config --file .gitmodules --get-regexp path | grep -q "^$DEST$"; then
+        echo "⚠️  Submodule missing: $DEST — adding..."
 
-        git submodule deinit -f "$DEST" 2>/dev/null || true
-        git rm -f "$DEST" 2>/dev/null || true
-        rm -rf ".git/modules/$DEST" "$DEST"
+        $GIT submodule deinit -f "$DEST" 2>/dev/null || true
+        $GIT rm -f "$DEST" 2>/dev/null || true
+        $RM -rf ".git/modules/$DEST" "$DEST"
 
-        git submodule add "$REPO" "$DEST"
+        $GIT submodule add "$REPO" "$DEST"
         echo "✅ Added: $DEST"
     fi
 done
 
-########################################
-# Update actual git submodules
-########################################
 echo ""
-echo "🔄 Updating submodules..."
-git submodule update --remote --recursive --force
+echo "🔄 Updating Git submodules..."
+$GIT submodule update --remote --recursive --force
 echo "✅ Submodules updated."
 
 
 ########################################
-# HACS-STYLE DIST UPDATER (NO GIT)
+# HACS-STYLE DIST DOWNLOADER
 ########################################
-
 download_folder() {
-    REPO="$1"        # e.g. smartqasa/dash-loader
-    SRC_FOLDER="$2"  # e.g. dist
-    DEST_FOLDER="$3" # e.g. www/smartqasa/dash-loader
+    REPO="$1"
+    SRC_FOLDER="$2"
+    DEST_FOLDER="$3"
 
     API="https://api.github.com/repos/$REPO/contents/$SRC_FOLDER"
 
     echo ""
-    echo "📡 Fetching file list from: $API"
+    echo "📡 Fetching file list: $API"
 
-    mkdir -p "$DEST_FOLDER"
+    $MKDIR -p "$DEST_FOLDER"
 
-    curl -s "$API" | jq -c '.[]' | while read -r ITEM; do
-        TYPE=$(echo "$ITEM" | jq -r '.type')
-        NAME=$(echo "$ITEM" | jq -r '.name')
-        DOWNLOAD=$(echo "$ITEM" | jq -r '.download_url')
-        PATH=$(echo "$ITEM" | jq -r '.path')
+    $CURL -s "$API" | $JQ -c '.[]' | while read -r ITEM; do
+        TYPE=$(echo "$ITEM" | $JQ -r '.type')
+        NAME=$(echo "$ITEM" | $JQ -r '.name')
+        URL=$(echo "$ITEM" | $JQ -r '.download_url')
+        PATH=$(echo "$ITEM" | $JQ -r '.path')
 
         if [ "$TYPE" = "file" ]; then
             echo "⬇️  Downloading: $NAME"
-            curl -sL "$DOWNLOAD" -o "$DEST_FOLDER/$NAME"
+            $CURL -sL "$URL" -o "$DEST_FOLDER/$NAME"
         elif [ "$TYPE" = "dir" ]; then
-            echo "📁 Entering directory: $NAME"
-            mkdir -p "$DEST_FOLDER/$NAME"
+            echo "📁 Entering folder: $NAME"
+            $MKDIR -p "$DEST_FOLDER/$NAME"
             download_folder "$REPO" "$PATH" "$DEST_FOLDER/$NAME"
         fi
     done
 }
 
 ########################################
-# DIST-ONLY REPOS (loader & elements)
+# DIST-ONLY repos
 ########################################
-
 echo ""
 echo "🚀 Updating dist folders (HACS-style)..."
 
-# dash-loader
-download_folder "smartqasa/dash-loader" "dist" "www/smartqasa/dash-loader"
-
-# dash-elements
-download_folder "smartqasa/dash-elements" "dist" "www/smartqasa/dash-elements"
-
-echo ""
-echo "====================================="
-echo "  🎉 All updates complete!"
-echo "====================================="
+download_folder "smartqasa/dash-loader"   "dist" "www/smartqasa/dash-loader"
+download_folder "smartqasa/dash-elements" "dist" "www/smartqa_
