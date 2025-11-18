@@ -1,48 +1,69 @@
 #!/bin/bash
 
-# Set the working directory to /config
 cd /config || { echo "❌ Failed to change directory to /config"; exit 1; }
 
-# Ensure smartqasa/ exists and is NOT a submodule
+#----------------------------------------
+# Ensure required folders exist
+#----------------------------------------
 mkdir -p smartqasa
+mkdir -p www/smartqasa/dash-loader
+mkdir -p www/smartqasa/dash-elements
 
-# Declare submodules with their repository and expected destination directory
+#----------------------------------------
+# True Submodules (allowed)
+#----------------------------------------
 declare -A SUBMODULES=(
     ["https://github.com/smartqasa/blueprints.git"]="blueprints/automation/smartqasa"
-
-    # Option B layout — submodules INSIDE smartqasa/
     ["https://github.com/smartqasa/essentials.git"]="smartqasa/essentials"
-    ["https://github.com/smartqasa/dash-loader.git"]="smartqasa/dash-loader"
-    ["https://github.com/smartqasa/dash-elements.git"]="smartqasa/dash-elements"
-
-    # media stays WHERE IT IS
     ["https://github.com/smartqasa/media.git"]="www/smartqasa/media"
 )
 
-# Ensure each submodule is present
+echo "📌 Checking real submodules..."
 for REPO in "${!SUBMODULES[@]}"; do
     DEST="${SUBMODULES[$REPO]}"
 
-    # Check if the submodule is correctly registered in .gitmodules
     if ! git config --file .gitmodules --get-regexp path | grep -q "^$DEST$"; then
-        echo "⚠️  Warning: Submodule $DEST is not registered in .gitmodules. Fixing it..."
+        echo "⚠️  Submodule missing: $DEST — fixing..."
 
-        # Fully remove submodule traces before re-adding
         git submodule deinit -f "$DEST" 2>/dev/null || true
         git rm -f "$DEST" 2>/dev/null || true
-        rm -rf ".git/modules/$DEST" 2>/dev/null || true
-        rm -rf "$DEST"
+        rm -rf ".git/modules/$DEST" "$DEST"
 
-        echo "✅ Cleaned up submodule: $DEST"
-
-        # Re-add the submodule
-        echo "➕ Adding submodule: $REPO -> $DEST"
-        git submodule add --force "$REPO" "$DEST"
+        git submodule add "$REPO" "$DEST"
+        echo "✅ Added: $DEST"
     fi
 done
 
-# Run update ONCE after adding missing submodules
-echo "🔄 Updating submodules..."
+#----------------------------------------
+# Update proper submodules
+#----------------------------------------
+echo "🔄 Updating true submodules..."
 git submodule update --remote --recursive --force
 
-echo "✅ Submodules successfully updated."
+
+#----------------------------------------
+# DIST-ONLY repos (NO submodules)
+#----------------------------------------
+echo "📦 Updating dist-only repositories..."
+
+TEMP_DIR="/tmp/sq-update"
+rm -rf "$TEMP_DIR"
+mkdir -p "$TEMP_DIR"
+
+# dash-loader
+echo "⬇️  Fetching dash-loader dist..."
+git clone --depth=1 https://github.com/smartqasa/dash-loader.git "$TEMP_DIR/dash-loader"
+rm -rf www/smartqasa/dash-loader/dist
+cp -r "$TEMP_DIR/dash-loader/dist" www/smartqasa/dash-loader/
+
+# dash-elements
+echo "⬇️  Fetching dash-elements dist..."
+git clone --depth=1 https://github.com/smartqasa/dash-elements.git "$TEMP_DIR/dash-elements"
+rm -rf www/smartqasa/dash-elements/dist
+cp -r "$TEMP_DIR/dash-elements/dist" www/smartqasa/dash-elements/
+
+echo "🧹 Cleaning temp files..."
+rm -rf "$TEMP_DIR"
+
+echo "✅ Dist folders updated."
+echo "🎉 All updates complete."
