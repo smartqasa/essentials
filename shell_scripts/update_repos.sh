@@ -1,24 +1,33 @@
 #!/bin/bash
 
+########################################
+# Move to /config
+########################################
 cd /config || { echo "❌ Failed to change directory to /config"; exit 1; }
 
-#----------------------------------------
-# Ensure required folders exist
-#----------------------------------------
+echo ""
+echo "====================================="
+echo "  🔧 SmartQasa Submodule + Dist Sync  "
+echo "====================================="
+echo ""
+
+########################################
+# Make sure smartqasa/ exists (normal folder)
+########################################
 mkdir -p smartqasa
 mkdir -p www/smartqasa/dash-loader
 mkdir -p www/smartqasa/dash-elements
 
-#----------------------------------------
-# True Submodules (allowed)
-#----------------------------------------
+########################################
+# REAL SUBMODULES (Git-managed)
+########################################
 declare -A SUBMODULES=(
     ["https://github.com/smartqasa/blueprints.git"]="blueprints/automation/smartqasa"
     ["https://github.com/smartqasa/essentials.git"]="smartqasa/essentials"
     ["https://github.com/smartqasa/media.git"]="www/smartqasa/media"
 )
 
-echo "📌 Checking real submodules..."
+echo "📌 Checking submodules..."
 for REPO in "${!SUBMODULES[@]}"; do
     DEST="${SUBMODULES[$REPO]}"
 
@@ -34,36 +43,62 @@ for REPO in "${!SUBMODULES[@]}"; do
     fi
 done
 
-#----------------------------------------
-# Update proper submodules
-#----------------------------------------
-echo "🔄 Updating true submodules..."
+########################################
+# Update actual git submodules
+########################################
+echo ""
+echo "🔄 Updating submodules..."
 git submodule update --remote --recursive --force
+echo "✅ Submodules updated."
 
 
-#----------------------------------------
-# DIST-ONLY repos (NO submodules)
-#----------------------------------------
-echo "📦 Updating dist-only repositories..."
+########################################
+# HACS-STYLE DIST UPDATER (NO GIT)
+########################################
 
-TEMP_DIR="/tmp/sq-update"
-rm -rf "$TEMP_DIR"
-mkdir -p "$TEMP_DIR"
+download_folder() {
+    REPO="$1"        # e.g. smartqasa/dash-loader
+    SRC_FOLDER="$2"  # e.g. dist
+    DEST_FOLDER="$3" # e.g. www/smartqasa/dash-loader
+
+    API="https://api.github.com/repos/$REPO/contents/$SRC_FOLDER"
+
+    echo ""
+    echo "📡 Fetching file list from: $API"
+
+    mkdir -p "$DEST_FOLDER"
+
+    curl -s "$API" | jq -c '.[]' | while read -r ITEM; do
+        TYPE=$(echo "$ITEM" | jq -r '.type')
+        NAME=$(echo "$ITEM" | jq -r '.name')
+        DOWNLOAD=$(echo "$ITEM" | jq -r '.download_url')
+        PATH=$(echo "$ITEM" | jq -r '.path')
+
+        if [ "$TYPE" = "file" ]; then
+            echo "⬇️  Downloading: $NAME"
+            curl -sL "$DOWNLOAD" -o "$DEST_FOLDER/$NAME"
+        elif [ "$TYPE" = "dir" ]; then
+            echo "📁 Entering directory: $NAME"
+            mkdir -p "$DEST_FOLDER/$NAME"
+            download_folder "$REPO" "$PATH" "$DEST_FOLDER/$NAME"
+        fi
+    done
+}
+
+########################################
+# DIST-ONLY REPOS (loader & elements)
+########################################
+
+echo ""
+echo "🚀 Updating dist folders (HACS-style)..."
 
 # dash-loader
-echo "⬇️  Fetching dash-loader dist..."
-git clone --depth=1 https://github.com/smartqasa/dash-loader.git "$TEMP_DIR/dash-loader"
-rm -rf www/smartqasa/dash-loader/dist
-cp -r "$TEMP_DIR/dash-loader/dist" www/smartqasa/dash-loader/
+download_folder "smartqasa/dash-loader" "dist" "www/smartqasa/dash-loader"
 
 # dash-elements
-echo "⬇️  Fetching dash-elements dist..."
-git clone --depth=1 https://github.com/smartqasa/dash-elements.git "$TEMP_DIR/dash-elements"
-rm -rf www/smartqasa/dash-elements/dist
-cp -r "$TEMP_DIR/dash-elements/dist" www/smartqasa/dash-elements/
+download_folder "smartqasa/dash-elements" "dist" "www/smartqasa/dash-elements"
 
-echo "🧹 Cleaning temp files..."
-rm -rf "$TEMP_DIR"
-
-echo "✅ Dist folders updated."
-echo "🎉 All updates complete."
+echo ""
+echo "====================================="
+echo "  🎉 All updates complete!"
+echo "====================================="
