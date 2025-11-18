@@ -70,35 +70,24 @@ echo "✅ Submodules updated."
 
 
 ########################################
-# HACS-STYLE DIST DOWNLOADER FOR loader/elements
+# DIST DOWNLOADER
 ########################################
-download_folder() {
-    REPO="$1"        # e.g. smartqasa/dash-loader
-    SRC_FOLDER="$2"  # "dist"
-    DEST_FOLDER="$3" # e.g. www/smartqasa/dash-loader
+copy_dist() {
+    local REPO="$1"    # smartqasa/dash-loader
+    local TARGET="$2"  # www/smartqasa/dash-loader
 
-    API="https://api.github.com/repos/$REPO/contents/$SRC_FOLDER"
+    local NAME=$(basename "$REPO")
+    local ZIP="/tmp/$NAME.zip"
 
-    echo ""
-    echo "📡 Fetching file list: $API"
+    echo "⬇️ Downloading $REPO..."
+    curl -Ls "https://github.com/$REPO/archive/refs/heads/main.zip" -o "$ZIP"
 
-    $MKDIR -p "$DEST_FOLDER"
+    rm -rf /tmp/extract
+    unzip -q "$ZIP" "$NAME-main/dist/*" -d /tmp/extract
 
-    $CURL -s "$API" | $JQ -c '.[]' | while read -r ITEM; do
-        TYPE=$(echo "$ITEM" | $JQ -r '.type')
-        NAME=$(echo "$ITEM" | $JQ -r '.name')
-        URL=$(echo "$ITEM" | $JQ -r '.download_url')
-        PATH=$(echo "$ITEM" | $JQ -r '.path')
-
-        if [ "$TYPE" = "file" ]; then
-            echo "⬇️  Downloading: $NAME"
-            $CURL -sL "$URL" -o "$DEST_FOLDER/$NAME"
-        elif [ "$TYPE" = "dir" ]; then
-            echo "📁 Entering folder: $NAME"
-            $MKDIR -p "$DEST_FOLDER/$NAME"
-            download_folder "$REPO" "$PATH" "$DEST_FOLDER/$NAME"
-        fi
-    done
+    echo "📦 Copying dist/ for $REPO..."
+    rm -rf "$TARGET"/*
+    cp -r /tmp/extract/"$NAME-main"/dist/* "$TARGET"/
 }
 
 ########################################
@@ -107,8 +96,8 @@ download_folder() {
 echo ""
 echo "🚀 Updating dist folders (HACS-style)..."
 
-download_folder "smartqasa/dash-loader"   "dist" "www/smartqasa/dash-loader"
-download_folder "smartqasa/dash-elements" "dist" "www/smartqasa/dash-elements"
+copy_dist "smartqasa/dash-loader"   "/config/www/smartqasa/dash-loader"
+copy_dist "smartqasa/dash-elements" "/config/www/smartqasa/dash-elements"
 
 echo ""
 echo "====================================="
