@@ -3,12 +3,19 @@
 # Set the working directory to /config
 cd /config || { echo "❌ Failed to change directory to /config"; exit 1; }
 
+# Ensure smartqasa/ exists and is NOT a submodule
+mkdir -p smartqasa
+
 # Declare submodules with their repository and expected destination directory
 declare -A SUBMODULES=(
     ["https://github.com/smartqasa/blueprints.git"]="blueprints/automation/smartqasa"
-    ["https://github.com/smartqasa/essentials.git"]="smartqasa"
-    ["https://github.com/smartqasa/dash-loader.git"]="www/smartqasa/dash-loader"
-    ["https://github.com/smartqasa/dash-elements.git"]="www/smartqasa/dash-elements"
+
+    # Option B layout — submodules INSIDE smartqasa/
+    ["https://github.com/smartqasa/essentials.git"]="smartqasa/essentials"
+    ["https://github.com/smartqasa/dash-loader.git"]="smartqasa/dash-loader"
+    ["https://github.com/smartqasa/dash-elements.git"]="smartqasa/dash-elements"
+
+    # media stays WHERE IT IS
     ["https://github.com/smartqasa/media.git"]="www/smartqasa/media"
 )
 
@@ -17,7 +24,7 @@ for REPO in "${!SUBMODULES[@]}"; do
     DEST="${SUBMODULES[$REPO]}"
 
     # Check if the submodule is correctly registered in .gitmodules
-    if ! git config --file .gitmodules --get-regexp path | grep -q "$DEST"; then
+    if ! git config --file .gitmodules --get-regexp path | grep -q "^$DEST$"; then
         echo "⚠️  Warning: Submodule $DEST is not registered in .gitmodules. Fixing it..."
 
         # Fully remove submodule traces before re-adding
