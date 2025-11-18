@@ -1,105 +1,157 @@
 #!/bin/bash
-
 set -e
 
-# Absolute binaries (fixes PATH issues)
+###############################################
+# Full path binaries (HA container compatible)
+###############################################
 CURL="/usr/bin/curl"
-JQ="/usr/bin/jq"
+UNZIP="/usr/bin/unzip"
 MKDIR="/bin/mkdir"
 RM="/bin/rm"
 CP="/bin/cp"
 MV="/bin/mv"
-GIT="/usr/bin/git"
 
-########################################
-# Move to /config
-########################################
-cd /config || { echo "❌ Failed to change directory to /config"; exit 1; }
+###############################################
+# Repo → Local Path Map
+###############################################
+ROOT="/config"
 
-echo ""
-echo "====================================="
-echo "  🔧 SmartQasa Sync Script"
-echo "====================================="
-echo ""
+# Repos
+REPO_BLUEPRINTS="smartqasa/blueprints"
+REPO_MEDIA="smartqasa/media"
+REPO_ESSENTIALS="smartqasa/essentials"
+REPO_LOADER="smartqasa/dash-loader"
+REPO_ELEMENTS="smartqasa/dash-elements"
 
-########################################
-# Ensure smartqasa is a NORMAL folder
-########################################
-if [ -d ".git/modules/smartqasa" ]; then
-    echo "🧹 Removing old smartqasa submodule..."
-    $GIT submodule deinit -f smartqasa || true
-    $GIT rm -f smartqasa || true
-    $RM -rf .git/modules/smartqasa || true
-    $RM -rf smartqasa || true
-fi
+# Targets
+DIR_BLUEPRINTS="$ROOT/blueprints/automation/smartqasa"
+DIR_MEDIA="$ROOT/www/smartqasa/media"
+DIR_ESSENTIALS="$ROOT/smartqasa"
+DIR_LOADER="$ROOT/www/smartqasa/dash-loader"
+DIR_ELEMENTS="$ROOT/www/smartqasa/dash-elements"
 
-$MKDIR -p smartqasa
-$MKDIR -p www/smartqasa/dash-loader
-$MKDIR -p www/smartqasa/dash-elements
+TMP="/tmp/sq_extract"
 
-########################################
-# REAL SUBMODULES
-########################################
-declare -A SUBMODULES=(
-    ["https://github.com/smartqasa/blueprints.git"]="blueprints/automation/smartqasa"
-    ["https://github.com/smartqasa/essentials.git"]="smartqasa"             # <-- updated
-    ["https://github.com/smartqasa/media.git"]="www/smartqasa/media"
-)
-
-echo "📌 Checking submodules..."
-for REPO in "${!SUBMODULES[@]}"; do
-    DEST="${SUBMODULES[$REPO]}"
-
-    # If missing in .gitmodules → add it
-    if ! $GIT config --file .gitmodules --get-regexp path | grep -q "^$DEST$"; then
-        echo "⚠️  Submodule missing: $DEST — adding..."
-
-        $GIT submodule deinit -f "$DEST" 2>/dev/null || true
-        $GIT rm -f "$DEST" 2>/dev/null || true
-        $RM -rf ".git/modules/$DEST" "$DEST"
-
-        $GIT submodule add "$REPO" "$DEST"
-        echo "✅ Added: $DEST"
-    fi
-done
-
-echo ""
-echo "🔄 Updating Git submodules..."
-$GIT submodule update --remote --recursive --force
-echo "✅ Submodules updated."
-
-
-########################################
-# DIST DOWNLOADER
-########################################
-copy_dist() {
-    local REPO="$1"    # smartqasa/dash-loader
-    local TARGET="$2"  # www/smartqasa/dash-loader
-
-    local NAME=$(basename "$REPO")
-    local ZIP="/tmp/$NAME.zip"
+###############################################
+# Utility: download & extract repo ZIP
+###############################################
+extract_repo() {
+    local REPO="$1"
+    local ZIP="/tmp/$(basename "$REPO").zip"
 
     echo "⬇️ Downloading $REPO..."
-    curl -Ls "https://github.com/$REPO/archive/refs/heads/main.zip" -o "$ZIP"
+    $CURL -Ls "https://github.com/$REPO/archive/refs/heads/main.zip" -o "$ZIP"
 
-    rm -rf /tmp/extract
-    unzip -q "$ZIP" "$NAME-main/dist/*" -d /tmp/extract
-
-    echo "📦 Copying dist/ for $REPO..."
-    rm -rf "$TARGET"/*
-    cp -r /tmp/extract/"$NAME-main"/dist/* "$TARGET"/
+    echo "📦 Extracting..."
+    $RM -rf "$TMP"
+    $UNZIP -q "$ZIP" -d "$TMP"
 }
 
-########################################
-# DIST-ONLY repos
-########################################
-echo ""
-echo "🚀 Updating dist folders (HACS-style)..."
+###############################################
+# BLUEPRINTS (YAML only)
+###############################################
+sync_blueprints() {
+    echo ""
+    echo "📁 Syncing Blueprints (.yaml only)"
+    extract_repo "$REPO_BLUEPRINTS"
 
-copy_dist "smartqasa/dash-loader"   "/config/www/smartqasa/dash-loader"
-copy_dist "smartqasa/dash-elements" "/config/www/smartqasa/dash-elements"
+    $MKDIR -p "$DIR_BLUEPRINTS"
+    $RM -f "$DIR_BLUEPRINTS"/*.yaml
+
+    SRC="$TMP/blueprints-main"
+    find "$SRC" -type f -name '*.yaml' -exec $CP {} "$DIR_BLUEPRINTS" \;
+
+    echo "✅ Blueprints updated."
+}
+
+###############################################
+# MEDIA (copy everything)
+###############################################
+sync_media() {
+    echo ""
+    echo "📁 Syncing Media (all files)"
+    extract_repo "$REPO_MEDIA"
+
+    $RM -rf "$DIR_MEDIA"
+    $MKDIR -p "$DIR_MEDIA"
+
+    SRC="$TMP/media-main"
+    $CP -r "$SRC"/* "$DIR_MEDIA"/
+
+    echo "✅ Media updated."
+}
+
+###############################################
+# ESSENTIALS (copy everything)
+###############################################
+sync_essentials() {
+    echo ""
+    echo "📁 Syncing Essentials (all files)"
+    extract_repo "$REPO_ESSENTIALS"
+
+    $RM -rf "$DIR_ESSENTIALS"
+    $MKDIR -p "$DIR_ESSENTIALS"
+
+    SRC="$TMP/essentials-main"
+    $CP -r "$SRC"/* "$DIR_ESSENTIALS"/
+
+    echo "✅ Essentials updated."
+}
+
+###############################################
+# DIST (Loader & Elements)
+###############################################
+sync_dist() {
+    local REPO="$1"
+    local TARGET="$2"
+    local NAME=$(basename "$REPO")
+
+    echo ""
+    echo "📁 Syncing dist for $REPO"
+    extract_repo "$REPO"
+
+    SRC="$TMP/${NAME}-main/dist"
+
+    if [ ! -d "$SRC" ]; then
+        echo "❌ ERROR: dist folder missing in $REPO"
+        exit 1
+    fi
+
+    # Clean target
+    $RM -rf "$TARGET"
+    $MKDIR -p "$TARGET"
+
+    # Copy dist folder
+    $CP -r "$SRC"/* "$TARGET"/
+
+    echo "💨 Generating .gz compressed JS files (HACS-style)..."
+
+    for JSFILE in "$TARGET"/*.js; do
+        if [ -f "$JSFILE" ]; then
+            GZFILE="${JSFILE}.gz"
+            echo "⬆️  $JSFILE → $GZFILE"
+            gzip -c "$JSFILE" > "$GZFILE"
+        fi
+    done
+
+    echo "✅ dist updated for $REPO (with gzip)"
+}
+
+###############################################
+# EXECUTE SYNC
+###############################################
+echo ""
+echo "====================================="
+echo "   🚀 SmartQasa Sync Starting"
+echo "====================================="
+
+sync_blueprints
+sync_media
+sync_essentials
+sync_dist "$REPO_LOADER" "$DIR_LOADER"
+sync_dist "$REPO_ELEMENTS" "$DIR_ELEMENTS"
 
 echo ""
 echo "====================================="
-echo "  🎉 ALL UPDATES COMPLETE!"
+echo "   🎉 SmartQasa Sync COMPLETE!"
 echo "====================================="
