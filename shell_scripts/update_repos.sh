@@ -107,4 +107,9 @@ echo ""
 echo "🚀 Updating dist folders (HACS-style)..."
 
 download_folder "smartqasa/dash-loader"   "dist" "www/smartqasa/dash-loader"
-download_folder "smartqasa/dash-elements" "dist" "www/smartqa_
+download_folder "smartqasa/dash-elements" "dist" "www/smartqasa/dash-elements"
+
+echo ""
+echo "====================================="
+echo "  🎉 ALL UPDATES COMPLETE!"
+echo "====================================="
