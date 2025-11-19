@@ -155,4 +155,3 @@ automation:
           name: "Webhook Service Call"
           message: >
             Called {{ service }} on {{ entity }}
-            with data: {{ data_obj }}
