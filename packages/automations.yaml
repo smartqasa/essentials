@@ -142,9 +142,8 @@ automation:
           - PUT
         local_only: true
     variables:
-      qs: "{{ trigger.query }}"
-      service: "{{ qs.service | default('') }}"
-      entity: "{{ qs.entity | default('') }}"
+      service: "{{ trigger.query.service | default('') }}"
+      entity: "{{ trigger.query.entity | default('') }}"
     #    condition:
     #      - condition: template
     #        value_template: "{{ service != '' and entity != '' }}"
@@ -157,4 +156,4 @@ automation:
         data:
           name: "Webhook Service Call"
           message: >
-            Called {{ service }} on {{ entity }}
+            Called {{ trigger.query }} with {{ service }} on {{ entity }}
