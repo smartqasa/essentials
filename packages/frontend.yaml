@@ -1,6 +1,8 @@
 frontend:
   extra_module_url:
     - /hacsfiles/kiosk-mode/kiosk-mode.js
+    - /local/smartqasa/dash-loader/loader.js?v=6.1.39
+    - /local/smartqasa/dash-elements/elements.js?v=6.1.64
 
   themes:
     SmartQasa:

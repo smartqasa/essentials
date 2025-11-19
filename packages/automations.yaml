@@ -108,6 +108,7 @@ automation:
 
   - alias: System - Stop Window Shades on Timeout
     description: ""
+    mode: single
     triggers:
       - trigger: state
         entity_id:
@@ -130,4 +131,38 @@ automation:
         data: {}
         target:
           entity_id: cover.all_window_shades
-    mode: single
+
+  - alias: Webhook Action Caller
+    mode: queued
+    trigger:
+      - platform: webhook
+        webhook_id: action
+    variables:
+      qs: "{{ trigger.query }}"
+      service: "{{ qs.service | default('') }}"
+      entity: "{{ qs.entity | default('') }}"
+      data: "{{ qs.data | default('') }}"
+      data_obj: >
+        {% if data %}
+          {{ data | from_json }}
+        {% else %}
+          {}
+        {% endif %}
+    condition: []
+    actions:
+      - choose:
+          - conditions: >
+              {{ service != '' and entity != '' }}
+            sequence:
+              - action: "{{ service }}"
+                data:
+                  entity_id: "{{ entity }}"
+                  {% for k, v in data_obj.items() %}
+                  {{ k }}: {{ v }}
+                  {% endfor %}
+      - action: logbook.log
+        data:
+          name: "Webhook Service Call"
+          message: >
+            Called {{ service }} on {{ entity }}
+            with data: {{ data_obj }}
