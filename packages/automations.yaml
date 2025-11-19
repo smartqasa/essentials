@@ -145,13 +145,14 @@ automation:
       qs: "{{ trigger.query }}"
       service: "{{ qs.service | default('') }}"
       entity: "{{ qs.entity | default('') }}"
-    condition:
-      - condition: template
-        value_template: "{{ service != '' and entity != '' }}"
+    #    condition:
+    #      - condition: template
+    #        value_template: "{{ service != '' and entity != '' }}"
     actions:
       - action: "{{ service }}"
         data:
           entity_id: "{{ entity }}"
+        continue_on_error: true
       - action: logbook.log
         data:
           name: "Webhook Service Call"
