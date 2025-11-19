@@ -33,10 +33,10 @@ DIR_ELEMENTS="$ROOT/www/smartqasa/dash-elements"
 TMP="/tmp/sq_extract"
 
 ###############################################
-# Read update channel (main | beta)
+# Channel selection (main | beta)
 ###############################################
-CHANNEL_FILE="$ROOT/channel.txt"
-UPDATE_CHANNEL="main"   # <-- DEFAULT
+CHANNEL_FILE="$ROOT/smartqasa/channel.txt"
+UPDATE_CHANNEL="main"   # DEFAULT
 
 if [ -f "$CHANNEL_FILE" ]; then
     CONTENT=$(cat "$CHANNEL_FILE" | tr -d '[:space:]' | tr 'A-Z' 'a-z')
@@ -45,6 +45,20 @@ if [ -f "$CHANNEL_FILE" ]; then
     fi
 fi
 
+echo "🔍 Update channel selected: $UPDATE_CHANNEL"
+
+###############################################
+# Only Loader & Elements support beta
+###############################################
+repo_supports_beta() {
+    case "$1" in
+        smartqasa/dash-loader|smartqasa/dash-elements)
+            return 0 ;;   # supports beta
+        *)
+            return 1 ;;   # always main
+    esac
+}
+
 ###############################################
 # Utility: download & extract repo ZIP
 ###############################################
@@ -52,8 +66,12 @@ extract_repo() {
     local REPO="$1"
     local ZIP="/tmp/$(basename "$REPO").zip"
 
-    # Determine branch → main or beta
-    local BRANCH="$UPDATE_CHANNEL"
+    # Determine branch
+    local BRANCH="main"
+
+    if [ "$UPDATE_CHANNEL" = "beta" ] && repo_supports_beta "$REPO"; then
+        BRANCH="beta"
+    fi
 
     echo "⬇️ Downloading $REPO ($BRANCH branch)..."
     $CURL -Ls "https://github.com/$REPO/archive/refs/heads/$BRANCH.zip" -o "$ZIP"
@@ -127,9 +145,12 @@ sync_dist() {
     extract_repo "$REPO"
 
     SRC="$TMP/${NAME}-main/dist"
+    if [ "$UPDATE_CHANNEL" = "beta" ] && repo_supports_beta "$REPO"; then
+        SRC="$TMP/${NAME}-beta/dist"
+    fi
 
     if [ ! -d "$SRC" ]; then
-        echo "❌ ERROR: dist folder missing in $REPO"
+        echo "❌ ERROR: dist folder missing in $REPO ($SRC)"
         exit 1
     fi
 
@@ -141,7 +162,6 @@ sync_dist() {
     $CP -r "$SRC"/* "$TARGET"/
 
     echo "💨 Generating .gz compressed JS files (HACS-style)..."
-
     for JSFILE in "$TARGET"/*.js; do
         if [ -f "$JSFILE" ]; then
             GZFILE="${JSFILE}.gz"
@@ -160,8 +180,6 @@ echo ""
 echo "====================================="
 echo "   🚀 SmartQasa Sync Starting"
 echo "====================================="
-
-echo "🔍 Update channel selected: $UPDATE_CHANNEL"
 
 sync_blueprints
 sync_media
