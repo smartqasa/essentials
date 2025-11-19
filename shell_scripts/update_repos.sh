@@ -126,7 +126,7 @@ sync_essentials() {
 
     SRC="$TMP/essentials-main"
     $CP -r "$SRC"/* "$DIR_ESSENTIALS"/
-
+  
     echo "✅ Essentials updated."
 }
 
