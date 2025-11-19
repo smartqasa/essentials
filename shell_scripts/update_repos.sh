@@ -95,8 +95,21 @@ sync_essentials() {
     SRC="$TMP/essentials-main"
     $CP -r "$SRC"/* "$DIR_ESSENTIALS"/
 
+    ###############################################
+    # COPY standard.yaml → /config/www/smartqasa/resources
+    ###############################################
+    $MKDIR -p "$ROOT/www/smartqasa/resources"
+
+    if [ -f "$SRC/resources/standard.yaml" ]; then
+        echo "📄 Copying standard.yaml to /config/www/smartqasa/resources..."
+        $CP "$SRC/resources/standard.yaml" "$ROOT/www/smartqasa/resources/standard.yaml"
+    else
+        echo "⚠️  standard.yaml not found in essentials/resources"
+    fi
+
     echo "✅ Essentials updated."
 }
+
 
 ###############################################
 # DIST (Loader & Elements)
