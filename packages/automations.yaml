@@ -143,9 +143,9 @@ automation:
     variables:
       service: "{{ trigger.query.service | default('') }}"
       entity: "{{ trigger.query.entity | default('') }}"
-    #    condition:
-    #      - condition: template
-    #        value_template: "{{ service != '' and entity != '' }}"
+      condition:
+        - condition: template
+          value_template: "{{ service != ''}}"
     actions:
       - action: "{{ service }}"
         data:
