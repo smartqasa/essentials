@@ -33,16 +33,34 @@ DIR_ELEMENTS="$ROOT/www/smartqasa/dash-elements"
 TMP="/tmp/sq_extract"
 
 ###############################################
+# Read update channel (main | beta)
+###############################################
+CHANNEL_FILE="$ROOT/channel.txt"
+UPDATE_CHANNEL="main"   # <-- DEFAULT
+
+if [ -f "$CHANNEL_FILE" ]; then
+    CONTENT=$(cat "$CHANNEL_FILE" | tr -d '[:space:]' | tr 'A-Z' 'a-z')
+    if [ "$CONTENT" = "beta" ]; then
+        UPDATE_CHANNEL="beta"
+    fi
+fi
+
+echo "🔍 Update channel selected: $UPDATE_CHANNEL"
+
+###############################################
 # Utility: download & extract repo ZIP
 ###############################################
 extract_repo() {
     local REPO="$1"
     local ZIP="/tmp/$(basename "$REPO").zip"
 
-    echo "⬇️ Downloading $REPO..."
-    $CURL -Ls "https://github.com/$REPO/archive/refs/heads/main.zip" -o "$ZIP"
+    # Determine branch → main or beta
+    local BRANCH="$UPDATE_CHANNEL"
 
-    echo "📦 Extracting..."
+    echo "⬇️ Downloading $REPO ($BRANCH branch)..."
+    $CURL -Ls "https://github.com/$REPO/archive/refs/heads/$BRANCH.zip" -o "$ZIP"
+
+    echo "📦 Extracting ($BRANCH)..."
     $RM -rf "$TMP"
     $UNZIP -q "$ZIP" -d "$TMP"
 }
@@ -95,21 +113,8 @@ sync_essentials() {
     SRC="$TMP/essentials-main"
     $CP -r "$SRC"/* "$DIR_ESSENTIALS"/
 
-    ###############################################
-    # COPY standard.yaml → /config/www/smartqasa/resources
-    ###############################################
-    $MKDIR -p "$ROOT/www/smartqasa/resources"
-
-    if [ -f "$SRC/resources/standard.yaml" ]; then
-        echo "📄 Copying standard.yaml to /config/www/smartqasa/resources..."
-        $CP "$SRC/resources/standard.yaml" "$ROOT/www/smartqasa/resources/standard.yaml"
-    else
-        echo "⚠️  standard.yaml not found in essentials/resources"
-    fi
-
     echo "✅ Essentials updated."
 }
-
 
 ###############################################
 # DIST (Loader & Elements)
