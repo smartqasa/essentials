@@ -134,22 +134,20 @@ automation:
 
   - alias: System - Webhook Action Caller
     mode: queued
-    trigger:
-      - platform: webhook
+    triggers:
+      - trigger: webhook
         webhook_id: action
     variables:
       qs: "{{ trigger.query }}"
       service: "{{ qs.service | default('') }}"
       entity: "{{ qs.entity | default('') }}"
-    condition: []
+    condition:
+      - condition: template
+        value_template: "{{ service != '' and entity != '' }}"
     actions:
-      - choose:
-          - conditions: >
-              {{ service != '' and entity != '' }}
-            sequence:
-              - action: "{{ service }}"
-                data:
-                  entity_id: "{{ entity }}"
+      - action: "{{ service }}"
+        data:
+          entity_id: "{{ entity }}"
       - action: logbook.log
         data:
           name: "Webhook Service Call"
