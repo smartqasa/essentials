@@ -45,8 +45,6 @@ if [ -f "$CHANNEL_FILE" ]; then
     fi
 fi
 
-echo "🔍 Update channel selected: $UPDATE_CHANNEL"
-
 ###############################################
 # Utility: download & extract repo ZIP
 ###############################################
@@ -162,6 +160,8 @@ echo ""
 echo "====================================="
 echo "   🚀 SmartQasa Sync Starting"
 echo "====================================="
+
+echo "🔍 Update channel selected: $UPDATE_CHANNEL"
 
 sync_blueprints
 sync_media
