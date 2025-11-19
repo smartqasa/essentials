@@ -141,13 +141,6 @@ automation:
       qs: "{{ trigger.query }}"
       service: "{{ qs.service | default('') }}"
       entity: "{{ qs.entity | default('') }}"
-      data: "{{ qs.data | default('') }}"
-      data_obj: >
-        {% if data %}
-          {{ data | from_json }}
-        {% else %}
-          {}
-        {% endif %}
     condition: []
     actions:
       - choose:
@@ -157,9 +150,6 @@ automation:
               - action: "{{ service }}"
                 data:
                   entity_id: "{{ entity }}"
-                  {% for k, v in data_obj.items() %}
-                  {{ k }}: {{ v }}
-                  {% endfor %}
       - action: logbook.log
         data:
           name: "Webhook Service Call"
