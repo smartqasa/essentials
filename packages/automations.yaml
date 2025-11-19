@@ -140,6 +140,7 @@ automation:
         allowed_methods:
           - POST
           - PUT
+          - GET
         local_only: true
     variables:
       service: "{{ trigger.query.service | default('') }}"
