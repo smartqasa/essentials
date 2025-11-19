@@ -137,6 +137,10 @@ automation:
     triggers:
       - trigger: webhook
         webhook_id: action
+        allowed_methods:
+          - POST
+          - PUT
+        local_only: true
     variables:
       qs: "{{ trigger.query }}"
       service: "{{ qs.service | default('') }}"
