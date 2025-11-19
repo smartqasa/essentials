@@ -45,8 +45,6 @@ if [ -f "$CHANNEL_FILE" ]; then
     fi
 fi
 
-echo "🔍 Update channel selected: $UPDATE_CHANNEL"
-
 ###############################################
 # Only Loader & Elements support beta
 ###############################################
@@ -147,6 +145,7 @@ sync_dist() {
     SRC="$TMP/${NAME}-main/dist"
     if [ "$UPDATE_CHANNEL" = "beta" ] && repo_supports_beta "$REPO"; then
         SRC="$TMP/${NAME}-beta/dist"
+        echo "🔍 Selected BETA channel"
     fi
 
     if [ ! -d "$SRC" ]; then
