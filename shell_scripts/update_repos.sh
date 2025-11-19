@@ -35,7 +35,7 @@ TMP="/tmp/sq_extract"
 ###############################################
 # Channel selection (main | beta)
 ###############################################
-CHANNEL_FILE="$ROOT/smartqasa/channel.txt"
+CHANNEL_FILE="$ROOT/channel.txt"
 UPDATE_CHANNEL="main"   # DEFAULT
 
 if [ -f "$CHANNEL_FILE" ]; then
