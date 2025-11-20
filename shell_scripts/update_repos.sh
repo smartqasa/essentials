@@ -10,6 +10,7 @@ MKDIR="/bin/mkdir"
 RM="/bin/rm"
 CP="/bin/cp"
 MV="/bin/mv"
+JQ="/usr/bin/jq"
 
 ###############################################
 # Repo → Local Path Map
@@ -33,16 +34,39 @@ DIR_ELEMENTS="$ROOT/www/smartqasa/dash-elements"
 TMP="/tmp/sq_extract"
 
 ###############################################
-# Channel selection (main | beta)
+# Load SmartQasa config (sqconfig.json)
 ###############################################
-CHANNEL_FILE="$ROOT/channel.txt"
-UPDATE_CHANNEL="main"   # DEFAULT
+SQCONFIG="$ROOT/sqconfig.json"
 
-if [ -f "$CHANNEL_FILE" ]; then
-    CONTENT=$(cat "$CHANNEL_FILE" | tr -d '[:space:]' | tr 'A-Z' 'a-z')
-    if [ "$CONTENT" = "beta" ]; then
+UPDATE_CHANNEL="main"   # default
+AUTO_UPDATE="true"      # default
+
+if [ -f "$SQCONFIG" ]; then
+    echo "📄 Loading sqconfig.json..."
+
+    FILE_CHANNEL=$( $JQ -r '.channel // "main"' "$SQCONFIG" 2>/dev/null | tr 'A-Z' 'a-z' )
+    FILE_AUTO_UPDATE=$( $JQ -r '.auto_update // "true"' "$SQCONFIG" 2>/dev/null | tr 'A-Z' 'a-z' )
+
+    if [ "$FILE_CHANNEL" = "beta" ]; then
         UPDATE_CHANNEL="beta"
     fi
+
+    AUTO_UPDATE="$FILE_AUTO_UPDATE"
+fi
+
+echo "📌 Update channel: $UPDATE_CHANNEL"
+echo "📌 Auto-update:   $AUTO_UPDATE"
+
+###############################################
+# Skip if auto_update is disabled
+###############################################
+if [ "$AUTO_UPDATE" = "false" ] || [ "$AUTO_UPDATE" = "0" ]; then
+    echo ""
+    echo "⏭️ Auto-update disabled — skipping SmartQasa sync."
+    echo "====================================="
+    echo "   🚫 SmartQasa Sync SKIPPED"
+    echo "====================================="
+    exit 0
 fi
 
 ###############################################
@@ -66,7 +90,6 @@ extract_repo() {
 
     # Determine branch
     local BRANCH="main"
-
     if [ "$UPDATE_CHANNEL" = "beta" ] && repo_supports_beta "$REPO"; then
         BRANCH="beta"
     fi
@@ -126,7 +149,7 @@ sync_essentials() {
 
     SRC="$TMP/essentials-main"
     $CP -r "$SRC"/* "$DIR_ESSENTIALS"/
-  
+
     echo "✅ Essentials updated."
 }
 
