@@ -223,7 +223,7 @@ script:
     sequence:
       - action: shell_command.update_repos
       - delay:
-          seconds: 20
+          seconds: 15
       - action: homeassistant.reload_all
       - action: frontend.reload_themes
       - action: script.system_refresh_tablets
