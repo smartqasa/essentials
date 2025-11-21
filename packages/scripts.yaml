@@ -92,6 +92,7 @@ script:
     alias: System - Clear Cache and Reboot Tablets
     icon: mdi:tablet-dashboard
     sequence:
+      - action: frontend.reload_themes
       - variables:
           clear_cache: >-
             {{ states.button
@@ -111,17 +112,12 @@ script:
       - action: button.press
         target:
           entity_id: '{{ restart_device }}'
-      - delay:
-          minutes: 1
-      - action: frontend.reload_themes
 
   system_refresh_tablets:
     alias: System - Clear Cache and Restart Fully App on Tablets
     icon: mdi:tablet-dashboard
     sequence:
-      - action: browser_mod.refresh
-      - delay:
-          seconds: 2
+      - action: frontend.reload_themes
       - variables:
           clear_cache: >-
             {{ states.button
@@ -137,13 +133,13 @@ script:
         target:
           entity_id: '{{ clear_cache }}'
       - delay:
-          seconds: 2
+          seconds: 5
       - action: button.press
         target:
           entity_id: '{{ restart_app }}'
       - delay:
-          seconds: 15
-      - action: frontend.reload_themes
+          seconds: 10
+      - action: browser_mod.refresh
 
   #  system_locate_roku_remote:
   #    alias: System - Locate Roku Remote
