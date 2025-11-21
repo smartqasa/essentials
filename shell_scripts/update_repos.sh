@@ -10,7 +10,6 @@ MKDIR="/bin/mkdir"
 RM="/bin/rm"
 CP="/bin/cp"
 MV="/bin/mv"
-JQ="/usr/bin/jq"
 
 ###############################################
 # Repo → Local Path Map
@@ -23,6 +22,7 @@ REPO_MEDIA="smartqasa/media"
 REPO_ESSENTIALS="smartqasa/essentials"
 REPO_LOADER="smartqasa/dash-loader"
 REPO_ELEMENTS="smartqasa/dash-elements"
+REPO_UTILITIES="smartqasa/ha-utilities"
 
 # Targets
 DIR_BLUEPRINTS="$ROOT/blueprints/automation/smartqasa"
@@ -30,44 +30,41 @@ DIR_MEDIA="$ROOT/www/smartqasa/media"
 DIR_ESSENTIALS="$ROOT/smartqasa"
 DIR_LOADER="$ROOT/www/smartqasa/dash-loader"
 DIR_ELEMENTS="$ROOT/www/smartqasa/dash-elements"
+DIR_UTILITIES="$ROOT/custom_components/smartqasa"
 
 TMP="/tmp/sq_extract"
 
 ###############################################
-# Load SmartQasa config (sqconfig.json)
+# Load SmartQasa sqconfig.json
 ###############################################
-SQCONFIG="$ROOT/sqconfig.json"
+SQCONFIG_PATH="$ROOT/sqconfig.json"
+UPDATE_CHANNEL="main"
+AUTO_UPDATE="true"   # default
 
-UPDATE_CHANNEL="main"   # default
-AUTO_UPDATE="true"      # default
+if [ -f "$SQCONFIG_PATH" ]; then
+    CHANNEL=$(jq -r '.channel // "main"' "$SQCONFIG_PATH")
+    AUTO_UPDATE=$(jq -r '.auto_update // "true"' "$SQCONFIG_PATH")
 
-if [ -f "$SQCONFIG" ]; then
-    echo "📄 Loading sqconfig.json..."
-
-    FILE_CHANNEL=$( $JQ -r '.channel // "main"' "$SQCONFIG" 2>/dev/null | tr 'A-Z' 'a-z' )
-    FILE_AUTO_UPDATE=$( $JQ -r '.auto_update // "true"' "$SQCONFIG" 2>/dev/null | tr 'A-Z' 'a-z' )
-
-    if [ "$FILE_CHANNEL" = "beta" ]; then
+    if [ "$CHANNEL" = "beta" ]; then
         UPDATE_CHANNEL="beta"
     fi
-
-    AUTO_UPDATE="$FILE_AUTO_UPDATE"
 fi
 
-echo "📌 Update channel: $UPDATE_CHANNEL"
-echo "📌 Auto-update:   $AUTO_UPDATE"
-
-###############################################
-# Skip if auto_update is disabled
-###############################################
-if [ "$AUTO_UPDATE" = "false" ] || [ "$AUTO_UPDATE" = "0" ]; then
+# Respect auto_update flag
+if [ "$AUTO_UPDATE" != "true" ]; then
     echo ""
-    echo "⏭️ Auto-update disabled — skipping SmartQasa sync."
     echo "====================================="
-    echo "   🚫 SmartQasa Sync SKIPPED"
+    echo " ⏭️  Auto-update disabled — exiting."
     echo "====================================="
     exit 0
 fi
+
+echo ""
+echo "====================================="
+echo "   🚀 SmartQasa Sync Starting"
+echo "====================================="
+echo "📡 Update channel: $UPDATE_CHANNEL"
+echo "🔧 Auto-update: $AUTO_UPDATE"
 
 ###############################################
 # Only Loader & Elements support beta
@@ -75,9 +72,9 @@ fi
 repo_supports_beta() {
     case "$1" in
         smartqasa/dash-loader|smartqasa/dash-elements)
-            return 0 ;;   # supports beta
+            return 0 ;;
         *)
-            return 1 ;;   # always main
+            return 1 ;;
     esac
 }
 
@@ -94,10 +91,11 @@ extract_repo() {
         BRANCH="beta"
     fi
 
-    echo "⬇️ Downloading $REPO ($BRANCH branch)..."
+    echo ""
+    echo "⬇️ Downloading $REPO ($BRANCH)..."
     $CURL -Ls "https://github.com/$REPO/archive/refs/heads/$BRANCH.zip" -o "$ZIP"
 
-    echo "📦 Extracting ($BRANCH)..."
+    echo "📦 Extracting..."
     $RM -rf "$TMP"
     $UNZIP -q "$ZIP" -d "$TMP"
 }
@@ -124,7 +122,7 @@ sync_blueprints() {
 ###############################################
 sync_media() {
     echo ""
-    echo "📁 Syncing Media (all files)"
+    echo "📁 Syncing Media"
     extract_repo "$REPO_MEDIA"
 
     $RM -rf "$DIR_MEDIA"
@@ -141,7 +139,7 @@ sync_media() {
 ###############################################
 sync_essentials() {
     echo ""
-    echo "📁 Syncing Essentials (all files)"
+    echo "📁 Syncing Essentials"
     extract_repo "$REPO_ESSENTIALS"
 
     $RM -rf "$DIR_ESSENTIALS"
@@ -151,6 +149,31 @@ sync_essentials() {
     $CP -r "$SRC"/* "$DIR_ESSENTIALS"/
 
     echo "✅ Essentials updated."
+}
+
+###############################################
+# UTILITIES (custom_components/smartqasa)
+###############################################
+sync_utilities() {
+    echo ""
+    echo "📁 Syncing HA Utilities (custom_components/smartqasa)"
+    extract_repo "$REPO_UTILITIES"
+
+    SRC="$TMP/ha-utilities-main/custom_components/smartqasa"
+
+    if [ ! -d "$SRC" ]; then
+        echo "❌ ERROR: custom_components/smartqasa not found in ha-utilities repo"
+        exit 1
+    fi
+
+    # Remove existing integration
+    $RM -rf "$DIR_UTILITIES"
+    $MKDIR -p "$(dirname "$DIR_UTILITIES")"
+
+    # Copy integration folder
+    $CP -r "$SRC" "$DIR_UTILITIES"
+
+    echo "✅ HA Utilities updated."
 }
 
 ###############################################
@@ -168,7 +191,7 @@ sync_dist() {
     SRC="$TMP/${NAME}-main/dist"
     if [ "$UPDATE_CHANNEL" = "beta" ] && repo_supports_beta "$REPO"; then
         SRC="$TMP/${NAME}-beta/dist"
-        echo "🔍 Selected BETA channel"
+        echo "🔍 Using BETA branch"
     fi
 
     if [ ! -d "$SRC" ]; then
@@ -176,19 +199,16 @@ sync_dist() {
         exit 1
     fi
 
-    # Clean target
+    # Clean target and copy
     $RM -rf "$TARGET"
     $MKDIR -p "$TARGET"
-
-    # Copy dist folder
     $CP -r "$SRC"/* "$TARGET"/
 
-    echo "💨 Generating .gz compressed JS files (HACS-style)..."
+    # Create gzip versions
+    echo "💨 Generating .gz assets..."
     for JSFILE in "$TARGET"/*.js; do
         if [ -f "$JSFILE" ]; then
-            GZFILE="${JSFILE}.gz"
-            echo "⬆️  $JSFILE → $GZFILE"
-            gzip -c "$JSFILE" > "$GZFILE"
+            gzip -c "$JSFILE" > "${JSFILE}.gz"
         fi
     done
 
@@ -198,18 +218,14 @@ sync_dist() {
 ###############################################
 # EXECUTE SYNC
 ###############################################
-echo ""
-echo "====================================="
-echo "   🚀 SmartQasa Sync Starting"
-echo "====================================="
-
 sync_blueprints
 sync_media
 sync_essentials
+sync_utilities
 sync_dist "$REPO_LOADER" "$DIR_LOADER"
 sync_dist "$REPO_ELEMENTS" "$DIR_ELEMENTS"
 
 echo ""
 echo "====================================="
-echo "   🎉 SmartQasa Sync COMPLETE!"
+echo " 🎉 SmartQasa Sync COMPLETE!"
 echo "====================================="
