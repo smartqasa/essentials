@@ -213,7 +213,7 @@ script:
   system_update_software:
     alias: System - Update Software
     icon: mdi:cloud-download
-    description:
+    description: >-
       Downloads and installs the latest versions of SmartQasa Software and
       restarts Home Assistant
     mode: single
