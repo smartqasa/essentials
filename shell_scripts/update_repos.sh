@@ -43,7 +43,7 @@ AUTO_UPDATE="true"   # default
 
 if [ -f "$SQCONFIG_PATH" ]; then
     CHANNEL=$(jq -r '.channel // "main"' "$SQCONFIG_PATH")
-    AUTO_UPDATE=$(jq -r '.auto_update // "true"' "$SQCONFIG_PATH")
+    AUTO_UPDATE=$(jq -r '.auto_update | tostring // "true"' "$SQCONFIG_PATH")
 
     if [ "$CHANNEL" = "beta" ]; then
         UPDATE_CHANNEL="beta"
