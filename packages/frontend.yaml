@@ -223,6 +223,8 @@ frontend:
       state-inactive-color: var(--inactive-color)
       state-unavailable-color: var(--unavailable-color)
 
+      state-automation-on-color: var(--blue-color)
+
       state-binary_sensor-on-color: var(--deep-orange-color)
       state-binary_sensor-battery-on-color: var(--red-color)
       state-binary_sensor-carbon_monoxide-on-color: var(--red-color)
