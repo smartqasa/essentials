@@ -115,11 +115,8 @@ script:
           minutes: 1
       - action: frontend.reload_themes
 
-    mode: single
-
   system_refresh_tablets:
     alias: System - Clear Cache and Restart Fully App on Tablets
-    mode: single
     icon: mdi:tablet-dashboard
     sequence:
       - action: browser_mod.refresh
