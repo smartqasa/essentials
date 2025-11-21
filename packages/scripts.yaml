@@ -11,7 +11,7 @@ script:
       - action: homeassistant.turn_on
         data: {}
         target:
-          entity_id: "{{ entity }}"
+          entity_id: '{{ entity }}'
       - delay:
           hours: 0
           minutes: 0
@@ -20,7 +20,7 @@ script:
       - action: homeassistant.turn_off
         data: {}
         target:
-          entity_id: "{{ entity }}"
+          entity_id: '{{ entity }}'
       - delay:
           hours: 0
           minutes: 0
@@ -29,9 +29,9 @@ script:
       - action: homeassistant.turn_on
         data: {}
         target:
-          entity_id: "{{ entity }}"
+          entity_id: '{{ entity }}'
       - repeat:
-          count: "{{ count }}"
+          count: '{{ count }}'
           sequence:
             - delay:
                 hours: 0
@@ -41,7 +41,7 @@ script:
             - action: homeassistant.turn_off
               data: {}
               target:
-                entity_id: "{{ entity }}"
+                entity_id: '{{ entity }}'
             - delay:
                 hours: 0
                 minutes: 0
@@ -50,7 +50,7 @@ script:
             - action: homeassistant.turn_on
               data: {}
               target:
-                entity_id: "{{ entity }}"
+                entity_id: '{{ entity }}'
     mode: queued
     max: 10
     max_exceeded: silent
@@ -60,31 +60,32 @@ script:
     icon: mdi:speaker-off
     fields:
       entity:
-        description: "Entity ID of the Media Player device"
+        description: 'Entity ID of the Media Player device'
       mute_level:
-        description: "Volume level to set during the muted period"
-        example: "0.1"
+        description: 'Volume level to set during the muted period'
+        example: '0.1'
       duration:
-        description: "Number of seconds to keep the volume at the specified level"
-        example: "60"
+        description:
+          'Number of seconds to keep the volume at the specified level'
+        example: '60'
       play_level:
-        description: "Volume level to restore after the duration"
-        example: "0.5"
+        description: 'Volume level to restore after the duration'
+        example: '0.5'
     sequence:
       - action: media_player.volume_set
         data:
-          entity_id: "{{ entity }}"
-          volume_level: "{{ mute_level }}"
+          entity_id: '{{ entity }}'
+          volume_level: '{{ mute_level }}'
       - delay:
           seconds: 1
       - wait_template: "{{ state_attr(entity, 'volume_level') != mute_level }}"
         timeout:
-          seconds: "{{ duration }}"
+          seconds: '{{ duration }}'
         continue_on_timeout: true
       - action: media_player.volume_set
         data:
-          entity_id: "{{ entity }}"
-          volume_level: "{{ play_level }}"
+          entity_id: '{{ entity }}'
+          volume_level: '{{ play_level }}'
     mode: restart
 
   system_reboot_tablets:
@@ -104,12 +105,12 @@ script:
               | list }}
       - action: button.press
         target:
-          entity_id: "{{ clear_cache }}"
+          entity_id: '{{ clear_cache }}'
       - delay:
           seconds: 5
       - action: button.press
         target:
-          entity_id: "{{ restart_device }}"
+          entity_id: '{{ restart_device }}'
       - delay:
           minutes: 1
       - action: frontend.reload_themes
@@ -118,6 +119,7 @@ script:
 
   system_refresh_tablets:
     alias: System - Clear Cache and Restart Fully App on Tablets
+    mode: single
     icon: mdi:tablet-dashboard
     sequence:
       - action: browser_mod.refresh
@@ -136,17 +138,15 @@ script:
               | list }}
       - action: button.press
         target:
-          entity_id: "{{ clear_cache }}"
+          entity_id: '{{ clear_cache }}'
       - delay:
           seconds: 2
       - action: button.press
         target:
-          entity_id: "{{ restart_app }}"
+          entity_id: '{{ restart_app }}'
       - delay:
           seconds: 15
       - action: frontend.reload_themes
-
-    mode: single
 
   #  system_locate_roku_remote:
   #    alias: System - Locate Roku Remote
@@ -163,6 +163,9 @@ script:
 
   system_toggle_volume_muted:
     alias: System - Toggle Volume Muted
+    mode: queued
+    max: 10
+    max_exceeded: silent
     fields:
       entity_id:
         description: Media Player Entity ID
@@ -171,41 +174,54 @@ script:
     sequence:
       - if:
           - condition: template
-            value_template: "{{ is_state_attr(entity_id, 'is_volume_muted', false) }}"
+            value_template:
+              "{{ is_state_attr(entity_id, 'is_volume_muted', false) }}"
         then:
           - action: media_player.volume_mute
             data:
               is_volume_muted: true
             target:
-              entity_id: "{{ entity_id }}"
+              entity_id: '{{ entity_id }}'
         else:
           - action: media_player.volume_mute
             data:
               is_volume_muted: false
             target:
-              entity_id: "{{ entity_id }}"
-    mode: queued
-    max: 10
-    max_exceeded: silent
+              entity_id: '{{ entity_id }}'
 
   system_send_notification:
     alias: System - Send Notification
     description: Sends a notification with the specified title and message
+    mode: single
     fields:
       log_level:
-        description: The log level of the notification (e.g., INFO, WARNING, ERROR)
-        example: "INFO"
+        description:
+          The log level of the notification (e.g., INFO, WARNING, ERROR)
+        example: 'INFO'
       location_id:
         description: The location ID for the notification
-        example: "cust.st.001.01"
+        example: 'cust.st.001.01'
       event:
         description: The description of the event
-        example: "UPS Status Change"
+        example: 'UPS Status Change'
       details:
         description: The details of the event
-        example: "The state of the UPS has changed to OL (OL CHRGNG)"
+        example: 'The state of the UPS has changed to OL (OL CHRGNG)'
     sequence:
       - action: notify.smartqasa_support
         data:
-          title: "{{ log_level }}: {{ location_id }} - {{ event }}"
-          message: "{{ details | trim }}"
+          title: '{{ log_level }}: {{ location_id }} - {{ event }}'
+          message: '{{ details | trim }}'
+
+  system_update_software:
+    alias: System - Update Software
+    icon: mdi:cloud-download
+    description:
+      Downloads and installs the latest versions of SmartQasa Software and
+      restarts Home Assistant
+    mode: single
+    sequence:
+      - action: shell_command.update_repos
+      - delay:
+          seconds: 30
+      - action: homeassistant.restart
