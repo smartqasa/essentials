@@ -74,7 +74,7 @@ frontend:
       # Colors
       modes:
         light:
-          panel-color: rgb(213, 200, 196)
+          panel-color: rgb(210, 203, 196)
 
           title-text-color: rgb(40, 40, 40)
           primary-text-color: rgb(20, 20, 20)
@@ -105,7 +105,7 @@ frontend:
 
           popup-backdrop-color: rgba(0, 0, 0, 0.2)
           popup-backdrop-filter: blur(10px)
-          popup-background-color: rgba(213, 200, 196, 0.8)
+          popup-background-color: rgba(210, 203, 196, 0.8)
           popup-progress-color: rgb(200, 200, 200)
           popup-border-color: rgb(170, 170, 170)
           popup-box-shadow: none
