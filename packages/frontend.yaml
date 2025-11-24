@@ -84,6 +84,7 @@ frontend:
           button-text-color: rgb(40, 40, 40)
           button-font-weight: 400
           popup-text-color: rgb(60, 60, 60)
+          menu-tab-color: rgb(110, 110, 110)
 
           icon-color: rgb(20, 20, 20)
           icon-opacity: 50%
@@ -129,6 +130,7 @@ frontend:
           button-text-color: rgb(210, 210, 210)
           button-font-weight: 300
           popup-text-color: rgb(170, 170, 170)
+          menu-tab-color: rgb(120, 120, 120)
 
           icon-color: rgb(225, 225, 225)
           icon-opacity: 50%
