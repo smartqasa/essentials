@@ -91,6 +91,7 @@ frontend:
           track-opacity: 35%
 
           accent-color: rgb(0, 120, 230)
+          disabled-color: rgb(100, 100, 100)
           divider-color: rgb(160, 160, 160)
           inactive-color: rgb(150, 150, 150)
           unavailable-color: rgb(255, 0, 255)
@@ -103,7 +104,7 @@ frontend:
 
           popup-backdrop-color: rgba(0, 0, 0, 0.2)
           popup-backdrop-filter: blur(10px)
-          popup-background-color: rgba(180, 180, 180, 0.8)
+          popup-background-color: rgba(213, 208, 196, 0.8)
           popup-progress-color: rgb(200, 200, 200)
           popup-border-color: rgb(170, 170, 170)
           popup-box-shadow: none
@@ -135,6 +136,7 @@ frontend:
           track-opacity: 35%
 
           accent-color: rgb(0, 120, 230)
+          disabled-color: rgb(170, 170, 170)
           divider-color: rgb(50, 50, 50)
           inactive-color: rgb(120, 120, 120)
           unavailable-color: rgb(255, 0, 255)
