@@ -23,6 +23,7 @@ REPO_ESSENTIALS="smartqasa/essentials"
 REPO_LOADER="smartqasa/dash-loader"
 REPO_ELEMENTS="smartqasa/dash-elements"
 REPO_UTILITIES="smartqasa/ha-utilities"
+REPO_PICO_LINK="smartqasa/pico-link"
 
 # Targets
 DIR_BLUEPRINTS="$ROOT/blueprints/automation/smartqasa"
@@ -31,6 +32,7 @@ DIR_ESSENTIALS="$ROOT/smartqasa"
 DIR_LOADER="$ROOT/www/smartqasa/dash-loader"
 DIR_ELEMENTS="$ROOT/www/smartqasa/dash-elements"
 DIR_UTILITIES="$ROOT/custom_components/smartqasa"
+DIR_PICO_LINK="$ROOT/custom_components/pico-link"
 
 TMP="/tmp/sq_extract"
 
@@ -174,6 +176,31 @@ sync_utilities() {
     $CP -r "$SRC" "$DIR_UTILITIES"
 
     echo "✅ HA Utilities updated."
+}
+
+###############################################
+# PICO-LINK (custom_components/pico_link)
+###############################################
+sync_pico_link() {
+    echo ""
+    echo "📁 Syncing HA Pico Link (custom_components/pico_link)"
+    extract_repo "$REPO_UTILITIES"
+
+    SRC="$TMP/pico-link-main/custom_components/smartqasa"
+
+    if [ ! -d "$SRC" ]; then
+        echo "❌ ERROR: custom_components/smartqasa not found in pico-link repo"
+        exit 1
+    fi
+
+    # Remove existing integration
+    $RM -rf "$DIR_PICO_LINK"
+    $MKDIR -p "$(dirname "$DIR_PICO_LINK")"
+
+    # Copy integration folder
+    $CP -r "$SRC" "$DIR_PICO_LINK"
+
+    echo "✅ Pico Link updated."
 }
 
 ###############################################
