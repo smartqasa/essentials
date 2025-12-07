@@ -184,7 +184,7 @@ sync_utilities() {
 sync_pico_link() {
     echo ""
     echo "📁 Syncing HA Pico Link (custom_components/pico_link)"
-    extract_repo "$REPO_UTILITIES"
+    extract_repo "$REPO_PICO_LINK"
 
     SRC="$TMP/pico-link-main/custom_components/smartqasa"
 
