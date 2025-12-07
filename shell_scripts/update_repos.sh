@@ -249,6 +249,7 @@ sync_blueprints
 sync_media
 sync_essentials
 sync_utilities
+sync_pico_link
 sync_dist "$REPO_LOADER" "$DIR_LOADER"
 sync_dist "$REPO_ELEMENTS" "$DIR_ELEMENTS"
 
