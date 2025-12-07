@@ -271,7 +271,7 @@ sync_media
 sync_essentials
 
 # Integrations (via generic sync_integration)
-sync_integration "$REPO_UTILITIES" "$DIR_UTILITIES##dummy##" "$DIR_UTILITIES"
+sync_integration "$REPO_UTILITIES" "smartqasa" "$DIR_UTILITIES"
 sync_integration "$REPO_PICO_LINK" "pico_link" "$DIR_PICO_LINK"
 
 # Loader & Elements (dist builds)
