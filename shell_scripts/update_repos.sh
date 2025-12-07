@@ -32,7 +32,7 @@ DIR_ESSENTIALS="$ROOT/smartqasa"
 DIR_LOADER="$ROOT/www/smartqasa/dash-loader"
 DIR_ELEMENTS="$ROOT/www/smartqasa/dash-elements"
 DIR_UTILITIES="$ROOT/custom_components/smartqasa"
-DIR_PICO_LINK="$ROOT/custom_components/pico-link"
+DIR_PICO_LINK="$ROOT/custom_components/pico_link"
 
 TMP="/tmp/sq_extract"
 
@@ -44,8 +44,8 @@ UPDATE_CHANNEL="main"
 AUTO_UPDATE="true"   # default
 
 if [ -f "$SQCONFIG_PATH" ]; then
-    CHANNEL=$(jq -r '.channel // "main"' "$SQCONFIG_PATH")
-    AUTO_UPDATE=$(jq -r '.auto_update | tostring // "true"' "$SQCONFIG_PATH")
+    CHANNEL=$(jq -r '(.channel // "main")' "$SQCONFIG_PATH")
+    AUTO_UPDATE=$(jq -r '(.auto_update // true) | tostring' "$SQCONFIG_PATH")
 
     if [ "$CHANNEL" = "beta" ]; then
         UPDATE_CHANNEL="beta"
@@ -74,9 +74,11 @@ echo "🔧 Auto-update: $AUTO_UPDATE"
 repo_supports_beta() {
     case "$1" in
         smartqasa/dash-loader|smartqasa/dash-elements)
-            return 0 ;;
+            return 0
+            ;;
         *)
-            return 1 ;;
+            return 1
+            ;;
     esac
 }
 
@@ -94,7 +96,7 @@ extract_repo() {
     fi
 
     echo ""
-    echo "⬇️ Downloading $REPO ($BRANCH)..."
+    echo "⬇️  Downloading $REPO ($BRANCH)..."
     $CURL -Ls "https://github.com/$REPO/archive/refs/heads/$BRANCH.zip" -o "$ZIP"
 
     echo "📦 Extracting..."
@@ -110,10 +112,18 @@ sync_blueprints() {
     echo "📁 Syncing Blueprints (.yaml only)"
     extract_repo "$REPO_BLUEPRINTS"
 
-    $MKDIR -p "$DIR_BLUEPRINTS"
-    $RM -f "$DIR_BLUEPRINTS"/*.yaml
+    local NAME
+    NAME=$(basename "$REPO_BLUEPRINTS")
+    local BRANCH="main"
+    if [ "$UPDATE_CHANNEL" = "beta" ] && repo_supports_beta "$REPO_BLUEPRINTS"; then
+        BRANCH="beta"
+    fi
 
-    SRC="$TMP/blueprints-main"
+    local SRC="$TMP/${NAME}-${BRANCH}"
+
+    $MKDIR -p "$DIR_BLUEPRINTS"
+    $RM -f "$DIR_BLUEPRINTS"/*.yaml || true
+
     find "$SRC" -type f -name '*.yaml' -exec $CP {} "$DIR_BLUEPRINTS" \;
 
     echo "✅ Blueprints updated."
@@ -127,10 +137,18 @@ sync_media() {
     echo "📁 Syncing Media"
     extract_repo "$REPO_MEDIA"
 
+    local NAME
+    NAME=$(basename "$REPO_MEDIA")
+    local BRANCH="main"
+    if [ "$UPDATE_CHANNEL" = "beta" ] && repo_supports_beta "$REPO_MEDIA"; then
+        BRANCH="beta"
+    fi
+
+    local SRC="$TMP/${NAME}-${BRANCH}"
+
     $RM -rf "$DIR_MEDIA"
     $MKDIR -p "$DIR_MEDIA"
 
-    SRC="$TMP/media-main"
     $CP -r "$SRC"/* "$DIR_MEDIA"/
 
     echo "✅ Media updated."
@@ -144,63 +162,63 @@ sync_essentials() {
     echo "📁 Syncing Essentials"
     extract_repo "$REPO_ESSENTIALS"
 
+    local NAME
+    NAME=$(basename "$REPO_ESSENTIALS")
+    local BRANCH="main"
+    if [ "$UPDATE_CHANNEL" = "beta" ] && repo_supports_beta "$REPO_ESSENTIALS"; then
+        BRANCH="beta"
+    fi
+
+    local SRC="$TMP/${NAME}-${BRANCH}"
+
     $RM -rf "$DIR_ESSENTIALS"
     $MKDIR -p "$DIR_ESSENTIALS"
 
-    SRC="$TMP/essentials-main"
     $CP -r "$SRC"/* "$DIR_ESSENTIALS"/
 
     echo "✅ Essentials updated."
 }
 
 ###############################################
-# UTILITIES (custom_components/smartqasa)
+# Generic Integration Sync
+#   Arguments:
+#     1 = GitHub repo (e.g. smartqasa/ha-utilities)
+#     2 = integration folder name under custom_components/
+#     3 = target directory in Home Assistant
 ###############################################
-sync_utilities() {
-    echo ""
-    echo "📁 Syncing HA Utilities (custom_components/smartqasa)"
-    extract_repo "$REPO_UTILITIES"
+sync_integration() {
+    local REPO="$1"
+    local INTEGRATION="$2"
+    local TARGET_DIR="$3"
 
-    SRC="$TMP/ha-utilities-main/custom_components/smartqasa"
+    echo ""
+    echo "📁 Syncing Integration: $INTEGRATION  (repo: $REPO)"
+
+    extract_repo "$REPO"
+
+    local NAME
+    NAME=$(basename "$REPO")
+    local BRANCH="main"
+    if [ "$UPDATE_CHANNEL" = "beta" ] && repo_supports_beta "$REPO"; then
+        BRANCH="beta"
+        echo "🔍 Using BETA branch for integration"
+    fi
+
+    local SRC="$TMP/${NAME}-${BRANCH}/custom_components/${INTEGRATION}"
 
     if [ ! -d "$SRC" ]; then
-        echo "❌ ERROR: custom_components/smartqasa not found in ha-utilities repo"
+        echo "❌ ERROR: integration folder not found: $SRC"
         exit 1
     fi
 
-    # Remove existing integration
-    $RM -rf "$DIR_UTILITIES"
-    $MKDIR -p "$(dirname "$DIR_UTILITIES")"
+    echo "🗑️  Removing existing integration: $TARGET_DIR"
+    $RM -rf "$TARGET_DIR"
 
-    # Copy integration folder
-    $CP -r "$SRC" "$DIR_UTILITIES"
+    echo "📦 Copying new integration files..."
+    $MKDIR -p "$(dirname "$TARGET_DIR")"
+    $CP -r "$SRC" "$TARGET_DIR"
 
-    echo "✅ HA Utilities updated."
-}
-
-###############################################
-# PICO-LINK (custom_components/pico_link)
-###############################################
-sync_pico_link() {
-    echo ""
-    echo "📁 Syncing HA Pico Link (custom_components/pico_link)"
-    extract_repo "$REPO_PICO_LINK"
-
-    SRC="$TMP/pico-link-main/custom_components/pico_link"
-
-    if [ ! -d "$SRC" ]; then
-        echo "❌ ERROR: custom_components/smartqasa not found in pico-link repo"
-        exit 1
-    fi
-
-    # Remove existing integration
-    $RM -rf "$DIR_PICO_LINK"
-    $MKDIR -p "$(dirname "$DIR_PICO_LINK")"
-
-    # Copy integration folder
-    $CP -r "$SRC" "$DIR_PICO_LINK"
-
-    echo "✅ Pico Link updated."
+    echo "✅ Integration updated: $INTEGRATION"
 }
 
 ###############################################
@@ -209,17 +227,20 @@ sync_pico_link() {
 sync_dist() {
     local REPO="$1"
     local TARGET="$2"
-    local NAME=$(basename "$REPO")
+    local NAME
+    NAME=$(basename "$REPO")
 
     echo ""
     echo "📁 Syncing dist for $REPO"
     extract_repo "$REPO"
 
-    SRC="$TMP/${NAME}-main/dist"
+    local BRANCH="main"
     if [ "$UPDATE_CHANNEL" = "beta" ] && repo_supports_beta "$REPO"; then
-        SRC="$TMP/${NAME}-beta/dist"
+        BRANCH="beta"
         echo "🔍 Using BETA branch"
     fi
+
+    local SRC="$TMP/${NAME}-${BRANCH}/dist"
 
     if [ ! -d "$SRC" ]; then
         echo "❌ ERROR: dist folder missing in $REPO ($SRC)"
@@ -248,8 +269,12 @@ sync_dist() {
 sync_blueprints
 sync_media
 sync_essentials
-sync_utilities
-sync_pico_link
+
+# Integrations (via generic sync_integration)
+sync_integration "$REPO_UTILITIES" "$DIR_UTILITIES##dummy##" "$DIR_UTILITIES"
+sync_integration "$REPO_PICO_LINK" "pico_link" "$DIR_PICO_LINK"
+
+# Loader & Elements (dist builds)
 sync_dist "$REPO_LOADER" "$DIR_LOADER"
 sync_dist "$REPO_ELEMENTS" "$DIR_ELEMENTS"
 
