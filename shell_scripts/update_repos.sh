@@ -186,7 +186,7 @@ sync_pico_link() {
     echo "📁 Syncing HA Pico Link (custom_components/pico_link)"
     extract_repo "$REPO_PICO_LINK"
 
-    SRC="$TMP/pico-link-main/custom_components/smartqasa"
+    SRC="$TMP/pico-link-main/custom_components/pico_link"
 
     if [ ! -d "$SRC" ]; then
         echo "❌ ERROR: custom_components/smartqasa not found in pico-link repo"
