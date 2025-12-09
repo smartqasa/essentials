@@ -11,7 +11,7 @@ script:
       - action: homeassistant.turn_on
         data: {}
         target:
-          entity_id: '{{ entity }}'
+          entity_id: "{{ entity }}"
       - delay:
           hours: 0
           minutes: 0
@@ -20,7 +20,7 @@ script:
       - action: homeassistant.turn_off
         data: {}
         target:
-          entity_id: '{{ entity }}'
+          entity_id: "{{ entity }}"
       - delay:
           hours: 0
           minutes: 0
@@ -29,9 +29,9 @@ script:
       - action: homeassistant.turn_on
         data: {}
         target:
-          entity_id: '{{ entity }}'
+          entity_id: "{{ entity }}"
       - repeat:
-          count: '{{ count }}'
+          count: "{{ count }}"
           sequence:
             - delay:
                 hours: 0
@@ -41,7 +41,7 @@ script:
             - action: homeassistant.turn_off
               data: {}
               target:
-                entity_id: '{{ entity }}'
+                entity_id: "{{ entity }}"
             - delay:
                 hours: 0
                 minutes: 0
@@ -50,7 +50,7 @@ script:
             - action: homeassistant.turn_on
               data: {}
               target:
-                entity_id: '{{ entity }}'
+                entity_id: "{{ entity }}"
     mode: queued
     max: 10
     max_exceeded: silent
@@ -60,32 +60,31 @@ script:
     icon: mdi:speaker-off
     fields:
       entity:
-        description: 'Entity ID of the Media Player device'
+        description: "Entity ID of the Media Player device"
       mute_level:
-        description: 'Volume level to set during the muted period'
-        example: '0.1'
+        description: "Volume level to set during the muted period"
+        example: "0.1"
       duration:
-        description:
-          'Number of seconds to keep the volume at the specified level'
-        example: '60'
+        description: "Number of seconds to keep the volume at the specified level"
+        example: "60"
       play_level:
-        description: 'Volume level to restore after the duration'
-        example: '0.5'
+        description: "Volume level to restore after the duration"
+        example: "0.5"
     sequence:
       - action: media_player.volume_set
         data:
-          entity_id: '{{ entity }}'
-          volume_level: '{{ mute_level }}'
+          entity_id: "{{ entity }}"
+          volume_level: "{{ mute_level }}"
       - delay:
           seconds: 1
       - wait_template: "{{ state_attr(entity, 'volume_level') != mute_level }}"
         timeout:
-          seconds: '{{ duration }}'
+          seconds: "{{ duration }}"
         continue_on_timeout: true
       - action: media_player.volume_set
         data:
-          entity_id: '{{ entity }}'
-          volume_level: '{{ play_level }}'
+          entity_id: "{{ entity }}"
+          volume_level: "{{ play_level }}"
     mode: restart
 
   system_reboot_tablets:
@@ -106,12 +105,12 @@ script:
               | list }}
       - action: button.press
         target:
-          entity_id: '{{ clear_cache }}'
+          entity_id: "{{ clear_cache }}"
       - delay:
           seconds: 5
       - action: button.press
         target:
-          entity_id: '{{ restart_device }}'
+          entity_id: "{{ restart_device }}"
 
   system_refresh_tablets:
     alias: System - Clear Cache and Restart Fully App on Tablets
@@ -131,12 +130,12 @@ script:
               | list }}
       - action: button.press
         target:
-          entity_id: '{{ clear_cache }}'
+          entity_id: "{{ clear_cache }}"
       - delay:
           seconds: 5
       - action: button.press
         target:
-          entity_id: '{{ restart_app }}'
+          entity_id: "{{ restart_app }}"
       - delay:
           seconds: 10
       - action: browser_mod.refresh
@@ -167,20 +166,19 @@ script:
     sequence:
       - if:
           - condition: template
-            value_template:
-              "{{ is_state_attr(entity_id, 'is_volume_muted', false) }}"
+            value_template: "{{ is_state_attr(entity_id, 'is_volume_muted', false) }}"
         then:
           - action: media_player.volume_mute
             data:
               is_volume_muted: true
             target:
-              entity_id: '{{ entity_id }}'
+              entity_id: "{{ entity_id }}"
         else:
           - action: media_player.volume_mute
             data:
               is_volume_muted: false
             target:
-              entity_id: '{{ entity_id }}'
+              entity_id: "{{ entity_id }}"
 
   system_send_notification:
     alias: System - Send Notification
@@ -188,23 +186,22 @@ script:
     mode: single
     fields:
       log_level:
-        description:
-          The log level of the notification (e.g., INFO, WARNING, ERROR)
-        example: 'INFO'
+        description: The log level of the notification (e.g., INFO, WARNING, ERROR)
+        example: "INFO"
       location_id:
         description: The location ID for the notification
-        example: 'cust.st.001.01'
+        example: "cust.st.001.01"
       event:
         description: The description of the event
-        example: 'UPS Status Change'
+        example: "UPS Status Change"
       details:
         description: The details of the event
-        example: 'The state of the UPS has changed to OL (OL CHRGNG)'
+        example: "The state of the UPS has changed to OL (OL CHRGNG)"
     sequence:
       - action: notify.smartqasa_support
         data:
-          title: '{{ log_level }}: {{ location_id }} - {{ event }}'
-          message: '{{ details | trim }}'
+          title: "{{ log_level }}: {{ location_id }} - {{ event }}"
+          message: "{{ details | trim }}"
 
   system_update_software:
     alias: System - Update Software
@@ -219,3 +216,43 @@ script:
       - action: homeassistant.reload_all
       - action: frontend.reload_themes
       - action: script.system_refresh_tablets
+
+  system cycle_light_phase:
+    alias: System - Cycle Light Phase
+    mode: quened
+    max: 10
+    max_exceeded: silent
+    fields:
+      light_entity:
+        description: "Light to control"
+        example: "light.kitchen_lights"
+      phase_entity:
+        description: "Input number entity tracking the color phase"
+        example: "input_number.kitchen_lights"
+
+    sequence:
+      - variables:
+          phases:
+            0: { color_temp: 357 }
+            1: { color_temp: 250 }
+            2: { color_name: "red" }
+            3: { color_name: "magenta" }
+            4: { color_name: "blue" }
+            5: { color_name: "cyan" }
+            6: { color_name: "green" }
+
+          phase: >
+            {% set phase_value = states(phase_entity) | int(default=0) %}
+            {% set next_phase = phase_value + 1 %}
+            {{ 0 if next_phase not in phases else next_phase }}
+
+      - action: light.turn_on
+        target:
+          entity_id: "{{ light_entity }}"
+        data: "{{ phases[phase] }}"
+
+      - action: input_number.set_value
+        target:
+          entity_id: "{{ phase_entity }}"
+        data:
+          value: "{{ phase }}"
