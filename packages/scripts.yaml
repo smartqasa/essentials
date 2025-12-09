@@ -217,7 +217,7 @@ script:
       - action: frontend.reload_themes
       - action: script.system_refresh_tablets
 
-  cycle_light_phase:
+  system_cycle_light_phase:
     alias: "System - Cycle Light Phase"
     mode: queued
     max: 10
