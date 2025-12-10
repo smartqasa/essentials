@@ -10,21 +10,13 @@ MKDIR="/bin/mkdir"
 RM="/bin/rm"
 CP="/bin/cp"
 MV="/bin/mv"
-GZIP="/bin/gzip"
-
-###############################################
-# Colors
-###############################################
-GREEN="\e[32m"
-YELLOW="\e[33m"
-RED="\e[31m"
-RESET="\e[0m"
 
 ###############################################
 # Repo → Local Path Map
 ###############################################
 ROOT="/config"
 
+# Repos
 REPO_BLUEPRINTS="smartqasa/blueprints"
 REPO_MEDIA="smartqasa/media"
 REPO_ESSENTIALS="smartqasa/essentials"
@@ -33,6 +25,7 @@ REPO_ELEMENTS="smartqasa/dash-elements"
 REPO_UTILITIES="smartqasa/ha-utilities"
 REPO_PICO_LINK="smartqasa/pico-link"
 
+# Targets
 DIR_BLUEPRINTS="$ROOT/blueprints/automation/smartqasa"
 DIR_MEDIA="$ROOT/www/smartqasa/media"
 DIR_ESSENTIALS="$ROOT/smartqasa"
@@ -48,61 +41,59 @@ TMP="/tmp/sq_extract"
 ###############################################
 SQCONFIG_PATH="$ROOT/sqconfig.json"
 UPDATE_CHANNEL="main"
-AUTO_UPDATE="true"
+AUTO_UPDATE="true"   # default
 
 if [ -f "$SQCONFIG_PATH" ]; then
     CHANNEL=$(jq -r '(.channel // "main")' "$SQCONFIG_PATH")
     AUTO_UPDATE=$(jq -r '(.auto_update // true) | tostring' "$SQCONFIG_PATH")
 
-    [ "$CHANNEL" = "beta" ] && UPDATE_CHANNEL="beta"
+    if [ "$CHANNEL" = "beta" ]; then
+        UPDATE_CHANNEL="beta"
+    fi
 fi
 
+# Respect auto_update flag
 if [ "$AUTO_UPDATE" != "true" ]; then
-    echo -e "${YELLOW}"
+    echo ""
     echo "====================================="
     echo " ⏭️  Auto-update disabled — exiting."
     echo "====================================="
-    echo -e "${RESET}"
     exit 0
 fi
 
 echo ""
-echo -e "${GREEN}====================================="
+echo "====================================="
 echo "   🚀 SmartQasa Sync Starting"
-echo "=====================================${RESET}"
+echo "====================================="
 echo "📡 Update channel: $UPDATE_CHANNEL"
 echo "🔧 Auto-update: $AUTO_UPDATE"
 
 ###############################################
-# Define which repos support beta
+# REPOS THAT SUPPORT BETA (UPDATED)
 ###############################################
-beta_supported=(
-    "smartqasa/dash-loader"
-    "smartqasa/dash-elements"
-    "smartqasa/pico-link"
-)
-
 repo_supports_beta() {
-    for r in "${beta_supported[@]}"; do
-        [ "$1" = "$r" ] && return 0
-    done
-    return 1
+    case "$1" in
+        smartqasa/dash-loader|smartqasa/dash-elements|smartqasa/pico-link)
+            return 0
+            ;;
+        *)
+            return 1
+            ;;
+    esac
 }
 
 ###############################################
-# Download + Extract Repo
+# Utility: download & extract repo ZIP
 ###############################################
 extract_repo() {
     local REPO="$1"
-    local NAME=$(basename "$REPO")
+    local ZIP="/tmp/$(basename "$REPO").zip"
 
+    # Determine branch
     local BRANCH="main"
     if [ "$UPDATE_CHANNEL" = "beta" ] && repo_supports_beta "$REPO"; then
         BRANCH="beta"
-        echo "🔍 $REPO supports beta — using beta branch"
     fi
-
-    local ZIP="/tmp/${NAME}.zip"
 
     echo ""
     echo "⬇️  Downloading $REPO ($BRANCH)..."
@@ -111,92 +102,144 @@ extract_repo() {
     echo "📦 Extracting..."
     $RM -rf "$TMP"
     $UNZIP -q "$ZIP" -d "$TMP"
-
-    echo "$TMP/${NAME}-${BRANCH}"
 }
 
 ###############################################
-# Sync Blueprints
+# BLUEPRINTS (YAML only)
 ###############################################
 sync_blueprints() {
     echo ""
     echo "📁 Syncing Blueprints (.yaml only)"
+    extract_repo "$REPO_BLUEPRINTS"
 
-    SRC=$(extract_repo "$REPO_BLUEPRINTS")
+    local NAME
+    NAME=$(basename "$REPO_BLUEPRINTS")
+    local BRANCH="main"
+    if [ "$UPDATE_CHANNEL" = "beta" ] && repo_supports_beta "$REPO_BLUEPRINTS"; then
+        BRANCH="beta"
+    fi
+
+    local SRC="$TMP/${NAME}-${BRANCH}"
+
     $MKDIR -p "$DIR_BLUEPRINTS"
+    $RM -f "$DIR_BLUEPRINTS"/*.yaml || true
 
-    # Clean old YAMLs
-    find "$DIR_BLUEPRINTS" -type f -name "*.yaml" -delete || true
-
-    find "$SRC" -type f -name "*.yaml" -exec $CP {} "$DIR_BLUEPRINTS" \;
+    find "$SRC" -type f -name '*.yaml' -exec $CP {} "$DIR_BLUEPRINTS" \;
 
     echo "✅ Blueprints updated."
 }
 
 ###############################################
-# Generic directory sync (copy all)
+# MEDIA (copy everything)
 ###############################################
-sync_all_files() {
-    local REPO="$1"
-    local TARGET="$2"
-
+sync_media() {
     echo ""
-    echo "📁 Syncing: $REPO → $TARGET"
+    echo "📁 Syncing Media"
+    extract_repo "$REPO_MEDIA"
 
-    SRC=$(extract_repo "$REPO")
+    local NAME
+    NAME=$(basename "$REPO_MEDIA")
+    local BRANCH="main"
+    if [ "$UPDATE_CHANNEL" = "beta" ] && repo_supports_beta "$REPO_MEDIA"; then
+        BRANCH="beta"
+    fi
 
-    $RM -rf "$TARGET"
-    $MKDIR -p "$TARGET"
+    local SRC="$TMP/${NAME}-${BRANCH}"
 
-    $CP -r "$SRC"/* "$TARGET"/
+    $RM -rf "$DIR_MEDIA"
+    $MKDIR -p "$DIR_MEDIA"
 
-    echo "✅ Synced $REPO"
+    $CP -r "$SRC"/* "$DIR_MEDIA"/
+
+    echo "✅ Media updated."
 }
 
 ###############################################
-# Sync Integration
+# ESSENTIALS (copy everything)
+###############################################
+sync_essentials() {
+    echo ""
+    echo "📁 Syncing Essentials"
+    extract_repo "$REPO_ESSENTIALS"
+
+    local NAME
+    NAME=$(basename "$REPO_ESSENTIALS")
+    local BRANCH="main"
+    if [ "$UPDATE_CHANNEL" = "beta" ] && repo_supports_beta "$REPO_ESSENTIALS"; then
+        BRANCH="beta"
+    fi
+
+    local SRC="$TMP/${NAME}-${BRANCH}"
+
+    $RM -rf "$DIR_ESSENTIALS"
+    $MKDIR -p "$DIR_ESSENTIALS"
+
+    $CP -r "$SRC"/* "$DIR_ESSENTIALS"/
+
+    echo "✅ Essentials updated."
+}
+
+###############################################
+# Generic Integration Sync
 ###############################################
 sync_integration() {
     local REPO="$1"
-    local NAME="$2"
+    local INTEGRATION="$2"
     local TARGET_DIR="$3"
 
     echo ""
-    echo "📁 Syncing Integration: $NAME (repo: $REPO)"
+    echo "📁 Syncing Integration: $INTEGRATION  (repo: $REPO)"
 
-    SRC=$(extract_repo "$REPO")
-    SRC="$SRC/custom_components/$NAME"
+    extract_repo "$REPO"
+
+    local NAME
+    NAME=$(basename "$REPO")
+    local BRANCH="main"
+    if [ "$UPDATE_CHANNEL" = "beta" ] && repo_supports_beta "$REPO"; then
+        BRANCH="beta"
+        echo "🔍 Using BETA branch for integration"
+    fi
+
+    local SRC="$TMP/${NAME}-${BRANCH}/custom_components/${INTEGRATION}"
 
     if [ ! -d "$SRC" ]; then
-        echo -e "${RED}❌ Integration folder missing: $SRC${RESET}"
+        echo "❌ ERROR: integration folder not found: $SRC"
         exit 1
     fi
 
-    echo "🗑️  Removing old integration"
+    echo "🗑️  Removing existing integration: $TARGET_DIR"
     $RM -rf "$TARGET_DIR"
 
-    echo "📦 Installing new files"
+    echo "📦 Copying new integration files..."
     $MKDIR -p "$(dirname "$TARGET_DIR")"
     $CP -r "$SRC" "$TARGET_DIR"
 
-    echo "✅ Integration updated: $NAME"
+    echo "✅ Integration updated: $INTEGRATION"
 }
 
 ###############################################
-# Sync dist (loader + elements)
+# DIST (Loader & Elements)
 ###############################################
 sync_dist() {
     local REPO="$1"
     local TARGET="$2"
+    local NAME
+    NAME=$(basename "$REPO")
 
     echo ""
     echo "📁 Syncing dist for $REPO"
+    extract_repo "$REPO"
 
-    SRC=$(extract_repo "$REPO")
-    SRC="$SRC/dist"
+    local BRANCH="main"
+    if [ "$UPDATE_CHANNEL" = "beta" ] && repo_supports_beta "$REPO"; then
+        BRANCH="beta"
+        echo "🔍 Using BETA branch"
+    fi
+
+    local SRC="$TMP/${NAME}-${BRANCH}/dist"
 
     if [ ! -d "$SRC" ]; then
-        echo -e "${RED}❌ ERROR: dist folder missing in $REPO${RESET}"
+        echo "❌ ERROR: dist folder missing in $REPO ($SRC)"
         exit 1
     fi
 
@@ -204,20 +247,22 @@ sync_dist() {
     $MKDIR -p "$TARGET"
     $CP -r "$SRC"/* "$TARGET"/
 
-    echo "💨 Generating .gz versions..."
+    echo "💨 Generating .gz assets..."
     for JSFILE in "$TARGET"/*.js; do
-        [ -f "$JSFILE" ] && $GZIP -c "$JSFILE" > "${JSFILE}.gz"
+        if [ -f "$JSFILE" ]; then
+            gzip -c "$JSFILE" > "${JSFILE}.gz"
+        fi
     done
 
-    echo "✅ dist updated for $REPO"
+    echo "✅ dist updated for $REPO (with gzip)"
 }
 
 ###############################################
 # EXECUTE SYNC
 ###############################################
 sync_blueprints
-sync_all_files "$REPO_MEDIA" "$DIR_MEDIA"
-sync_all_files "$REPO_ESSENTIALS" "$DIR_ESSENTIALS"
+sync_media
+sync_essentials
 
 sync_integration "$REPO_UTILITIES" "smartqasa" "$DIR_UTILITIES"
 sync_integration "$REPO_PICO_LINK" "pico_link" "$DIR_PICO_LINK"
@@ -226,6 +271,6 @@ sync_dist "$REPO_LOADER" "$DIR_LOADER"
 sync_dist "$REPO_ELEMENTS" "$DIR_ELEMENTS"
 
 echo ""
-echo -e "${GREEN}====================================="
+echo "====================================="
 echo " 🎉 SmartQasa Sync COMPLETE!"
-echo "=====================================${RESET}"
+echo "====================================="
