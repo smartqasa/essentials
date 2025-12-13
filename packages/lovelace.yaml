@@ -3,5 +3,5 @@ lovelace:
   resources:
     - url: /local/smartqasa/dash-loader/loader.js
       type: module
-#    - url: /local/smartqasa/dash-elements/elements.js
-#      type: module
+    - url: /local/smartqasa/dash-elements/elements.js
+      type: module
