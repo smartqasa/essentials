@@ -10,7 +10,7 @@ automation:
         data:
           name: SmartQasa
       # Refresh Devices
-      - action: script.system_refresh_tablets
+      #- action: script.system_refresh_tablets
       # Run Watchman
       - delay:
           minutes: 5
