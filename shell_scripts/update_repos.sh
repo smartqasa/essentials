@@ -73,7 +73,7 @@ echo "🔧 Auto-update: $AUTO_UPDATE"
 ###############################################
 repo_supports_beta() {
     case "$1" in
-        smartqasa/dash-loader|smartqasa/dash-elements|smartqasa/pico-link)
+        smartqasa/dash-loader|smartqasa/dash-elements|smartqasa/pico-link|smartqasa/essentials)
             return 0
             ;;
         *)
