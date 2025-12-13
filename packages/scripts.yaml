@@ -218,7 +218,7 @@ script:
           seconds: 15
       - action: homeassistant.reload_all
       - action: frontend.reload_themes
-      - action: script.system_refresh_tablets
+      - action: browser_mod.refresh
 
   system_cycle_light_phase:
     alias: 'System - Cycle Light Phase'
