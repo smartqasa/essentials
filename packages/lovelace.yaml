@@ -1,7 +1,9 @@
 lovelace:
   mode: yaml
   resources:
-    - url: /local/smartqasa/dash-loader/loader.js
+    - url:
+        /local/smartqasa/dash-loader/loader.js?v={{ now().strftime('%Y%m%d%H%M')
+        }}
       type: module
 #    - url: /local/smartqasa/dash-elements/elements.js
 #      type: module
