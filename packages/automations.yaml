@@ -9,8 +9,8 @@ automation:
       - action: frontend.set_theme
         data:
           name: SmartQasa
-      # Refresh Devices
-      - action: script.system_refresh_tablets
+      # Refresh Frontend
+      - action: browser_mod.refresh
       # Run Watchman
       - delay:
           minutes: 5
