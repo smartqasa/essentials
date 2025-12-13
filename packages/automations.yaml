@@ -9,6 +9,8 @@ automation:
       - action: frontend.set_theme
         data:
           name: SmartQasa
+      # Refresh Frontend
+      - action: browser_mod.refresh
       # Run Watchman
       - delay:
           minutes: 5
