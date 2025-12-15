@@ -120,7 +120,7 @@ frontend:
           ripple-color: rgb(205, 200, 200)
 
         dark:
-          panel-color: rgb(25, 25, 25)
+          panel-color: rgb(16, 16, 16)
 
           title-text-color: rgb(210, 210, 210)
           primary-text-color: rgb(225, 225, 225)
