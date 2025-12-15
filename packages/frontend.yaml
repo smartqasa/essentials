@@ -23,7 +23,7 @@ frontend:
       # Cards
       card-padding: 16px
       card-spacing: 12px
-      card-border-radius: 10px
+      card-border-radius: 20px
 
       # Tiles
       tile-min-width: 500px
