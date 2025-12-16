@@ -30,4 +30,3 @@ echo "Switching back to beta..."
 git checkout beta
 
 echo "✓ Promotion complete. You are now back on beta."
-
