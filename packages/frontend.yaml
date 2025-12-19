@@ -267,6 +267,8 @@ frontend:
 
       state-fan-on-color: var(--cyan-color)
 
+      state-input_boolean-demo_mode-on-color: var(--blue-color)
+
       state-lock-locked-color: var(--inactive-color)
       state-lock-locking-color: var(--deep-orange-color)
       state-lock-unlocked-color: var(--deep-orange-color)
