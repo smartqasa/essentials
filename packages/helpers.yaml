@@ -1,9 +1,16 @@
+# Booleans
 input_boolean:
   admin_mode:
     name: Admin Mode
     icon: mdi:tools
     initial: false
 
+  demo_mode:
+    name: Demo Mode
+    icon: mdi:eye-outline
+    initial: false
+
+# Buttons
 input_button:
   flash_devices:
     name: Flash Devices
@@ -25,6 +32,7 @@ input_button:
     name: Refresh Devices
     icon: mdi:refresh
 
+# Selects
 input_select:
   location_mode:
     name: Location Mode
@@ -53,15 +61,16 @@ input_select:
       - Commercial
       - Other
 
+# Text Inputs
 input_text:
   system_pin:
     name: System PIN
     icon: mdi:dialpad
     mode: password
-    initial: "7575"
+    initial: '7575'
 
   admin_pin_code:
     name: Admin PIN Code
     icon: mdi:dialpad
     mode: password
-    initial: "########"
+    initial: '########'
