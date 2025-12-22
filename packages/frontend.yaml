@@ -337,5 +337,5 @@ frontend:
       mdc-text-field-fill-color: var(--secondary-background-color)
       mdc-tab-text-label-color-default: var(--secondary-text-color)
 
-      #Swiper
-      swiper-navigation-color: var(--card-background-color)
+      # Advanced Camera Card
+      advanced-camera-card-menu-override-background: transparent
