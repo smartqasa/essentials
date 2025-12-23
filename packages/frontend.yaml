@@ -106,7 +106,7 @@ frontend:
           popup-backdrop-color: rgba(0, 0, 0, 0.2)
           popup-backdrop-filter: blur(10px)
           popup-background-color: rgba(210, 203, 196, 0.85)
-          popup-progress-color: rgb(200, 200, 200)
+          popup-progress-color: rgb(180, 180, 180)
           popup-border-color: rgb(170, 170, 170)
           popup-box-shadow: none
 
@@ -151,13 +151,13 @@ frontend:
 
           popup-backdrop-color: rgba(0, 0, 0, 0.2)
           popup-backdrop-filter: blur(10px)
-          popup-background-color: rgba(22, 22, 22, 0.9)
+          popup-background-color: rgba(15, 15, 15, 0.9)
           popup-progress-color: rgb(50, 50, 50)
           popup-border-color: rgb(0, 0, 0)
           popup-box-shadow: none
 
-          card-background-color: rgba(36, 36, 40, 0.8)
-          card-border: 1px solid rgb(36, 36, 40)
+          card-background-color: rgba(30, 30, 34, 0.8)
+          card-border: 1px solid rgb(30, 30, 34)
           card-box-shadow: none
 
           button-background-color: rgba(55, 55, 60, 0.8)
