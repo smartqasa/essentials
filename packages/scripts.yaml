@@ -94,21 +94,11 @@ script:
     sequence:
       - action: frontend.reload_themes
       - variables:
-          #          clear_cache: >-
-          #            {{ states.button
-          #              | selectattr('entity_id', 'search', 'tablet_clear_browser_cache')
-          #              | map(attribute='entity_id')
-          #              | list }}
           restart_device: >-
             {{ states.button
               | selectattr('entity_id', 'search', '_tablet_restart_device')
               | map(attribute='entity_id')
               | list }}
-      #      - action: button.press
-      #        target:
-      #          entity_id: "{{ clear_cache }}"
-      #      - delay:
-      #          seconds: 5
       - action: button.press
         target:
           entity_id: '{{ restart_device }}'
