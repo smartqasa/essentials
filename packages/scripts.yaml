@@ -127,8 +127,6 @@ script:
       - action: button.press
         target:
           entity_id: '{{ restart_app }}'
-      - delay:
-          seconds: 10
 
   #  system_locate_roku_remote:
   #    alias: System - Locate Roku Remote
