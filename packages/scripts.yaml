@@ -129,7 +129,6 @@ script:
           entity_id: '{{ restart_app }}'
       - delay:
           seconds: 10
-      - action: browser_mod.refresh
 
   #  system_locate_roku_remote:
   #    alias: System - Locate Roku Remote
