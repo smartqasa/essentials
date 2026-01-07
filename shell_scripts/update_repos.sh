@@ -237,7 +237,7 @@ sync_module() {
         echo "🔍 Using BETA branch"
     fi
 
-    local SRC="$TMP/${NAME}-${BRANCH}/module"
+    local SRC="$TMP/${NAME}-${BRANCH}/dist"
 
     if [ ! -d "$SRC" ]; then
         echo "❌ ERROR: module folder missing in $REPO ($SRC)"
