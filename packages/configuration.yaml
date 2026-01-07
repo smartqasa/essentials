@@ -2,11 +2,9 @@ default_config:
 
 automation: !include /config/automations.yaml
 browser_mod:
-file_utilities:
 http:
   server_port: 10075
 scene: !include /config/scenes.yaml
-scene_plus:
 script: !include /config/scripts.yaml
 shell_command:
   update_repos: '/bin/bash /config/smartqasa/shell_scripts/update_repos.sh'
