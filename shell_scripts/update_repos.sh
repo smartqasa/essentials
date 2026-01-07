@@ -24,6 +24,7 @@ REPO_LOADER="smartqasa/dash-loader"
 REPO_ELEMENTS="smartqasa/dash-elements"
 REPO_UTILITIES="smartqasa/ha-utilities"
 REPO_PICO_LINK="smartqasa/pico-link"
+REPO_SCENE_PLUS="smartqasa/scene-plus"
 
 # Targets
 DIR_BLUEPRINTS="$ROOT/blueprints/automation/smartqasa"
@@ -33,7 +34,7 @@ DIR_LOADER="$ROOT/www/smartqasa/dash-loader"
 DIR_ELEMENTS="$ROOT/www/smartqasa/dash-elements"
 DIR_UTILITIES="$ROOT/custom_components/smartqasa"
 DIR_PICO_LINK="$ROOT/custom_components/pico_link"
-
+DIR_SCENE_PLUS="$ROOT/custom_components/scene_plus"
 TMP="/tmp/sq_extract"
 
 ###############################################
