@@ -267,6 +267,7 @@ sync_essentials
 
 sync_integration "$REPO_UTILITIES" "smartqasa" "$DIR_UTILITIES"
 sync_integration "$REPO_PICO_LINK" "pico_link" "$DIR_PICO_LINK"
+sync_integration "$REPO_SCENE_PLUS" "scene_plus" "$DIR_SCENE_PLUS"
 
 sync_dist "$REPO_LOADER" "$DIR_LOADER"
 sync_dist "$REPO_ELEMENTS" "$DIR_ELEMENTS"
