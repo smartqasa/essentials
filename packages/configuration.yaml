@@ -2,6 +2,7 @@ default_config:
 
 automation: !include /config/automations.yaml
 browser_mod:
+file_utilities:
 http:
   server_port: 10075
 scene: !include /config/scenes.yaml

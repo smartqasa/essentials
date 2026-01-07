@@ -22,7 +22,7 @@ REPO_MEDIA="smartqasa/media"
 REPO_ESSENTIALS="smartqasa/essentials"
 REPO_LOADER="smartqasa/dash-loader"
 REPO_ELEMENTS="smartqasa/dash-elements"
-REPO_UTILITIES="smartqasa/ha-utilities"
+REPO_FILE_UTILITIES="smartqasa/file-utilities"
 REPO_PICO_LINK="smartqasa/pico-link"
 REPO_SCENE_PLUS="smartqasa/scene-plus"
 
@@ -32,7 +32,7 @@ DIR_MEDIA="$ROOT/www/smartqasa/media"
 DIR_ESSENTIALS="$ROOT/smartqasa"
 DIR_LOADER="$ROOT/www/smartqasa/dash-loader"
 DIR_ELEMENTS="$ROOT/www/smartqasa/dash-elements"
-DIR_UTILITIES="$ROOT/custom_components/smartqasa"
+DIR_FILE_UTILITIES="$ROOT/custom_components/file_utilities"
 DIR_PICO_LINK="$ROOT/custom_components/pico_link"
 DIR_SCENE_PLUS="$ROOT/custom_components/scene_plus"
 TMP="/tmp/sq_extract"
@@ -265,7 +265,7 @@ sync_blueprints
 sync_media
 sync_essentials
 
-sync_integration "$REPO_UTILITIES" "smartqasa" "$DIR_UTILITIES"
+sync_integration "$REPO_FILE_UTILITIES" "file_utilities" "$DIR_FILE_UTILITIES"
 sync_integration "$REPO_PICO_LINK" "pico_link" "$DIR_PICO_LINK"
 sync_integration "$REPO_SCENE_PLUS" "scene_plus" "$DIR_SCENE_PLUS"
 
