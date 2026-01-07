@@ -219,16 +219,16 @@ sync_integration() {
 }
 
 ###############################################
-# DIST (Loader & Elements)
+# Module (Loader & Elements)
 ###############################################
-sync_dist() {
+sync_module() {
     local REPO="$1"
     local TARGET="$2"
     local NAME
     NAME=$(basename "$REPO")
 
     echo ""
-    echo "📁 Syncing dist for $REPO"
+    echo "📁 Syncing module for $REPO"
     extract_repo "$REPO"
 
     local BRANCH="main"
@@ -237,10 +237,10 @@ sync_dist() {
         echo "🔍 Using BETA branch"
     fi
 
-    local SRC="$TMP/${NAME}-${BRANCH}/dist"
+    local SRC="$TMP/${NAME}-${BRANCH}/module"
 
     if [ ! -d "$SRC" ]; then
-        echo "❌ ERROR: dist folder missing in $REPO ($SRC)"
+        echo "❌ ERROR: module folder missing in $REPO ($SRC)"
         exit 1
     fi
 
@@ -255,7 +255,7 @@ sync_dist() {
         fi
     done
 
-    echo "✅ dist updated for $REPO (with gzip)"
+    echo "✅ Module updated for $REPO (with gzip)"
 }
 
 ###############################################
@@ -269,8 +269,8 @@ sync_integration "$REPO_UTILITIES" "smartqasa" "$DIR_UTILITIES"
 sync_integration "$REPO_PICO_LINK" "pico_link" "$DIR_PICO_LINK"
 sync_integration "$REPO_SCENE_PLUS" "scene_plus" "$DIR_SCENE_PLUS"
 
-sync_dist "$REPO_LOADER" "$DIR_LOADER"
-sync_dist "$REPO_ELEMENTS" "$DIR_ELEMENTS"
+sync_module "$REPO_LOADER" "$DIR_LOADER"
+sync_module "$REPO_ELEMENTS" "$DIR_ELEMENTS"
 
 echo ""
 echo "====================================="
