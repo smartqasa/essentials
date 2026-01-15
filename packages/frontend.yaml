@@ -140,7 +140,7 @@ frontend:
           accent-color: rgb(0, 120, 230)
           disabled-color: rgb(170, 170, 170)
           divider-color: rgb(50, 50, 50)
-          inactive-color: rgb(120, 120, 120)
+          inactive-color: rgb(100, 100, 100)
           unavailable-color: rgb(255, 0, 255)
 
           primary-background-color: rgb(25, 25, 25)
