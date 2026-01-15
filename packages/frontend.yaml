@@ -87,7 +87,7 @@ frontend:
           menu-tab-color: rgb(110, 110, 110)
 
           icon-color: rgb(20, 20, 20)
-          icon-opacity: 50%
+          icon-opacity: 100%
 
           track-opacity: 35%
 
@@ -133,7 +133,7 @@ frontend:
           menu-tab-color: rgb(120, 120, 120)
 
           icon-color: rgb(225, 225, 225)
-          icon-opacity: 50%
+          icon-opacity: 100%
 
           track-opacity: 35%
 
