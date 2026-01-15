@@ -94,7 +94,7 @@ frontend:
           accent-color: rgb(0, 120, 230)
           disabled-color: rgb(100, 100, 100)
           divider-color: rgb(160, 160, 160)
-          inactive-color: rgb(150, 150, 150)
+          inactive-color: rgb(170, 170, 170)
           unavailable-color: rgb(255, 0, 255)
 
           primary-background-color: rgb(180, 180, 180)
