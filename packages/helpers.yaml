@@ -10,6 +10,11 @@ input_boolean:
     icon: mdi:eye-outline
     initial: false
 
+  kiosk_view:
+    name: Kiosk View
+    icon: mdi:monitor-lock
+    initial: true
+
 # Buttons
 input_button:
   flash_devices:
