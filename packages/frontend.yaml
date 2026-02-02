@@ -1,6 +1,6 @@
 frontend:
-  #extra_module_url:
-  #- /hacsfiles/kiosk-mode/kiosk-mode.js
+  extra_module_url:
+    - /hacsfiles/kiosk-mode/kiosk-mode.js
 
   themes:
     SmartQasa:
