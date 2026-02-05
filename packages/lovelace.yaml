@@ -1,5 +1,4 @@
 lovelace:
-  mode: yaml
   resources:
     - url: /local/smartqasa/dash-loader/loader-v6.3.js
       type: module
