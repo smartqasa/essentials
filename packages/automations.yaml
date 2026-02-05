@@ -9,8 +9,6 @@ automation:
       - action: frontend.set_theme
         data:
           name: SmartQasa
-      # Refresh Frontend
-      - action: browser_mod.refresh
       # Run Watchman
       - delay:
           minutes: 5
@@ -26,7 +24,7 @@ automation:
     trigger:
       - trigger: homeassistant
         event: shutdown
-    actions:
+    action:
       - action: shell_command.update_repos
 
   - alias: 'System - Periodic Restart'
@@ -39,7 +37,7 @@ automation:
     action:
       - action: script.system_reboot_tablets
       - delay:
-          minutes: 2
+          minutes: 1
       - action: hassio.host_reboot
 
   - alias: 'System - Set Admin PIN on PIN change.'
