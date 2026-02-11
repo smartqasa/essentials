@@ -98,7 +98,7 @@ frontend:
           primary-background-color: rgb(180, 180, 180)
           secondary-background-color: rgb(200, 200, 200)
 
-          primary-color: '#46463C'
+          primary-color: "#46463C"
           app-header-background-color: var(--panel-color)
 
           popup-backdrop-color: rgba(0, 0, 0, 0.2)
@@ -144,7 +144,7 @@ frontend:
           primary-background-color: rgb(25, 25, 25)
           secondary-background-color: rgb(60, 65, 65)
 
-          primary-color: '#A0A0A0'
+          primary-color: "#A0A0A0"
           app-header-background-color: var(--panel-color)
 
           popup-backdrop-color: rgba(0, 0, 0, 0.2)
@@ -203,8 +203,7 @@ frontend:
       grid-card-gap: var(--card-spacing)
 
       # HA Misc
-      ha-assist-chip-filled-container-color:
-        color-mix(in srgb, var(--inactive-color) 20%, transparent)
+      ha-assist-chip-filled-container-color: color-mix(in srgb, var(--inactive-color) 20%, transparent)
 
       # Browser Mod Popup
       popup-padding-x: 1rem
@@ -283,7 +282,7 @@ frontend:
 
       state-scene-on-color: var(--inactive-color)
 
-      state-switch-on-color: var(--yellow-color)
+      state-switch-on-color: var(--deep-yellow-color)
       state-switch-fireplace-on-color: var(--red-color)
       state-switch-heater-on-color: var(--red-color)
       state-switch-pump-on-color: var(--blue-color)
@@ -324,8 +323,7 @@ frontend:
       mdc-icon-size: var(--icon-size)
       mdc-button-outline-color: var(--card-border-color)
       mdc-checkbox-unchecked-color: var(--secondary-text-color)
-      mdc-checkbox-disable-color:
-        color-mix(in srgb, var(--inactive-color) 50%, transparent)
+      mdc-checkbox-disable-color: color-mix(in srgb, var(--inactive-color) 50%, transparent)
       mdc-select-fill-color: var(--secondary-background-color)
       mdc-select-ink-color: var(--primary-text-color)
       mdc-select-label-ink-color: var(--secondary-text-color)
