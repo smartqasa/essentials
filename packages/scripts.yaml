@@ -212,13 +212,9 @@ script:
     mode: single
     sequence:
       - action: shell_command.update_repos
-      - delay: 00:00:02
-      - action: homeassistant.reload_all
-      - delay: 00:00:02
+      - action: homeassistant.reload_core_config
       - action: lovelace.reload_resources
-      - delay: 00:00:02
       - action: frontend.reload_themes
-      - delay: 00:00:02
       - action: browser_mod.refresh
 
   system_cycle_light_phase:
