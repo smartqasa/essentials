@@ -33,6 +33,9 @@ automation:
     actions:
       - action: shell_command.update_repos
       - action: script.system_tablets_clear_cache
+      - action: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.update_software
 
   - alias: "System - Periodic Restart"
     mode: single
