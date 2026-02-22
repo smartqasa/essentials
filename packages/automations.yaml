@@ -1,10 +1,10 @@
 automation:
   - alias: "System - Startup Services"
     mode: single
-    trigger:
+    triggers:
       - trigger: homeassistant
         event: start
-    action:
+    actions:
       # Set Theme to SmartQasa
       - action: frontend.set_theme
         data:
@@ -23,21 +23,25 @@ automation:
 
   - alias: "System - Shutdown Services"
     mode: single
-    trigger:
+    triggers:
       - trigger: homeassistant
         event: shutdown
-    action:
+    conditions:
+      - condition: state
+        entity_id: input_boolean.update_software
+        state: "on"
+    actions:
       - action: shell_command.update_repos
       - action: script.system_tablets_clear_cache
 
   - alias: "System - Periodic Restart"
     mode: single
-    trigger:
+    triggers:
       - trigger: time
         at: "04:00:00"
         weekday:
           - sun
-    action:
+    actions:
       - action: script.system_reboot_tablets
       - delay:
           minutes: 1
@@ -45,7 +49,7 @@ automation:
 
   - alias: "System - Set Admin PIN on PIN change."
     mode: single
-    trigger:
+    triggers:
       - trigger: homeassistant
         event: start
       - trigger: state
@@ -54,7 +58,7 @@ automation:
       - trigger: state
         entity_id:
           - input_text.location_pin
-    action:
+    actions:
       - action: input_text.set_value
         data:
           value: >-
@@ -65,7 +69,7 @@ automation:
 
   - alias: "System - Reset Admin Mode on Timeout"
     mode: single
-    trigger:
+    triggers:
       - trigger: homeassistant
         event: start
       - trigger: state
@@ -74,7 +78,7 @@ automation:
         to: "on"
         for:
           hours: 1
-    action:
+    actions:
       - action: input_boolean.turn_off
         data: {}
         target:
@@ -158,7 +162,6 @@ automation:
         default:
           - action: "{{ service }}"
             continue_on_error: true
-
       - action: logbook.log
         data:
           name: "Webhook Action Call"

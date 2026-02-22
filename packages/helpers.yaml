@@ -10,6 +10,11 @@ input_boolean:
     icon: mdi:eye-outline
     initial: false
 
+  update_software:
+    name: Update Software
+    icon: mdi:cloud-upload
+    initial: false
+
 # Buttons
 input_button:
   flash_devices:
@@ -67,10 +72,10 @@ input_text:
     name: System PIN
     icon: mdi:dialpad
     mode: password
-    initial: '7575'
+    initial: "7575"
 
   admin_pin_code:
     name: Admin PIN Code
     icon: mdi:dialpad
     mode: password
-    initial: '########'
+    initial: "########"
