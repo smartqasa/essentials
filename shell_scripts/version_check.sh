@@ -61,7 +61,7 @@ check_module() {
   INSTALLED=$(
     grep -oE "${MARKER// /[[:space:]]+}[[:space:]]+[^[:space:]]+" "$JS" \
       | head -n 1 \
-      | sed -E 's/.*⏏[[:space:]]+([^[:space:]]+).*/\1/' \
+      | awk '{print $NF}' \
       | tr -d '\r' \
       || true
   )
