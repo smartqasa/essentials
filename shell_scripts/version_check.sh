@@ -7,13 +7,13 @@ JQ="/usr/bin/jq"
 ROOT="/config"
 SQCONFIG="$ROOT/sqconfig.json"
 
-# Dash-elements configuration
-ELEMENTS_REPO="smartqasa/dash-elements"
-ELEMENTS_DIR="$ROOT/www/smartqasa/dash-elements"
-
 # Dash-loader configuration
 LOADER_REPO="smartqasa/dash-loader"
 LOADER_DIR="$ROOT/www/smartqasa/dash-loader"
+
+# Dash-elements configuration
+ELEMENTS_REPO="smartqasa/dash-elements"
+ELEMENTS_DIR="$ROOT/www/smartqasa/dash-elements"
 
 log() { echo "[dash-check] $*" >&2; }
 
@@ -90,11 +90,11 @@ check_module() {
 }
 
 ###############################################
+# Check dash-loader
+###############################################
+LOADER_RESULT=$(check_module "$LOADER_REPO" "$LOADER_DIR" "loader")
+
+###############################################
 # Check dash-elements
 ###############################################
 ELEMENTS_RESULT=$(check_module "$ELEMENTS_REPO" "$ELEMENTS_DIR" "elements")
-
-###############################################
-# Check dash-loader
-###############################################
-LOADER_RESULT=$(check_module "$LOADER_REPO" "$LOADER_DIR" "loader
