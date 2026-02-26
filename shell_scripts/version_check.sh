@@ -59,10 +59,10 @@ check_module() {
   # Matches: "<MARKER> <version>"
   local INSTALLED
   INSTALLED=$(
-    grep -oE "${MARKER// /[[:space:]]+}[[:space:]]+[^[:space:]]+" "$JS" \
-      | head -n 1 \
-      | awk '{print $NF}' \
-      | tr -d '\r' \
+    grep -a -m1 "$MARKER" "$JS" 2>/dev/null \
+      | grep -oE '[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.-]+)?' \
+      | head -n1 \
+      | tr -d '\r\n' \
       || true
   )
   INSTALLED=$(printf "%s" "$INSTALLED" | tr -d '\n')
