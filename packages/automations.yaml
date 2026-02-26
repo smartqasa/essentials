@@ -26,16 +26,16 @@ automation:
     triggers:
       - trigger: homeassistant
         event: shutdown
-    conditions:
-      - condition: state
-        entity_id: input_boolean.update_software
-        state: "on"
     actions:
-      - action: shell_command.update_repos
-      - action: script.system_tablets_clear_cache
-      - action: input_boolean.turn_off
-        target:
-          entity_id: input_boolean.update_software
+      - action: shell_command.version_check
+        response_variable: version_check
+
+      - choose:
+          - conditions: >
+              {{ version_check.stdout | trim == 'true' }}
+            sequence:
+              - action: shell_command.update_repos
+              - action: script.system_tablets_clear_cache
 
   - alias: "System - Periodic Restart"
     mode: single
