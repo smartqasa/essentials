@@ -5,10 +5,10 @@ CURL="/usr/bin/curl"
 JQ="/usr/bin/jq"
 
 ROOT="/config"
-CONF="$ROOT/configuration.yaml"
 SQCONFIG="$ROOT/sqconfig.json"
 
 REPO="smartqasa/dash-elements"
+DIR="$ROOT/www/smartqasa/dash-elements"
 
 log() { echo "[dash-elements-check] $*" >&2; }
 
@@ -23,30 +23,21 @@ fi
 log "BRANCH=$BRANCH"
 
 ###############################################
-# Get installed version from active JS bundle
+# Locate deployed bundle (exactly one expected)
 ###############################################
-URL=$(grep -oE '/local/smartqasa/dash-elements/elements-[^ ]+\.js' "$CONF" | head -n 1 || true)
-log "RESOURCE_URL=${URL:-<none>}"
+JS=$(ls "$DIR"/elements-v*.js 2>/dev/null | head -n 1 || true)
+log "JS_PATH=${JS:-<none>}"
 
-if [ -z "$URL" ]; then
-  log "No resource URL found in $CONF"
+if [ -z "$JS" ] || [ ! -f "$JS" ]; then
+  log "No elements-v*.js found in $DIR"
   echo "false"
   exit 0
 fi
 
-JS="$ROOT/www${URL#/local}"
-log "JS_PATH=$JS"
-
-if [ ! -f "$JS" ]; then
-  log "JS file missing"
-  echo "false"
-  exit 0
-fi
-
-# Extract installed version. Support both:
-#   window.smartqasa.versionElements="x"
-#   window.smartqasa.versionElements='x'
-#   window.smartqasa.versionElements=x
+###############################################
+# Extract installed version from bundle
+# Supports: versionElements="x"  OR 'x' OR unquoted
+###############################################
 INSTALLED=$(
   sed -nE 's/.*versionElements[[:space:]]*=[[:space:]]*["'\'']?([^"'\''];[:space:]]+)["'\'']?.*/\1/p' "$JS" \
   | head -n 1 \
@@ -54,10 +45,10 @@ INSTALLED=$(
   || true
 )
 INSTALLED=$(printf "%s" "$INSTALLED" | tr -d '\n')
-log "INSTALLED='$INSTALLED'"
+log "INSTALLED='${INSTALLED:-<empty>}'"
 
 ###############################################
-# Get latest available version from branch
+# Fetch available version from GitHub branch package.json
 ###############################################
 PKG_URL="https://raw.githubusercontent.com/$REPO/$BRANCH/package.json"
 log "PKG_URL=$PKG_URL"
@@ -69,7 +60,7 @@ LATEST=$(
   || true
 )
 LATEST=$(printf "%s" "$LATEST" | tr -d '\n')
-log "LATEST='$LATEST'"
+log "LATEST='${LATEST:-<empty>}'"
 
 ###############################################
 # Compare
