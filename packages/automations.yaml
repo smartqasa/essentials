@@ -1,5 +1,5 @@
 automation:
-  - alias: "System - Startup Services"
+  - alias: 'System - Startup Services'
     mode: single
     triggers:
       - trigger: homeassistant
@@ -21,27 +21,27 @@ automation:
           parse_config: false
           chunk_size: false
 
-  - alias: "System - Shutdown Services"
+  - alias: 'System - Shutdown Services'
     mode: single
     triggers:
       - trigger: homeassistant
         event: shutdown
     actions:
       - action: shell_command.version_check
-        response_variable: version_check
+        response_variable: version_changed
 
       - choose:
           - conditions: >
-              {{ version_check.stdout | trim == 'true' }}
+              {{ version_changed.stdout | trim == 'true' }}
             sequence:
               - action: shell_command.update_repos
               - action: script.system_tablets_clear_cache
 
-  - alias: "System - Periodic Restart"
+  - alias: 'System - Periodic Restart'
     mode: single
     triggers:
       - trigger: time
-        at: "04:00:00"
+        at: '04:00:00'
         weekday:
           - sun
     actions:
@@ -50,7 +50,7 @@ automation:
           minutes: 1
       - action: hassio.host_reboot
 
-  - alias: "System - Set Admin PIN on PIN change."
+  - alias: 'System - Set Admin PIN on PIN change.'
     mode: single
     triggers:
       - trigger: homeassistant
@@ -70,7 +70,7 @@ automation:
         target:
           entity_id: input_text.admin_pin_code
 
-  - alias: "System - Reset Admin Mode on Timeout"
+  - alias: 'System - Reset Admin Mode on Timeout'
     mode: single
     triggers:
       - trigger: homeassistant
@@ -78,7 +78,7 @@ automation:
       - trigger: state
         entity_id:
           - input_boolean.admin_mode
-        to: "on"
+        to: 'on'
         for:
           hours: 1
     actions:
@@ -97,7 +97,7 @@ automation:
   #        data: {}
 
   - alias: System - Stop Window Shades on Timeout
-    description: ""
+    description: ''
     mode: single
     triggers:
       - trigger: state
@@ -148,26 +148,26 @@ automation:
               - condition: template
                 value_template: "{{ entity != '' }}"
             sequence:
-              - action: "{{ service }}"
+              - action: '{{ service }}'
                 target:
-                  entity_id: "{{ entity }}"
+                  entity_id: '{{ entity }}'
                 continue_on_error: true
           # AREA target
           - conditions:
               - condition: template
                 value_template: "{{ area != '' }}"
             sequence:
-              - action: "{{ service }}"
+              - action: '{{ service }}'
                 target:
-                  area_id: "{{ area }}"
+                  area_id: '{{ area }}'
                 continue_on_error: true
         # DEFAULT (no entity, no area)
         default:
-          - action: "{{ service }}"
+          - action: '{{ service }}'
             continue_on_error: true
       - action: logbook.log
         data:
-          name: "Webhook Action Call"
+          name: 'Webhook Action Call'
           message: >
             Called {{ service }} {% if entity != '' %}
               on entity {{ entity }}
