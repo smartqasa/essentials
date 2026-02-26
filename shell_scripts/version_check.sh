@@ -39,8 +39,9 @@ fi
 # Supports: versionElements="x"  OR 'x' OR unquoted
 ###############################################
 INSTALLED=$(
-  sed -nE 's/.*versionElements[[:space:]]*=[[:space:]]*["'\'']?([^"'\''];[:space:]]+)["'\'']?.*/\1/p' "$JS" \
+  grep -oE 'SmartQasa Elements ⏏ [^ ]+' "$JS" \
   | head -n 1 \
+  | sed -E 's/.*⏏[[:space:]]+([^[:space:]]+).*/\1/' \
   | tr -d '\r' \
   || true
 )
