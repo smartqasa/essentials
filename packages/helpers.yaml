@@ -10,11 +10,6 @@ input_boolean:
     icon: mdi:eye-outline
     initial: false
 
-  update_software:
-    name: Update Software
-    icon: mdi:cloud-upload
-    initial: false
-
 # Buttons
 input_button:
   flash_devices:
