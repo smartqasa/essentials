@@ -7,10 +7,15 @@ JQ="/usr/bin/jq"
 ROOT="/config"
 SQCONFIG="$ROOT/sqconfig.json"
 
-REPO="smartqasa/dash-elements"
-DIR="$ROOT/www/smartqasa/dash-elements"
+# Dash-elements configuration
+ELEMENTS_REPO="smartqasa/dash-elements"
+ELEMENTS_DIR="$ROOT/www/smartqasa/dash-elements"
 
-log() { echo "[dash-elements-check] $*" >&2; }
+# Dash-loader configuration
+LOADER_REPO="smartqasa/dash-loader"
+LOADER_DIR="$ROOT/www/smartqasa/dash-loader"
+
+log() { echo "[dash-check] $*" >&2; }
 
 ###############################################
 # Determine branch (main/beta)
@@ -23,67 +28,73 @@ fi
 log "BRANCH=$BRANCH"
 
 ###############################################
-# Locate deployed bundle (exactly one expected)
+# Function to check a module
 ###############################################
-JS=$(ls "$DIR"/elements-v*.js 2>/dev/null | head -n 1 || true)
-log "JS_PATH=${JS:-<none>}"
+check_module() {
+  local REPO="$1"
+  local DIR="$2"
+  local NAME="$3"
 
-if [ -z "$JS" ] || [ ! -f "$JS" ]; then
-  log "No elements-v*.js found in $DIR"
-  echo "false"
-  exit 0
-fi
+  log "Checking $NAME..."
+  
+  JS=$(ls "$DIR"/elements-v*.js 2>/dev/null | head -n 1 || true)
+  log "${NAME}_JS_PATH=${JS:-<none>}"
+
+  if [ -z "$JS" ] || [ ! -f "$JS" ]; then
+    log "No elements-v*.js found in $DIR"
+    echo "false"
+    return
+  fi
+
+  INSTALLED=$(
+    grep -oE 'SmartQasa Elements ⏏ [^ ]+' "$JS" \
+    | head -n 1 \
+    | sed -E 's/.*⏏[[:space:]]+([^[:space:]]+).*/\1/' \
+    | tr -d '\r' \
+    || true
+  )
+  INSTALLED=$(printf "%s" "$INSTALLED" | tr -d '\n')
+  log "${NAME}_INSTALLED='${INSTALLED:-<empty>}'"
+
+  PKG_URL="https://raw.githubusercontent.com/$REPO/$BRANCH/package.json"
+  log "${NAME}_PKG_URL=$PKG_URL"
+
+  LATEST=$(
+    $CURL -Ls "$PKG_URL" \
+    | $JQ -r '.version // empty' 2>/dev/null \
+    | tr -d '\r' \
+    || true
+  )
+  LATEST=$(printf "%s" "$LATEST" | tr -d '\n')
+  log "${NAME}_LATEST='${LATEST:-<empty>}'"
+
+  if [ -z "$INSTALLED" ]; then
+    log "${NAME}_INSTALLED empty -> returning false"
+    echo "false"
+    return
+  fi
+
+  if [ -z "$LATEST" ]; then
+    log "${NAME}_LATEST empty -> returning false"
+    echo "false"
+    return
+  fi
+
+  if [ "$INSTALLED" != "$LATEST" ]; then
+    log "${NAME}_MISMATCH -> true"
+    echo "true"
+  else
+    log "${NAME}_MATCH -> false"
+    echo "false"
+  fi
+}
 
 ###############################################
-# Extract installed version from bundle
-# Supports: versionElements="x"  OR 'x' OR unquoted
+# Check dash-elements
 ###############################################
-INSTALLED=$(
-  grep -oE 'SmartQasa Elements ⏏ [^ ]+' "$JS" \
-  | head -n 1 \
-  | sed -E 's/.*⏏[[:space:]]+([^[:space:]]+).*/\1/' \
-  | tr -d '\r' \
-  || true
-)
-INSTALLED=$(printf "%s" "$INSTALLED" | tr -d '\n')
-log "INSTALLED='${INSTALLED:-<empty>}'"
+ELEMENTS_RESULT=$(check_module "$ELEMENTS_REPO" "$ELEMENTS_DIR" "elements")
 
 ###############################################
-# Fetch available version from GitHub branch package.json
+# Check dash-loader
 ###############################################
-PKG_URL="https://raw.githubusercontent.com/$REPO/$BRANCH/package.json"
-log "PKG_URL=$PKG_URL"
-
-LATEST=$(
-  $CURL -Ls "$PKG_URL" \
-  | $JQ -r '.version // empty' 2>/dev/null \
-  | tr -d '\r' \
-  || true
-)
-LATEST=$(printf "%s" "$LATEST" | tr -d '\n')
-log "LATEST='${LATEST:-<empty>}'"
-
-###############################################
-# Compare
-###############################################
-if [ -z "$INSTALLED" ]; then
-  log "INSTALLED empty -> returning false"
-  echo "false"
-  exit 0
-fi
-
-if [ -z "$LATEST" ]; then
-  log "LATEST empty -> returning false"
-  echo "false"
-  exit 0
-fi
-
-if [ "$INSTALLED" != "$LATEST" ]; then
-  log "MISMATCH -> true"
-  echo "true"
-else
-  log "MATCH -> false"
-  echo "false"
-fi
-
-exit 0
+LOADER_RESULT=$(check_module "$LOADER_REPO" "$LOADER_DIR" "loader
