@@ -29,7 +29,6 @@ automation:
     actions:
       - action: shell_command.version_check
         response_variable: version_changed
-
       - choose:
           - conditions: >
               {{ version_changed.stdout | trim == 'true' }}
@@ -42,7 +41,7 @@ automation:
     trigger:
       - platform: time
         at: "03:00:00"
-    action:
+    actions:
       - action: backup.create_automatic
       - wait_template: "{{ states('sensor.backup_manager_state') == 'create_backup' }}"
         timeout: "00:00:30"
