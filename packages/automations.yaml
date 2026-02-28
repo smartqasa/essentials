@@ -48,7 +48,7 @@ automation:
         continue_on_timeout: true
       - wait_template: "{{ states('sensor.backup_manager_state') == 'idle' }}"
         timeout: '01:00:00'
-        continue_on_timeout: false
+        continue_on_timeout: true
       - if: '{{ now().weekday() == 6 }}'
         then:
           - action: script.system_tablets_clear_cache
