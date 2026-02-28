@@ -114,7 +114,7 @@ automation:
         for:
           hours: 0
           minutes: 1
-          seconds: 0
+          seconds: 30
       - trigger: state
         entity_id:
           - cover.all_window_shades
@@ -122,7 +122,7 @@ automation:
         for:
           hours: 0
           minutes: 1
-          seconds: 0
+          seconds: 30
     actions:
       - action: cover.stop_cover
         data: {}
