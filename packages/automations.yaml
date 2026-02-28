@@ -1,5 +1,5 @@
 automation:
-  - alias: "System - Startup Services"
+  - alias: "System - Startup Actions"
     mode: single
     triggers:
       - trigger: homeassistant
@@ -21,7 +21,7 @@ automation:
           parse_config: false
           chunk_size: false
 
-  - alias: "System - Shutdown Services"
+  - alias: "System - Shutdown Actions"
     mode: single
     triggers:
       - trigger: homeassistant
@@ -37,7 +37,7 @@ automation:
               - action: shell_command.update_repos
               - action: script.system_tablets_clear_cache
 
-  - alias: "System - Periodic Restart"
+  - alias: "System - Nightly Maintentance Actions"
     mode: single
     trigger:
       - platform: time
@@ -102,15 +102,6 @@ automation:
         data: {}
         target:
           entity_id: input_boolean.admin_mode
-
-  #  - alias: 'System - Refresh Devices on Lovelace update'
-  #    mode: single
-  #    triggers:
-  #      - trigger: event
-  #        event_type: lovelace_updated
-  #    actions:
-  #      - action: browser_mod.refresh
-  #        data: {}
 
   - alias: System - Stop Window Shades on Timeout
     description: ""
