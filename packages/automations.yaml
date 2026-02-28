@@ -43,6 +43,12 @@ automation:
         at: "03:00:00"
     actions:
       - action: backup.create_automatic
+      - wait_template: "{{ states('sensor.backup_manager_state') == 'create_backup' }}"
+        timeout: "00:00:30"
+        continue_on_timeout: true
+      - wait_template: "{{ states('sensor.backup_manager_state') == 'idle' }}"
+        timeout: "01:00:00"
+        continue_on_timeout: false
       - if: "{{ now().weekday() == 6 }}"
         then:
           - action: script.system_tablets_clear_cache
