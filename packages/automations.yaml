@@ -12,8 +12,7 @@ automation:
       # Refresh Browser Mod
       - action: browser_mod.refresh
       # Run Watchman
-      - delay:
-          minutes: 5
+      - delay: '00:05:00'
       - action: watchman.report
         data:
           create_file: true
@@ -53,11 +52,9 @@ automation:
       - if: '{{ now().weekday() == 6 }}'
         then:
           - action: script.system_tablets_clear_cache
-          - delay:
-              seconds: 5
+          - delay: '00:00:05'
           - action: script.system_reboot_tablets
-          - delay:
-              seconds: 30
+          - delay: '00:00:30'
           - action: hassio.host_reboot
         else:
           - action: shell_command.version_check
