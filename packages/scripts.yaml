@@ -233,8 +233,8 @@ script:
     sequence:
       - variables:
           phases:
-            0: { color_temp: 357 }
-            1: { color_temp: 250 }
+            0: { color_temp_kelvin: 2800 }
+            1: { color_temp_kelvin: 4000 }
             2: { color_name: "red" }
             3: { color_name: "magenta" }
             4: { color_name: "blue" }
